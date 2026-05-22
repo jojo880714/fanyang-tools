@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>放洋留遊學｜諮詢總覽（管理者）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#C8436A;--pink-d:#8C2445;--pink-l:#FBE9EF;--pink-m:#F2B3C5;
+  --bg:#F7F5F2;--sur:#FFFFFF;--sur2:#F0EDE9;--sur3:#E8E4DF;
+  --ink:#1A1714;--ink2:#4A4540;--ink3:#7A7570;--ink4:#ABA7A2;
+  --bdr:rgba(0,0,0,0.07);--bdr2:rgba(0,0,0,0.13);
+  --teal:#0D9488;--teal-l:#E6FAFA;
+  --amber:#D97706;--amber-l:#FFFBEB;
+  --green:#16A34A;--green-l:#F0FDF4;
+  --red:#DC2626;--red-l:#FEF2F2;
+  --blue:#2563EB;--blue-l:#EFF6FF;
+  --purple:#7C3AED;--purple-l:#F5F3FF;
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.05);
+  --r:10px;--r-sm:6px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;-webkit-font-smoothing:antialiased}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+
+/* TOPBAR */
+.topbar{
+  background:var(--ink);color:#fff;
+  height:52px;display:flex;align-items:center;
+  padding:0 24px;gap:14px;position:sticky;top:0;z-index:20;
+}
+.topbar-logo{font-size:16px;font-weight:700;color:var(--pink-m)}
+.topbar-div{width:1px;height:14px;background:rgba(255,255,255,0.2)}
+.topbar-title{font-size:12px;color:rgba(255,255,255,0.6)}
+.topbar-badge{
+  font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;
+  background:rgba(200,67,106,0.25);color:var(--pink-m);letter-spacing:0.04em;
+}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.export-btn{
+  display:flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:600;padding:6px 14px;
+  border:1px solid rgba(255,255,255,0.2);border-radius:var(--r-sm);
+  background:transparent;color:rgba(255,255,255,0.8);
+  cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all .15s;
+}
+.export-btn:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.4)}
+
+/* STATS BAR */
+.stats-bar{
+  background:var(--sur);border-bottom:1px solid var(--bdr);
+  padding:14px 24px;display:flex;gap:0;overflow-x:auto;
+}
+.stat-item{
+  padding:0 24px;border-right:1px solid var(--bdr);
+  display:flex;flex-direction:column;gap:3px;flex-shrink:0;
+}
+.stat-item:first-child{padding-left:0}
+.stat-item:last-child{border-right:none}
+.stat-val{font-size:22px;font-weight:700;color:var(--ink);font-family:'DM Mono',monospace}
+.stat-lbl{font-size:11px;color:var(--ink4)}
+.stat-val.pink{color:var(--pink)}
+.stat-val.green{color:var(--green)}
+.stat-val.amber{color:var(--amber)}
+
+/* FILTERS */
+.filters{
+  padding:14px 24px;background:var(--sur);
+  border-bottom:1px solid var(--bdr);
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+}
+.filter-search{
+  position:relative;flex:1;min-width:200px;
+}
+.filter-search input{
+  width:100%;padding:7px 12px 7px 34px;
+  font-size:12px;font-family:'Noto Sans TC',sans-serif;
+  border:1px solid var(--bdr2);border-radius:var(--r-sm);
+  background:var(--bg);color:var(--ink);outline:none;
+}
+.filter-search input:focus{border-color:var(--pink)}
+.filter-search::before{
+  content:'🔍';position:absolute;left:10px;top:50%;
+  transform:translateY(-50%);font-size:12px;
+}
+.filter-select{
+  padding:7px 28px 7px 10px;font-size:12px;
+  font-family:'Noto Sans TC',sans-serif;
+  border:1px solid var(--bdr2);border-radius:var(--r-sm);
+  background:var(--bg);color:var(--ink);outline:none;
+  appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23ABA7A2' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;
+}
+.filter-select:focus{border-color:var(--pink)}
+.refresh-btn{
+  padding:7px 14px;font-size:11px;font-weight:600;
+  border:1px solid var(--bdr2);border-radius:var(--r-sm);
+  background:var(--sur);color:var(--ink2);cursor:pointer;
+  font-family:'Noto Sans TC',sans-serif;transition:all .15s;
+}
+.refresh-btn:hover{border-color:var(--pink);color:var(--pink)}
+.record-count{font-size:12px;color:var(--ink4);white-space:nowrap}
+
+/* TABLE */
+.table-wrap{padding:20px 24px;overflow-x:auto}
+.table{width:100%;border-collapse:collapse;font-size:12px}
+.table thead th{
+  background:var(--sur2);padding:9px 12px;text-align:left;
+  font-size:10px;font-weight:700;color:var(--ink3);
+  text-transform:uppercase;letter-spacing:0.07em;
+  border-bottom:2px solid var(--bdr2);white-space:nowrap;
+  cursor:pointer;user-select:none;
+}
+.table thead th:hover{color:var(--ink)}
+.table thead th.sort-asc::after{content:' ↑'}
+.table thead th.sort-desc::after{content:' ↓'}
+.table tbody tr{border-bottom:1px solid var(--bdr);transition:background .1s}
+.table tbody tr:hover{background:var(--sur2)}
+.table td{padding:10px 12px;color:var(--ink2);vertical-align:top;line-height:1.5}
+.table td.advisor{font-weight:600;color:var(--ink)}
+.table td.campus{font-weight:600;color:var(--pink-d)}
+.table td.memo-cell{max-width:220px;font-size:11px;color:var(--ink3)}
+.table td.time-cell{font-size:11px;color:var(--ink4);white-space:nowrap;font-family:'DM Mono',monospace}
+
+/* STATUS BADGE */
+.status-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10px;font-weight:700;padding:3px 9px;
+  border-radius:20px;cursor:pointer;white-space:nowrap;
+  border:1px solid transparent;transition:all .13s;
+}
+.s-pending{background:var(--amber-l);color:var(--amber);border-color:rgba(217,119,6,0.2)}
+.s-in_progress{background:var(--blue-l);color:var(--blue);border-color:rgba(37,99,235,0.2)}
+.s-closed_win{background:var(--green-l);color:var(--green);border-color:rgba(22,163,74,0.2)}
+.s-closed_lose{background:var(--red-l);color:var(--red);border-color:rgba(220,38,38,0.2)}
+
+/* STATUS DROPDOWN */
+.status-menu{
+  position:absolute;background:var(--sur);border:1px solid var(--bdr2);
+  border-radius:var(--r-sm);box-shadow:var(--shadow);
+  z-index:50;min-width:130px;display:none;
+}
+.status-menu.open{display:block}
+.status-opt{
+  padding:8px 14px;font-size:12px;cursor:pointer;
+  transition:background .1s;
+}
+.status-opt:hover{background:var(--sur2)}
+
+/* ACTION BTNS */
+.act-btn{
+  padding:4px 10px;font-size:11px;font-weight:600;
+  border-radius:var(--r-sm);cursor:pointer;
+  font-family:'Noto Sans TC',sans-serif;transition:all .13s;
+  border:1px solid var(--bdr2);background:var(--sur);color:var(--ink3);
+}
+.act-btn:hover{border-color:var(--red);color:var(--red)}
+.act-btn.copy{border-color:var(--bdr2)}
+.act-btn.copy:hover{border-color:var(--pink);color:var(--pink)}
+
+/* EMPTY / LOADING */
+.empty-state{
+  text-align:center;padding:64px 24px;color:var(--ink4);
+}
+.empty-state .icon{font-size:40px;margin-bottom:12px}
+.empty-state .msg{font-size:14px;margin-bottom:6px}
+.empty-state .sub{font-size:12px}
+.loading{text-align:center;padding:40px;color:var(--ink4);font-size:13px}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:24px;right:24px;
+  background:var(--ink);color:#fff;
+  padding:10px 18px;border-radius:var(--r-sm);
+  font-size:12px;z-index:100;
+  opacity:0;transform:translateY(8px);
+  transition:all .2s;pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* DELETE CONFIRM */
+.confirm-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);
+  z-index:80;align-items:center;justify-content:center;
+}
+.confirm-overlay.open{display:flex}
+.confirm-box{
+  background:var(--sur);border-radius:var(--r);
+  padding:24px 28px;width:320px;box-shadow:var(--shadow);
+}
+.confirm-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.confirm-sub{font-size:12px;color:var(--ink3);margin-bottom:20px;line-height:1.6}
+.confirm-btns{display:flex;gap:8px;justify-content:flex-end}
+.confirm-cancel{
+  padding:7px 16px;border:1px solid var(--bdr2);border-radius:var(--r-sm);
+  background:var(--sur);color:var(--ink2);font-size:12px;
+  cursor:pointer;font-family:'Noto Sans TC',sans-serif;
+}
+.confirm-delete{
+  padding:7px 16px;border:none;border-radius:var(--r-sm);
+  background:var(--red);color:#fff;font-size:12px;font-weight:700;
+  cursor:pointer;font-family:'Noto Sans TC',sans-serif;
+}
+
+/* CHARTS */
+.charts-bar{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:16px;padding:0 24px 20px;
+}
+.chart-card{
+  background:var(--sur);border:1px solid var(--bdr);
+  border-radius:var(--r);padding:16px;
+}
+.chart-title{font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px}
+.bar-item{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.bar-label{font-size:11px;color:var(--ink2);width:90px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{flex:1;height:8px;background:var(--sur2);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;background:var(--pink);transition:width .4s ease}
+.bar-val{font-size:11px;color:var(--ink4);font-family:'DM Mono',monospace;min-width:20px;text-align:right}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">放洋留遊學</div>
+  <div class="topbar-div"></div>
+  <div class="topbar-title">諮詢總覽</div>
+  <div class="topbar-badge">管理者專用</div>
+  <div class="topbar-right">
+    <button class="export-btn" onclick="exportCSV()">⬇ 匯出 CSV</button>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar" id="statsBar">
+  <div class="stat-item"><div class="stat-val pink" id="s-total">—</div><div class="stat-lbl">總筆數</div></div>
+  <div class="stat-item"><div class="stat-val amber" id="s-pending">—</div><div class="stat-lbl">待跟進</div></div>
+  <div class="stat-item"><div class="stat-val" style="color:var(--blue)" id="s-progress">—</div><div class="stat-lbl">進行中</div></div>
+  <div class="stat-item"><div class="stat-val green" id="s-win">—</div><div class="stat-lbl">已成交</div></div>
+  <div class="stat-item"><div class="stat-val" id="s-month">—</div><div class="stat-lbl">本月新增</div></div>
+</div>
+
+<!-- CHARTS -->
+<div class="charts-bar" id="chartsBar" style="margin-top:16px"></div>
+
+<!-- FILTERS -->
+<div class="filters">
+  <div class="filter-search">
+    <input type="text" id="searchInput" placeholder="搜尋業務姓名、學生姓名、備注關鍵字…" oninput="applyFilters()">
+  </div>
+  <select class="filter-select" id="filterCampus" onchange="applyFilters()">
+    <option value="">所有校區</option>
+    <option value="canary">倫敦 Canary Wharf</option>
+    <option value="greenford">倫敦 Greenford</option>
+    <option value="birmingham">伯明罕</option>
+    <option value="leeds">里茲</option>
+    <option value="dublin">都柏林</option>
+    <option value="berlin">柏林</option>
+    <option value="paris">巴黎</option>
+    <option value="malta">馬爾他</option>
+    <option value="dubai">杜拜</option>
+    <option value="toronto">多倫多</option>
+    <option value="brisbane">布里斯本</option>
+  </select>
+  <select class="filter-select" id="filterAdvisor" onchange="applyFilters()">
+    <option value="">所有業務</option>
+  </select>
+  <select class="filter-select" id="filterStatus" onchange="applyFilters()">
+    <option value="">所有狀態</option>
+    <option value="pending">待跟進</option>
+    <option value="in_progress">進行中</option>
+    <option value="closed_win">已成交</option>
+    <option value="closed_lose">未成交</option>
+  </select>
+  <select class="filter-select" id="filterMonth" onchange="applyFilters()">
+    <option value="">所有時間</option>
+    <option value="this_month">本月</option>
+    <option value="last_month">上個月</option>
+    <option value="this_week">本週</option>
+  </select>
+  <button class="refresh-btn" onclick="loadAll()">↻ 重新整理</button>
+  <span class="record-count" id="recordCount"></span>
+</div>
+
+<!-- TABLE -->
+<div class="table-wrap">
+  <div id="tableContent"><div class="loading">載入中…</div></div>
+</div>
+
+<!-- STATUS DROPDOWN -->
+<div class="status-menu" id="statusMenu">
+  <div class="status-opt" onclick="setStatus('pending')">🟡 待跟進</div>
+  <div class="status-opt" onclick="setStatus('in_progress')">🔵 進行中</div>
+  <div class="status-opt" onclick="setStatus('closed_win')">🟢 已成交</div>
+  <div class="status-opt" onclick="setStatus('closed_lose')">🔴 未成交</div>
+</div>
+
+<!-- DELETE CONFIRM -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <div class="confirm-title">確認刪除</div>
+    <div class="confirm-sub">這筆諮詢記錄將被永久刪除，無法復原。確定要繼續嗎？</div>
+    <div class="confirm-btns">
+      <button class="confirm-cancel" onclick="closeConfirm()">取消</button>
+      <button class="confirm-delete" onclick="confirmDelete()">確認刪除</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── SUPABASE ──
+const SUPABASE_URL = 'https://uxxpagylkdljjaxslmyj.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eHBhZ3lsa2RsampheHNsbXlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MjAzNDEsImV4cCI6MjA5NDA5NjM0MX0.68pMY1QFbs7mPafSo5uskvaDYoBfM7Vht6n2UYvmgZM';
+
+async function sb(method, table, body, params){
+  const url = SUPABASE_URL+'/rest/v1/'+table+(params?'?'+params:'');
+  const opts = {
+    method,
+    headers:{
+      'apikey':SUPABASE_KEY,
+      'Authorization':'Bearer '+SUPABASE_KEY,
+      'Content-Type':'application/json',
+      'Prefer': method==='POST'?'return=representation':'',
+    }
+  };
+  if(body) opts.body=JSON.stringify(body);
+  try{
+    const res=await fetch(url,opts);
+    if(!res.ok) return null;
+    if(res.status===204) return true;
+    return res.json().catch(()=>null);
+  } catch(e){ return null; }
+}
+
+// ── STATE ──
+let allRecords=[];
+let filteredRecords=[];
+let sortCol='created_at';
+let sortDir='desc';
+let pendingDeleteId=null;
+let pendingStatusId=null;
+
+const STATUS_LABELS={
+  pending:'🟡 待跟進',
+  in_progress:'🔵 進行中',
+  closed_win:'🟢 已成交',
+  closed_lose:'🔴 未成交',
+};
+const STATUS_CSS={
+  pending:'s-pending',
+  in_progress:'s-in_progress',
+  closed_win:'s-closed_win',
+  closed_lose:'s-closed_lose',
+};
+const CAMPUS_NAMES={
+  canary:'倫敦 Canary Wharf',greenford:'倫敦 Greenford',
+  birmingham:'伯明罕',leeds:'里茲',dublin:'都柏林',
+  berlin:'柏林',paris:'巴黎',malta:'馬爾他',
+  dubai:'杜拜',toronto:'多倫多',brisbane:'布里斯本',
+};
+
+// ── LOAD ──
+async function loadAll(){
+  document.getElementById('tableContent').innerHTML='<div class="loading">載入中…</div>';
+  const res=await sb('GET','ep_consult_notes',null,'order=created_at.desc&limit=500');
+  if(!res||!Array.isArray(res)){
+    document.getElementById('tableContent').innerHTML=
+      '<div class="empty-state"><div class="icon">⚠️</div><div class="msg">無法連線至 Supabase</div><div class="sub">請確認網路連線與資料庫設定</div></div>';
+    return;
+  }
+  allRecords=res;
+  buildAdvisorFilter();
+  updateStats();
+  applyFilters();
+}
+
+function buildAdvisorFilter(){
+  const sel=document.getElementById('filterAdvisor');
+  const advisors=[...new Set(allRecords.map(r=>r.advisor_name).filter(Boolean))].sort();
+  sel.innerHTML='<option value="">所有業務</option>'+
+    advisors.map(a=>`<option value="${a}">${a}</option>`).join('');
+}
+
+function updateStats(){
+  const now=new Date();
+  const thisMonth=now.getFullYear()+'-'+(now.getMonth()+1).toString().padStart(2,'0');
+  document.getElementById('s-total').textContent=allRecords.length;
+  document.getElementById('s-pending').textContent=allRecords.filter(r=>r.status==='pending'||!r.status).length;
+  document.getElementById('s-progress').textContent=allRecords.filter(r=>r.status==='in_progress').length;
+  document.getElementById('s-win').textContent=allRecords.filter(r=>r.status==='closed_win').length;
+  document.getElementById('s-month').textContent=allRecords.filter(r=>r.created_at&&r.created_at.startsWith(thisMonth)).length;
+  renderCharts();
+}
+
+function renderCharts(){
+  // Campus distribution
+  const campusCount={};
+  allRecords.forEach(r=>{ campusCount[r.campus_name||r.campus_key]=(campusCount[r.campus_name||r.campus_key]||0)+1; });
+  const topCampus=Object.entries(campusCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  const maxC=topCampus[0]?.[1]||1;
+
+  // Advisor distribution
+  const advCount={};
+  allRecords.forEach(r=>{ if(r.advisor_name) advCount[r.advisor_name]=(advCount[r.advisor_name]||0)+1; });
+  const topAdv=Object.entries(advCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  const maxA=topAdv[0]?.[1]||1;
+
+  // Course distribution
+  const courseCount={};
+  allRecords.forEach(r=>{ if(r.course_dir) courseCount[r.course_dir]=(courseCount[r.course_dir]||0)+1; });
+  const topCourse=Object.entries(courseCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  const maxCo=topCourse[0]?.[1]||1;
+
+  function bars(data,max,color='var(--pink)'){
+    if(!data.length) return '<div style="color:var(--ink4);font-size:11px">尚無資料</div>';
+    return data.map(([l,v])=>`
+      <div class="bar-item">
+        <div class="bar-label" title="${l}">${l}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${Math.round(v/max*100)}%;background:${color}"></div></div>
+        <div class="bar-val">${v}</div>
+      </div>`).join('');
+  }
+
+  document.getElementById('chartsBar').innerHTML=`
+    <div class="chart-card">
+      <div class="chart-title">📍 校區詢問分布</div>
+      ${bars(topCampus,maxC)}
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">👤 業務活躍度</div>
+      ${bars(topAdv,maxA,'var(--teal)')}
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">📚 熱門課程方向</div>
+      ${bars(topCourse,maxCo,'var(--amber)')}
+    </div>`;
+}
+
+// ── FILTER & SORT ──
+function applyFilters(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  const campus=document.getElementById('filterCampus').value;
+  const advisor=document.getElementById('filterAdvisor').value;
+  const status=document.getElementById('filterStatus').value;
+  const month=document.getElementById('filterMonth').value;
+  const now=new Date();
+  const thisMonthStr=now.getFullYear()+'-'+(now.getMonth()+1).toString().padStart(2,'0');
+  const lastMonthDate=new Date(now.getFullYear(),now.getMonth()-1,1);
+  const lastMonthStr=lastMonthDate.getFullYear()+'-'+(lastMonthDate.getMonth()+1).toString().padStart(2,'0');
+  const weekAgo=new Date(now-7*24*60*60*1000).toISOString();
+
+  filteredRecords=allRecords.filter(r=>{
+    if(q && !['advisor_name','student','campus_name','course_dir','memo','accomm_pref','budget','weeks'].some(f=>String(r[f]||'').toLowerCase().includes(q))) return false;
+    if(campus && r.campus_key!==campus) return false;
+    if(advisor && r.advisor_name!==advisor) return false;
+    if(status){
+      const s=r.status||'pending';
+      if(s!==status) return false;
+    }
+    if(month==='this_month' && r.created_at && !r.created_at.startsWith(thisMonthStr)) return false;
+    if(month==='last_month' && r.created_at && !r.created_at.startsWith(lastMonthStr)) return false;
+    if(month==='this_week' && r.created_at && r.created_at < weekAgo) return false;
+    return true;
+  });
+
+  // Sort
+  filteredRecords.sort((a,b)=>{
+    let av=a[sortCol]||'',bv=b[sortCol]||'';
+    if(sortDir==='asc') return av>bv?1:-1;
+    return av<bv?1:-1;
+  });
+
+  document.getElementById('recordCount').textContent=
+    `顯示 ${filteredRecords.length} / ${allRecords.length} 筆`;
+  renderTable();
+}
+
+function sortBy(col){
+  if(sortCol===col) sortDir=sortDir==='asc'?'desc':'asc';
+  else { sortCol=col; sortDir='desc'; }
+  document.querySelectorAll('.table thead th').forEach(th=>{
+    th.classList.remove('sort-asc','sort-desc');
+    if(th.dataset.col===col) th.classList.add(sortDir==='asc'?'sort-asc':'sort-desc');
+  });
+  applyFilters();
+}
+
+// ── RENDER TABLE ──
+function renderTable(){
+  const el=document.getElementById('tableContent');
+  if(!filteredRecords.length){
+    el.innerHTML='<div class="empty-state"><div class="icon">📭</div><div class="msg">沒有符合條件的記錄</div><div class="sub">試試調整篩選條件</div></div>';
+    return;
+  }
+  const rows=filteredRecords.map(r=>{
+    const st=r.status||'pending';
+    const dt=r.created_at?new Date(r.created_at).toLocaleString('zh-TW',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'—';
+    const campus=r.campus_name||CAMPUS_NAMES[r.campus_key]||r.campus_key||'—';
+    return `<tr>
+      <td class="time-cell">${dt}</td>
+      <td class="advisor">${esc(r.advisor_name||'—')}</td>
+      <td class="campus">${esc(campus)}</td>
+      <td>${esc(r.student||'—')}</td>
+      <td>${esc(r.weeks||'—')}</td>
+      <td>${esc(r.course_dir||'—')}</td>
+      <td>${esc(r.accomm_pref||'—')}</td>
+      <td>${esc(r.budget||'—')}</td>
+      <td class="memo-cell" title="${esc(r.memo||'')}">
+        ${r.memo?esc(r.memo.length>40?r.memo.slice(0,40)+'…':r.memo):'—'}
+      </td>
+      <td style="position:relative">
+        <span class="status-badge ${STATUS_CSS[st]}"
+          onclick="openStatusMenu(event,${r.id})">
+          ${STATUS_LABELS[st]||st} ▾
+        </span>
+      </td>
+      <td>
+        <button class="act-btn copy" onclick="copyRow(${r.id})">複製</button>
+        <button class="act-btn" onclick="askDelete(${r.id})" style="margin-left:4px">刪除</button>
+      </td>
+    </tr>`;
+  }).join('');
+  el.innerHTML=`<table class="table">
+    <thead><tr>
+      <th data-col="created_at" onclick="sortBy('created_at')">時間</th>
+      <th data-col="advisor_name" onclick="sortBy('advisor_name')">業務</th>
+      <th data-col="campus_name" onclick="sortBy('campus_name')">校區</th>
+      <th data-col="student" onclick="sortBy('student')">學生</th>
+      <th>週數</th><th>課程方向</th><th>住宿偏好</th><th>預算</th>
+      <th>備注</th><th>狀態</th><th>操作</th>
+    </tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ── STATUS ──
+function openStatusMenu(e,id){
+  e.stopPropagation();
+  const menu=document.getElementById('statusMenu');
+  pendingStatusId=id;
+  menu.style.top=(e.clientY+4)+'px';
+  menu.style.left=e.clientX+'px';
+  menu.style.position='fixed';
+  menu.classList.add('open');
+}
+async function setStatus(status){
+  document.getElementById('statusMenu').classList.remove('open');
+  if(!pendingStatusId) return;
+  const res=await sb('PATCH','ep_consult_notes',{status},'id=eq.'+pendingStatusId);
+  if(res!==null){
+    const r=allRecords.find(x=>x.id===pendingStatusId);
+    if(r) r.status=status;
+    toast('狀態已更新');
+    updateStats();
+    applyFilters();
+  } else { toast('更新失敗，請重試','err'); }
+  pendingStatusId=null;
+}
+document.addEventListener('click',()=>document.getElementById('statusMenu').classList.remove('open'));
+
+// ── DELETE ──
+function askDelete(id){ pendingDeleteId=id; document.getElementById('confirmOverlay').classList.add('open'); }
+function closeConfirm(){ document.getElementById('confirmOverlay').classList.remove('open'); pendingDeleteId=null; }
+async function confirmDelete(){
+  if(!pendingDeleteId) return;
+  closeConfirm();
+  const res=await sb('DELETE','ep_consult_notes',null,'id=eq.'+pendingDeleteId);
+  if(res!==null){
+    allRecords=allRecords.filter(r=>r.id!==pendingDeleteId);
+    updateStats();
+    applyFilters();
+    toast('已刪除');
+  } else { toast('刪除失敗','err'); }
+  pendingDeleteId=null;
+}
+
+// ── COPY ROW ──
+function copyRow(id){
+  const r=allRecords.find(x=>x.id===id);
+  if(!r) return;
+  const campus=r.campus_name||CAMPUS_NAMES[r.campus_key]||r.campus_key||'—';
+  const dt=r.created_at?new Date(r.created_at).toLocaleString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'—';
+  const text=[
+    '📋 遊學諮詢記錄｜'+dt,
+    '業務：'+(r.advisor_name||'—'),
+    '學生：'+(r.student||'（未填）'),
+    '意向校區：'+campus,
+    '預計週數：'+(r.weeks||'未確定'),
+    '課程方向：'+(r.course_dir||'未確定'),
+    '住宿偏好：'+(r.accomm_pref||'未確定'),
+    '預算範圍：'+(r.budget||'未確定'),
+    '備注：'+(r.memo||'（無）'),
+    '狀態：'+(STATUS_LABELS[r.status||'pending']),
+  ].join('\n');
+  try{ navigator.clipboard.writeText(text).catch(()=>legacyCopy(text)); }
+  catch(e){ legacyCopy(text); }
+  toast('已複製到剪貼簿');
+}
+function legacyCopy(text){
+  const ta=document.createElement('textarea');
+  ta.value=text; document.body.appendChild(ta);
+  ta.select(); document.execCommand('copy');
+  document.body.removeChild(ta);
+}
+
+// ── EXPORT CSV ──
+function exportCSV(){
+  const headers=['時間','業務','校區','學生','週數','課程方向','住宿偏好','預算','備注','狀態'];
+  const rows=allRecords.map(r=>{
+    const campus=r.campus_name||CAMPUS_NAMES[r.campus_key]||r.campus_key||'';
+    const dt=r.created_at?new Date(r.created_at).toLocaleString('zh-TW'):'';
+    return [dt,r.advisor_name||'',campus,r.student||'',r.weeks||'',
+      r.course_dir||'',r.accomm_pref||'',r.budget||'',r.memo||'',
+      STATUS_LABELS[r.status||'pending']||''].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',');
+  });
+  const csv='\uFEFF'+[headers.join(','),...rows].join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='EP諮詢記錄_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('CSV 已匯出');
+}
+
+// ── TOAST ──
+function toast(msg,type){
+  const el=document.getElementById('toast');
+  el.textContent=msg;
+  el.style.background=type==='err'?'#DC2626':'#1A1714';
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),2500);
+}
+
+// ── INIT ──
+loadAll();
+</script>
+</body>
+</html>
