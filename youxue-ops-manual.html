@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>遊學一條龍｜業務心法手冊</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --pink:#E8195A;
+  --pink-light:rgba(232,25,90,0.08);
+  --pink-mid:rgba(232,25,90,0.15);
+  --pink-border:rgba(232,25,90,0.2);
+  --bg:#F7F5F2;
+  --surface:#FFFFFF;
+  --surface2:#F2F0ED;
+  --border:#E4E1DC;
+  --border2:#D0CBC3;
+  --ink:#1A1714;
+  --ink2:#4A4540;
+  --ink3:#8A8480;
+  --ink4:#B5B0AB;
+  --amber:#D97706;
+  --amber-bg:rgba(217,119,6,0.08);
+  --amber-border:rgba(217,119,6,0.2);
+  --teal:#0D7C6A;
+  --teal-bg:rgba(13,124,106,0.07);
+  --teal-border:rgba(13,124,106,0.2);
+  --blue:#2563EB;
+  --blue-bg:rgba(37,99,235,0.07);
+  --blue-border:rgba(37,99,235,0.18);
+  --purple:#7C3AED;
+  --purple-bg:rgba(124,58,237,0.07);
+  --purple-border:rgba(124,58,237,0.18);
+  --r:10px;
+  --r-sm:6px;
+  --serif:'Noto Serif TC',serif;
+  --sans:'Noto Sans TC',sans-serif;
+  --mono:'DM Mono',monospace;
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 12px rgba(0,0,0,0.04);
+  --shadow-md:0 2px 8px rgba(0,0,0,0.08),0 8px 24px rgba(0,0,0,0.06);
+}
+
+html,body{height:100%;overflow:hidden}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);display:flex;font-size:15px;line-height:1.7}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:272px;min-width:272px;
+  background:var(--surface);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  box-shadow:2px 0 12px rgba(0,0,0,0.04);
+}
+
+.sb-top{
+  padding:22px 20px 16px;
+  border-bottom:1px solid var(--border);
+  background:var(--surface);
+}
+.sb-logo{
+  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+}
+.sb-logo-mark{
+  width:34px;height:34px;
+  background:var(--pink);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.sb-logo-mark svg{width:18px;height:18px;fill:#fff}
+.sb-brand{font-size:12px;font-weight:700;color:var(--ink);letter-spacing:0.02em;}
+.sb-brand span{display:block;font-size:11px;font-weight:400;color:var(--ink3);margin-top:1px;}
+
+.sb-search{position:relative;}
+.sb-search input{
+  width:100%;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:var(--r-sm);
+  padding:8px 12px 8px 34px;
+  font-size:12.5px;color:var(--ink);
+  font-family:var(--sans);outline:none;
+  transition:border-color .18s,box-shadow .18s;
+}
+.sb-search input:focus{border-color:var(--pink);box-shadow:0 0 0 3px var(--pink-light)}
+.sb-search input::placeholder{color:var(--ink4)}
+.sb-search::before{
+  content:'';position:absolute;left:11px;top:50%;transform:translateY(-50%);
+  width:13px;height:13px;
+  background:var(--ink4);
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M9 3a6 6 0 100 12A6 6 0 009 3zm-8 6a8 8 0 1114.32 4.906l4.387 4.387-1.414 1.414-4.387-4.387A8 8 0 011 9z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.sb-nav{flex:1;overflow-y:auto;padding:8px 0 16px;}
+.sb-nav::-webkit-scrollbar{width:3px}
+.sb-nav::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+.sb-group-label{
+  font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--ink4);padding:14px 20px 4px;
+}
+
+.sb-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 20px;cursor:pointer;
+  transition:background .13s;position:relative;
+  border-radius:0;
+}
+.sb-item:hover{background:var(--surface2)}
+.sb-item.active{background:var(--pink-light)}
+.sb-item.active::before{
+  content:'';position:absolute;left:0;top:6px;bottom:6px;
+  width:3px;background:var(--pink);border-radius:0 3px 3px 0;
+}
+.sb-num{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--surface2);border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10.5px;font-weight:600;color:var(--ink3);
+  font-family:var(--mono);flex-shrink:0;transition:all .13s;
+}
+.sb-item.active .sb-num{background:var(--pink);border-color:var(--pink);color:#fff}
+.sb-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.sb-label{font-size:13px;color:var(--ink2);line-height:1.3;flex:1}
+.sb-item.active .sb-label{color:var(--pink);font-weight:500}
+.sb-badge{
+  font-size:10px;font-weight:600;padding:2px 7px;
+  border-radius:20px;flex-shrink:0;
+}
+
+/* ── MAIN ── */
+#main{flex:1;overflow-y:auto;background:var(--bg);}
+#main::-webkit-scrollbar{width:5px}
+#main::-webkit-scrollbar-thumb{background:var(--border2);border-radius:5px}
+
+.panel{display:none;padding:40px 48px 64px;max-width:820px}
+.panel.active{display:block}
+
+/* Panel header */
+.panel-eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--pink);margin-bottom:8px;
+}
+.panel-title{
+  font-family:var(--serif);font-size:28px;font-weight:700;
+  color:var(--ink);line-height:1.25;margin-bottom:10px;
+}
+.panel-desc{
+  font-size:14.5px;color:var(--ink2);line-height:1.8;
+  max-width:600px;margin-bottom:32px;
+  border-left:3px solid var(--border2);padding-left:16px;
+}
+
+/* Progress strip */
+.progress-strip{
+  display:flex;align-items:center;gap:0;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:12px 16px;
+  margin-bottom:32px;overflow-x:auto;
+  box-shadow:var(--shadow);
+}
+.progress-strip::-webkit-scrollbar{height:0}
+.ps-item{
+  display:flex;align-items:center;gap:0;flex-shrink:0;
+  cursor:pointer;
+}
+.ps-item:hover .ps-dot:not(.current){background:var(--surface);border-color:var(--pink-b)}
+.ps-item:hover .ps-label:not(.current){color:var(--ink2)}
+.ps-dot{
+  width:28px;height:28px;border-radius:50%;
+  border:2px solid var(--border2);background:var(--surface2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:600;font-family:var(--mono);color:var(--ink4);
+  transition:all .2s;flex-shrink:0;
+}
+.ps-dot.current{background:var(--pink);border-color:var(--pink);color:#fff;box-shadow:0 0 0 4px var(--pink-light)}
+.ps-dot.done{background:var(--surface2);border-color:var(--border2);color:var(--ink4)}
+.ps-label{font-size:11px;color:var(--ink3);padding:0 6px;white-space:nowrap}
+.ps-label.current{color:var(--ink);font-weight:500}
+.ps-arrow{font-size:12px;color:var(--border2);padding:0 2px}
+
+/* Section label */
+.sec-label{
+  font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--ink3);margin:32px 0 12px;
+  display:flex;align-items:center;gap:10px;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* Highlight banner */
+.banner{
+  border-radius:var(--r);padding:16px 18px;
+  margin:0 0 20px;display:flex;gap:14px;align-items:flex-start;
+  border:1px solid;
+}
+.banner.pink{background:var(--pink-light);border-color:var(--pink-border)}
+.banner.amber{background:var(--amber-bg);border-color:var(--amber-border)}
+.banner.teal{background:var(--teal-bg);border-color:var(--teal-border)}
+.banner.blue{background:var(--blue-bg);border-color:var(--blue-border)}
+.banner.purple{background:var(--purple-bg);border-color:var(--purple-border)}
+.banner-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.banner-title{font-size:13px;font-weight:600;margin-bottom:4px}
+.banner.pink .banner-title{color:var(--pink)}
+.banner.amber .banner-title{color:var(--amber)}
+.banner.teal .banner-title{color:var(--teal)}
+.banner.blue .banner-title{color:var(--blue)}
+.banner.purple .banner-title{color:var(--purple)}
+.banner-body{font-size:13px;color:var(--ink2);line-height:1.7}
+.banner-body strong{color:var(--ink);font-weight:600}
+
+/* Info card */
+.icard{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:18px 20px;margin-bottom:14px;
+  box-shadow:var(--shadow);
+}
+.icard-title{
+  font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);
+}
+.irow{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:8px 0;border-bottom:1px solid var(--bg);
+  font-size:13.5px;color:var(--ink2);line-height:1.65;
+}
+.irow:last-child{border-bottom:none;padding-bottom:0}
+.ibullet{
+  font-size:13px;color:var(--pink);font-weight:600;
+  width:20px;flex-shrink:0;margin-top:1px;text-align:center;
+}
+.irow strong{color:var(--ink);font-weight:600}
+
+/* Script accordion */
+.script{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);margin-bottom:10px;
+  overflow:hidden;box-shadow:var(--shadow);
+  transition:box-shadow .15s;
+}
+.script:hover{box-shadow:var(--shadow-md)}
+.script-hd{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 16px;cursor:pointer;user-select:none;
+  transition:background .13s;
+}
+.script-hd:hover{background:var(--surface2)}
+.script.open .script-hd{background:var(--surface2);border-bottom:1px solid var(--border)}
+.script-tag{
+  font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;flex-shrink:0;
+}
+.tag-green{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)}
+.tag-orange{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.tag-red{background:rgba(220,38,38,0.07);color:#DC2626;border:1px solid rgba(220,38,38,0.18)}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
+.tag-purple{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
+.script-ttl{font-size:13.5px;font-weight:500;color:var(--ink);flex:1;line-height:1.35}
+.script-chev{color:var(--ink4);font-size:14px;transition:transform .2s;flex-shrink:0}
+.script.open .script-chev{transform:rotate(180deg)}
+.script-body{display:none;padding:18px}
+.script.open .script-body{display:block}
+
+.bubble{
+  background:var(--surface2);
+  border-left:3px solid var(--pink);
+  border-radius:0 var(--r) var(--r) 0;
+  padding:14px 16px;
+  font-size:13.5px;color:var(--ink);line-height:1.8;
+  margin-bottom:12px;
+}
+.tip{
+  background:rgba(217,119,6,0.06);
+  border:1px solid var(--amber-border);
+  border-radius:var(--r-sm);
+  padding:10px 14px;
+  font-size:12.5px;color:var(--ink2);line-height:1.65;
+}
+.tip strong{color:var(--amber);font-weight:600}
+
+/* FAQ */
+.faq-controls{margin-bottom:16px}
+.faq-search-wrap{position:relative;margin-bottom:12px}
+.faq-search-wrap input{
+  width:100%;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:9px 14px 9px 38px;
+  font-size:13px;color:var(--ink);font-family:var(--sans);outline:none;
+  transition:border-color .18s,box-shadow .18s;box-shadow:var(--shadow);
+}
+.faq-search-wrap input:focus{border-color:var(--pink);box-shadow:0 0 0 3px var(--pink-light)}
+.faq-search-wrap input::placeholder{color:var(--ink4)}
+.faq-search-wrap::before{
+  content:'';position:absolute;left:13px;top:50%;transform:translateY(-50%);
+  width:14px;height:14px;background:var(--ink4);
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M9 3a6 6 0 100 12A6 6 0 009 3zm-8 6a8 8 0 1114.32 4.906l4.387 4.387-1.414 1.414-4.387-4.387A8 8 0 011 9z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.faq-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.faq-tab{
+  font-size:12px;padding:5px 13px;border-radius:20px;cursor:pointer;
+  border:1px solid var(--border2);background:var(--surface);color:var(--ink3);
+  transition:all .13s;font-family:var(--sans);
+}
+.faq-tab:hover{border-color:var(--border2);color:var(--ink2)}
+.faq-tab.active{background:var(--pink);border-color:var(--pink);color:#fff;font-weight:500}
+
+.faq{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);margin-bottom:8px;
+  overflow:hidden;box-shadow:var(--shadow);
+}
+.faq-q{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 16px;cursor:pointer;transition:background .13s;
+}
+.faq-q:hover{background:var(--surface2)}
+.faq.open .faq-q{background:var(--surface2);border-bottom:1px solid var(--border)}
+.faq-q-text{font-size:13.5px;font-weight:500;color:var(--ink);flex:1;line-height:1.35}
+.faq-cat-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-right:4px}
+.faq-chev{color:var(--ink4);font-size:14px;transition:transform .2s;flex-shrink:0}
+.faq.open .faq-chev{transform:rotate(180deg)}
+.faq-a{
+  display:none;padding:14px 16px;
+  font-size:13.5px;color:var(--ink2);line-height:1.8;
+  border-top:0;
+}
+.faq.open .faq-a{display:block}
+.faq-a strong{color:var(--ink);font-weight:600}
+
+/* Checklist */
+.checklist{list-style:none}
+.checklist li{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:9px 0;border-bottom:1px solid var(--bg);
+  font-size:13.5px;color:var(--ink2);
+}
+.checklist li:last-child{border-bottom:none}
+.chk{
+  width:18px;height:18px;border-radius:4px;
+  border:1.5px solid var(--border2);background:var(--surface2);
+  flex-shrink:0;margin-top:2px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:transparent;transition:all .15s;
+}
+.chk.done{background:var(--teal);border-color:var(--teal);color:#fff}
+
+/* Doc grid */
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:16px}
+.doc-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:13px 14px;
+  display:flex;align-items:flex-start;gap:10px;
+  box-shadow:var(--shadow);transition:border-color .13s;
+}
+.doc-card:hover{border-color:var(--border2)}
+.doc-icon{
+  width:30px;height:30px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;margin-top:1px;
+}
+.doc-name{font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.3}
+.doc-desc{font-size:11px;color:var(--ink3);margin-top:2px;line-height:1.4}
+
+/* Welcome grid */
+.welcome-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:12px;margin-bottom:32px}
+.wcard{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:18px;cursor:pointer;
+  transition:border-color .15s,box-shadow .15s,transform .15s;
+  box-shadow:var(--shadow);
+}
+.wcard:hover{border-color:var(--pink-border);box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.wcard-phase{font-size:10.5px;font-weight:600;color:var(--ink4);font-family:var(--mono);margin-bottom:6px}
+.wcard-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:5px;font-family:var(--serif)}
+.wcard-desc{font-size:12px;color:var(--ink3);line-height:1.5}
+.wcard-tag{
+  display:inline-block;margin-top:8px;
+  font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;
+}
+
+/* Product diff table */
+.diff-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
+.diff-table th{
+  background:var(--surface2);color:var(--ink3);
+  font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  padding:9px 12px;text-align:left;border-bottom:2px solid var(--border2);
+}
+.diff-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--ink2);vertical-align:top;line-height:1.55}
+.diff-table tr:last-child td{border-bottom:none}
+.diff-table td:first-child{color:var(--ink3);font-weight:500;white-space:nowrap}
+.diff-table .highlight{color:var(--teal);font-weight:600}
+
+/* Divider */
+hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+/* Q&A Module */
+.qa-submit-box{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:20px;margin-bottom:24px;
+  box-shadow:var(--shadow);
+}
+.qa-submit-title{
+  font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;
+}
+.qa-submit-desc{font-size:12.5px;color:var(--ink3);margin-bottom:14px;line-height:1.6}
+.qa-textarea{
+  width:100%;background:var(--surface2);border:1.5px solid var(--border);
+  border-radius:8px;padding:11px 14px;font-size:13.5px;color:var(--ink);
+  font-family:var(--sans);outline:none;resize:vertical;min-height:80px;
+  line-height:1.65;transition:border-color .18s,box-shadow .18s;
+}
+.qa-textarea:focus{border-color:var(--pink);box-shadow:0 0 0 3px var(--pink-l)}
+.qa-textarea::placeholder{color:var(--ink4)}
+.qa-submit-row{display:flex;align-items:center;gap:10px;margin-top:10px}
+.qa-name-input{
+  flex:1;background:var(--surface2);border:1.5px solid var(--border);
+  border-radius:8px;padding:9px 12px;font-size:13px;color:var(--ink);
+  font-family:var(--sans);outline:none;
+  transition:border-color .18s;
+}
+.qa-name-input:focus{border-color:var(--pink)}
+.qa-name-input::placeholder{color:var(--ink4)}
+.qa-btn-send{
+  background:var(--pink);color:#fff;border:none;
+  border-radius:8px;padding:9px 20px;font-size:13px;font-weight:600;
+  font-family:var(--sans);cursor:pointer;white-space:nowrap;
+  box-shadow:0 3px 10px rgba(232,25,90,0.3);
+  transition:all .2s;
+}
+.qa-btn-send:hover{background:#c8144d;transform:translateY(-1px)}
+.qa-btn-send:disabled{opacity:0.5;pointer-events:none}
+
+.qa-list{margin-top:4px}
+.qa-item{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);margin-bottom:10px;
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.qa-item-q{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;
+}
+.qa-q-bubble{
+  background:var(--pink-l);border-radius:6px;
+  padding:2px 8px;font-size:10px;font-weight:700;
+  color:var(--pink);flex-shrink:0;margin-top:2px;letter-spacing:0.04em;
+}
+.qa-q-text{font-size:13.5px;font-weight:500;color:var(--ink);flex:1;line-height:1.5}
+.qa-q-meta{font-size:11px;color:var(--ink4);white-space:nowrap;margin-top:2px}
+.qa-item-a{
+  border-top:1px solid var(--border);padding:14px 16px;
+  display:flex;align-items:flex-start;gap:12px;
+  background:var(--surface2);
+}
+.qa-a-bubble{
+  background:var(--teal-bg);border-radius:6px;
+  padding:2px 8px;font-size:10px;font-weight:700;
+  color:var(--teal);flex-shrink:0;margin-top:2px;letter-spacing:0.04em;
+}
+.qa-a-text{font-size:13.5px;color:var(--ink2);flex:1;line-height:1.75}
+.qa-pending{
+  border-top:1px solid var(--border);padding:10px 16px;
+  background:var(--amber-bg);
+  font-size:12px;color:var(--amber);
+  display:flex;align-items:center;gap:6px;
+}
+.qa-empty{text-align:center;padding:32px 20px;color:var(--ink4);font-size:13px}
+
+/* Admin mode */
+.admin-bar{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;background:var(--surface2);
+  border:1px solid var(--border);border-radius:var(--r);
+  margin-bottom:16px;
+}
+.admin-bar.active{background:rgba(13,124,106,0.06);border-color:var(--teal-border)}
+.admin-pin-input{
+  flex:1;background:var(--surface);border:1.5px solid var(--border);
+  border-radius:6px;padding:7px 10px;font-size:13px;color:var(--ink);
+  font-family:var(--mono);outline:none;letter-spacing:0.15em;
+  transition:border-color .18s;
+}
+.admin-pin-input:focus{border-color:var(--teal)}
+.admin-btn{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:6px;padding:7px 14px;font-size:12px;font-weight:600;
+  color:var(--ink3);cursor:pointer;font-family:var(--sans);
+  transition:all .15s;white-space:nowrap;
+}
+.admin-btn:hover{border-color:var(--border2);color:var(--ink)}
+.admin-btn.active{background:var(--teal-bg);border-color:var(--teal-border);color:var(--teal)}
+.admin-status{font-size:12px;color:var(--ink3);flex:1}
+.admin-status.on{color:var(--teal);font-weight:500}
+.qa-answer-form{
+  border-top:1px solid var(--border);padding:12px 16px;
+  background:rgba(13,124,106,0.04);display:none;
+}
+.qa-answer-form.show{display:block}
+.qa-answer-ta{
+  width:100%;background:var(--surface);border:1.5px solid var(--border);
+  border-radius:6px;padding:9px 12px;font-size:13px;color:var(--ink);
+  font-family:var(--sans);outline:none;resize:vertical;min-height:64px;
+  line-height:1.65;transition:border-color .18s;
+}
+.qa-answer-ta:focus{border-color:var(--teal)}
+.qa-answer-row{display:flex;gap:8px;margin-top:8px}
+.qa-btn-publish{
+  background:var(--teal);color:#fff;border:none;
+  border-radius:6px;padding:7px 16px;font-size:12.5px;font-weight:600;
+  font-family:var(--sans);cursor:pointer;transition:all .15s;
+}
+.qa-btn-publish:hover{background:#0a6358}
+.qa-btn-delete{
+  background:var(--surface);color:#DC2626;
+  border:1.5px solid rgba(220,38,38,0.25);
+  border-radius:6px;padding:7px 14px;font-size:12px;font-weight:500;
+  font-family:var(--sans);cursor:pointer;transition:all .15s;
+}
+.qa-btn-delete:hover{background:rgba(220,38,38,0.06)}
+.qa-vote-row{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  margin-top:10px;padding-top:10px;
+  border-top:1px dashed var(--border);
+}
+.qa-vote-btn{
+  font-size:12px;padding:4px 10px;border-radius:6px;
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--ink2);cursor:pointer;font-family:var(--sans);
+  transition:all .15s;
+}
+.qa-vote-btn:hover{border-color:var(--border2);color:var(--ink)}
+.qa-vote-btn.voted{opacity:0.5;pointer-events:none}
+.qa-del-confirm{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(220,38,38,0.06);border:1px solid rgba(220,38,38,0.25);
+  border-radius:6px;padding:5px 10px;font-size:12px;
+}
+.qa-del-yes{
+  color:#DC2626;font-weight:600;cursor:pointer;font-size:12px;
+  background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.3);
+  border-radius:4px;padding:2px 8px;font-family:var(--sans);
+}
+.qa-del-yes:hover{background:rgba(220,38,38,0.2)}
+.qa-del-no{
+  color:var(--ink3);cursor:pointer;font-size:12px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:4px;padding:2px 8px;font-family:var(--sans);
+}
+.qa-pinned-badge{
+  font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;
+  background:var(--pink-l);color:var(--pink);border:1px solid var(--pink-border);
+  margin-left:6px;
+}
+.qa-submit-cat{
+  background:var(--surface2);border:1.5px solid var(--border);
+  border-radius:8px;padding:9px 12px;font-size:13px;color:var(--ink);
+  font-family:var(--sans);outline:none;cursor:pointer;
+  transition:border-color .18s;flex:1;min-width:120px;
+  -webkit-appearance:none;
+}
+.qa-submit-cat:focus{border-color:var(--pink)}
+.qa-promoted-section{margin-bottom:16px}
+.qa-promoted-label{
+  font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:8px;display:flex;align-items:center;gap:8px;
+}
+.qa-promoted-label::after{content:'';flex:1;height:1px;background:var(--teal-border)}
+.qa-no-results{
+  text-align:center;padding:24px 20px;
+  background:var(--surface);border:1px dashed var(--border);
+  border-radius:var(--r);margin-bottom:12px;
+}
+.qa-no-results-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.qa-no-results-sub{font-size:13px;color:var(--ink3);margin-bottom:14px}
+.qa-ask-cta{
+  background:var(--pink);color:#fff;border:none;
+  border-radius:8px;padding:9px 20px;font-size:13px;font-weight:600;
+  font-family:var(--sans);cursor:pointer;
+  box-shadow:0 3px 10px rgba(232,25,90,0.3);transition:all .2s;
+}
+.qa-ask-cta:hover{background:#c8144d}
+.qa-btn-unpublish{
+  background:var(--surface);color:var(--amber);
+  border:1.5px solid var(--amber-border);
+  border-radius:6px;padding:7px 14px;font-size:12px;font-weight:500;
+  font-family:var(--sans);cursor:pointer;transition:all .15s;
+}
+.qa-btn-unpublish:hover{background:var(--amber-bg)}
+.qa-admin-status{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;background:var(--surface2);border-top:1px solid var(--border);
+  gap:10px;flex-wrap:wrap;
+}
+.qa-status-badge{
+  font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;
+}
+.qa-status-badge.published{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)}
+.qa-status-badge.draft{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
+.qa-status-badge.pending{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.qa-action-btns{display:flex;gap:6px;flex-wrap:wrap}
+.qa-act-btn{
+  font-size:11.5px;font-weight:500;padding:5px 12px;border-radius:6px;
+  cursor:pointer;font-family:var(--sans);transition:all .15s;
+  background:var(--surface);border:1px solid var(--border);color:var(--ink2);
+}
+.qa-act-btn:hover{border-color:var(--border2);color:var(--ink)}
+.qa-act-btn.primary{background:var(--pink-l);border-color:var(--pink-border);color:var(--pink);font-weight:600}
+.qa-act-btn.primary:hover{background:var(--pink);color:#fff}
+.qa-act-btn.danger{color:#DC2626;border-color:rgba(220,38,38,0.2)}
+.qa-act-btn.danger:hover{background:rgba(220,38,38,0.06)}
+.qa-draft-notice{
+  font-size:12px;font-weight:500;padding:8px 12px;border-radius:6px;
+  margin-bottom:8px;line-height:1.5;
+}
+.qa-draft-notice{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
+.qa-draft-notice.edit{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.qa-count{
+  font-size:11.5px;color:var(--ink3);margin-bottom:12px;
+}
+.qa-count span{color:var(--pink);font-weight:600}
+
+/* Tag inline */
+.tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;margin-right:4px;margin-bottom:2px}
+.t-pink{background:var(--pink-light);color:var(--pink);border:1px solid var(--pink-border)}
+.t-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)}
+.t-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.t-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
+.t-purple{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
+
+/* Empty state */
+.empty{text-align:center;padding:40px 20px;color:var(--ink4);font-size:13px}
+
+/* Business intake chips */
+.bchip{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:6px;padding:5px 10px;
+  font-size:12px;color:var(--ink2);cursor:pointer;
+  transition:all .13s;user-select:none;
+}
+.bchip:hover{border-color:var(--border2);color:var(--ink)}
+.bchip input{accent-color:var(--pink);cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sb-top">
+    <div class="sb-logo">
+      <div class="sb-logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div>
+        <div class="sb-brand">放洋留遊學<span>遊學業務心法手冊</span></div>
+      </div>
+    </div>
+    <div class="sb-search">
+      <input type="text" placeholder="搜尋任何關鍵字..." oninput="searchNav(this.value)" id="navSearch">
+    </div>
+  </div>
+  <div class="sb-nav" id="sbNav">
+    <div class="sb-group-label">概覽</div>
+    <div class="sb-item active" onclick="go('welcome')">
+      <div class="sb-dot" style="background:var(--pink)"></div>
+      <div class="sb-label">手冊首頁</div>
+    </div>
+    <div class="sb-item" onclick="go('faq')">
+      <div class="sb-dot" style="background:var(--amber)"></div>
+      <div class="sb-label">所有 FAQ</div>
+      <span class="sb-badge t-amber">FAQ</span>
+    </div>
+
+    <div class="sb-group-label">啟動期</div>
+    <div class="sb-item" onclick="go('s1')"><div class="sb-num">1</div><div class="sb-label">需求釐清 · 目標設定</div></div>
+    <div class="sb-item" onclick="go('s2')"><div class="sb-num">2</div><div class="sb-label">目標地 · 學校選擇</div></div>
+    <div class="sb-item" onclick="go('s3')"><div class="sb-num">3</div><div class="sb-label">方案報價 · 確認</div></div>
+
+    <div class="sb-group-label">準備期</div>
+    <div class="sb-item" onclick="go('s4')"><div class="sb-num">4</div><div class="sb-label">簽證 · 保險辦理</div></div>
+    <div class="sb-item" onclick="go('s5')"><div class="sb-num">5</div><div class="sb-label">行前準備 Checklist</div></div>
+
+    <div class="sb-group-label">在學期</div>
+    <div class="sb-item" onclick="go('s6')"><div class="sb-num">6</div><div class="sb-label">入學 · 分班測驗</div></div>
+    <div class="sb-item" onclick="go('s7')"><div class="sb-num">7</div><div class="sb-label">中期追蹤 · 問題處理</div></div>
+
+    <div class="sb-group-label">回台後</div>
+    <div class="sb-item" onclick="go('s8')">
+      <div class="sb-num">8</div>
+      <div class="sb-label">成果回顧 · 升級規劃</div>
+      <span class="sb-badge t-purple">升學</span>
+    </div>
+
+    <div class="sb-group-label">業務工具</div>
+    <div class="sb-item" onclick="go('intake')">
+      <div class="sb-dot" style="background:var(--teal)"></div>
+      <div class="sb-label">諮詢引導表（業務版）</div>
+      <span class="sb-badge t-teal">必填</span>
+    </div>
+    <div class="sb-item" onclick="go('s-refund')">
+      <div class="sb-dot" style="background:var(--blue)"></div>
+      <div class="sb-label">EP 退費 & 改期規則</div>
+    </div>
+<div class="sb-item" onclick="go('product')">
+      <div class="sb-dot" style="background:var(--purple)"></div>
+      <div class="sb-label">產品不打架說明</div>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+
+<!-- ══ WELCOME ══ -->
+<div id="p-welcome" class="panel active">
+  <div class="panel-eyebrow">業務心法手冊</div>
+  <div class="panel-title">遊學一條龍</div>
+  <div class="panel-desc">這份手冊收錄遊學業務的完整 8 個步驟心法、情境話術與客戶 FAQ。不涉及合作廠商報價，聚焦在「怎麼聊」與「怎麼想」。</div>
+
+  <div class="sec-label">完整服務流程</div>
+  <div class="welcome-grid">
+    <div class="wcard" onclick="go('s1')">
+      <div class="wcard-phase">Step 1 · 啟動期</div>
+      <div class="wcard-title">需求釐清</div>
+      <div class="wcard-desc">搞清楚客戶為什麼要去，才能推薦對的方案</div>
+      <div class="wcard-tag t-pink">語言評估 切入點</div>
+    </div>
+    <div class="wcard" onclick="go('s2')">
+      <div class="wcard-phase">Step 2 · 啟動期</div>
+      <div class="wcard-title">選校選地</div>
+      <div class="wcard-desc">三層漏斗：國家 → 城市 → 學校</div>
+    </div>
+    <div class="wcard" onclick="go('s3')">
+      <div class="wcard-phase">Step 3 · 啟動期</div>
+      <div class="wcard-title">報價確認</div>
+      <div class="wcard-desc">把費用拆清楚，不要讓大數字嚇跑客戶</div>
+    </div>
+    <div class="wcard" onclick="go('s4')">
+      <div class="wcard-phase">Step 4 · 準備期</div>
+      <div class="wcard-title">簽證保險</div>
+      <div class="wcard-desc">報名後立刻啟動，不要等到出發前兩週</div>
+    </div>
+    <div class="wcard" onclick="go('s5')">
+      <div class="wcard-phase">Step 5 · 準備期</div>
+      <div class="wcard-title">行前準備</div>
+      <div class="wcard-desc">主動聯繫客戶逐項確認，口碑就在這裡建立</div>
+    </div>
+    <div class="wcard" onclick="go('s6')">
+      <div class="wcard-phase">Step 6 · 在學期</div>
+      <div class="wcard-title">入學分班</div>
+      <div class="wcard-desc">提前打預防針，讓客戶不焦慮</div>
+    </div>
+    <div class="wcard" onclick="go('s7')">
+      <div class="wcard-phase">Step 7 · 在學期</div>
+      <div class="wcard-title">中期追蹤</div>
+      <div class="wcard-desc">主動聯繫是差異化，不是打擾</div>
+    </div>
+    <div class="wcard" onclick="go('s8')">
+      <div class="wcard-phase">Step 8 · 回台後</div>
+      <div class="wcard-title">成果升級</div>
+      <div class="wcard-desc">語感最好、導流留學的黃金節點</div>
+      <div class="wcard-tag t-purple">留學升學 切入點</div>
+    </div>
+  </div>
+
+  <div class="sec-label">補教品牌切入節點</div>
+  <div class="banner pink">
+    <div class="banner-icon">🎓</div>
+    <div>
+      <div class="banner-title">托福 · 雅思 · 多益的最佳切入時機</div>
+      <div class="banner-body">
+        <strong>出發前（Step 1）</strong>：問程度時帶入「出發前先衝分數，分班測驗更有底氣」<br>
+        <strong>回台後（Step 8）</strong>：語感最好的時候備考效率最高；同時可以導流到留學，語言成績就是申請條件。
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div class="sec-label">使用說明</div>
+  <div class="icard">
+    <ul class="checklist">
+      <li><div class="chk" onclick="toggleChk(this)"></div>左側可搜尋任何關鍵字，會自動跳到最相關的步驟</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>每個步驟都有「必問 / 必做清單」，可以直接打勾追蹤</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>話術腳本點標題展開，找到情境直接使用</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>FAQ 可依分類篩選，也可以全文搜尋</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ STEP 1 ══ -->
+<div id="p-s1" class="panel">
+  <div class="panel-eyebrow">Step 1 · 啟動期</div>
+  <div class="panel-title">需求釐清 · 目標設定</div>
+  <div class="panel-desc">第一次接觸最重要的動作不是推方案，而是讓客戶說話。這個步驟做好，後面每一步推薦都更準確，客戶也不容易到了當地後悔。</div>
+
+  <div class="progress-strip">
+    <div class="ps-item"><div class="ps-dot current" onclick="go('s1')">1</div><div class="ps-label current">需求釐清</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s2')">2</div><div class="ps-label" onclick="go('s2')">選校</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s3')">3</div><div class="ps-label" onclick="go('s3')">報價</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s4')">4</div><div class="ps-label" onclick="go('s4')">簽證</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s5')">5</div><div class="ps-label" onclick="go('s5')">行前</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s6')">6</div><div class="ps-label" onclick="go('s6')">入學</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s7')">7</div><div class="ps-label" onclick="go('s7')">追蹤</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s8')">8</div><div class="ps-label" onclick="go('s8')">升級</div></div>
+  </div>
+
+  <div class="banner pink">
+    <div class="banner-icon">🎓</div>
+    <div>
+      <div class="banner-title">補教品牌切入點</div>
+      <div class="banner-body">問完英文程度後自然切入：「我們有語言課可以幫你出發前衝一下分數，到了當地分班測驗更有底氣。」讓備考成為「準備遊學的一部分」，不是硬賣。</div>
+    </div>
+  </div>
+
+  <div class="sec-label">這個步驟一定要問的七件事</div>
+  <div class="icard">
+    <ul class="checklist">
+      <li><div class="chk" onclick="toggleChk(this)"></div>去的主要目的是什麼？（語言進步 / 文化體驗 / 職涯探索 / 親子遊學）</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>預計出發時間？可以出去幾個禮拜 / 幾個月？</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>英文程度現在大概在哪裡？有沒有考過多益 / 雅思 / 托福？</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>有沒有特別想去的國家或城市？</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>預算大概落在哪個範圍？（含住宿）</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>是一個人去還是有同伴？</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>對住宿有沒有偏好？（Homestay / 學生宿舍 / 自租）</li>
+    </ul>
+  </div>
+
+  <div class="sec-label">話術腳本</div>
+  <div class="script open">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-green">情境 A</span>
+      <div class="script-ttl">「我想去遊學但不知道從哪裡開始」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        好啊，遊學的選擇很多，我們先搞清楚你去的目的，這樣我才能幫你推薦最適合的方案。<br><br>
+        你去遊學最主要是想達到什麼？是語言進步、還是想體驗當地生活、還是對某個國家有興趣想先去探探看？<br><br>
+        有時候客戶來問的時候目的不太一樣——有人是真的想提升英文，有人是想利用一段空白期充個電，有人是為了之後留學先去感受一下——你是哪一種？
+      </div>
+      <div class="tip"><strong>💡 技巧：</strong>開放式問完，讓客戶自己說。不要直接問「幾個月的課程」，先聽他的理由，再去配方案。</div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-green">情境 B</span>
+      <div class="script-ttl">「我英文不好，去遊學有用嗎？」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        有用，而且遊學跟留學不一樣——遊學就是專門為了提升英文去的，不需要你本來就很好。<br><br>
+        你到了當地會先做分班測驗，依照你的程度編班，從基礎開始也完全沒問題。<br><br>
+        不過如果你想在出發前先打底，我們有語言課程，可以讓你在當地分班時多一點底氣。你有興趣的話可以順便了解一下。
+      </div>
+      <div class="tip"><strong>💡 補教切入：</strong>把語言課定位為「出發前的準備動作」，不是獨立產品在賣。</div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-orange">情境 C</span>
+      <div class="script-ttl">「我只是想去玩，不知道遊學適不適合我」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        遊學本來就不只是去念書，很多人去是為了體驗當地生活。語言課通常是早上，下午到傍晚是自由時間，週末學校也會安排活動行程。<br><br>
+        你可以把它想成是一個「有結構的長途旅行」——住在當地人家裡，早上上課、下午探索城市，比一般旅遊更深入，但又不像留學那麼嚴肅。<br><br>
+        你大概打算去多久？這樣我比較知道要幫你安排幾週的課程。
+      </div>
+      <div class="tip"><strong>💡 技巧：</strong>把「有點猶豫」的客戶拉進來，不要急著說服，先讓他描述自己的理想狀態。</div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-blue">情境 D</span>
+      <div class="script-ttl">家長來問：「送孩子去遊學安不安全」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        我們完全理解家長的顧慮，這也是最多家長第一個問的問題。<br><br>
+        我們合作的學校都有配備專業的監護人員，Homestay 家庭也是經過學校審核的，孩子住的地方有大人在。另外，緊急聯絡這一塊我們也會幫你設定好，一旦有任何狀況，台灣這端都可以立刻介入協助。<br><br>
+        你孩子幾歲？這樣我可以幫你看有沒有適合他年齡層的青少年課程。
+      </div>
+      <div class="tip"><strong>💡 技巧：</strong>回答安全疑慮後立刻帶回行動，不要讓對話停在顧慮上。</div>
+    </div>
+  </div>
+
+  <div class="sec-label">常見問題（Step 1）</div>
+  <div class="faq">
+    <div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-text">遊學跟留學到底差在哪裡？</div><div class="faq-chev">▾</div></div>
+    <div class="faq-a">遊學通常是短期（2 週到 6 個月），主要目的是語言學習和文化體驗，結束後不會拿到學位，也不需要複雜的申請流程。留學是長期（1 年以上），目標是取得學位或移民身份。<br><br><strong>簡單說：</strong>遊學是體驗、探索；留學是投資、目標導向。兩者可以是遞進關係——很多學生先遊學確認自己喜歡那個國家，再決定要不要留學。</div>
+  </div>
+  <div class="faq">
+    <div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-text">多久才能看到英文進步？</div><div class="faq-chev">▾</div></div>
+    <div class="faq-a">根據我們的經驗，<strong>4 週以上</strong>才開始有比較明顯的語感改變。2 週適合體驗，想要真正進步建議 6–12 週。如果去的是英語系國家，沉浸式環境的效果會比非英語系好很多。</div>
+  </div>
+</div>
+
+<!-- ══ STEP 2 ══ -->
+<div id="p-s2" class="panel">
+  <div class="panel-eyebrow">Step 2 · 啟動期</div>
+  <div class="panel-title">目標地 · 學校選擇</div>
+  <div class="panel-desc">搞清楚客戶需求之後，開始幫他縮小範圍。核心原則：不要一次丟太多選項。先問條件，再推薦，最多給兩個選項讓他選。</div>
+
+  <div class="progress-strip">
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s1')">1</div><div class="ps-label" onclick="go('s1')">需求釐清</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot current" onclick="go('s2')">2</div><div class="ps-label current">選校選地</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s3')">3</div><div class="ps-label" onclick="go('s3')">報價</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s4')">4</div><div class="ps-label" onclick="go('s4')">簽證</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s5')">5</div><div class="ps-label" onclick="go('s5')">行前</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s6')">6</div><div class="ps-label" onclick="go('s6')">入學</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s7')">7</div><div class="ps-label" onclick="go('s7')">追蹤</div></div>
+    <div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s8')">8</div><div class="ps-label" onclick="go('s8')">升級</div></div>
+  </div>
+
+  <div class="sec-label">選擇框架：三層漏斗</div>
+  <div class="icard">
+    <div class="icard-title">幫客戶篩選的順序</div>
+    <div class="irow"><div class="ibullet">①</div><div><strong>國家</strong>：英語系 vs 非英語系；預算、簽證難易度、飛行距離</div></div>
+    <div class="irow"><div class="ibullet">②</div><div><strong>城市</strong>：大城市 vs 小城鎮（物價差很多）；氣候、安全性、台灣人聚集程度</div></div>
+    <div class="irow"><div class="ibullet">③</div><div><strong>學校</strong>：班級大小、國籍比例、課程密度、Homestay 口碑</div></div>
+  </div>
+
+  <div class="sec-label">目標地快速說法（業務內部用）</div>
+  <div class="icard">
+    <div class="icard-title">英語系國家</div>
+    <div class="irow"><div class="ibullet">🇬🇧</div><div><strong>英國</strong>：腔調和文化是亮點，適合想走精緻路線、未來考慮留英的客戶</div></div>
+    <div class="irow"><div class="ibullet">🇨🇦</div><div><strong>加拿大</strong>：多元文化、安全，適合第一次出去不那麼孤單的客戶</div></div>
+    <div class="irow"><div class="ibullet">🇦🇺</div><div><strong>澳洲</strong>：天氣好，Working Holiday 可以結合打工，適合想邊學邊賺的成人</div></div>
+    <div class="irow"><div class="ibullet">🇮🇪</div><div><strong>愛爾蘭</strong>：歐洲科技業重鎮，物價比英國低，適合想待半年以上的人</div></div>
+    <div class="irow"><div class="ibullet">🇲🇹</div><div><strong>馬爾他</strong>：地中海氣候，費用在英語系國家裡最低，適合預算有限但想曬太陽的人</div></div>
+  </div>
+  <div class="icard">
+    <div class="icard-title">非英語系</div>
+    <div class="irow"><div class="ibullet">🇩🇪</div><div><strong>德國柏林</strong>：可選英文或德文，城市很有個性，適合對歐洲文化有興趣的人</div></div>
+    <div class="irow"><div class="ibullet">🇫🇷</div><div><strong>法國巴黎</strong>：可選英文或法文，時尚文化，住宿費偏高</div></div>
+    <div class="irow"><div class="ibullet">🇦🇪</div><div><strong>阿聯酋杜拜</strong>：現代都市體驗，有付費實習方案可搭配（見特殊方案）</div></div>
+  </div>
+
+  <div class="sec-label">話術腳本</div>
+  <div class="script open">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-green">情境 A</span>
+      <div class="script-ttl">「我想去英語系國家，但不知道選哪個比較好」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        幾個方向可以幫你縮小：<br><br>
+        第一，你的預算大概在哪裡？不同國家的費用差距很大。<br><br>
+        第二，你比較在意的是英文環境的純度，還是生活品質？如果你很在意每天浸泡在英文裡，選台灣人少的城市會更好。如果這是你第一次出國讀書，多元文化的城市適應起來比較不那麼孤單。<br><br>
+        你這兩個條件哪個比較優先？
+      </div>
+      <div class="tip"><strong>💡 技巧：</strong>先問「條件」，再推「推薦」，最多給 2 個選項。不要一次丟五個國家讓他選。</div>
+    </div>
+  </div>
+  <div class="script">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-orange">情境 B</span>
+      <div class="script-ttl">「可以推薦一個最多人去的地方嗎？」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        「最多人去」不一定是最適合你的。如果你去的城市台灣人很多，你很可能整天都在說中文，英文進步的效果就打折了。<br><br>
+        你去的主要目的是什麼？我幫你推一個適合你的，比推「最熱門的」更有用。
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">常見問題（Step 2）</div>
+  <div class="faq">
+    <div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-text">一個人去會不會很孤單？</div><div class="faq-chev">▾</div></div>
+    <div class="faq-a">語言學校本來就是為了幫學生快速認識彼此設計的。課堂上會有來自世界各地的同學，學校也會安排活動讓大家社交。住 Homestay 的話還有家庭作為生活支柱，通常 1–2 週之後就比較習慣了。</div>
+  </div>
+  <div class="faq">
+    <div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-text">學校的口碑怎麼確認？</div><div class="faq-chev">▾</div></div>
+    <div class="faq-a">我們合作的學校都是有官方認證的（英國看 British Council 認證、加拿大看 Languages Canada 認證等）。另外我們有跟這些學校長期配合，知道哪間學校的 Homestay 品質比較穩定、哪間老師比較認真。你可以放心讓我們幫你篩。</div>
+  </div>
+  <div class="faq">
+    <div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-text">班級裡都是哪些國家的人？</div><div class="faq-chev">▾</div></div>
+    <div class="faq-a">通常是各國混班，包括歐洲（西班牙、法國、德國、義大利）、拉丁美洲、亞洲（日本、韓國、台灣、泰國）。如果你擔心台灣人太多說不到英文，可以在選校時告訴我們，我們會幫你選亞洲學生比例低的學校或班級。</div>
+  </div>
+</div>
+
+<!-- ══ STEP 3 ══ -->
+<div id="p-s3" class="panel">
+  <div class="panel-eyebrow">Step 3 · 啟動期</div>
+  <div class="panel-title">方案報價 · 確認</div>
+  <div class="panel-desc">報價是成交的關鍵節點。客戶通常在這裡開始猶豫，你的工作是幫他把費用「拆清楚」，讓他知道錢花在哪裡，而不是一個大數字讓他嚇跑。</div>
+
+  <div class="progress-strip">
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s1')">1</div><div class="ps-label" onclick="go('s1')">需求</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s2')">2</div><div class="ps-label" onclick="go('s2')">選校</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot current" onclick="go('s3')">3</div><div class="ps-label current">報價</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s4')">4</div><div class="ps-label" onclick="go('s4')">簽證</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s5')">5</div><div class="ps-label" onclick="go('s5')">行前</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s6')">6</div><div class="ps-label" onclick="go('s6')">入學</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s7')">7</div><div class="ps-label" onclick="go('s7')">追蹤</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s8')">8</div><div class="ps-label" onclick="go('s8')">升級</div></div>
+  </div>
+
+  <div class="sec-label">報價說明框架（依這個順序說）</div>
+  <div class="icard">
+    <div class="irow"><div class="ibullet">①</div><div><strong>學費</strong>：依週數計算，通常「密集課」比「一般課」貴約 10–15%</div></div>
+    <div class="irow"><div class="ibullet">②</div><div><strong>住宿</strong>：Homestay（含早晚餐）通常比學生宿舍貴，但適應快、英文環境好</div></div>
+    <div class="irow"><div class="ibullet">③</div><div><strong>活動課</strong>（選配）：下午或週末的城市行程、文化活動，單週另計</div></div>
+    <div class="irow"><div class="ibullet">④</div><div><strong>代辦費</strong>：我們的服務費，涵蓋全程諮詢、文件處理、緊急協助</div></div>
+    <div class="irow"><div class="ibullet">⑤</div><div><strong>客戶自理</strong>：機票、當地生活費、保險（我們協助推薦）</div></div>
+  </div>
+
+  <div class="sec-label">話術腳本</div>
+  <div class="script open">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-green">情境 A</span>
+      <div class="script-ttl">「感覺好貴，我直接自己找學校不行嗎？」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        可以，但你要處理的事情比你想的多很多。<br><br>
+        光是選學校、確認 Homestay 品質、搞清楚簽證要求、處理入學文件，這些如果你不熟悉，中間踩一個雷在當地自己處理是很麻煩的。<br><br>
+        我們代辦費包含的不只是幫你找學校，而是從你出發前到回台灣全程的支援。如果當地出了任何問題，你打電話給我們，我們幫你處理。<br><br>
+        你覺得這個安心感對你來說值多少？
+      </div>
+      <div class="tip"><strong>💡 技巧：</strong>不要直接說「我們比較好」，讓客戶自己算帳。</div>
+    </div>
+  </div>
+  <div class="script">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-orange">情境 B</span>
+      <div class="script-ttl">「可以便宜一點嗎？」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        讓我幫你看有沒有辦法調整組合。<br><br>
+        住宿從 Homestay 改成學生宿舍，通常一週可以省一些；課程從密集課改成一般課，每週也可以省。不過這兩個調整都有取捨——你比較在意哪個？是住的品質，還是課程密度？<br><br>
+        另外，時間如果可以彈性的話，有些學校有淡季優惠，我可以幫你查一下。
+      </div>
+      <div class="tip"><strong>💡 技巧：</strong>幫客戶「重新配置」而不是直接打折，保住你的服務價值。</div>
+    </div>
+  </div>
+
+  <div class="sec-label">所需文件</div>
+  <div class="doc-grid">
+    <div class="doc-card"><div class="doc-icon" style="background:var(--pink-light)">📋</div><div><div class="doc-name">報價單</div><div class="doc-desc">明細版，含每項費用說明</div></div></div>
+    <div class="doc-card"><div class="doc-icon" style="background:var(--blue-bg)">📅</div><div><div class="doc-name">課程時間表範例</div><div class="doc-desc">密集課 vs 一般課比較</div></div></div>
+    <div class="doc-card"><div class="doc-icon" style="background:var(--amber-bg)">🏠</div><div><div class="doc-name">住宿類型說明</div><div class="doc-desc">Homestay / 宿舍 / 自租</div></div></div>
+    <div class="doc-card"><div class="doc-icon" style="background:var(--teal-bg)">✍️</div><div><div class="doc-name">報名表</div><div class="doc-desc">客戶簽名確認</div></div></div>
+  </div>
+</div>
+
+<!-- ══ STEP 4 ══ -->
+<div id="p-s4" class="panel">
+  <div class="panel-eyebrow">Step 4 · 準備期</div>
+  <div class="panel-title">簽證 · 保險辦理</div>
+  <div class="panel-desc">這是最容易出問題的地方。每個國家的簽證規定不一樣，辦理時程也不同。一定要在確認報名後立刻啟動，不要等到出發前兩週才來問。</div>
+
+  <div class="progress-strip">
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s1')">1</div><div class="ps-label" onclick="go('s1')">需求</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s2')">2</div><div class="ps-label" onclick="go('s2')">選校</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s3')">3</div><div class="ps-label" onclick="go('s3')">報價</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot current" onclick="go('s4')">4</div><div class="ps-label current">簽證</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s5')">5</div><div class="ps-label" onclick="go('s5')">行前</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s6')">6</div><div class="ps-label" onclick="go('s6')">入學</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s7')">7</div><div class="ps-label" onclick="go('s7')">追蹤</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s8')">8</div><div class="ps-label" onclick="go('s8')">升級</div></div>
+  </div>
+
+  <div class="sec-label">簽證類型快速對照</div>
+  <div class="icard">
+    <div class="icard-title">常見目的地 × 簽證類型</div>
+    <div class="irow"><div class="ibullet">🇬🇧</div><div><strong>英國</strong>：6 個月以內免簽（Standard Visitor）；超過 6 個月需要 Student Visa，建議提前 2 個月辦</div></div>
+    <div class="irow"><div class="ibullet">🇨🇦</div><div><strong>加拿大</strong>：需要 eTA（電子旅行許可），線上申請通常幾天核准；語言學校 6 個月以下可用旅遊身份</div></div>
+    <div class="irow"><div class="ibullet">🇦🇺</div><div><strong>澳洲</strong>：Student Visa；Working Holiday 另外申請；建議提前 6–8 週辦</div></div>
+    <div class="irow"><div class="ibullet">🇮🇪</div><div><strong>愛爾蘭</strong>：學生簽，有 Work & Study 方案可合法工讀（見特殊方案說明）</div></div>
+    <div class="irow"><div class="ibullet">🇲🇹</div><div><strong>馬爾他</strong>：短期可用旅遊簽；長期需 Student Visa，另有簽證服務費</div></div>
+  </div>
+
+  <div class="sec-label">話術腳本</div>
+  <div class="script open">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-red">情境 A</span>
+      <div class="script-ttl">「我想 2 個月後就出發，簽證來得及嗎？」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        2 個月的話要看你要去哪裡。英國 6 個月以下免簽，沒問題；加拿大的 eTA 通常幾天就核准了；但如果是澳洲，建議至少提前 6–8 週開始辦，審核時間不一定。<br><br>
+        你確定目的地之後，我幫你確認這個時間來不來得及，如果有風險我們會跟你說，不會讓你辦到一半才發現來不及。
+      </div>
+    </div>
+  </div>
+  <div class="script">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-green">情境 B</span>
+      <div class="script-ttl">「保險一定要買嗎？我有旅遊平安險了」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        一般旅遊平安險通常只保人身意外，看病和住院費用是另外的。你去的那個國家如果醫療費用很貴，一次看診可能就幾萬台幣。<br><br>
+        我們建議的海外醫療保險是涵蓋就醫、緊急送回台灣、行李遺失這些的全套保障。<br><br>
+        你現有的保險我可以幫你看一下，確認有沒有缺口，再看需不需要補買。
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">所需文件</div>
+  <div class="doc-grid">
+    <div class="doc-card"><div class="doc-icon" style="background:var(--teal-bg)">🛂</div><div><div class="doc-name">護照影本</div><div class="doc-desc">有效期限超過回台後 6 個月</div></div></div>
+    <div class="doc-card"><div class="doc-icon" style="background:var(--blue-bg)">📄</div><div><div class="doc-name">入學確認信</div><div class="doc-desc">學校核發，辦簽證必備</div></div></div>
+    <div class="doc-card"><div class="doc-icon" style="background:var(--amber-bg)">💰</div><div><div class="doc-name">財力證明</div><div class="doc-desc">部分國家簽證需要存款證明</div></div></div>
+    <div class="doc-card"><div class="doc-icon" style="background:var(--pink-light)">🏥</div><div><div class="doc-name">保險確認書</div><div class="doc-desc">海外醫療保險核發單</div></div></div>
+    <div class="doc-card"><div class="doc-icon" style="background:var(--purple-bg)">📸</div><div><div class="doc-name">證件照</div><div class="doc-desc">白底 2 吋，部分簽證需要</div></div></div>
+  </div>
+</div>
+
+<!-- ══ STEP 5 ══ -->
+<div id="p-s5" class="panel">
+  <div class="panel-eyebrow">Step 5 · 準備期</div>
+  <div class="panel-title">行前準備 Checklist</div>
+  <div class="panel-desc">出發前 4 週開始，主動逐項跟客戶確認。不要等客戶來問——讓他感受到你在全程照顧他，是建立口碑最重要的時機。</div>
+
+  <div class="progress-strip">
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s1')">1</div><div class="ps-label" onclick="go('s1')">需求</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s2')">2</div><div class="ps-label" onclick="go('s2')">選校</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s3')">3</div><div class="ps-label" onclick="go('s3')">報價</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s4')">4</div><div class="ps-label" onclick="go('s4')">簽證</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot current" onclick="go('s5')">5</div><div class="ps-label current">行前</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s6')">6</div><div class="ps-label" onclick="go('s6')">入學</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s7')">7</div><div class="ps-label" onclick="go('s7')">追蹤</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s8')">8</div><div class="ps-label" onclick="go('s8')">升級</div></div>
+  </div>
+
+  <div class="sec-label">行前確認清單（逐項跟客戶 Check）</div>
+  <div class="icard">
+    <ul class="checklist">
+      <li><div class="chk" onclick="toggleChk(this)"></div>機票已訂妥，航班時間確認</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>接機安排確認（學校接機 or 自行前往）</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>Homestay 家庭資料已收到（姓名、地址、聯絡電話）</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>緊急聯絡人設定（台灣端 + 當地學校聯絡窗口）</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>簽證 / eTA 確認核發</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>保險保單已拿到</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>當地 SIM 卡規劃（本地 SIM or 台灣漫遊方案）</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>零用金 / 外幣換匯</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>放洋顧問 LINE 已加，當地有問題直接聯絡</li>
+    </ul>
+  </div>
+
+  <div class="sec-label">話術腳本</div>
+  <div class="script open">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-green">主動出擊</span>
+      <div class="script-ttl">出發前 4 週主動聯繫話術</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        嗨！你再 4 週就出發了，我來幫你逐項確認一下行前準備的狀況。<br><br>
+        機票確認了嗎？另外我把你的 Homestay 家庭資料傳給你，你先看一下有沒有問題。<br><br>
+        下週我會再聯繫你確認剩下的幾個項目，有任何問題都可以直接問我。
+      </div>
+      <div class="tip"><strong>💡 技巧：</strong>主動聯繫讓客戶感受到被照顧，這是最容易產生口碑轉介的時間點。</div>
+    </div>
+  </div>
+  <div class="script">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-orange">情境 A</span>
+      <div class="script-ttl">「到了當地如果有問題怎麼辦？」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        我們整個在學期間都有遠端支援。你可以隨時傳訊息給我們，當地學校也有中文窗口。<br><br>
+        常見的問題像是想換班、Homestay 相處不順、生病不知道怎麼看醫生——這些我們都碰過，你不是自己一個人在面對。<br><br>
+        有問題第一步先告訴我們，不要自己悶著解決，通常我們一個訊息就可以幫你處理掉。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STEP 6 ══ -->
+<div id="p-s6" class="panel">
+  <div class="panel-eyebrow">Step 6 · 在學期</div>
+  <div class="panel-title">入學 · 分班測驗</div>
+  <div class="panel-desc">客戶抵達當地後的第一週，是最容易焦慮的時候。事先幫他打預防針，讓他知道要發生什麼，他的體驗就會好很多。</div>
+
+  <div class="progress-strip">
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s1')">1</div><div class="ps-label" onclick="go('s1')">需求</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s2')">2</div><div class="ps-label" onclick="go('s2')">選校</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s3')">3</div><div class="ps-label" onclick="go('s3')">報價</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s4')">4</div><div class="ps-label" onclick="go('s4')">簽證</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s5')">5</div><div class="ps-label" onclick="go('s5')">行前</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot current" onclick="go('s6')">6</div><div class="ps-label current">入學</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s7')">7</div><div class="ps-label" onclick="go('s7')">追蹤</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s8')">8</div><div class="ps-label" onclick="go('s8')">升級</div></div>
+  </div>
+
+  <div class="sec-label">提前告訴客戶：入學第一天流程</div>
+  <div class="icard">
+    <ul class="checklist">
+      <li><div class="chk" onclick="toggleChk(this)"></div>抵達學校報到，出示護照 + 入學確認信</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>分班測驗（通常是筆試 + 口試，約 30–45 分鐘）</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>學校導覽、認識老師和同學</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>拿到課表、教材</li>
+      <li><div class="chk" onclick="toggleChk(this)"></div>Homestay 接送安排確認</li>
+    </ul>
+  </div>
+
+  <div class="sec-label">話術腳本</div>
+  <div class="script open">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-green">出發前打預防針</span>
+      <div class="script-ttl">告訴客戶分班測驗是怎麼回事</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        到了學校第一天會有分班測驗，你不用緊張——那個不是考試，是幫你找到最適合你程度的班。<br><br>
+        就算分到比較基礎的班也完全沒關係，反而可以在裡面好好打底、建立信心，之後想升班跟老師說一聲就可以安排。<br><br>
+        測驗完當天就會知道班級，下週一就開始正式上課。
+      </div>
+    </div>
+  </div>
+  <div class="script">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-orange">情境 A</span>
+      <div class="script-ttl">「分班分到很基礎的班，覺得很丟臉」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        這個完全可以理解，但換個角度想：如果你被分到超出你程度的班，你每天都聽不懂、壓力很大，那才是真的浪費這段時間。<br><br>
+        基礎班的好處是你在課堂上可以真的說話、練習輸出。而且學校很習慣學生升班，只要你覺得準備好了，隨時告訴老師，我們這邊也可以幫你協助溝通。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STEP 7 ══ -->
+<div id="p-s7" class="panel">
+  <div class="panel-eyebrow">Step 7 · 在學期</div>
+  <div class="panel-title">中期追蹤 · 問題處理</div>
+  <div class="panel-desc">很多顧問在客戶出發後就沒聲音了。這個步驟是差異化的機會——主動在第 2–3 週聯繫，是建立口碑和後續轉介最重要的動作。</div>
+
+  <div class="progress-strip">
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s1')">1</div><div class="ps-label" onclick="go('s1')">需求</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s2')">2</div><div class="ps-label" onclick="go('s2')">選校</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s3')">3</div><div class="ps-label" onclick="go('s3')">報價</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s4')">4</div><div class="ps-label" onclick="go('s4')">簽證</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s5')">5</div><div class="ps-label" onclick="go('s5')">行前</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s6')">6</div><div class="ps-label" onclick="go('s6')">入學</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot current" onclick="go('s7')">7</div><div class="ps-label current">追蹤</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot" onclick="go('s8')">8</div><div class="ps-label" onclick="go('s8')">升級</div></div>
+  </div>
+
+  <div class="sec-label">中期追蹤的最佳時機</div>
+  <div class="icard">
+    <div class="irow"><div class="ibullet">📅</div><div><strong>出發後第 7–10 天</strong>：第一次關心，詢問適應狀況、Homestay 感受</div></div>
+    <div class="irow"><div class="ibullet">📅</div><div><strong>第 3–4 週</strong>：中期確認，有沒有想調整課程密度或班級</div></div>
+    <div class="irow"><div class="ibullet">📅</div><div><strong>回台前 1–2 週</strong>：確認回程機票、提前預熱成果回顧</div></div>
+  </div>
+
+  <div class="sec-label">常見突發狀況 × 標準處理原則</div>
+  <div class="icard">
+    <div class="irow"><div class="ibullet">🏠</div><div><strong>Homestay 問題</strong>（伙食差、房間小）→ 聯繫學校申請換宿，我們協助溝通，通常 1–2 週可安排</div></div>
+    <div class="irow"><div class="ibullet">📚</div><div><strong>想換班</strong> → 和學校課務說明需求，通常下週就能換</div></div>
+    <div class="irow"><div class="ibullet">🤒</div><div><strong>生病</strong> → 提醒使用保險，協助找附近診所，協助翻譯說明病情</div></div>
+    <div class="irow"><div class="ibullet">💸</div><div><strong>錢不夠用</strong> → 跟家人確認匯款方式，協助說明當地換匯或 ATM 操作</div></div>
+  </div>
+
+  <div class="sec-label">話術腳本</div>
+  <div class="script open">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-green">主動聯繫</span>
+      <div class="script-ttl">出發後第 7–10 天主動關心</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        嗨！你到了快 10 天了，一切還好嗎？<br><br>
+        Homestay 住起來還習慣嗎？課程這邊有沒有覺得太快或太慢？<br><br>
+        如果有任何不順的地方，就算是小事也跟我說，有時候一個小調整就可以讓剩下的時間好很多。
+      </div>
+      <div class="tip"><strong>💡 技巧：</strong>主動聯繫不等於打擾。客戶出去後通常很忙著適應，有顧問主動關心會讓他們很感動——這也是他們回台灣後願意轉介紹的原因。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STEP 8 ══ -->
+<div id="p-s8" class="panel">
+  <div class="panel-eyebrow">Step 8 · 回台後</div>
+  <div class="panel-title">成果回顧 · 升級規劃</div>
+  <div class="panel-desc">整個服務最容易被忽略、但最有價值的節點。客戶剛回來語感最好、熱情最高，是把遊學轉換為留學意願，或導入英文考試的黃金時機。</div>
+
+  <div class="progress-strip">
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s1')">1</div><div class="ps-label" onclick="go('s1')">需求</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s2')">2</div><div class="ps-label" onclick="go('s2')">選校</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s3')">3</div><div class="ps-label" onclick="go('s3')">報價</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s4')">4</div><div class="ps-label" onclick="go('s4')">簽證</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s5')">5</div><div class="ps-label" onclick="go('s5')">行前</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s6')">6</div><div class="ps-label" onclick="go('s6')">入學</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot done" onclick="go('s7')">7</div><div class="ps-label" onclick="go('s7')">追蹤</div></div><div class="ps-arrow">›</div>
+    <div class="ps-item"><div class="ps-dot current" onclick="go('s8')">8</div><div class="ps-label current">升級</div></div>
+  </div>
+
+  <div class="banner pink">
+    <div class="banner-icon">🎓</div>
+    <div>
+      <div class="banner-title">補教品牌最強切入點在這裡</div>
+      <div class="banner-body">
+        <strong>回台第 1 週</strong>：「你現在語感最好，是考多益 / 雅思的最佳時機，衝分數比以前快很多。」<br>
+        <strong>第 2–3 週</strong>：如果客戶想留學，語言成績是必要條件，三條服務線自然串在一起。
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">回台後接觸時機</div>
+  <div class="icard">
+    <div class="irow"><div class="ibullet">📅</div><div><strong>回台第 1 週</strong>：問整體感受、語言進步的感受、印象最深的故事</div></div>
+    <div class="irow"><div class="ibullet">📅</div><div><strong>第 2 週</strong>：帶出語言考試建議（多益 / 雅思 / 托福）</div></div>
+    <div class="irow"><div class="ibullet">📅</div><div><strong>第 3–4 週</strong>：詢問有沒有留學意願，連結留學一條龍服務</div></div>
+  </div>
+
+  <div class="sec-label">話術腳本</div>
+  <div class="script open">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-green">回台第 1 週</span>
+      <div class="script-ttl">成果回顧 + 考試切入</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        歡迎回來！你這趟感覺怎麼樣？<br><br>
+        有沒有覺得英文變好了？很多人回來之後不是立刻覺得自己「很流利」，但說話的時候腦袋轉起來的速度不一樣了——這就是進步的跡象。<br><br>
+        我有一個建議：你現在語感最好，是考多益 / 雅思的最佳時機。你不需要從頭準備，現在衝分數比以前快很多。你有想過要考嗎？
+      </div>
+      <div class="tip"><strong>💡 補教切入：</strong>「語感最好的時候考最快」是真的，客戶容易接受。這是帶出補教品牌最自然的時機。</div>
+    </div>
+  </div>
+  <div class="script">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-purple">升學轉換</span>
+      <div class="script-ttl">「去完之後感覺想繼續出去」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        這個感覺很常見！短期遊學讓很多人發現自己其實可以在國外生活，然後開始考慮留學。<br><br>
+        如果你想往留學方向走，我建議你先把語言成績搞定——多益、雅思、托福，不同學校要求不一樣。你目標大概是哪個國家？<br><br>
+        我們也有留學一條龍的服務，剛好你有了這次的遊學經驗，選校的時候想法會更清楚。
+      </div>
+      <div class="tip"><strong>💡 升學轉換：</strong>把遊學成果直接連結到留學規劃，帶出語言考試需求——三個服務線一次連結。</div>
+    </div>
+  </div>
+  <div class="script">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-orange">情境 A</span>
+      <div class="script-ttl">「我覺得我沒什麼進步耶」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        這個感覺其實很正常，語言進步有時候不是「突然覺得自己很厲害」，而是一些細節——說話時猶豫少了一點、聽老外說話反應快一點點。<br><br>
+        你去之前有沒有多益或雅思成績？如果有的話，現在去考一次可以量化看看，很多人考完才發現進步了。<br><br>
+        如果你真的覺得收穫不夠，可以跟我說，我幫你分析哪個地方可以補強，下次再出去的時候規劃更精準。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INTAKE ══ -->
+<div id="p-intake" class="panel">
+  <div class="panel-eyebrow">業務工具</div>
+  <div class="panel-title">諮詢引導表（業務版）</div>
+  <div class="panel-desc">在第一通電話或當面諮詢時照著問、照著填。填完就是完整的客戶檔案，同時提醒你哪些節點可以帶出洋碩美語課程。</div>
+
+  <div class="banner teal">
+    <div class="banner-icon">🔗</div>
+    <div>
+      <div class="banner-title">搭配客戶版表單使用</div>
+      <div class="banner-body">如果是洋碩美語轉介的學生，請先讓他填<strong>客戶版表單</strong>（獨立 HTML 頁面，可傳 LINE 或貼到官網）。學生填完後，業務再用這份業務版做深入確認與備注。</div>
+    </div>
+  </div>
+
+  <div class="sec-label">① 基本背景</div>
+  <div class="icard">
+    <div class="irow">
+      <div class="ibullet">👤</div>
+      <div style="flex:1">
+        <strong>姓名</strong>
+        <input type="text" id="bi-name" placeholder="學生姓名" style="margin-top:6px;width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--ink);font-family:var(--sans);outline:none;">
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">🎭</div>
+      <div style="flex:1">
+        <strong>身份</strong>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <label class="bchip"><input type="radio" name="bi-id" value="student"> 學生</label>
+          <label class="bchip"><input type="radio" name="bi-id" value="working"> 在職</label>
+          <label class="bchip"><input type="radio" name="bi-id" value="other"> 其他</label>
+        </div>
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">📊</div>
+      <div style="flex:1">
+        <strong>英文程度 / 考試成績</strong>
+        <input type="text" id="bi-level" placeholder="例：多益 620 / IELTS 5.0 / 大概能聽懂日常英文" style="margin-top:6px;width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--ink);font-family:var(--sans);outline:none;">
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">📍</div>
+      <div style="flex:1">
+        <strong>來源管道</strong>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <label class="bchip"><input type="checkbox" name="bi-src" value="yangshuok"> 洋碩美語轉介</label>
+          <label class="bchip"><input type="checkbox" name="bi-src" value="ig"> 社群媒體</label>
+          <label class="bchip"><input type="checkbox" name="bi-src" value="friend"> 朋友推薦</label>
+          <label class="bchip"><input type="checkbox" name="bi-src" value="search"> 網路搜尋</label>
+          <label class="bchip"><input type="checkbox" name="bi-src" value="other"> 其他</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">② 遊學目標</div>
+  <div class="icard">
+    <div class="irow">
+      <div class="ibullet">🎯</div>
+      <div style="flex:1">
+        <strong>去的主要原因（可複選）</strong>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <label class="bchip"><input type="checkbox" name="bi-p"> 語言進步</label>
+          <label class="bchip"><input type="checkbox" name="bi-p"> 文化體驗</label>
+          <label class="bchip"><input type="checkbox" name="bi-p"> 職涯探索</label>
+          <label class="bchip"><input type="checkbox" name="bi-p"> 空白期充電</label>
+          <label class="bchip"><input type="checkbox" name="bi-p"> 為留學探路</label>
+          <label class="bchip"><input type="checkbox" name="bi-p"> 打工度假</label>
+          <label class="bchip"><input type="checkbox" name="bi-p"> 親子遊學</label>
+        </div>
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">🌍</div>
+      <div style="flex:1">
+        <strong>目標國家 / 城市</strong>
+        <input type="text" id="bi-country" placeholder="例：英國倫敦、不確定、愛爾蘭都柏林" style="margin-top:6px;width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--ink);font-family:var(--sans);outline:none;">
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">🎓</div>
+      <div style="flex:1">
+        <strong>有沒有考慮之後留學？</strong>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <label class="bchip"><input type="radio" name="bi-study" value="yes"> 有</label>
+          <label class="bchip"><input type="radio" name="bi-study" value="maybe"> 不確定</label>
+          <label class="bchip"><input type="radio" name="bi-study" value="no"> 暫時沒有</label>
+        </div>
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">👥</div>
+      <div style="flex:1">
+        <strong>是否一個人去？</strong>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <label class="bchip"><input type="radio" name="bi-alone" value="alone"> 一個人</label>
+          <label class="bchip"><input type="radio" name="bi-alone" value="with"> 有同伴</label>
+          <label class="bchip"><input type="radio" name="bi-alone" value="family"> 帶家人</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">③ 時程與預算</div>
+  <div class="icard">
+    <div class="irow">
+      <div class="ibullet">📅</div>
+      <div style="flex:1">
+        <strong>預計出發時間</strong>
+        <input type="text" id="bi-depart" placeholder="例：2026 暑假、3 個月內、2027 年初" style="margin-top:6px;width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--ink);font-family:var(--sans);outline:none;">
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">⏱️</div>
+      <div style="flex:1">
+        <strong>預計停留時間</strong>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <label class="bchip"><input type="radio" name="bi-dur" value="2w"> 2 週</label>
+          <label class="bchip"><input type="radio" name="bi-dur" value="4w"> 4 週</label>
+          <label class="bchip"><input type="radio" name="bi-dur" value="6w"> 6–8 週</label>
+          <label class="bchip"><input type="radio" name="bi-dur" value="3m"> 3 個月</label>
+          <label class="bchip"><input type="radio" name="bi-dur" value="6m"> 6 個月</label>
+          <label class="bchip"><input type="radio" name="bi-dur" value="long"> 6 個月以上</label>
+        </div>
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">💰</div>
+      <div style="flex:1">
+        <strong>預算範圍（不含機票）</strong>
+        <input type="text" id="bi-budget" placeholder="例：10 萬以內 / 15–20 萬 / 預算彈性" style="margin-top:6px;width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--ink);font-family:var(--sans);outline:none;">
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">🏠</div>
+      <div style="flex:1">
+        <strong>住宿偏好</strong>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <label class="bchip"><input type="radio" name="bi-house" value="homestay"> 寄宿家庭</label>
+          <label class="bchip"><input type="radio" name="bi-house" value="dorm"> 學生宿舍</label>
+          <label class="bchip"><input type="radio" name="bi-house" value="any"> 都可以</label>
+          <label class="bchip"><input type="radio" name="bi-house" value="own"> 自行安排</label>
+        </div>
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">🚖</div>
+      <div style="flex:1">
+        <strong>接機需求</strong>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <label class="bchip"><input type="radio" name="bi-pickup" value="yes"> 需要</label>
+          <label class="bchip"><input type="radio" name="bi-pickup" value="no"> 不需要</label>
+          <label class="bchip"><input type="radio" name="bi-pickup" value="later"> 再說</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">④ 業務內部備注</div>
+  <div class="icard" style="border-color:rgba(232,25,90,0.2);">
+    <div class="irow">
+      <div class="ibullet">🎓</div>
+      <div style="flex:1">
+        <strong>洋碩美語切入點</strong>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <label class="bchip"><input type="checkbox" name="bi-yang"> 出發前建議備考（多益 / 雅思 / 托福）</label>
+          <label class="bchip"><input type="checkbox" name="bi-yang"> 回台後語感最好，建議立刻考</label>
+          <label class="bchip"><input type="checkbox" name="bi-yang"> 考慮留學 → 語言成績是必要條件</label>
+          <label class="bchip"><input type="checkbox" name="bi-yang"> 暫時無切入點</label>
+        </div>
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">⭐</div>
+      <div style="flex:1">
+        <strong>客戶優先程度</strong>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <label class="bchip"><input type="radio" name="bi-pri" value="hot"> 🔴 熱 — 近期出發，意願明確</label>
+          <label class="bchip"><input type="radio" name="bi-pri" value="warm"> 🟡 溫 — 有意願但還在考慮</label>
+          <label class="bchip"><input type="radio" name="bi-pri" value="cold"> 🔵 冷 — 只是詢問，時程未定</label>
+        </div>
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ibullet">📝</div>
+      <div style="flex:1">
+        <strong>業務備注</strong>
+        <textarea id="bi-note" placeholder="其他特殊狀況、客戶說的重點、下次跟進要確認的事…" style="margin-top:6px;width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:13px;color:var(--ink);font-family:var(--sans);outline:none;resize:vertical;min-height:80px;line-height:1.65"></textarea>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ REFUND ══ -->
+<div id="p-s-refund" class="panel">
+  <div class="panel-eyebrow">業務工具</div>
+  <div class="panel-title">EP 退費 & 改期規則</div>
+  <div class="panel-desc">退費是客戶最常在成交前問的問題。這一頁整理 EP 各校區的通用退費原則，業務在報價時主動說清楚，比等客戶問更能建立信任。</div>
+
+  <div class="sec-label">退費基本原則</div>
+  <div class="icard">
+    <div class="icard-title">通用規則（各校區 T&C 為準）</div>
+    <div class="irow"><div class="ibullet">①</div><div><strong>僅報名課程</strong>：需提前至少 4 週付款；取消政策依各校區 T&amp;C 而定</div></div>
+    <div class="irow"><div class="ibullet">②</div><div><strong>課程＋住宿一起報名</strong>：需提前至少 6 週付款</div></div>
+    <div class="irow"><div class="ibullet">③</div><div><strong>住宿費</strong>：入住後通常前 4 週不退費</div></div>
+    <div class="irow"><div class="ibullet">④</div><div><strong>課程費</strong>：依取消時間點退款比例不同，越早取消退越多，細節見各校區 T&amp;C</div></div>
+  </div>
+
+  <div class="banner pink">
+    <div class="banner-icon">💬</div>
+    <div>
+      <div class="banner-title">主動說退費條款，不要等客戶問</div>
+      <div class="banner-body">「我建議你在決定日期之前先跟我確認退費條款，萬一有變動我們也可以提前幫你處理，不要到了最後關頭才說。」</div>
+    </div>
+  </div>
+
+  <div class="sec-label">改期規則</div>
+  <div class="icard">
+    <div class="irow"><div class="ibullet">📅</div><div><strong>開課日</strong>：通常每週一，改期通常可以，需提前通知學校</div></div>
+    <div class="irow"><div class="ibullet">🏠</div><div><strong>住宿改期</strong>：需同步通知學校住宿部門，不能只改課程</div></div>
+    <div class="irow"><div class="ibullet">⚠️</div><div><strong>旺季名額</strong>：6–8 月名額有限，改到熱門週次不保證有位，建議盡早確認</div></div>
+  </div>
+
+  <div class="sec-label">YMS 簽證：帶薪實習申請重點</div>
+  <div class="icard">
+    <div class="icard-title">English + Paid Internship Programme 適用條件</div>
+    <div class="irow"><div class="ibullet">🌏</div><div><strong>適用國籍</strong>：台灣、香港、日本、韓國、烏拉圭（英國 YMS）</div></div>
+    <div class="irow"><div class="ibullet">🎂</div><div><strong>年齡限制</strong>：18–30 歲</div></div>
+    <div class="irow"><div class="ibullet">🎫</div><div><strong>名額制度</strong>：每年有名額上限，台灣每年約數百個名額，通常需要線上抽籤 / 申請</div></div>
+    <div class="irow"><div class="ibullet">⏳</div><div><strong>申請建議時間</strong>：至少提前 3–6 個月開始準備</div></div>
+    <div class="irow"><div class="ibullet">💷</div><div><strong>費用</strong>：簽證費約 £298（依年份調整）</div></div>
+    <div class="irow"><div class="ibullet">⚠️</div><div><strong>重要提醒</strong>：YMS 不是保證拿到，建議客戶不要把行程完全押在 YMS 上，先確認語言課程，簽證同步申請</div></div>
+  </div>
+
+  <div class="sec-label">話術腳本</div>
+  <div class="script open">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-orange">情境 A</span>
+      <div class="script-ttl">「YMS 有沒有保證拿到？」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        YMS 是抽籤制，不是 100% 保證。台灣每年有名額，但競爭有，建議你先確定語言課程，YMS 同步去申請，萬一沒抽到，我們還有標準訪客簽的方案可以搭配。
+      </div>
+      <div class="tip"><strong>💡 技巧：</strong>不要讓客戶把整個計畫押在 YMS 上，先把課程確認下來，簽證是平行處理的事。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRODUCT DIFF ══ -->
+<div id="p-product" class="panel">
+  <div class="panel-eyebrow">業務工具</div>
+  <div class="panel-title">產品不打架說明</div>
+  <div class="panel-desc">放洋旗下有三條相關服務線。業務必須清楚分工，才能幫客戶規劃最有利的路徑，也不會讓客戶覺得「你們在賣一樣的東西」。</div>
+
+  <div class="sec-label">三條服務線定位</div>
+  <div class="icard" style="border-left:3px solid var(--pink)">
+    <div class="icard-title" style="color:var(--pink)">① 放洋補教品牌（托福 / 雅思 / 多益）— 台灣本地備考課</div>
+    <div class="irow"><div class="ibullet">📍</div><div><strong>在哪裡上</strong>：台灣本地，實體 or 線上</div></div>
+    <div class="irow"><div class="ibullet">🎯</div><div><strong>目的</strong>：考出一張有數字的成績單，用於求職、留學申請</div></div>
+    <div class="irow"><div class="ibullet">👤</div><div><strong>誰需要</strong>：準備出國前想先有成績底氣、或回台後想把語感轉換成成績的人</div></div>
+    <div class="irow"><div class="ibullet">⏰</div><div><strong>最佳時機</strong>：出發前 1–2 個月 ／ 遊學回台後 1–2 個月內</div></div>
+  </div>
+
+  <div class="icard" style="border-left:3px solid var(--blue)">
+    <div class="icard-title" style="color:var(--blue)">② 合作學校的當地語言課程 — 海外語言沉浸</div>
+    <div class="irow"><div class="ibullet">📍</div><div><strong>在哪裡上</strong>：英國、愛爾蘭、歐洲、中東、加拿大、澳洲等</div></div>
+    <div class="irow"><div class="ibullet">🎯</div><div><strong>目的</strong>：語感、口說、聽力、生活適應 — 考試分數以外的全面提升</div></div>
+    <div class="irow"><div class="ibullet">👤</div><div><strong>誰需要</strong>：想沉浸式學英文、體驗海外生活的人</div></div>
+    <div class="irow"><div class="ibullet">⚠️</div><div><strong>注意</strong>：部分學校有自己的 IELTS Prep 課（需 B1+ 程度），跟我們補教品牌不衝突，見下方說明</div></div>
+  </div>
+
+  <div class="icard" style="border-left:3px solid var(--purple)">
+    <div class="icard-title" style="color:var(--purple)">③ 留學一條龍 — 學位申請服務</div>
+    <div class="irow"><div class="ibullet">📍</div><div><strong>定位</strong>：長期（1 年以上），目標是取得學位或移民身份</div></div>
+    <div class="irow"><div class="ibullet">🎯</div><div><strong>需要語言成績</strong>：雅思或托福是申請必備，補教品牌課程直接服務這個需求</div></div>
+    <div class="irow"><div class="ibullet">👤</div><div><strong>遊學客戶的升級路徑</strong>：遊學 → 回台備考語言 → 留學申請</div></div>
+  </div>
+
+  <hr>
+  <div class="sec-label">當地 IELTS Prep vs 放洋雅思課：差異在哪？</div>
+  <div class="icard">
+    <table class="diff-table">
+      <thead>
+        <tr><th>比較維度</th><th>放洋雅思課</th><th>當地 IELTS Prep 課</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>地點</td><td>台灣本地</td><td>在海外學校現場</td></tr>
+        <tr><td>前提條件</td><td>任何人皆可</td><td>通常需 B1+ 程度才能選</td></tr>
+        <tr><td>最大優勢</td><td>出發前就有成績；系統化備考結構</td><td>沉浸式環境 + 備考同時進行</td></tr>
+        <tr><td>適合時機</td><td>出發前 ／ 回台後</td><td>在海外期間想同時備考</td></tr>
+        <tr><td>競爭還是互補</td><td colspan="2" class="highlight">✅ 互補——先台灣打底，海外衝刺，回台後鎖定成績</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-label">標準話術：三條線怎麼串成一個故事</div>
+  <div class="script open">
+    <div class="script-hd" onclick="toggleScript(this)">
+      <span class="script-tag tag-purple">核心話術</span>
+      <div class="script-ttl">「你們有英文課、又有遊學、又有留學，哪個適合我？」</div>
+      <span class="script-chev">▾</span>
+    </div>
+    <div class="script-body">
+      <div class="bubble">
+        其實這三個可以是一條路，不是三個不同的東西。<br><br>
+        <strong>第一步：</strong>你還沒出發的時候，可以先上我們的多益或雅思課，把英文底子打好，出去的時候會比較不慌。<br><br>
+        <strong>第二步：</strong>出去遊學，在當地的語言學校沉浸式上課，語感和口說快速提升——這是在台灣怎樣補習都補不到的。<br><br>
+        <strong>第三步：</strong>回台灣之後，語感最好的時候去考一次雅思或托福，如果你決定繼續留學，成績直接用。如果不想留學，多益成績也可以放在履歷上。<br><br>
+        你現在在哪個階段？
+      </div>
+      <div class="tip"><strong>💡 重點：</strong>把三條產品線說成「一條時間軸上的不同節點」，而不是「三個選項讓你選一個」。這樣不會讓客戶覺得你在推銷，而是在幫他規劃。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FAQ ALL ══ -->
+<div id="p-faq" class="panel">
+  <div class="panel-eyebrow">業務工具</div>
+  <div class="panel-title">所有 FAQ</div>
+  <div style="font-size:13.5px;color:var(--ink2);margin-bottom:24px;line-height:1.75">依分類篩選，或搜尋關鍵字找答案。找不到的話，往下滾到「提問區」發問，Claude 會先自動回覆，管理員會再審核確認。<br><span style="font-size:12px;color:var(--ink3)">🟢 綠色邊框 = 管理員已審核　🟡 橘色邊框 = AI 自動回覆・待審核</span></div>
+
+  <div class="faq-controls">
+    <div class="faq-search-wrap">
+      <input type="text" id="faqSearch" placeholder="搜尋問題，例如：簽證、安全、費用..." oninput="filterFaq(this.value)">
+    </div>
+    <div class="faq-tabs">
+      <div class="faq-tab active" onclick="filterFaqCat('all',this)">全部</div>
+      <div class="faq-tab" onclick="filterFaqCat('cost',this)">費用</div>
+      <div class="faq-tab" onclick="filterFaqCat('visa',this)">簽證</div>
+      <div class="faq-tab" onclick="filterFaqCat('school',this)">學校選擇</div>
+      <div class="faq-tab" onclick="filterFaqCat('safety',this)">安全</div>
+      <div class="faq-tab" onclick="filterFaqCat('lang',this)">語言進步</div>
+      <div class="faq-tab" onclick="filterFaqCat('life',this)">生活</div>
+      <div class="faq-tab" onclick="filterFaqCat('upgrade',this)">升學轉換</div>
+    </div>
+  </div>
+
+  <div id="faqNoResults" style="display:none"></div>
+  <div id="faqList">
+    <div class="faq" data-cat="cost" data-q="遊學費用大概多少？有沒有比較便宜的選項？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-amber">費用</span><div class="faq-q-text">遊學費用大概多少？有沒有比較便宜的選項？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">費用依國家差異很大，馬爾他和愛爾蘭通常比英國便宜許多，加拿大和澳洲也算 CP 值高的選擇。這不含機票和當地生活費。<br><br><strong>省錢的方法：</strong>選宿舍代替 Homestay、選一般課代替密集課、避開暑假旺季出發、考慮非英語系國家。</div>
+    </div>
+    <div class="faq" data-cat="cost" data-q="代辦費包含什麼？跟自己找學校差在哪？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-amber">費用</span><div class="faq-q-text">代辦費包含什麼？跟自己找學校差在哪？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">我們的代辦費包含：諮詢規劃、選校比較、文件辦理、簽證協助、Homestay 安排、行前說明、在學期間遠端支援、緊急狀況協助。<br><br>自己找學校省下代辦費，但你要自己處理所有文件，遇到問題是自己面對。<strong>大多數第一次出去的客戶都選擇有代辦，有了一次經驗之後才考慮自己處理。</strong></div>
+    </div>
+    <div class="faq" data-cat="visa" data-q="台灣人去英國需要辦簽證嗎？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-blue">簽證</span><div class="faq-q-text">台灣人去英國需要辦簽證嗎？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">台灣人去英國 6 個月以內免簽，語言課程屬於 Standard Visitor，不需要特別辦學生簽。<br><br>超過 6 個月需要申請 Student Visa，需要提交入學信、財力證明、健康保險等文件，審核時間約 3–8 週，建議提前 2 個月開始辦。</div>
+    </div>
+    <div class="faq" data-cat="visa" data-q="Working Holiday 跟一般遊學有什麼差別？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-blue">簽證</span><div class="faq-q-text">Working Holiday 跟一般遊學有什麼差別？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">Working Holiday 是一種特殊簽證，讓你在當地<strong>合法打工</strong>。台灣人可以申請的國家包括澳洲、紐西蘭、英國、加拿大、日本等。<br><br>遊學通常搭 WHV 一起做：早上上課、下午或假日打工，用打工收入支付部分生活費，適合想去久一點又想控制預算的人。WHV 有年齡限制，通常 18–30 歲。</div>
+    </div>
+    <div class="faq" data-cat="school" data-q="Homestay 跟宿舍怎麼選？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-teal">學校</span><div class="faq-q-text">Homestay 跟宿舍怎麼選？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a"><strong>選 Homestay：</strong>每天有機會跟當地人說英文、通常含早晚餐省生活費、有「家」的感覺、適應比較快。<br><br><strong>選宿舍：</strong>自由度高、認識更多來自各國的同學、通常比 Homestay 便宜。<br><br>第一次出去建議 Homestay——適應期心理壓力小很多，語言環境也更好。</div>
+    </div>
+    <div class="faq" data-cat="safety" data-q="一個人出去安全嗎？有哪些要注意的？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge" style="background:rgba(220,38,38,0.07);color:#DC2626;border:1px solid rgba(220,38,38,0.18)">安全</span><div class="faq-q-text">一個人出去安全嗎？有哪些要注意的？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">語言學校本身是很安全的環境。日常要注意：夜晚盡量不要單獨行走陌生路段；護照留影本隨身帶、正本放安全地方；多用線上付款少帶太多現金；加入台灣留學生群組，當地有資源可以問。<br><br>Homestay 住家通常是最安全的住所，有大人照顧比宿舍或自租房多了一層保障。</div>
+    </div>
+    <div class="faq" data-cat="safety" data-q="未成年（高中生）可以去嗎？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge" style="background:rgba(220,38,38,0.07);color:#DC2626;border:1px solid rgba(220,38,38,0.18)">安全</span><div class="faq-q-text">未成年（高中生）可以去嗎？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">可以，但有額外注意事項：需要父母同意書、選擇有青少年課程的學校（和成人班分開）、Homestay 家庭是學校嚴格審核的、學校通常提供 24 小時緊急聯絡。<br><br>16–18 歲的青少年遊學方案在英國、加拿大、澳洲都很成熟，我們有專門合作的青少年課程。</div>
+    </div>
+    <div class="faq" data-cat="lang" data-q="去多久英文才會真的進步？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-teal">語言進步</span><div class="faq-q-text">去多久英文才會真的進步？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">根據我們的經驗：<strong>2 週</strong>適合體驗，聽力有一點點提升；<strong>4 週</strong>開始適應，說話猶豫感減少；<strong>8–12 週</strong>有比較明顯的進步，語速和自信心都有改變；<strong>6 個月以上</strong>可以應付日常工作英文溝通。<br><br>另一個關鍵是你在當地有沒有真的說英文——如果整天跟台灣人混，進步當然慢。</div>
+    </div>
+    <div class="faq" data-cat="lang" data-q="遊學前需要先準備什麼英文嗎？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-teal">語言進步</span><div class="faq-q-text">遊學前需要先準備什麼英文嗎？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">不需要達到特定程度才能去，因為分班測驗會幫你找到適合的班級。<br><br>但如果你想讓遊學效果更好，出發前 1–2 個月先把「基本溝通」練好：點餐、問路、介紹自己、基本數字。不需要很流利，但讓自己可以開口說就好。<br><br>如果想系統性準備，我們有語言課程，可以幫你在出發前打底。</div>
+    </div>
+    <div class="faq" data-cat="life" data-q="Homestay 的食物不合口味怎麼辦？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-pink">生活</span><div class="faq-q-text">Homestay 的食物不合口味怎麼辦？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">先嘗試跟 Homestay 家庭說你的飲食習慣，大多數家庭會配合。午餐通常在學校附近自己解決，可以找亞洲餐廳或超市補充。<br><br>如果真的非常不適應，告訴我們，我們幫你跟學校說明看有沒有可以換的家庭。通常適應 1–2 週後就沒太大問題了。</div>
+    </div>
+    <div class="faq" data-cat="life" data-q="當地網路怎麼處理？需要換 SIM 嗎？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-pink">生活</span><div class="faq-q-text">當地網路怎麼處理？需要換 SIM 嗎？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">三個方案：<strong>當地 SIM 卡（推薦）</strong>：到了當地購買預付 SIM，費用比台灣漫遊便宜很多，一個月約台幣幾百元。<strong>台灣 eSIM</strong>：出發前設定好，到了就能用，比較方便。<strong>Homestay Wi-Fi</strong>：大多數 Homestay 都有，作為補充夠用，但不要完全依賴。</div>
+    </div>
+    <div class="faq" data-cat="upgrade" data-q="遊學完之後可以直接申請留學嗎？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-purple">升學轉換</span><div class="faq-q-text">遊學完之後可以直接申請留學嗎？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">可以！遊學是留學很好的前置步驟。接下來要做的是：<br><br>1. <strong>語言成績</strong>：留學需要雅思或托福，遊學回來是備考最好的時機<br>2. <strong>學歷確認</strong>：確認你的大學學歷是否符合目標學校的入學要求<br>3. <strong>選校規劃</strong>：從遊學的感受出發，確認你想留在哪個國家、城市<br><br>我們有留學一條龍服務，可以從遊學結束後直接銜接。</div>
+    </div>
+    <div class="faq" data-cat="upgrade" data-q="遊學回來要考什麼英文考試比較好？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-purple">升學轉換</span><div class="faq-q-text">遊學回來要考什麼英文考試比較好？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">取決於你的目標：<strong>多益（TOEIC）</strong>：適合想提升職場英文競爭力的上班族，台灣企業最常要求。<strong>雅思（IELTS）</strong>：申請英國、澳洲、加拿大、紐西蘭留學必備。<strong>托福（TOEFL）</strong>：申請美國、部分加拿大學校必備。<br><br>遊學回來的 1–2 個月是備考黃金期，我們有托福、雅思、多益的課程可以配合你的時程規劃。</div>
+    </div>
+    <div class="faq" data-cat="upgrade" data-q="遊學的語言進步回台灣之後會退步嗎？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-purple">升學轉換</span><div class="faq-q-text">遊學的語言進步回台灣之後會退步嗎？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">會退步一些是正常的，但不會退回原點。語感和腦袋轉換語言的速度已經提升了，只要維持一點點英文輸入（看影片、聽 Podcast）就不會快速退步。<br><br><strong>最好的做法：</strong>回台後 1–2 個月內去考一次英文考試，把語感轉換成成績，後面備考和維持都容易很多。</div>
+    </div>
+  </div>
+
+  <hr>
+  <div class="sec-label">提問區</div>
+  <div id="setupBanner" style="display:none;background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.3);border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:13px;color:var(--amber);line-height:1.65">
+    <strong>⚙️ Supabase 尚未設定</strong>：目前使用本地儲存（僅在此裝置可見）。部署前填入 <code style="font-size:11px;background:rgba(245,166,35,0.1);padding:1px 5px;border-radius:3px">SUPABASE_URL</code> 和 <code style="font-size:11px;background:rgba(245,166,35,0.1);padding:1px 5px;border-radius:3px">SUPABASE_KEY</code> 即可切換為雲端共享儲存，所有業務都能看到同一份問答。
+  </div>
+  <div class="qa-submit-box">
+    <div class="qa-submit-title">💬 有問題問不到答案？直接發問</div>
+    <div class="qa-submit-desc">問題送出後 Claude 會立即自動回覆（🟡 橘色邊框），管理員審核確認後變為🟢 綠色。</div>
+    <textarea class="qa-textarea" id="qaInput" placeholder="例如：客戶問說可不可以先訂位但延後付款，這樣可以嗎？涉及 EP 校區、費用、簽證的問題 Claude 會引用 EP 資料庫回答。"></textarea>
+    <div class="qa-submit-row">
+      <input type="text" class="qa-name-input" id="qaName" placeholder="你的名字（選填）" style="flex:1.5">
+      <select class="qa-submit-cat" id="qaCat">
+        <option value="一般問題">一般問題</option>
+        <option value="EP校區">EP 校區</option>
+        <option value="費用">費用</option>
+        <option value="簽證">簽證</option>
+        <option value="住宿">住宿</option>
+        <option value="話術">話術</option>
+      </select>
+      <button class="qa-btn-send" onclick="submitQuestion()">送出問題 →</button>
+    </div>
+  </div>
+
+  <div class="admin-bar" id="adminBar">
+    <div class="admin-status" id="adminStatus">管理員模式</div>
+    <input type="password" class="admin-pin-input" id="adminPin" placeholder="PIN" maxlength="6" onkeydown="if(event.key==='Enter')adminLogin()" style="width:100px">
+    <button class="admin-btn" id="adminBtn" onclick="adminLogin()">解鎖</button>
+  </div>
+
+  <div id="promotedFAQContainer"></div>
+  <div class="qa-count" id="qaCount"></div>
+  <div class="qa-list" id="qaList"></div>
+</div>
+
+</div>
+</main>
+
+<script>
+
+// ⚙️ ═══════════════════════════════════════════
+//    SUPABASE 設定 — 部署前填入你的資料
+// ═══════════════════════════════════════════════
+const SUPABASE_URL  = 'https://uxxpagylkdljjaxslmyj.supabase.co';
+const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eHBhZ3lsa2RsampheHNsbXlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MjAzNDEsImV4cCI6MjA5NDA5NjM0MX0.68pMY1QFbs7mPafSo5uskvaDYoBfM7Vht6n2UYvmgZM';
+
+function sbReady() {
+  return SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_URL !== '';
+}
+async function sb(method, table, body, params) {
+  if(!sbReady()) return null;
+  var url = SUPABASE_URL + '/rest/v1/' + table + (params ? '?' + params : '');
+  var opts = {
+    method: method,
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': method === 'POST' ? 'return=representation' : ''
+    }
+  };
+  if(body) opts.body = JSON.stringify(body);
+  try {
+    var res = await fetch(url, opts);
+    if(!res.ok) { console.warn('Supabase', method, table, res.status); return null; }
+    if(res.status === 204) return true;
+    return res.json().catch(function(){ return null; });
+  } catch(e) { console.warn('Supabase fetch failed', e.message); return null; }
+}
+// ═══════════════════════════════════════════════
+
+// Content index for search
+const idx = {};
+function buildIdx() {
+  document.querySelectorAll('.panel').forEach(p => {
+    idx[p.id.replace('p-','')] = p.textContent.toLowerCase();
+  });
+}
+window.addEventListener('DOMContentLoaded', buildIdx);
+
+function go(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(n => n.classList.remove('active'));
+  const panel = document.getElementById('p-'+id);
+  if(panel) panel.classList.add('active');
+  document.querySelectorAll('.sb-item').forEach(item => {
+    const oc = item.getAttribute('onclick')||'';
+    if(oc.includes("'"+id+"'")) item.classList.add('active');
+  });
+  document.getElementById('main').scrollTo({top:0,behavior:'smooth'});
+}
+
+function toggleScript(hd) { hd.closest('.script').classList.toggle('open'); }
+function toggleFaq(q) { q.closest('.faq').classList.toggle('open'); }
+function toggleChk(b) {
+  b.classList.toggle('done');
+  b.textContent = b.classList.contains('done') ? '✓' : '';
+}
+
+function searchNav(q) {
+  q = q.trim().toLowerCase();
+  if(!q) {
+    document.querySelectorAll('.sb-item').forEach(i => i.style.display='');
+    document.querySelectorAll('.sb-group-label').forEach(l => l.style.display='');
+    return;
+  }
+  let first = null;
+  document.querySelectorAll('.sb-item').forEach(item => {
+    const oc = item.getAttribute('onclick')||'';
+    const m = oc.match(/'([^']+)'/);
+    const pid = m ? m[1] : '';
+    const hits = item.textContent.toLowerCase().includes(q) || (idx[pid]||'').includes(q);
+    item.style.display = hits ? '' : 'none';
+    if(hits && !first) first = pid;
+  });
+  document.querySelectorAll('.sb-group-label').forEach(label => {
+    let sib = label.nextElementSibling, any = false;
+    while(sib && !sib.classList.contains('sb-group-label')) {
+      if(sib.style.display !== 'none') any = true;
+      sib = sib.nextElementSibling;
+    }
+    label.style.display = any ? '' : 'none';
+  });
+  if(first) go(first);
+}
+
+function filterFaq(q) {
+  q = q.toLowerCase();
+  var visible = 0;
+  document.querySelectorAll('#faqList .faq').forEach(function(item) {
+    var txt = ((item.dataset.q||'')+item.textContent).toLowerCase();
+    var show = (!q || txt.includes(q));
+    item.style.display = show ? '' : 'none';
+    if(show) visible++;
+  });
+  var noRes = document.getElementById('faqNoResults');
+  if(!noRes) return;
+  if(q && visible === 0) {
+    noRes.innerHTML = '<div class="qa-no-results">'
+      + '<div class="qa-no-results-title">找不到「' + q + '」的相關答案</div>'
+      + '<div class="qa-no-results-sub">可以直接發問，Claude 會自動回覆，管理員也會補充確認。</div>'
+      + '<button class="qa-ask-cta" onclick="scrollToAsk()">直接發問 →</button>'
+      + '</div>';
+    noRes.style.display = '';
+  } else {
+    noRes.innerHTML = '';
+    noRes.style.display = 'none';
+  }
+}
+
+function scrollToAsk() {
+  var box = document.querySelector('.qa-submit-box');
+  if(box) { box.scrollIntoView({behavior:'smooth', block:'center'}); document.getElementById('qaInput').focus(); }
+}
+
+function filterFaqCat(cat, tab) {
+  document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  document.querySelectorAll('#faqList .faq').forEach(item => {
+    item.style.display = (cat==='all' || item.dataset.cat===cat) ? '' : 'none';
+  });
+}
+
+// ── Q&A MODULE ──
+const ADMIN_PIN = '991234';
+let isAdmin = false;
+let qaData = [];
+let promotedFAQs = [];
+
+const EP_DB_CONTEXT = `EP English Path 校區資料摘要（2025-26）：
+
+【英國】
+- 倫敦 Canary Wharf（30歲以上獨立分班）：Classic Morning £405/週，Semi-intensive £450/週，Homestay半膳£305/週，宿舍£430起/週。有商業管理/數位行銷專業證書、帶薪實習（YMS）、志工計畫。
+- 倫敦 Greenford（16歲以上，EP全球總部，500人）：Classic Morning £405/週，Semi-intensive £450/週，Homestay半膳£305/週。
+- 伯明罕（16歲以上，市中心）：Classic Morning £380/週，Semi-intensive £435/週，Homestay半膳£240/週，宿舍£280-295/週。有IELTS課程（B1+）。
+- 里茲（16歲以上）：Classic Morning £380/週，Semi-intensive £435/週，Homestay半膳£240/週，宿舍£210-320/週。有IELTS課程。
+
+【歐洲】
+- 都柏林愛爾蘭（16歲以上，海濱歷史建築）：Classic Morning €380/週，Semi-intensive €440/週，Homestay半膳€285/週，學生宿舍€535/週。有Work&Study合法打工方案（25週課+10週假期工作）、Pathway銜接課。
+- 柏林德國（16歲以上，德文+英文雙語）：德/英文 Classic €320/週，Semi-intensive €360/週，Premium 30（含1對1）€500/週，Homestay€305/週。
+- 巴黎法國（16歲以上，法文+英文雙語）：法/英文 Classic €320/週，Semi-intensive €360/週，Homestay半膳€440/週。
+- 馬爾他（16歲以上，EP全球最大500人）：Classic Morning €295/週，Standard Evening €200/週，宿舍€375/週，共享公寓€190/週。有商業管理證書、長期折扣（24週€190/週起）。
+
+【中東】
+- 杜拜UAE（16歲以上，Dubai Knowledge Park）：Classic Morning USD$350/週，宿舍USD$260/週起。有商業管理/數位行銷專業證書、帶薪實習（YMS）。
+
+【北美】
+- 多倫多加拿大（16歲以上）：Classic Morning CA$430/週，Semi-intensive CA$480/週，Homestay CA$360/週，宿舍CA$365/週起。有Pathway銜接課、商業管理/數位行銷證書。
+
+【大洋洲】
+- 布里斯本澳洲（18歲以上，CRICOS認可）：Classic Morning AU$400/週，Semi-intensive AU$475/週，Homestay AU$420/週。學生簽可讀62週，WHV最多17週。
+
+【共通資訊】
+- 每班最多15人（布里斯本18人）
+- 所有校區每週一開課，最短1週
+- 台灣學生銀行電匯手續費：英國£45、歐元區€50、加拿大CA$80、澳洲AU$110、杜拜USD$60
+- YMS（帶薪實習）：台灣18-30歲可申請，英國倫敦三校區，課程費+£875安置費，6個月帶薪飯店實習
+- EP認證：British Council、ST Star Awards 2024&2025、Languages Canada、CRICOS等`;
+
+function getManualContext() {
+  var panels = document.querySelectorAll('.panel');
+  var texts = [];
+  panels.forEach(function(p) { texts.push(p.innerText); });
+  return texts.join('\n\n').substring(0, 4000);
+}
+
+function isEPRelated(text) {
+  var epKeywords = ['EP','英國','倫敦','伯明罕','里茲','都柏林','柏林','巴黎','馬爾他','杜拜','多倫多','布里斯本','校區','課程','費用','住宿','Homestay','簽證','YMS','實習','IELTS','學費'];
+  return epKeywords.some(function(k){ return text.indexOf(k) !== -1; });
+}
+
+async function loadQA() {
+  try {
+    if(sbReady()) {
+      var data = await sb('GET','qa_items','','order=pinned.desc,created_at.desc');
+      qaData = data || [];
+      var data2 = await sb('GET','promoted_faqs','','order=created_at.desc');
+      promotedFAQs = data2 || [];
+    } else {
+      var r1 = await window.storage.get('qa-data').catch(function(){ return null; });
+      qaData = r1 ? JSON.parse(r1.value) : [];
+      var r2 = await window.storage.get('qa-promoted').catch(function(){ return null; });
+      promotedFAQs = r2 ? JSON.parse(r2.value) : [];
+    }
+  } catch(e) { qaData = []; promotedFAQs = []; }
+  renderQA();
+  renderPromotedFAQs();
+  updateSetupBanner();
+}
+
+async function saveQA() {
+  if(!sbReady()) {
+    try { await window.storage.set('qa-data', JSON.stringify(qaData)); } catch(e) {}
+  }
+}
+async function savePromoted() {
+  if(!sbReady()) {
+    try { await window.storage.set('qa-promoted', JSON.stringify(promotedFAQs)); } catch(e) {}
+  }
+}
+
+// ── Claude auto-answer ──
+async function claudeAnswer(question) {
+  try {
+    var useEP = isEPRelated(question);
+    var systemPrompt = '你是放洋留遊學的業務培訓助理。用繁體中文回答業務的問題，語氣專業口語，回答簡潔具體，100-200字為佳。如果沒有明確答案，誠實說明並建議向主管確認。\n\n';
+    if(useEP) systemPrompt += '【EP學校資料庫】\n' + EP_DB_CONTEXT + '\n\n';
+    systemPrompt += '【業務手冊摘要】\n' + getManualContext();
+    var response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: question }]
+      })
+    });
+    var data = await response.json();
+    if(data.content && data.content[0] && data.content[0].text) {
+      return { text: data.content[0].text, usedEP: useEP };
+    }
+  } catch(e) { console.error('Claude API error:', e); }
+  return null;
+}
+
+async function submitQuestion() {
+  var text = document.getElementById('qaInput').value.trim();
+  if(!text) return;
+  var name = document.getElementById('qaName').value.trim() || '匿名業務';
+  var cat = document.getElementById('qaCat').value || '一般問題';
+  var btn = document.querySelector('.qa-btn-send');
+  btn.textContent = '⏳ AI 思考中...';
+  btn.disabled = true;
+
+  var item = {
+    id: Date.now(),
+    q: text,
+    name: name,
+    cat: cat,
+    time: new Date().toLocaleDateString('zh-TW', {month:'numeric', day:'numeric', hour:'2-digit', minute:'2-digit'}),
+    answer: null,
+    usedEP: false,
+    reviewed: false,
+    pinned: false,
+    helpful: 0,
+    notHelpful: 0,
+    voted: false
+  };
+
+  var result = await claudeAnswer(text);
+  if(result) {
+    item.answer = result.text;
+    item.usedEP = result.usedEP;
+  } else {
+    item.answer = '目前無法自動回覆，請等待管理員人工回覆。';
+  }
+
+  if(sbReady()) {
+    var inserted = await sb('POST', 'qa_items', {
+      id: item.id, question: item.q, name: item.name, category: item.cat,
+      answer: item.answer, used_ep: item.usedEP, reviewed: false,
+      pinned: false, helpful: 0, not_helpful: 0
+    });
+    if(inserted && inserted[0]) {
+      item.id = inserted[0].id;
+      item.q = inserted[0].question;
+    }
+  }
+  qaData.unshift(item);
+  await saveQA();
+  document.getElementById('qaInput').value = '';
+  renderQA();
+  btn.textContent = '✓ 已送出，AI 已自動回覆';
+  setTimeout(function() { btn.textContent = '送出問題 →'; btn.disabled = false; }, 3000);
+}
+
+// ── Vote ──
+function voteHelpful(id, helpful) {
+  var item = qaData.find(function(d) { return d.id === id; });
+  if(!item || item.voted) return;
+  if(helpful) item.helpful = (item.helpful||0) + 1;
+  else item.notHelpful = (item.notHelpful||0) + 1;
+  item.voted = true;
+  sb('PATCH','qa_items',{helpful:item.helpful,not_helpful:item.notHelpful},'id=eq.'+id);
+  renderQA();
+}
+
+// ── Admin login ──
+function adminLogin() {
+  var pin = document.getElementById('adminPin').value;
+  if(pin === ADMIN_PIN) {
+    isAdmin = true;
+    var bar = document.getElementById('adminBar');
+    bar.classList.add('active');
+    document.getElementById('adminStatus').textContent = '🔓 管理員模式已開啟';
+    document.getElementById('adminStatus').classList.add('on');
+    document.getElementById('adminBtn').textContent = '登出';
+    document.getElementById('adminBtn').classList.add('active');
+    document.getElementById('adminBtn').onclick = adminLogout;
+    document.getElementById('adminPin').style.display = 'none';
+    renderQA();
+    renderPromotedFAQs();
+  } else {
+    document.getElementById('adminPin').style.borderColor = '#DC2626';
+    setTimeout(function() { document.getElementById('adminPin').style.borderColor = ''; }, 1500);
+  }
+}
+
+function adminLogout() {
+  isAdmin = false;
+  document.getElementById('adminBar').classList.remove('active');
+  document.getElementById('adminStatus').textContent = '管理員模式';
+  document.getElementById('adminStatus').classList.remove('on');
+  document.getElementById('adminBtn').textContent = '解鎖';
+  document.getElementById('adminBtn').classList.remove('active');
+  document.getElementById('adminBtn').onclick = adminLogin;
+  document.getElementById('adminPin').value = '';
+  document.getElementById('adminPin').style.display = '';
+  renderQA();
+  renderPromotedFAQs();
+}
+
+// ── Delete (no confirm() — inline confirmation) ──
+function askDelete(id) {
+  var item = qaData.find(function(d) { return d.id === id; });
+  if(!item) return;
+  item._confirmDelete = true;
+  renderQA();
+}
+function cancelDelete(id) {
+  var item = qaData.find(function(d) { return d.id === id; });
+  if(!item) return;
+  item._confirmDelete = false;
+  renderQA();
+}
+function confirmDelete(id) {
+  sb('DELETE','qa_items','','id=eq.'+id);
+  qaData = qaData.filter(function(d) { return d.id !== id; });
+  renderQA();
+}
+
+// ── Pin / unpin ──
+function togglePin(id) {
+  var item = qaData.find(function(d) { return d.id === id; });
+  if(!item) return;
+  item.pinned = !item.pinned;
+  sb('PATCH','qa_items',{pinned:item.pinned},'id=eq.'+id);
+  renderQA();
+}
+
+// ── Promote to FAQ ──
+function promoteToFAQ(id) {
+  var item = qaData.find(function(d) { return d.id === id; });
+  if(!item || !item.answer) return;
+  var already = promotedFAQs.find(function(f){ return f.id === id; });
+  if(already) return;
+  sb('POST','promoted_faqs',{id:id, question:item.q, answer:item.answer, category:item.cat||'一般問題'});
+  sb('PATCH','qa_items',{promoted:true},'id=eq.'+id);
+  promotedFAQs.unshift({ id: id, q: item.q, a: item.answer, cat: item.cat||'一般問題' });
+  item.promoted = true;
+  renderQA();
+  renderPromotedFAQs();
+}
+
+function removePromoted(id) {
+  sb('DELETE','promoted_faqs','','id=eq.'+id);
+  sb('PATCH','qa_items',{promoted:false},'id=eq.'+id);
+  promotedFAQs = promotedFAQs.filter(function(f){ return f.id !== id; });
+  var item = qaData.find(function(d) { return d.id === id; });
+  if(item) item.promoted = false;
+  renderQA();
+  renderPromotedFAQs();
+}
+
+// ── Render promoted FAQs ──
+function renderPromotedFAQs() {
+  var container = document.getElementById('promotedFAQContainer');
+  if(!container) return;
+  if(!promotedFAQs.length) {
+    container.innerHTML = '';
+    return;
+  }
+  var html = '<div class="qa-promoted-section"><div class="qa-promoted-label">📌 精選問答（由業務提問，管理員確認）</div>';
+  promotedFAQs.forEach(function(f) {
+    html += '<div class="faq" data-cat="promoted">'
+      + '<div class="faq-q" onclick="toggleFaq(this)">'
+      + '<span class="faq-cat-badge t-teal">精選</span>'
+      + '<div class="faq-q-text">' + f.q + '</div>'
+      + (isAdmin ? '<button style="font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(220,38,38,0.08);color:#DC2626;border:1px solid rgba(220,38,38,0.2);cursor:pointer;margin-right:6px;font-family:var(--sans)" onclick="event.stopPropagation();removePromoted(' + f.id + ')">移除</button>' : '')
+      + '<div class="faq-chev">▾</div>'
+      + '</div>'
+      + '<div class="faq-a">' + f.a + '</div>'
+      + '</div>';
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+// ── Main render ──
+function renderQA() {
+  var list = document.getElementById('qaList');
+  var countEl = document.getElementById('qaCount');
+  if(!qaData.length) {
+    list.innerHTML = '<div class="qa-empty">還沒有問題 — 有疑問的話在上方提問吧！</div>';
+    countEl.innerHTML = '';
+    return;
+  }
+
+  var pinned = qaData.filter(function(d){ return d.pinned; });
+  var normal = qaData.filter(function(d){ return !d.pinned; });
+  var sorted = pinned.concat(normal);
+
+  var pending = qaData.filter(function(d) { return !d.reviewed; }).length;
+  countEl.innerHTML = isAdmin
+    ? '共 <span>' + qaData.length + '</span> 筆，未審核 <span style="color:var(--amber)">' + pending + '</span> 筆'
+    : '共 <span>' + qaData.length + '</span> 筆問答';
+
+  var catMap = {'一般問題':'t-pink','EP校區':'t-blue','簽證':'t-teal','費用':'t-amber','住宿':'t-purple','話術':'t-teal'};
+
+  var rows = sorted.map(function(item) {
+    var borderColor = item.pinned ? 'var(--pink)' : (item.reviewed ? 'var(--teal)' : 'var(--amber)');
+
+    // Status badge
+    var statusStyle = item.reviewed
+      ? 'background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)'
+      : 'background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)';
+    var statusLabel = item.reviewed ? '🟢 管理員已審核' : '🟡 AI 自動回覆・待審核';
+
+    var epBadge = item.usedEP
+      ? '<span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border);margin-left:6px">📚 EP 資料庫</span>'
+      : '';
+
+    var catBadge = item.cat
+      ? '<span class="faq-cat-badge ' + (catMap[item.cat]||'t-pink') + '" style="margin-left:6px">' + item.cat + '</span>'
+      : '';
+
+    var pinnedBadge = item.pinned ? '<span class="qa-pinned-badge">📌 置頂</span>' : '';
+    var promotedBadge = item.promoted ? '<span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border);margin-left:6px">✓ 已加入精選</span>' : '';
+
+    var answerBlock = '';
+    if(item.answer) {
+      answerBlock = '<div class="qa-item-a">'
+        + '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px">'
+        + '<div class="qa-a-bubble">回覆</div>'
+        + '<span style="font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;' + statusStyle + '">' + statusLabel + '</span>'
+        + epBadge
+        + '</div>'
+        + '<div class="qa-a-text">' + item.answer + '</div>'
+        + (!isAdmin
+          ? '<div class="qa-vote-row"><span style="font-size:11px;color:var(--ink4);margin-right:4px">這個回答有幫助嗎？</span>'
+            + '<button class="qa-vote-btn' + (item.voted?' voted':'') + '" onclick="voteHelpful(' + item.id + ',true)">👍 ' + (item.helpful||0) + '</button>'
+            + '<button class="qa-vote-btn' + (item.voted?' voted':'') + '" onclick="voteHelpful(' + item.id + ',false)">👎 ' + (item.notHelpful||0) + '</button>'
+            + '</div>'
+          : '')
+        + '</div>';
+    }
+
+    var adminSection = '';
+    if(isAdmin) {
+      var voteInfo = '<span style="font-size:11px;color:var(--ink3)">👍' + (item.helpful||0) + ' 👎' + (item.notHelpful||0) + '</span>';
+
+      var deleteBtn = '';
+      if(item._confirmDelete) {
+        deleteBtn = '<span class="qa-del-confirm">確定刪除？'
+          + '<button class="qa-del-yes" onclick="confirmDelete(' + item.id + ')">確定</button>'
+          + '<button class="qa-del-no" onclick="cancelDelete(' + item.id + ')">取消</button>'
+          + '</span>';
+      } else {
+        deleteBtn = '<button class="qa-act-btn danger" onclick="askDelete(' + item.id + ')">刪除</button>';
+      }
+
+      adminSection = '<div class="qa-admin-status">'
+        + '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">'
+        + '<span class="qa-status-badge ' + (item.reviewed ? 'published' : 'pending') + '">' + (item.reviewed ? '✓ 已審核' : '⏳ 未審核') + '</span>'
+        + voteInfo
+        + '</div>'
+        + '<div class="qa-action-btns">'
+        + '<button class="qa-act-btn primary" onclick="toggleAnswerForm(' + item.id + ')">' + (item._open ? '收起' : '✏️ 編輯') + '</button>'
+        + (!item.reviewed
+          ? '<button class="qa-act-btn" style="color:var(--teal);border-color:var(--teal-border)" onclick="markReviewed(' + item.id + ')">✓ 審核</button>'
+          : '<button class="qa-act-btn" onclick="unmarkReviewed(' + item.id + ')">撤銷審核</button>')
+        + '<button class="qa-act-btn" style="color:var(--pink);border-color:var(--pink-border)" onclick="togglePin(' + item.id + ')">' + (item.pinned ? '📌 取消置頂' : '📌 置頂') + '</button>'
+        + (!item.promoted && item.reviewed
+          ? '<button class="qa-act-btn" style="color:var(--teal);border-color:var(--teal-border)" onclick="promoteToFAQ(' + item.id + ')">📋 加入精選</button>'
+          : '')
+        + deleteBtn
+        + '</div></div>';
+
+      if(item._open) {
+        adminSection += '<div class="qa-answer-form show">'
+          + (item.usedEP ? '<div class="qa-draft-notice">📚 此答案引用了 EP 資料庫</div>' : '')
+          + '<textarea class="qa-answer-ta" id="at-' + item.id + '">' + (item.answer||'') + '</textarea>'
+          + '<div class="qa-answer-row">'
+          + '<button class="qa-btn-publish" onclick="saveAnswer(' + item.id + ')">💾 儲存並標記審核</button>'
+          + '<button class="qa-btn-unpublish" onclick="toggleAnswerForm(' + item.id + ')">取消</button>'
+          + '</div></div>';
+      }
+    }
+
+    return '<div class="qa-item" id="qi-' + item.id + '" style="border-left:3px solid ' + borderColor + '">'
+      + '<div class="qa-item-q">'
+      + '<div class="qa-q-bubble">Q</div>'
+      + '<div style="flex:1"><div class="qa-q-text">' + item.q + '</div>'
+      + '<div style="margin-top:4px">' + catBadge + pinnedBadge + promotedBadge + '</div></div>'
+      + '<div class="qa-q-meta">' + item.name + '<br>' + item.time + '</div>'
+      + '</div>'
+      + answerBlock
+      + adminSection
+      + '</div>';
+  });
+
+  list.innerHTML = rows.join('');
+}
+
+function toggleAnswerForm(id) {
+  var item = qaData.find(function(d) { return d.id === id; });
+  if(item) { item._open = !item._open; renderQA(); }
+}
+
+function saveAnswer(id) {
+  var item = qaData.find(function(d) { return d.id === id; });
+  var ta = document.getElementById('at-' + id);
+  if(!item || !ta || !ta.value.trim()) return;
+  item.answer = ta.value.trim();
+  item.reviewed = true;
+  item._open = false;
+  sb('PATCH','qa_items',{answer:item.answer,reviewed:true},'id=eq.'+id);
+  renderQA();
+}
+
+function markReviewed(id) {
+  var item = qaData.find(function(d) { return d.id === id; });
+  if(item) { item.reviewed = true; sb('PATCH','qa_items',{reviewed:true},'id=eq.'+id); renderQA(); }
+}
+
+function unmarkReviewed(id) {
+  var item = qaData.find(function(d) { return d.id === id; });
+  if(item) { item.reviewed = false; sb('PATCH','qa_items',{reviewed:false},'id=eq.'+id); renderQA(); }
+}
+
+function deleteQuestion(id) {
+  qaData = qaData.filter(function(d) { return d.id !== id; });
+  saveQA();
+  renderQA();
+}
+
+function updateSetupBanner() {
+  var banner = document.getElementById('setupBanner');
+  if(!banner) return;
+  banner.style.display = sbReady() ? 'none' : 'block';
+}
+
+var _origGo = go;
+window.go = function(id) {
+  _origGo(id);
+  if(id === 'faq') loadQA();
+};
+window.addEventListener('DOMContentLoaded', function() {
+  if(document.getElementById('p-faq') && document.getElementById('p-faq').classList.contains('active')) loadQA();
+});
+
+
+</script>
+</body>
+</html>

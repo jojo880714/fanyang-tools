@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>放洋留遊學｜EP English Path 語言學校介紹</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#C8436A;--pink-d:#8C2445;--pink-l:#FBE9EF;--pink-m:#F2B3C5;
+  --bg:#F7F5F2;--sur:#FFFFFF;--sur2:#F0EDE9;--sur3:#E8E4DF;
+  --ink:#1A1714;--ink2:#4A4540;--ink3:#7A7570;--ink4:#ABA7A2;
+  --bdr:rgba(0,0,0,0.07);--bdr2:rgba(0,0,0,0.12);
+  --uk-bg:#E6F1FB;--uk-c:#0B3F75;
+  --eu-bg:#E8F5E3;--eu-c:#1F5209;
+  --me-bg:#FEF3E2;--me-c:#6B3A00;
+  --na-bg:#EEEDFE;--na-c:#3730A3;
+  --au-bg:#FEF0EC;--au-c:#7C2D12;
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.05);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.08),0 16px 40px rgba(0,0,0,0.07);
+  --r:10px;--r-lg:14px;--r-sm:6px;
+  --sb:220px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;-webkit-font-smoothing:antialiased}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink);height:100vh;overflow:hidden;display:flex;flex-direction:column}
+
+/* ── TOPBAR ── */
+.topbar{
+  height:50px;background:var(--sur);border-bottom:1px solid var(--bdr);
+  display:flex;align-items:center;padding:0 20px;gap:12px;
+  flex-shrink:0;z-index:20;box-shadow:0 1px 0 var(--bdr);
+}
+.topbar-logo{
+  font-family:'Noto Sans TC',sans-serif;font-size:17px;font-weight:700;
+  color:var(--pink);letter-spacing:-0.3px;flex-shrink:0;
+}
+.topbar-div{width:1px;height:14px;background:var(--bdr2)}
+.topbar-sub{font-size:12px;color:var(--ink3)}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.topbar-pill{
+  font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;
+  letter-spacing:0.03em;
+}
+.pill-pink{background:var(--pink-l);color:var(--pink-d)}
+.pill-gray{background:var(--sur2);color:var(--ink3)}
+
+/* compare btn */
+.compare-btn{
+  display:flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:500;padding:5px 12px;
+  border:1px solid var(--bdr2);border-radius:var(--r-sm);
+  background:var(--sur);color:var(--ink2);cursor:pointer;
+  transition:all .15s;
+}
+.compare-btn:hover{border-color:var(--pink);color:var(--pink)}
+.compare-btn.has-items{border-color:var(--pink);background:var(--pink-l);color:var(--pink-d)}
+
+/* ── LAYOUT ── */
+.layout{display:flex;flex:1;overflow:hidden}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  width:var(--sb);flex-shrink:0;
+  background:var(--sur);border-right:1px solid var(--bdr);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.sb-top{
+  padding:14px 16px 10px;border-bottom:1px solid var(--bdr);flex-shrink:0;
+}
+.sb-preknow-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;padding:7px 10px;border-radius:var(--r-sm);
+  background:var(--pink-l);border:1px solid var(--pink-m);
+  font-size:12px;font-weight:700;color:var(--pink-d);
+  cursor:pointer;font-family:'Noto Sans TC',sans-serif;
+  transition:all .15s;
+}
+.sb-preknow-btn:hover{background:var(--pink-m)}
+.sb-scroll{flex:1;overflow-y:auto;padding:6px 0 20px}
+.sb-scroll::-webkit-scrollbar{width:3px}
+.sb-scroll::-webkit-scrollbar-thumb{background:var(--sur3);border-radius:2px}
+.sb-region{
+  font-size:10px;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--ink4);
+  padding:12px 16px 4px;
+}
+.nav-btn{
+  display:flex;align-items:center;gap:8px;
+  width:100%;padding:7px 16px;
+  font-size:12px;font-family:'Noto Sans TC',sans-serif;
+  color:var(--ink2);background:none;border:none;
+  border-left:2px solid transparent;cursor:pointer;
+  text-align:left;transition:background .12s,color .12s;
+  line-height:1.4;
+}
+.nav-btn:hover{background:var(--sur2);color:var(--ink)}
+.nav-btn.on{
+  border-left-color:var(--pink);background:var(--pink-l);
+  color:var(--pink-d);font-weight:500;
+}
+.nav-flag{font-size:14px;flex-shrink:0}
+/* compare checkbox on nav */
+.nav-cmp{
+  margin-left:auto;width:16px;height:16px;border-radius:4px;
+  border:1.5px solid var(--bdr2);background:var(--sur2);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;cursor:pointer;font-size:9px;color:transparent;
+  transition:all .13s;
+}
+.nav-cmp.checked{background:var(--pink);border-color:var(--pink);color:#fff}
+
+/* ── MAIN ── */
+.main{flex:1;overflow-y:auto;background:var(--bg)}
+.main::-webkit-scrollbar{width:5px}
+.main::-webkit-scrollbar-thumb{background:var(--sur3);border-radius:3px}
+
+/* ── PAGE ANCHOR NAV ── */
+.page-anchor{
+  position:sticky;top:0;z-index:10;
+  background:rgba(247,245,242,0.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--bdr);
+  display:flex;align-items:center;gap:2px;
+  padding:0 28px;height:40px;overflow-x:auto;flex-shrink:0;
+}
+.page-anchor::-webkit-scrollbar{height:0}
+.anchor-btn{
+  font-size:12px;font-weight:500;padding:4px 12px;
+  border-radius:20px;color:var(--ink3);background:none;
+  border:none;cursor:pointer;white-space:nowrap;
+  font-family:'Noto Sans TC',sans-serif;transition:all .13s;
+}
+.anchor-btn:hover{color:var(--ink);background:var(--sur3)}
+.anchor-btn.active{color:var(--pink-d);background:var(--pink-l);font-weight:700}
+
+/* ── CAMPUS CONTENT ── */
+.campus-wrap{padding:28px 32px 60px;max-width:880px}
+
+/* ── HERO ── */
+.campus-hero{margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid var(--bdr)}
+.region-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;
+  margin-bottom:8px;letter-spacing:0.04em;text-transform:uppercase;
+}
+.tag-uk{background:var(--uk-bg);color:var(--uk-c)}
+.tag-eu{background:var(--eu-bg);color:var(--eu-c)}
+.tag-me{background:var(--me-bg);color:var(--me-c)}
+.tag-na{background:var(--na-bg);color:var(--na-c)}
+.tag-au{background:var(--au-bg);color:var(--au-c)}
+.campus-name{
+  font-family:'DM Serif Display',serif;font-size:30px;font-weight:400;
+  color:var(--ink);line-height:1.2;margin-bottom:5px;
+}
+.campus-addr{font-size:11px;color:var(--ink4);margin-bottom:12px;display:flex;align-items:center;gap:4px}
+.campus-intro{font-size:13px;color:var(--ink2);line-height:1.9;max-width:680px}
+
+/* ── SECTION TITLE ── */
+.sec-title{
+  font-size:11px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--ink4);
+  margin:26px 0 10px;display:flex;align-items:center;gap:10px;
+}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--bdr)}
+
+/* ── INFO GRID ── */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:7px}
+.info-card{background:var(--sur2);border-radius:var(--r);padding:10px 13px}
+.info-lbl{font-size:9px;color:var(--ink4);margin-bottom:3px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em}
+.info-val{font-size:13px;font-weight:500;color:var(--ink);line-height:1.35}
+
+/* ── FEATURES ── */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.feat-card{
+  border:1px solid var(--bdr);border-radius:var(--r-lg);
+  padding:14px 15px;background:var(--sur);
+  display:flex;gap:11px;align-items:flex-start;
+  transition:border-color .15s,box-shadow .15s;
+}
+.feat-card:hover{border-color:var(--pink-m);box-shadow:var(--shadow)}
+.feat-icon{
+  width:30px;height:30px;border-radius:8px;
+  background:var(--pink-l);display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:15px;
+}
+.feat-title{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.feat-desc{font-size:11px;color:var(--ink2);line-height:1.6}
+
+/* ── WHO ── */
+.who-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.who-card{border:1px solid var(--bdr);border-radius:var(--r-lg);padding:13px 15px;background:var(--sur)}
+.who-card:hover{border-color:var(--pink-m)}
+.who-head{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.who-icon{font-size:16px}
+.who-title{font-size:12px;font-weight:700;color:var(--ink)}
+.who-desc{font-size:11px;color:var(--ink2);line-height:1.6}
+
+/* ── COURSES ── */
+.course-list{display:flex;flex-direction:column;gap:8px}
+.course-card{
+  border:1px solid var(--bdr);border-radius:var(--r-lg);
+  background:var(--sur);overflow:hidden;
+  transition:border-color .15s;
+}
+.course-card:hover{border-color:var(--bdr2)}
+.course-card.special{border-color:var(--pink-m);border-left:3px solid var(--pink)}
+.course-hd{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 15px;cursor:pointer;
+}
+.course-hd:hover{background:var(--sur2)}
+.special-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--pink);flex-shrink:0;
+}
+.course-name{font-size:13px;font-weight:600;color:var(--ink);flex:1;line-height:1.35}
+.course-tags-inline{display:flex;gap:4px;flex-wrap:nowrap;overflow:hidden}
+.course-tag{
+  font-size:10px;padding:2px 7px;border-radius:20px;
+  background:var(--sur2);color:var(--ink3);white-space:nowrap;flex-shrink:0;
+}
+.course-price-inline{
+  font-size:13px;font-weight:700;color:var(--pink-d);
+  white-space:nowrap;flex-shrink:0;margin-left:8px;
+}
+.course-chevron{
+  font-size:10px;color:var(--ink4);flex-shrink:0;
+  transition:transform .2s;margin-left:4px;
+}
+.course-card.open .course-chevron{transform:rotate(180deg)}
+.course-body{
+  display:none;padding:0 15px 13px;
+  border-top:1px solid var(--bdr);
+  font-size:12px;color:var(--ink2);line-height:1.7;
+}
+.course-card.open .course-body{display:block}
+.course-full-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;padding-top:10px}
+.special-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;
+  background:var(--pink-l);color:var(--pink-d);margin-bottom:6px;
+  letter-spacing:0.04em;text-transform:uppercase;
+}
+
+/* ── ACCOMMODATION ── */
+.accomm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.accomm-card{
+  border:1px solid var(--bdr);border-radius:var(--r-lg);
+  padding:13px 15px;background:var(--sur);
+}
+.accomm-type-badge{
+  display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;
+  border-radius:20px;margin-bottom:7px;text-transform:uppercase;letter-spacing:0.04em;
+}
+.atype-home{background:#FEF3E2;color:#7C3A00}
+.atype-dorm{background:#E8F5E3;color:#1F5209}
+.atype-hostel{background:#EEF2FF;color:#3730A3}
+.atype-apt{background:#F5F3FF;color:#6D28D9}
+.atype-hotel{background:#FFF7ED;color:#9A3412}
+.accomm-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;line-height:1.3}
+.accomm-meta{font-size:10px;color:var(--ink4);margin-bottom:8px;line-height:1.5}
+.accomm-price{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.accomm-desc{font-size:11px;color:var(--ink2);line-height:1.55}
+
+/* ── FEES ── */
+.fees-row{display:flex;flex-wrap:wrap;gap:6px}
+.fee-chip{
+  font-size:11px;padding:5px 11px;
+  border:1px solid var(--bdr);border-radius:var(--r-sm);
+  color:var(--ink2);background:var(--sur);
+  display:flex;gap:5px;align-items:center;
+}
+.fee-chip b{color:var(--ink);font-weight:700}
+
+/* ── CALC v2 ── */
+.calc-v2{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.calc-controls-row{
+  display:grid;grid-template-columns:2fr 2fr 1fr;gap:0;
+  border-bottom:1px solid var(--bdr);
+}
+.calc-field{padding:14px 16px;border-right:1px solid var(--bdr)}
+.calc-field:last-child{border-right:none}
+.calc-field-lbl{
+  font-size:10px;font-weight:700;color:var(--ink4);
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;
+}
+.calc-field select{
+  width:100%;padding:7px 28px 7px 10px;
+  font-size:12px;font-family:'Noto Sans TC',sans-serif;
+  border:1px solid var(--bdr2);border-radius:var(--r-sm);
+  background:var(--bg);color:var(--ink);cursor:pointer;
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23ABA7A2' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 9px center;
+}
+.calc-field select:focus{outline:none;border-color:var(--pink)}
+.calc-result-row{
+  display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:0;
+}
+.calc-res-cell{
+  padding:16px 18px;border-right:1px solid var(--bdr);
+}
+.calc-res-cell:last-child{border-right:none;background:var(--pink-l)}
+.calc-res-lbl{font-size:10px;color:var(--ink4);margin-bottom:5px;font-weight:500}
+.calc-res-val{font-size:20px;font-weight:700;color:var(--ink)}
+.calc-res-cell:last-child .calc-res-lbl{color:var(--pink-d)}
+.calc-res-cell:last-child .calc-res-val{color:var(--pink-d);font-size:24px}
+.calc-res-twd{font-size:11px;color:var(--pink);font-weight:500;margin-top:2px}
+.calc-note-row{
+  padding:9px 16px;background:var(--sur2);
+  border-top:1px solid var(--bdr);
+  font-size:10px;color:var(--ink4);line-height:1.5;
+}
+
+/* ── LIVING COST v2 ── */
+.living-v2{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.living-header{
+  padding:12px 16px;background:var(--sur2);
+  border-bottom:1px solid var(--bdr);
+  font-size:11px;font-weight:700;color:var(--ink2);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.living-header span{font-size:10px;color:var(--ink4);font-weight:400}
+.living-items{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.living-item{
+  padding:12px 16px;border-right:1px solid var(--bdr);
+  border-bottom:1px solid var(--bdr);
+}
+.living-item:nth-child(3n){border-right:none}
+.living-item:nth-last-child(-n+3){border-bottom:none}
+.living-item-icon{font-size:16px;margin-bottom:5px}
+.living-item-lbl{font-size:10px;color:var(--ink4);margin-bottom:3px;font-weight:500}
+.living-item-val{font-size:13px;font-weight:600;color:var(--ink)}
+.living-total{
+  grid-column:1/-1;padding:14px 16px;
+  background:var(--pink-l);border-top:1px solid var(--pink-m);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.living-total-lbl{font-size:12px;color:var(--pink-d);font-weight:600}
+.living-total-val{font-size:18px;font-weight:700;color:var(--pink-d)}
+.living-total-twd{font-size:11px;color:var(--pink);margin-top:1px}
+.living-note{
+  padding:8px 16px;background:var(--sur2);border-top:1px solid var(--bdr);
+  font-size:10px;color:var(--ink4);line-height:1.55;
+}
+
+/* ── DAY TIMELINE ── */
+.day-timeline{position:relative;padding-left:24px}
+.day-timeline::before{
+  content:'';position:absolute;left:7px;top:8px;bottom:8px;
+  width:1px;background:var(--bdr2);
+}
+.day-slot{position:relative;margin-bottom:14px;display:flex;gap:14px;align-items:flex-start}
+.day-slot:last-child{margin-bottom:0}
+.day-dot{
+  position:absolute;left:-24px;top:4px;
+  width:15px;height:15px;border-radius:50%;
+  background:var(--sur);border:2px solid var(--pink-m);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;z-index:1;
+}
+.day-dot-inner{width:5px;height:5px;border-radius:50%;background:var(--pink)}
+.day-time-lbl{
+  font-size:10px;font-weight:700;color:var(--pink-d);
+  white-space:nowrap;width:80px;flex-shrink:0;padding-top:3px;
+  font-family:'DM Mono',monospace;
+}
+.day-content{flex:1;background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r);padding:10px 13px}
+.day-title{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.day-desc{font-size:11px;color:var(--ink2);line-height:1.6}
+
+/* ── CEFR v2 ── */
+.cefr-v2{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.cefr-header{
+  display:grid;grid-template-columns:100px 1fr 130px 130px;
+  padding:9px 16px;background:var(--sur2);border-bottom:1px solid var(--bdr);
+}
+.cefr-h-lbl{font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:0.08em}
+.cefr-row-v2{
+  display:grid;grid-template-columns:100px 1fr 130px 130px;
+  padding:11px 16px;border-bottom:1px solid var(--bdr);
+  align-items:center;transition:background .1s;
+}
+.cefr-row-v2:last-child{border-bottom:none}
+.cefr-row-v2:hover{background:var(--sur2)}
+.cefr-badge-v2{display:flex;align-items:center;gap:7px}
+.cefr-lvl{font-size:15px;font-weight:700;font-family:'DM Mono',monospace;color:var(--ink)}
+.cefr-name{font-size:11px;color:var(--ink3)}
+.cefr-bar-wrap{padding-right:16px}
+.cefr-bar-bg{height:6px;background:var(--sur2);border-radius:3px;overflow:hidden}
+.cefr-bar-fill{height:100%;border-radius:3px;transition:width .7s ease}
+.cefr-hours-v2{font-size:11px;color:var(--ink2);text-align:right;line-height:1.4}
+.cefr-exam{font-size:10px;color:var(--ink4);text-align:right;line-height:1.4}
+.cefr-note-v2{
+  padding:12px 16px;background:var(--sur2);border-top:1px solid var(--bdr);
+  font-size:11px;color:var(--ink2);line-height:1.65;
+}
+.cefr-note-v2 strong{color:var(--ink)}
+
+/* ── RETURNS ── */
+.returns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.return-card{border:1px solid var(--bdr);border-radius:var(--r-lg);padding:15px;background:var(--sur)}
+.return-card:hover{border-color:var(--pink-m)}
+.return-icon{font-size:20px;margin-bottom:7px}
+.return-title{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.return-desc{font-size:11px;color:var(--ink2);line-height:1.6}
+
+/* ── Q&A ── */
+.qa-list{display:flex;flex-direction:column;gap:7px}
+.qa-item{border:1px solid var(--bdr);border-radius:var(--r-lg);overflow:hidden;background:var(--sur)}
+.qa-q{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 15px;cursor:pointer;user-select:none;
+  transition:background .12s;
+}
+.qa-q:hover{background:var(--sur2)}
+.qa-item.open .qa-q{background:var(--sur2);border-bottom:1px solid var(--bdr)}
+.qa-q-mark{
+  width:20px;height:20px;border-radius:50%;background:var(--pink-l);
+  color:var(--pink-d);font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.qa-q-text{font-size:12px;font-weight:600;color:var(--ink);flex:1;line-height:1.35}
+.qa-arrow{font-size:10px;color:var(--ink4);flex-shrink:0;transition:transform .2s}
+.qa-item.open .qa-arrow{transform:rotate(180deg)}
+.qa-a{
+  display:none;padding:13px 15px 13px 45px;
+  font-size:12px;color:var(--ink2);line-height:1.75;
+  border-left:2px solid var(--pink-m);
+}
+.qa-a strong{color:var(--ink)}
+.qa-item.open .qa-a{display:block}
+
+/* ── CTA ── */
+.cta-bar{
+  background:linear-gradient(135deg,var(--pink-d),var(--pink));
+  border-radius:var(--r-lg);padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;margin-top:8px;
+}
+.cta-text{color:#fff}
+.cta-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.cta-sub{font-size:12px;opacity:0.85;line-height:1.5}
+.cta-action{
+  display:flex;gap:8px;flex-shrink:0;
+}
+.cta-btn{
+  padding:8px 18px;border-radius:var(--r-sm);
+  font-size:12px;font-weight:700;
+  font-family:'Noto Sans TC',sans-serif;
+  cursor:pointer;border:none;white-space:nowrap;
+  transition:all .15s;
+}
+.cta-btn-primary{background:#fff;color:var(--pink-d)}
+.cta-btn-primary:hover{background:var(--pink-l)}
+.cta-btn-ghost{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3)}
+.cta-btn-ghost:hover{background:rgba(255,255,255,0.25)}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--bdr);margin:24px 0}
+
+/* ── CERT BADGES ── */
+.cert-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.cert-badge{
+  font-size:11px;padding:4px 11px;border:1px solid var(--bdr);
+  border-radius:var(--r-sm);color:var(--ink2);background:var(--sur);
+  display:flex;align-items:center;gap:5px;
+}
+.cert-dot{width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0}
+
+/* pk-visa-item */
+.pk-visa-item{font-size:13px;color:var(--ink2);line-height:1.8;padding:12px 15px;background:var(--sur2);border-radius:var(--r-sm)}
+.pk-visa-item b{color:var(--ink);font-weight:700}
+
+/* ── COMPARE MODAL ── */
+.compare-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);
+  z-index:100;align-items:center;justify-content:center;
+}
+.compare-overlay.open{display:flex}
+.compare-modal{
+  background:var(--sur);border-radius:var(--r-lg);
+  width:min(90vw,780px);max-height:80vh;
+  display:flex;flex-direction:column;
+  box-shadow:var(--shadow-md);overflow:hidden;
+}
+.compare-modal-hd{
+  padding:16px 20px;border-bottom:1px solid var(--bdr);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;
+}
+.compare-modal-title{font-size:15px;font-weight:700;color:var(--ink)}
+.compare-close{
+  font-size:18px;color:var(--ink4);cursor:pointer;
+  background:none;border:none;font-family:sans-serif;
+  padding:2px 6px;border-radius:4px;
+}
+.compare-close:hover{background:var(--sur2);color:var(--ink)}
+.compare-modal-body{overflow-y:auto;padding:16px 20px}
+.compare-table{width:100%;border-collapse:collapse;font-size:12px}
+.compare-table th{
+  background:var(--sur2);padding:9px 12px;text-align:left;
+  font-size:11px;font-weight:700;color:var(--ink3);
+  border-bottom:2px solid var(--bdr2);
+  text-transform:uppercase;letter-spacing:0.05em;
+}
+.compare-table td{
+  padding:10px 12px;border-bottom:1px solid var(--bdr);
+  color:var(--ink2);vertical-align:top;line-height:1.5;
+}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table td:first-child{color:var(--ink3);font-weight:600;white-space:nowrap;background:var(--sur2);width:110px}
+
+/* ── PREKNOW ── */
+.preknow-wrap{padding:28px 36px 60px;max-width:880px}
+.preknow-sec-title{
+  font-size:11px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--ink4);
+  margin:28px 0 14px;display:flex;align-items:center;gap:10px;
+}
+.preknow-sec-title::after{content:'';flex:1;height:1px;background:var(--bdr)}
+
+/* demo toggle */
+.demo-toggle-btn{
+  display:flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:600;padding:5px 12px;
+  border:1px solid var(--bdr2);border-radius:var(--r-sm);
+  background:var(--sur);color:var(--ink2);cursor:pointer;
+  font-family:'Noto Sans TC',sans-serif;transition:all .15s;
+}
+.demo-toggle-btn:hover{border-color:var(--pink);color:var(--pink)}
+.demo-mode .demo-toggle-btn{background:var(--pink);border-color:var(--pink);color:#fff}
+/* hide advisor-only elements in demo mode */
+.demo-mode .advisor-only{display:none!important}
+/* note panel */
+.note-panel{
+  background:var(--sur);border:1px solid var(--bdr);
+  border-radius:var(--r-lg);padding:18px 20px;
+  margin-top:0;
+}
+.note-panel-title{
+  font-size:11px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--ink3);
+  margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.note-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.note-field label{
+  display:block;font-size:10px;font-weight:700;
+  color:var(--ink4);text-transform:uppercase;letter-spacing:0.06em;
+  margin-bottom:5px;
+}
+.note-field input,.note-field select{
+  width:100%;padding:7px 10px;
+  font-size:12px;font-family:'Noto Sans TC',sans-serif;
+  border:1px solid var(--bdr2);border-radius:var(--r-sm);
+  background:var(--bg);color:var(--ink);outline:none;
+  transition:border-color .15s;
+}
+.note-field input:focus,.note-field select:focus{border-color:var(--pink)}
+.note-textarea{
+  width:100%;padding:8px 10px;
+  font-size:12px;font-family:'Noto Sans TC',sans-serif;
+  border:1px solid var(--bdr2);border-radius:var(--r-sm);
+  background:var(--bg);color:var(--ink);outline:none;
+  resize:vertical;min-height:72px;line-height:1.6;
+  transition:border-color .15s;
+}
+.note-textarea:focus{border-color:var(--pink)}
+.note-actions{display:flex;align-items:center;gap:8px;margin-top:10px}
+.note-save-btn{
+  padding:7px 18px;background:var(--pink);color:#fff;
+  border:none;border-radius:var(--r-sm);font-size:12px;
+  font-weight:700;font-family:'Noto Sans TC',sans-serif;
+  cursor:pointer;transition:background .15s;
+}
+.note-save-btn:hover{background:var(--pink-d)}
+.note-save-btn:disabled{background:var(--ink4);cursor:not-allowed}
+.note-status{font-size:11px;color:var(--ink4)}
+.note-status.ok{color:#16A34A}
+.note-status.err{color:#DC2626}
+.note-history{margin-top:14px;border-top:1px solid var(--bdr);padding-top:12px}
+.note-history-title{font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
+.note-item{
+  padding:9px 11px;background:var(--sur2);border-radius:var(--r-sm);
+  margin-bottom:6px;font-size:11px;color:var(--ink2);line-height:1.6;
+}
+.note-item-meta{font-size:10px;color:var(--ink4);margin-bottom:3px;display:flex;justify-content:space-between}
+.note-item-del{cursor:pointer;color:var(--ink4);font-size:12px;padding:0 4px}
+.note-item-del:hover{color:#DC2626}
+/* Supabase SQL hint */
+.sql-hint{
+  background:#0F172A;border-radius:var(--r-sm);
+  padding:12px 14px;font-family:'DM Mono',monospace;
+  font-size:11px;color:#94A3B8;line-height:1.65;
+  margin-top:8px;overflow-x:auto;
+}
+.sql-hint .kw{color:#7DD3FC}
+.sql-hint .str{color:#86EFAC}
+.sql-hint .cm{color:#475569}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.anim-in{animation:fadeUp .22s ease}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--sur3);border-radius:2px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  :root{--sb:0px}
+  .sidebar{display:none}
+  .campus-wrap,.preknow-wrap{padding:16px 16px 40px}
+  .calc-controls-row{grid-template-columns:1fr}
+  .calc-result-row{grid-template-columns:1fr 1fr}
+  .living-items{grid-template-columns:1fr 1fr}
+  .cefr-header,.cefr-row-v2{grid-template-columns:80px 1fr 100px}
+  .cefr-exam{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-logo">放洋留遊學</div>
+  <div class="topbar-div"></div>
+  <div class="topbar-sub">EP English Path 語言學校介紹</div>
+  <div class="topbar-right">
+    <button class="compare-btn" id="compareBtnTop" onclick="openCompare()">
+      <span>⚖️</span><span id="compareCount">比較校區</span>
+    </button>
+    <button class="demo-toggle-btn" id="demoToggleBtn" onclick="toggleDemo()" title="切換展示模式">
+      <span id="demoIcon">👁</span><span id="demoLabel">展示模式</span>
+    </button>
+    <div class="topbar-pill pill-gray">2025–26</div>
+    <div class="topbar-pill pill-pink" id="advisorBadge">業務專用</div>
+  </div>
+</div>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sb-top">
+      <button class="sb-preknow-btn" onclick="show('preknow')">
+        <span>📋 出發前必知</span>
+        <span style="font-size:10px">→</span>
+      </button>
+    </div>
+    <div class="sb-scroll">
+      <div class="sb-region">英國</div>
+      <button class="nav-btn" id="nb-canary" onclick="show('canary')">
+        <span class="nav-flag">🇬🇧</span>倫敦 Canary Wharf
+        <span class="nav-cmp" id="cmp-canary" onclick="toggleCmp(event,'canary')"></span>
+      </button>
+      <button class="nav-btn" id="nb-greenford" onclick="show('greenford')">
+        <span class="nav-flag">🇬🇧</span>倫敦 Greenford
+        <span class="nav-cmp" id="cmp-greenford" onclick="toggleCmp(event,'greenford')"></span>
+      </button>
+      <button class="nav-btn" id="nb-birmingham" onclick="show('birmingham')">
+        <span class="nav-flag">🇬🇧</span>伯明罕
+        <span class="nav-cmp" id="cmp-birmingham" onclick="toggleCmp(event,'birmingham')"></span>
+      </button>
+      <button class="nav-btn" id="nb-leeds" onclick="show('leeds')">
+        <span class="nav-flag">🇬🇧</span>里茲
+        <span class="nav-cmp" id="cmp-leeds" onclick="toggleCmp(event,'leeds')"></span>
+      </button>
+      <div class="sb-region">歐洲</div>
+      <button class="nav-btn" id="nb-dublin" onclick="show('dublin')">
+        <span class="nav-flag">🇮🇪</span>都柏林
+        <span class="nav-cmp" id="cmp-dublin" onclick="toggleCmp(event,'dublin')"></span>
+      </button>
+      <button class="nav-btn" id="nb-berlin" onclick="show('berlin')">
+        <span class="nav-flag">🇩🇪</span>柏林
+        <span class="nav-cmp" id="cmp-berlin" onclick="toggleCmp(event,'berlin')"></span>
+      </button>
+      <button class="nav-btn" id="nb-paris" onclick="show('paris')">
+        <span class="nav-flag">🇫🇷</span>巴黎
+        <span class="nav-cmp" id="cmp-paris" onclick="toggleCmp(event,'paris')"></span>
+      </button>
+      <button class="nav-btn" id="nb-malta" onclick="show('malta')">
+        <span class="nav-flag">🇲🇹</span>馬爾他
+        <span class="nav-cmp" id="cmp-malta" onclick="toggleCmp(event,'malta')"></span>
+      </button>
+      <div class="sb-region">中東</div>
+      <button class="nav-btn" id="nb-dubai" onclick="show('dubai')">
+        <span class="nav-flag">🇦🇪</span>杜拜
+        <span class="nav-cmp" id="cmp-dubai" onclick="toggleCmp(event,'dubai')"></span>
+      </button>
+      <div class="sb-region">北美</div>
+      <button class="nav-btn" id="nb-toronto" onclick="show('toronto')">
+        <span class="nav-flag">🇨🇦</span>多倫多
+        <span class="nav-cmp" id="cmp-toronto" onclick="toggleCmp(event,'toronto')"></span>
+      </button>
+      <div class="sb-region">大洋洲</div>
+      <button class="nav-btn" id="nb-brisbane" onclick="show('brisbane')">
+        <span class="nav-flag">🇦🇺</span>布里斯本
+        <span class="nav-cmp" id="cmp-brisbane" onclick="toggleCmp(event,'brisbane')"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main" id="main">
+    <div id="panel-preknow" style="display:none"></div>
+    <div id="campus-panel" style="display:none"></div>
+  </main>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="compare-overlay" id="compareOverlay" onclick="closeCompareIfBg(event)">
+  <div class="compare-modal">
+    <div class="compare-modal-hd">
+      <div class="compare-modal-title">⚖️ 校區比較</div>
+      <button class="compare-close" onclick="closeCompare()">✕</button>
+    </div>
+    <div class="compare-modal-body" id="compareBody"></div>
+  </div>
+</div>
+
+<script>
+// ⚙️ Supabase 設定（與 Ops Manual 共用）
+const SUPABASE_URL  = 'https://uxxpagylkdljjaxslmyj.supabase.co';
+const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eHBhZ3lsa2RsampheHNsbXlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MjAzNDEsImV4cCI6MjA5NDA5NjM0MX0.68pMY1QFbs7mPafSo5uskvaDYoBfM7Vht6n2UYvmgZM';
+async function sb(method, table, body, params) {
+  if(SUPABASE_URL === 'YOUR_SUPABASE_URL') return null;
+  var url = SUPABASE_URL + '/rest/v1/' + table + (params ? '?' + params : '');
+  var opts = {
+    method: method,
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': method === 'POST' ? 'return=representation' : ''
+    }
+  };
+  if(body) opts.body = JSON.stringify(body);
+  try {
+    var res = await fetch(url, opts);
+    if(!res.ok) return null;
+    if(res.status === 204) return true;
+    return res.json().catch(function(){ return null; });
+  } catch(e) { return null; }
+}
+
+const D={
+canary:{
+  name:'倫敦 Canary Wharf',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'Import Building, 2 Clove Crescent, East India, London E14 2BE',cur:'£',
+  intro:'Canary Wharf 是倫敦東區的現代金融心臟，與倫敦金融城並列全球兩大金融中心。這裡高樓聳立、河景開闊，是全球金融、法律與媒體菁英的工作聚集地。EP 在此設立 30 歲以上的成熟學習者專屬校區，讓你在真實的職場氛圍中學習英語，課後沿 Jubilee 線前往南岸或西區購物區，生活機能極為便捷。',
+  info:[{l:'最低年齡',v:'30 歲以上（獨立分班）'},{l:'校區容量',v:'100 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:45 報到）'},{l:'校區性質',v:'30+ 成熟學習者校區'}],
+  feats:[
+    {i:'🏙️',t:'金融核心地帶',d:'坐落於 Canary Wharf 與倫敦金融城之間，課後可直接接觸全球頂尖商業環境，英語沉浸效果極強。'},
+    {i:'🚇',t:'兩線交會，交通便捷',d:'介於 Jubilee Line 與 Elizabeth Line 兩大幹線之間，前往希斯洛機場、倫敦橋、牛津街皆快速直達。'},
+    {i:'👔',t:'30+ 獨立分班制',d:'專為 30 歲以上學員設計獨立課程，班級氛圍更成熟、討論主題更貼近職場與生活經驗。'},
+    {i:'🏢',t:'現代化設施',d:'校區設有學生自習區、圖書館、IT 實驗室及多間餐廳，環境寬敞明亮，提供專業的學習空間。'},
+    {i:'⭐',t:'倫敦 Zone 2 核心',d:'Zone 2 交通費用合理，周邊設有多元餐飲選擇，週末可輕鬆探索格林威治、南岸文化區。'},
+  ],
+  who:[
+    {i:'💼',t:'職場人士或轉職者',d:'希望在金融氛圍中精進商業英語，為晉升或轉職做準備的在職人士。'},
+    {i:'📜',t:'追求專業證書者',d:'想同時取得商業管理或數位行銷專業證書，讓英語進修與職涯發展同步推進。'},
+    {i:'🧑',t:'30 歲以上的成熟學習者',d:'偏好與同齡層一起學習，不想與大量年輕學生混班，希望課程主題貼近職場與生活。'},
+    {i:'🌍',t:'想體驗倫敦金融區生活',d:'對 Canary Wharf 的國際化氛圍有嚮往，課外接觸真實的全球商業環境。'},
+  ],
+  courses:[
+    {name:'標準英語（上午）Classic Morning',special:false,tags:['20堂/週','09:00–12:15','初級→高級'],price:'£405/週起',desc:'每週 20 堂課，每堂 45 分鐘，涵蓋聽說讀寫四大技能。課程採用 Empower、Language Hub 等教材，每週五進行單元測驗，每 10–12 週有技能測驗與課程導修。'},
+    {name:'標準英語（下午）Classic Afternoon',special:false,tags:['20堂/週','13:45–17:00','初級→高級'],price:'£300/週起',desc:'與上午課程內容相同，時間改為下午，費用較低。適合上午有事務安排、或想搭配自由時間探索倫敦的學員。'},
+    {name:'密集英語（上午）Semi-intensive Morning',special:false,tags:['27堂/週','09:00–13:30（週二三延至14:45）','初級→高級'],price:'£450/週起',desc:'標準上午課程加入選修模組，週二與週三延長至 14:45，額外強化口說技能。選修涵蓋發音、辯論、商業英語、IELTS 備考等，每個主題連續 4 週。'},
+    {name:'密集英語（下午）Semi-intensive Afternoon',special:false,tags:['25堂/週','12:30–17:00','初級→高級'],price:'£350/週起',desc:'下午版密集課程，在標準下午課程後加入選修模組，適合想在下午密集學習且希望上午自由運用的學員。'},
+    {name:'超密集英語 Super-intensive',special:false,tags:['40堂/週','09:00–17:00','初級→高級'],price:'£510/週起',desc:'上午＋下午全天上課，每週 40 堂，約 30 小時。適合短期內需要快速大幅提升、或簽證期限較短的學員，強度高建議有一定基礎。'},
+    {name:'一對一個人教學 One-to-One',special:false,tags:['60分鐘/堂','彈性排程','任何程度'],price:'£90/堂起',desc:'完全客製化課程，由教師根據學員個人目標設計。可單獨報名或搭配團體課程。5堂 £425，10堂 £850，20堂 £1,700。'},
+    {name:'商業管理專業證書 I — Business Management & Leadership I',special:true,tags:['20堂/週','09:00–12:15','需 B1+ 程度','2 週'],price:'£700/課程',desc:'領導力、團隊溝通、簡報技巧與商務文件寫作。完成後可接續 Leadership II。開課日（2026）：4/27、11/16。'},
+    {name:'商業管理專業證書 II — Business Management & Leadership II',special:true,tags:['20堂/週','需先完成證書 I','2 週'],price:'£700/課程',desc:'深入專案管理、商業談判與跨文化職場溝通，結業後獲頒正式商業管理證書。開課日（2026）：5/11、11/30。'},
+    {name:'數位行銷專業證書 — Certified Digital Marketing Professional',special:true,tags:['20堂/週','需 B2 程度','4 週'],price:'£2,090/課程',desc:'與 DMI 合作，全球認可的數位行銷專業資格。內容涵蓋 SEO、社群媒體、數位廣告與數據分析。開課日（2026）：1/12、6/15、9/21。'},
+    {name:'帶薪飯店實習計畫 — Paid Hospitality Internship',special:true,tags:['18–30 歲','需 YMS 簽證','港澳日韓台烏拉圭籍'],price:'課程費 + £875 安置費',desc:'最少 4 週英語課程後接續 6 個月帶薪飯店實習。在倫敦頂級飯店累積真實工作經驗並領取薪資。僅限持有 YMS 簽證的特定國籍申請。'},
+    {name:'志工服務計畫 — Volunteering Programme',special:true,tags:['標準訪客簽證適用','2–6 週安置'],price:'零售 £675，其他領域 £695',desc:'在倫敦從事志工服務，同時修讀英語課程。服務領域包含零售、環境、社區等，適用標準訪客簽證學員。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（半膳）',meta:'30歲以上・交通最長 60 分鐘',price:'£305/週起',desc:'住宿英國本地家庭，每日提供早餐與晚餐，英語沉浸效果最強。'},
+    {name:'寄宿家庭（僅早餐）',meta:'30歲以上・交通最長 60 分鐘',price:'£270/週起',desc:'僅提供早餐，午晚餐自理，費用較低，飲食彈性較高。'},
+    {name:'學生宿舍 Sterling Court',meta:'18歲以上・交通約 60 分鐘・最短住 1 週',price:'£430/週',desc:'獨立套房，適合希望擁有個人空間的學員。'},
+    {name:'學生宿舍 McMillan',meta:'18歲以上・交通約 40 分鐘・最短住 4 週',price:'£460/週',desc:'宿舍環境優質，交通較近，適合計畫長期住宿的學員。'},
+  ],
+  fees:[{l:'報名費',v:'£50'},{l:'材料費 1–4週',v:'£45'},{l:'材料費 12–23週',v:'£130'},{l:'電匯手續費（台灣）',v:'£45'},{l:'住宿安置費',v:'£45'}],
+  calcCourses:[{n:'標準上午（Classic Morning）',pw:405},{n:'標準下午（Classic Afternoon）',pw:300},{n:'密集上午（Semi-intensive Morning）',pw:450},{n:'密集下午（Semi-intensive Afternoon）',pw:350},{n:'超密集（Super-intensive）',pw:510}],
+  calcAccomm:[{n:'寄宿家庭 半膳',pw:305},{n:'寄宿家庭 僅早餐',pw:270},{n:'學生宿舍 Sterling Court',pw:430},{n:'學生宿舍 McMillan',pw:460}],
+  day:[
+    {time:'07:30 起床',title:'寄宿家庭早餐',desc:'Homestay 家庭準備的英式早餐——吐司、蛋、茶。和家庭成員用英語聊幾句，一天的沉浸就從這裡開始。'},
+    {time:'08:45 報到',title:'上課前準備',desc:'搭地鐵到 Canary Wharf，走過玻璃帷幕大樓群進入校區，和同學打招呼、找位子坐定。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'20–27 堂/週的課程，涵蓋聽說讀寫。老師帶討論、角色扮演、小組練習，班上來自 5–8 個不同國籍。'},
+    {time:'12:15 午餐',title:'Canary Wharf 覓食',desc:'校區周邊有多間餐廳和咖啡廳，和同學一起去探索，日語、西班牙語、英語夾雜著聊天。'},
+    {time:'下午自由',title:'探索倫敦',desc:'沿 Jubilee Line 去南岸、牛津街、格林威治，或在校區自習室做作業、找老師問問題。'},
+    {time:'18:00 回家',title:'Homestay 晚餐',desc:'晚餐時間是語言沉浸的精華，跟 Host Family 聊聊今天發生的事，英語就在這種對話裡進步。'},
+  ],
+  qa:[
+    {q:'30 歲以上才能讀 Canary Wharf，那 30 歲以下的學員怎麼辦？',a:'30 歲以下的學員可以選擇 Greenford 校區，同樣在倫敦，而且是 EP 全球總部，設施完善、容量更大。Canary Wharf 的 30+ 分班制是為了讓成熟學習者有更契合的學習環境，並非限制，而是一種加值服務。'},
+    {q:'英國標準訪客簽可以讀多久？能打工嗎？',a:'標準訪客簽最長可在英國停留 6 個月，期間不能合法打工。如果有打工需求，需要申請 YMS（青年行動計畫）簽證，適用 18–30 歲、特定國籍（包含台灣），可在英國合法工作並同時就讀語言課程。'},
+    {q:'商業管理證書在台灣或國際上有被承認嗎？',a:'EP 的商業管理與數位行銷證書是與 DMI（Digital Marketing Institute）合作發行，DMI 是國際認可的數位行銷認證機構，證書在全球就業市場具有一定的參考價值。數位行銷專業證書（CDMP）在 LinkedIn、行銷相關職位的求職上有較高的能見度。'},
+  ],
+},
+greenford:{
+  name:'倫敦 Greenford',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'891 Greenford Rd, Greenford, London UB6 0HE',cur:'£',
+  intro:'Greenford 是 EP 的全球總部所在地，也是英國最大的 EP 校區，可容納多達 500 名學生。校園佔地 10 萬平方英尺，設施齊全，擁有 Starbucks 咖啡廳、圖書館、IT 實驗室與多個學生交流空間。校區鄰近溫布利大球場，學校提供免費接駁巴士至地鐵站，生活費用相對市中心更為親民，非常適合首次出國留學、預算有限或希望在友善社區安心學習的學員。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'500 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區性質',v:'EP 全球總部'}],
+  feats:[
+    {i:'🏠',t:'EP 全球總部',d:'EP 品牌的發源地，擁有最完整的行政支援團隊，學員可享有最完善的入學輔導與在校服務。'},
+    {i:'🏫',t:'10 萬平方英尺大型校園',d:'現代化校園設施涵蓋 Starbucks 咖啡廳、圖書館、IT 實驗室與多個學生休息區，大學校園般的氛圍。'},
+    {i:'🚌',t:'免費接駁巴士',d:'學校提供免費校車接送至最近地鐵站，大幅降低通勤壓力，對初來乍到的新生特別友善。'},
+    {i:'🛡️',t:'安全友善的社區',d:'Greenford 是倫敦西區安靜的住宅社區，治安良好，生活費用比市中心低約 20–30%。'},
+    {i:'🏟️',t:'鄰近溫布利大球場',d:'步行可達溫布利球場，英超賽事、演唱會與大型活動近在咫尺，課外娛樂選擇豐富。'},
+  ],
+  who:[
+    {i:'🎒',t:'首次出國留學的年輕學員',d:'年齡 16 歲以上即可就讀，校區環境安全、服務完善，特別適合第一次獨自出國的學員。'},
+    {i:'💰',t:'預算有限但想留倫敦',d:'相較於 Canary Wharf，Greenford 的住宿與生活費用更親民，是在倫敦學習英語的高性價比選擇。'},
+    {i:'👥',t:'享受大型校園社交氛圍',d:'500 人容量讓學員有機會認識來自更多國家的同學，社交活動豐富，新生融入速度快。'},
+    {i:'🌱',t:'想結合工作體驗的學員',d:'可報名帶薪飯店實習或志工計畫，邊學英語邊累積倫敦的職場或志工經驗。'},
+  ],
+  courses:[
+    {name:'標準英語（上午）Classic Morning',special:false,tags:['20堂/週','09:00–12:15','初級→高級'],price:'£405/週起',desc:'每週 20 堂標準英語課，涵蓋四大技能，每週五單元測驗。使用 Empower、Language Hub 等原版教材。'},
+    {name:'密集英語（上午）Semi-intensive Morning',special:false,tags:['27堂/週','09:00–13:30（週二三延至14:45）','初級→高級'],price:'£450/週起',desc:'標準上午課程加入選修模組，週二週三延長上課時間，加強口說技能。選修主題每 4 週更換。'},
+    {name:'一對一個人教學 One-to-One',special:false,tags:['60分鐘/堂','任何程度'],price:'£90/堂起',desc:'由教師針對個人目標量身設計課程。5堂 £425，10堂 £850，20堂 £1,700。'},
+    {name:'帶薪飯店實習計畫 — Paid Hospitality Internship',special:true,tags:['18–30 歲','需 YMS 簽證','港澳日韓台烏拉圭籍'],price:'課程費 + £875 安置費',desc:'最少 4 週英語課程後接續 6 個月帶薪飯店實習。僅限持有 YMS 簽證的特定國籍申請。'},
+    {name:'志工服務計畫 — Volunteering Programme',special:true,tags:['標準訪客簽證適用'],price:'零售 £675，其他 £695',desc:'在倫敦從事社區志工服務，同時修讀英語課程，安置期 2–6 週。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（半膳）',meta:'16歲以上・交通最長 60 分鐘',price:'£305/週起',desc:'住宿本地家庭含早晚餐，英語沉浸效果最佳。'},
+    {name:'寄宿家庭（僅早餐）',meta:'16歲以上・交通最長 60 分鐘',price:'£270/週起',desc:'僅含早餐，午晚餐自理，彈性較高，費用更低。'},
+    {name:'學生宿舍（參考 Canary Wharf）',meta:'18歲以上',price:'£430/週起',desc:'可安排 Canary Wharf 校區的合作宿舍，詳細選項請參考 Canary Wharf 頁面。'},
+  ],
+  fees:[{l:'報名費',v:'£50'},{l:'材料費 1–4週',v:'£45'},{l:'材料費 12–23週',v:'£130'},{l:'電匯手續費（台灣）',v:'£45'},{l:'住宿安置費',v:'£45'}],
+  calcCourses:[{n:'標準上午（Classic Morning）',pw:405},{n:'密集上午（Semi-intensive Morning）',pw:450}],
+  calcAccomm:[{n:'寄宿家庭 半膳',pw:305},{n:'寄宿家庭 僅早餐',pw:270},{n:'學生宿舍',pw:430}],
+  day:[
+    {time:'07:30 起床',title:'Homestay 早餐',desc:'在英國住宅區的家庭廚房吃早餐，聽 BBC Radio，和 Host Family 聊今天的天氣和計畫。'},
+    {time:'09:00 上課',title:'進入大型校園',desc:'10 萬平方英尺的校區有 Starbucks 咖啡廳，先點杯咖啡，和同學聊幾句再進教室。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'全英語環境的課堂，老師會根據你的程度調整教學速度，每週五有單元測驗確認進度。'},
+    {time:'12:15 午餐',title:'校園內用餐',desc:'校區內有多個休息區，和來自不同國家的同學坐在一起吃午餐，順便練習閒聊英語。'},
+    {time:'下午自由',title:'倫敦在 30 分鐘外',desc:'搭地鐵 30 分鐘到牛津街、30 分鐘到大英博物館，學校有免費接駁車到地鐵站，交通非常方便。'},
+    {time:'週末',title:'英超或溫布利活動',desc:'校區步行可達溫布利球場，遇到演唱會或英超比賽，和同學一起去感受英國的現場氛圍。'},
+  ],
+  qa:[
+    {q:'Greenford 離倫敦市中心很遠嗎？',a:'Greenford 位於倫敦西區，搭乘地鐵（Central Line）約 30–40 分鐘可到市中心的牛津街。學校有免費接駁巴士到地鐵站，加上生活費比市中心低 20–30%，是性價比相當高的選擇。'},
+    {q:'16 歲的學員住宿有特別規定嗎？',a:'16–17 歲的未成年學員建議選擇寄宿家庭（至少含早餐），並建議同時安排來回機場接送，確保安全。EP Greenford 對未成年學員有完整的照護機制，學校會指派學生大使在第一週協助。'},
+    {q:'500 人的校區台灣人比例高嗎？',a:'EP 全球校區的學員來自 70 個以上的國籍，台灣學員比例並不高。大型校區反而因為國籍多元，課堂上與同學用英語溝通的機會更多，語言沉浸效果好。'},
+  ],
+},
+birmingham:{
+  name:'伯明罕',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'Norfolk House, 84-86 Smallbrook Queensway, Birmingham B5 4EG',cur:'£',
+  intro:'伯明罕是英國第二大城市，以多元文化、年輕化人口結構與蓬勃的商業發展著稱。EP 伯明罕校區就在市中心心臟地帶，距伯明罕新街火車站步行僅兩分鐘，Bullring 購物中心就在校門對面。這裡是英國珠寶之都，擁有全英國最大的圖書館，每年聖誕市集規模也是全英第一，城市生活豐富多彩，生活費用比倫敦平易近人許多。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'500 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:45 報到）'},{l:'校區亮點',v:'市中心最佳地點'}],
+  feats:[
+    {i:'🚉',t:'距新街站步行 2 分鐘',d:'交通極為便利，前往倫敦、曼徹斯特、愛丁堡等城市皆有直達班次，城際旅行成本低。'},
+    {i:'🛍️',t:'Bullring 購物中心就在眼前',d:'校區正對地標性商圈，課後購物、餐飲、娛樂一次滿足，生活便利性極高。'},
+    {i:'🎓',t:'英國最年輕的人口結構',d:'伯明罕平均年齡全英最低，城市充滿活力，學生文化濃厚，來自全球的留學生眾多，社交機會豐富。'},
+    {i:'📚',t:'全英最大圖書館',d:'伯明罕圖書館為全英最大公共圖書館，課外自習、資源查找極為方便。'},
+    {i:'💰',t:'生活費遠低於倫敦',d:'住宿與餐飲費用約為倫敦的 60–70%，是英國大城市中性價比最高的留學選擇之一。'},
+  ],
+  who:[
+    {i:'💰',t:'注重性價比的學員',d:'想在英國大城市留學，但希望住宿與生活費用比倫敦更負擔得起，Birmingham 是最佳替代選擇。'},
+    {i:'📝',t:'想準備 IELTS 考試',d:'校區提供 IELTS 備考課程（需 B1+ 程度），適合準備英國大學入學或移民申請的學員。'},
+    {i:'🌆',t:'喜歡都市生活的學員',d:'城市設施完整，購物、餐飲、音樂、藝術活動豐富，喜歡城市氛圍又不想面對倫敦高消費的學員首選。'},
+    {i:'✈️',t:'旅遊中轉的好基地',d:'交通樞紐地位絕佳，從伯明罕可輕鬆前往英國各地，週末小旅行選擇多元。'},
+  ],
+  courses:[
+    {name:'標準英語／IELTS（上午）Classic Morning',special:false,tags:['20堂/週','09:00–12:15','初級→高級'],price:'£380/週起',desc:'每週 20 堂標準英語課，涵蓋聽說讀寫。選擇 IELTS 方向需具備 B1+ 中級以上程度。'},
+    {name:'密集英語（上午）Semi-intensive Morning',special:false,tags:['27堂/週','09:00–13:30（週二三延至14:45）','初級→高級'],price:'£435/週起',desc:'標準課程加入選修模組，週二三延長至 14:45，強化口說能力。選修主題每 4 週輪換。'},
+    {name:'一對一個人教學 One-to-One',special:false,tags:['60分鐘/堂','任何程度'],price:'£90/堂起',desc:'完全客製化課程。5堂 £425，10堂 £850，20堂 £1,700。'},
+    {name:'帶薪飯店實習計畫 — Paid Hospitality Internship',special:true,tags:['18–30 歲','需 YMS 簽證'],price:'課程費 + £875 安置費',desc:'最少 4 週英語課後接續 6 個月帶薪飯店實習。僅限持有 YMS 簽證的特定國籍申請。'},
+    {name:'志工服務計畫 — Volunteering Programme',special:true,tags:['標準訪客簽證適用'],price:'零售 £675，其他 £695',desc:'在伯明罕從事社區或零售志工，同時修讀英語課程。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（半膳）',meta:'16歲以上・交通最長 60 分鐘',price:'£240/週起',desc:'住宿本地家庭含早晚餐，英語沉浸首選。'},
+    {name:'寄宿家庭（僅早餐）',meta:'16歲以上・交通最長 60 分鐘',price:'£210/週起',desc:'僅含早餐，費用更低，飲食彈性更高。'},
+    {name:'學生宿舍 IQ 51 Studios',meta:'18歲以上・距校 15 分鐘',price:'£295/週',desc:'獨立工作室套房，現代化設施，提供完整個人空間。'},
+    {name:'學生宿舍 The Heights',meta:'18歲以上・最短住 4 週',price:'£280/週',desc:'單人套房，設施完善，最短入住 4 週。'},
+  ],
+  fees:[{l:'報名費',v:'£50'},{l:'材料費 1–4週',v:'£45'},{l:'材料費 12–23週',v:'£130'},{l:'電匯手續費（台灣）',v:'£45'},{l:'住宿安置費',v:'£45'}],
+  calcCourses:[{n:'標準上午（Classic Morning）',pw:380},{n:'密集上午（Semi-intensive Morning）',pw:435}],
+  calcAccomm:[{n:'寄宿家庭 半膳',pw:240},{n:'寄宿家庭 僅早餐',pw:210},{n:'學生宿舍 IQ Studios',pw:295},{n:'學生宿舍 The Heights',pw:280}],
+  day:[
+    {time:'08:00 起床',title:'市中心出發',desc:'從 Homestay 搭公車或步行前往學校，沿路是英國第二大城的市中心街景，距 Bullring 只有一分鐘。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'一般英語或 IELTS 備考方向，班上來自歐洲、拉美、亞洲各國，全英語討論是日常。'},
+    {time:'12:15 午餐',title:'Bullring 或附近覓食',desc:'校門口就是全英最大聖誕市集所在地，平時有大量餐飲選擇，午餐幾磅就能解決。'},
+    {time:'下午自由',title:'城市探索或自習',desc:'市圖書館是全英最大公共圖書館，自習環境一流；或搭火車 85 分鐘殺去倫敦一日遊。'},
+    {time:'週末',title:'英格蘭各城市任你去',desc:'從伯明罕搭火車，1 小時可到倫敦、曼徹斯特、牛津，週末小旅行是這個校區的最大優勢。'},
+  ],
+  qa:[
+    {q:'伯明罕的英語口音很重嗎？會影響學習嗎？',a:'伯明罕確實有自己的口音（Brummie），但 EP 的教師都是受過訓練的語言教育專業人員，課堂上使用標準英語授課。課外接觸當地口音反而是好事，能訓練對不同英語腔調的適應力，這在真實職場環境非常有用。'},
+    {q:'伯明罕和倫敦相比有什麼優缺點？',a:'伯明罕最大的優勢是生活費低、交通便利（距倫敦 85 分鐘火車）、城市規模適中不會迷失。缺點是知名度不如倫敦，部分學員可能覺得城市「感覺沒那麼國際」。但對於想控制預算、同時保有完整英國城市生活體驗的學員來說，伯明罕是非常實際的選擇。'},
+    {q:'可以每週末去倫敦嗎？',a:'完全可以。伯明罕到倫敦 Euston 站火車約 85 分鐘，提前購票單程票價約 £10–30。很多學員會固定週末去倫敦，或前往曼徹斯特、牛津等地，把伯明罕當作探索英格蘭的中心基地。'},
+  ],
+},
+leeds:{
+  name:'里茲',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'St George House, 40 Great George St, Leeds LS1 3DL',cur:'£',
+  intro:'里茲是約克郡最大城市，英國第八大城，以充滿活力的藝術場景、頂尖劇場文化與多元餐飲聞名全球。EP 里茲校區位於市中心精華地段，緊鄰市政廳與市議會，步行即可抵達主要購物與娛樂區。距倫敦僅兩小時火車、愛丁堡三小時，週末輕鬆探索約克古城、湖區國家公園或利物浦，是英語學習與深度旅遊最完美的結合。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'250 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:45 報到）'},{l:'程度範圍',v:'初學者→高級'}],
+  feats:[
+    {i:'📍',t:'市中心最佳地段',d:'校區正對市政廳，步行可達 Headrow 購物街、Leeds City Market 與多個文化場館，生活機能完整。'},
+    {i:'🚄',t:'交通樞紐，探索英格蘭北部',d:'距倫敦 2 小時、愛丁堡 3 小時、利物浦 1.5 小時，從里茲出發探索英格蘭北部各城市非常便利。'},
+    {i:'🌳',t:'大學城氛圍，綠意盎然',d:'里茲大學與里茲貝克特大學均位於此，學生氛圍濃厚，城市中有大量公園與綠地。'},
+    {i:'🎵',t:'藝術與夜生活重鎮',d:'里茲擁有得獎無數的劇場、現場音樂場地與酒吧文化，城市活力高，課外生活豐富精彩。'},
+    {i:'💰',t:'生活費低於倫敦約 30%',d:'住宿、餐飲與娛樂費用均低於倫敦，是在英國享受完整城市留學體驗最具性價比的選擇。'},
+  ],
+  who:[
+    {i:'✈️',t:'熱愛旅行探索的學員',d:'里茲地理位置絕佳，週末可輕鬆前往湖區、約克、峰區、利物浦，邊學英語邊深度體驗英國。'},
+    {i:'📝',t:'IELTS 考試準備者',d:'提供 IELTS 備考課程（需 B1+ 程度），適合準備赴英升學或申請移民的學員。'},
+    {i:'💰',t:'預算有限但嚮往英國城市生活',d:'里茲的住宿與生活費用比倫敦低，卻同樣擁有完整的城市設施與文化活動。'},
+    {i:'🎓',t:'喜歡大學城氛圍的年輕學員',d:'城市年輕化、學生多，課外社交環境活躍，適合希望在留學期間建立廣泛人際關係的學員。'},
+  ],
+  courses:[
+    {name:'標準英語／IELTS（上午）Classic Morning',special:false,tags:['20堂/週','09:00–12:15','初學者→高級'],price:'£380/週起',desc:'每週 20 堂涵蓋四大技能的標準英語課程，IELTS 方向需 B1+ 以上程度。'},
+    {name:'密集英語（上午）Semi-intensive Morning',special:false,tags:['27堂/週','09:00–13:30（週二三延至14:45）','初學者→高級'],price:'£435/週起',desc:'標準課程加入選修模組，選修每 4 週更換主題，涵蓋商業英語、就業技能、IELTS 備考、辯論等。'},
+    {name:'一對一個人教學 One-to-One',special:false,tags:['60分鐘/堂','任何程度'],price:'£90/堂起',desc:'客製化個人課程。5堂 £425，10堂 £850，20堂 £1,700。'},
+    {name:'帶薪飯店實習計畫 — Paid Hospitality Internship',special:true,tags:['18–30 歲','需 YMS 簽證'],price:'課程費 + £875 安置費',desc:'最少 4 週課程後接續 6 個月帶薪實習，體驗英國飯店業真實職場環境。'},
+    {name:'志工服務計畫 — Volunteering Programme',special:true,tags:['標準訪客簽證適用'],price:'零售 £675，其他 £695',desc:'在里茲從事志工服務，同時修讀英語課程。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（半膳）',meta:'16歲以上・交通最長 60 分鐘',price:'£240/週起',desc:'住宿本地家庭含早晚餐，英語沉浸首選。'},
+    {name:'寄宿家庭（僅早餐）',meta:'16歲以上・交通最長 60 分鐘',price:'£210/週起',desc:'含早餐，餐飲較彈性，費用較低。'},
+    {name:'學生宿舍 IQ Leeds',meta:'18歲以上・距校 20 分鐘・最短住 1 週',price:'£210/週',desc:'單人套房，現代設施，最短住 1 週，彈性最高。'},
+    {name:'學生宿舍 Threadworks',meta:'18歲以上・步行 10 分鐘・最短住 4 週',price:'£300/週',desc:'距校近、設施優質，適合中長期住宿。'},
+    {name:'學生公寓 Briggate（套房）',meta:'18歲以上・步行 10 分鐘・最短住 4 週',price:'£320/週',desc:'獨立工作室套房，提供完整個人空間。'},
+  ],
+  fees:[{l:'報名費',v:'£50'},{l:'材料費 1–4週',v:'£45'},{l:'材料費 12–23週',v:'£130'},{l:'電匯手續費（台灣）',v:'£45'},{l:'住宿安置費',v:'£45'}],
+  calcCourses:[{n:'標準上午（Classic Morning）',pw:380},{n:'密集上午（Semi-intensive Morning）',pw:435}],
+  calcAccomm:[{n:'寄宿家庭 半膳',pw:240},{n:'寄宿家庭 僅早餐',pw:210},{n:'學生宿舍 IQ Leeds',pw:210},{n:'學生宿舍 Threadworks',pw:300},{n:'學生公寓 Briggate',pw:320}],
+  day:[
+    {time:'08:00 起床',title:'約克郡的早晨',desc:'從 Homestay 出發，穿過里茲市中心，校區就在市政廳旁邊，步行可達主要購物街。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'標準課程或 IELTS 備考，班上同學來自全球。里茲是大學城，整個城市都有學習的氛圍。'},
+    {time:'12:15 午餐',title:'Leeds Market 或 Headrow',desc:'里茲室內市場有多元餐飲，幾英鎊就能吃到各國料理，和同學一起探索是日常節目。'},
+    {time:'下午自由',title:'公園、藝廊或夜生活',desc:'里茲有得獎劇場、現場音樂場地、大量公園綠地，下午時間你幾乎不會有「不知道去哪裡」的問題。'},
+    {time:'週末',title:'約克、湖區、利物浦',desc:'里茲是探索英格蘭北部的最佳基地。25 分鐘到約克古城、1.5 小時到湖區、1.5 小時到利物浦。'},
+  ],
+  qa:[
+    {q:'里茲和伯明罕怎麼選？',a:'兩者費用相近，主要差別在氛圍。里茲更有大學城感、藝術氣息濃、周邊旅遊景點豐富（約克、湖區、峰區）；伯明罕更商業化、交通更居中、離倫敦更近。喜歡文藝、旅遊的學員選里茲；想要交通方便、隨時殺去倫敦的學員選伯明罕。'},
+    {q:'里茲的 IELTS 課程有提供考試報名服務嗎？',a:'EP 提供協助學員報名 IELTS 考試的服務，但考試費用需學員自行支付（另計）。課程本身以備考訓練為主，建議至少有 B1+ 的程度再選擇 IELTS 課程方向，效果最佳。'},
+    {q:'從里茲去湖區或約克方便嗎？',a:'非常方便。約克距里茲約 25 分鐘火車，票價約 £5–10。湖區的入口城市 Windermere 從里茲搭火車約 1.5–2 小時，也可以參加 EP 的週末社交活動，學校通常會在暑期安排周邊小旅行。'},
+  ],
+},
+dublin:{
+  name:'都柏林',region:'歐洲',tag:'tag-eu',flag:'🇮🇪',
+  addr:'1 Clarinda Park North, Dún Laoghaire, Dublin A96 H5X6',cur:'€',
+  intro:'都柏林是 UNESCO 認定的文學之城，孕育了喬伊斯、葉慈、王爾德等文學巨匠。EP 都柏林校區坐落於美麗的海濱小鎮 Dún Laoghaire，校舍為壯觀的一級列管歷史建築，面向愛爾蘭海，環境靜謐怡人。這裡同時也是歐洲科技重鎮，Google、LinkedIn、Udemy、TikTok 的歐洲總部均設於此。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'180 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:30 報到）'},{l:'校舍特色',v:'一級列管歷史建物'}],
+  feats:[
+    {i:'🏛️',t:'一級列管歷史建築校舍',d:'校舍本身是愛爾蘭政府認定的一級歷史保護建築，在具有文化底蘊的環境中學習英語，體驗無可複製。'},
+    {i:'🌊',t:'濱海學習環境',d:'校區俯瞰愛爾蘭海，距都柏林市中心搭 DART 鐵路僅 20 分鐘，兼具自然美景與都市便利。'},
+    {i:'💻',t:'歐洲科技重鎮',d:'Google、LinkedIn、Udemy、TikTok 歐洲總部均在都柏林，科技業英語環境絕佳。'},
+    {i:'📖',t:'UNESCO 文學之城',d:'都柏林文學氣息濃厚，博物館、書店、劇場俯拾皆是，有助於全方位提升英語理解力。'},
+    {i:'💼',t:'Work & Study 合法打工方案',d:'提供非 EU 學員合法打工的計畫，25 週課程期間可合法從事兼職工作。'},
+  ],
+  who:[
+    {i:'💼',t:'有意在愛爾蘭打工的學員',d:'Work & Study 計畫讓非 EU 學員可在課程期間合法兼職，非常適合想在留學期間降低開銷的學員。'},
+    {i:'💻',t:'科技業求職者或從業人員',d:'都柏林是歐洲科技業中心，在此學習英語同時接觸真實的科技業環境，對履歷與人脈積累大有助益。'},
+    {i:'📚',t:'喜愛文學與文化的學員',d:'UNESCO 文學之城的文化氛圍讓英語學習更有深度，適合熱愛閱讀、文化探索的學員。'},
+    {i:'📝',t:'IELTS 或 TIE 考試準備者',d:'校區提供 IELTS 與愛爾蘭 TIE 兩種考試備考資源。'},
+    {i:'🇪🇺',t:'EU 護照持有者',d:'EU/EEA 護照持有者可享有更多工作彈性，Work Experience 計畫提供全職工作安置機會。'},
+  ],
+  courses:[
+    {name:'標準英語（上午）Classic Morning',special:false,tags:['20堂/週','09:00–12:15','初學者→高級'],price:'€380/週起',desc:'每週 20 堂標準英語課，每堂 45 分鐘，涵蓋聽說讀寫。'},
+    {name:'標準英語（下午）Classic Afternoon',special:false,tags:['20堂/週','13:45–17:00 或 12:30–16:45','初學者→高級'],price:'€270/週起',desc:'下午版標準課程，包含一般版（週一至五）與四天版（週一至四），費用相同，時間更彈性。'},
+    {name:'密集英語（上午）Semi-intensive Morning',special:false,tags:['25堂/週','09:00–13:30','初學者→高級'],price:'€440/週起',desc:'標準課程加入選修模組，每週 25 堂，選修主題每 4 週更換。'},
+    {name:'密集英語（下午）Semi-intensive Afternoon',special:false,tags:['25堂/週','12:30–17:00','初學者→高級'],price:'€315/週起',desc:'下午版密集課程，適合上午有其他安排的學員。'},
+    {name:'超密集英語 Super-intensive',special:false,tags:['40堂/週','09:00–17:00','初學者→高級'],price:'€590/週起',desc:'全天上課，每週 40 堂，適合短期內需要大幅提升英語的學員。'},
+    {name:'一對一個人教學 One-to-One',special:false,tags:['60分鐘/堂','任何程度'],price:'€130/堂起',desc:'完全客製化個人課程。5堂 €625，10堂 €1,250，20堂 €2,400。'},
+    {name:'工作 + 學習計畫 — Work & Study Programme',special:true,tags:['25週課程＋10週假期','非EU學員適用','可合法兼職'],price:'€6,500 起（上午班）',desc:'專為非 EU 學員設計的 35 週完整計畫。課程期間每週最多兼職 20 小時，假期期間（6月–9月及12月–1月）可全職工作每週最多 40 小時。'},
+    {name:'工作體驗計畫 — Work Experience（EU/EEA 限定）',special:true,tags:['EU/EEA 護照持有者限定','全職工作安置'],price:'安置費 €600',desc:'僅限 EU/EEA 護照持有者，可安置全職工作職位，結合語言課程與愛爾蘭職場體驗。'},
+    {name:'Pathway 銜接課程 — Pathway Programme',special:true,tags:['銜接大學入學','依程度安排'],price:'請洽詢',desc:'為有意升讀愛爾蘭或英國大學的學員設計，結合 EAP 學術英語與大學入學準備，透過 EP 合作院校網絡協助銜接。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（半膳）',meta:'16歲以上・交通最長 60 分鐘・淡季',price:'€285/週起',desc:'住宿愛爾蘭本地家庭含早晚餐，英語沉浸效果最佳。暑期（6–8月）附加 €30/週旺季費。'},
+    {name:'寄宿家庭（全膳）',meta:'16歲以上',price:'€300/週起',desc:'三餐全包，最省心，特別適合初次出國的學員。'},
+    {name:'共享房屋',meta:'20–35歲・交通約 50 分鐘・最短住 8 週',price:'€195/週起',desc:'與其他學員共住，費用最低，適合喜愛獨立生活的學員。'},
+    {name:'學生宿舍 Niche Living（套房）',meta:'18歲以上・步行 5 分鐘・8週以上',price:'€535/週起',desc:'步行 5 分鐘可到校，現代化套房，是最方便的住宿選擇。'},
+    {name:'皇家馬林飯店 Royal Marine Hotel',meta:'18歲以上・步行 6 分鐘・含早餐',price:'€900/週起',desc:'飯店式服務，旺季（4月–12月）€1,200/週，適合追求舒適度的學員。'},
+  ],
+  fees:[{l:'報名費',v:'€75'},{l:'材料費 1–4週',v:'€50'},{l:'材料費 12–23週',v:'€150'},{l:'保險（選購）',v:'€10/週'},{l:'電匯手續費（台灣）',v:'€50'},{l:'住宿安置費',v:'€75'}],
+  calcCourses:[{n:'標準上午（Classic Morning）',pw:380},{n:'標準下午（Classic Afternoon）',pw:270},{n:'密集上午（Semi-intensive Morning）',pw:440},{n:'密集下午（Semi-intensive Afternoon）',pw:315},{n:'超密集（Super-intensive）',pw:590}],
+  calcAccomm:[{n:'寄宿家庭 半膳',pw:285},{n:'寄宿家庭 全膳',pw:300},{n:'共享房屋',pw:195},{n:'學生宿舍 Niche Living',pw:535}],
+  day:[
+    {time:'07:45 起床',title:'海景早晨',desc:'從 Dún Laoghaire 的 Homestay 醒來，天氣好的話可以看到愛爾蘭海，步行幾分鐘就是 DART 輕軌站。'},
+    {time:'08:30 上課',title:'歷史建築中上英語課',desc:'校舍是愛爾蘭一級列管歷史建築，踏進這棟 19 世紀建築，光是環境就讓人心情好。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'涵蓋口說、寫作、文法，班上通常有來自歐洲和南美洲的同學為主，讓你接觸多種英語口音。'},
+    {time:'12:15 午餐',title:'海濱咖啡廳',desc:'Dún Laoghaire 碼頭邊有多間咖啡廳，天氣好時坐在戶外吃午餐，這就是愛爾蘭留學的日常。'},
+    {time:'下午自由',title:'DART 進都柏林市區',desc:'搭 DART 20 分鐘直達市中心，Temple Bar、聖三一學院、都柏林城堡，下午可以輕鬆完成一個景點。'},
+    {time:'週末',title:'文學、科技、海岸',desc:'都柏林文學博物館、Google 歐洲總部所在街區散步、搭 Dart 到南邊的海灘，每個週末都有不同節目。'},
+  ],
+  qa:[
+    {q:'台灣人去愛爾蘭需要簽證嗎？能打工嗎？',a:'台灣護照持有者入境愛爾蘭可以免簽停留最長 90 天。如果就讀超過 90 天，需要辦理學生簽。Work & Study 計畫是針對非 EU 學員設計的合法打工方案，在 25 週課程期間可每週兼職最多 20 小時，假期期間（夏天和聖誕前後）可全職工作。'},
+    {q:'Dún Laoghaire 是什麼地方？離都柏林市中心遠嗎？',a:'Dún Laoghaire 是都柏林南部的濱海小鎮，搭乘 DART 輕軌到市中心的 Connolly 站約 20–25 分鐘，票價約 €2–3。這裡是都柏林當地人最愛的休閒區域，海景優美、治安良好、生活機能完整，校區就在海灣旁邊，環境非常舒適。'},
+    {q:'愛爾蘭英語口音重嗎？學了會不會變成愛爾蘭腔？',a:'愛爾蘭英語是一種獨特的英語腔調，和英國英語略有不同，但完全可以理解。EP 的課堂教學使用標準英語，不會讓你學出特定口音。事實上，能夠適應不同英語腔調正是英語能力成熟的表現，在愛爾蘭學習反而能訓練你對多元英語口音的理解力。'},
+  ],
+},
+berlin:{
+  name:'柏林',region:'歐洲',tag:'tag-eu',flag:'🇩🇪',
+  addr:'ALT-Moabit 96C, 10559 Berlin, Germany',cur:'€',
+  intro:'柏林是歐洲最具創意能量的城市之一，每個街區都有自己的故事與風格。這裡擁有 170 多座博物館、300 多個藝廊與 150 多家劇場，文化資源極為豐富。EP 柏林是全球少數同時提供德文與英文課程的 EP 校區，讓你在德國最重要的城市完全沉浸在德語環境之中，是學習德語的全球最佳選擇之一。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'250 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'英語：週一 11:30；德語：週一 12:30'},{l:'語言選擇',v:'德文 ＋ 英文'}],
+  feats:[
+    {i:'🗣️',t:'德文 ＋ 英文雙語課程',d:'EP 全球少數同時提供德文與英文課程的校區，可選擇學德語沉浸或學英語備考，甚至兩者搭配。'},
+    {i:'🏛️',t:'鄰近布蘭登堡門與博物館島',d:'校區位於市中心，短距離內可抵達布蘭登堡門、柏林圍牆遺址、博物館島等世界級歷史地標。'},
+    {i:'🌿',t:'歐洲最綠城市之一',d:'柏林擁有 3,000 多個湖泊與大面積森林公園，是歐洲最宜居的首都之一，生活品質高。'},
+    {i:'🎨',t:'多元文化、蓬勃藝術',d:'柏林是全球藝術家與創意工作者的聚集地，多元開放的文化氛圍讓語言學習廣度遠超課堂之外。'},
+    {i:'💰',t:'生活費低於西歐平均',d:'相較於巴黎、倫敦，柏林生活費用合理，是歐洲首都中性價比最高的學習目的地之一。'},
+  ],
+  who:[
+    {i:'🗣️',t:'想學德文的學員',d:'全球最直接學習德語的環境，EP 柏林提供完整的德語課程體系，從初學者到進階皆可。'},
+    {i:'🏢',t:'對德國就業市場有興趣',d:'德國是歐洲最大經濟體，德語能力在求職市場極具競爭力，在柏林學習同時接觸德國職場文化。'},
+    {i:'🎓',t:'想取得 Pathway 資格的學員',d:'柏林校區提供 Pathway 銜接課程，透過 EP 合作院校網絡銜接德國或歐洲大學入學。'},
+    {i:'🎨',t:'藝術、設計、創意工作者',d:'柏林是全球創意聚集地，對設計、藝術、音樂等領域有興趣的學員，在此學語言同時汲取創意能量。'},
+  ],
+  courses:[
+    {name:'德文標準課程（上午）Classic Morning — German',special:false,tags:['20堂/週','09:00–12:15','初級→高級'],price:'€320/週起',desc:'每週 20 堂德文課程，使用 Hueber Momente 等主流教材，涵蓋德語聽說讀寫四大技能。'},
+    {name:'德文密集課程（上午）Semi-intensive Morning — German',special:false,tags:['25堂/週','09:00–13:30','初級→高級'],price:'€360/週起',desc:'標準德文課程加入選修模組，每週 25 堂，選修每 4 週更換主題。'},
+    {name:'德文 Premium 30（上午）',special:false,tags:['30堂/週','09:00–14:45','初級→高級'],price:'€500/週起',desc:'德文學習最高強度，含標準課程＋選修＋5 堂一對一，是最快速提升德語的課程組合。'},
+    {name:'英文標準課程（下午）Classic Afternoon — English',special:false,tags:['20堂/週','13:45–17:00','初級→高級'],price:'€320/週起',desc:'下午英文標準課程，適合上午學習德文或自由活動的學員，雙語搭配效果更佳。'},
+    {name:'英文密集課程（下午）Semi-intensive Afternoon — English',special:false,tags:['25堂/週','12:30–17:00','初級→高級'],price:'€360/週起',desc:'下午版密集英文課程，含選修加強模組，適合同時提升德英雙語能力的學員。'},
+    {name:'英文 Premium 30（下午）',special:false,tags:['30堂/週','11:15–17:00','初級→高級'],price:'€500/週起',desc:'英文學習最高強度，含選修與 5 堂一對一，適合短期內需大幅提升英語的學員。'},
+    {name:'一對一個人教學（德文或英文）',special:false,tags:['60分鐘/堂','任何程度'],price:'€90/堂起',desc:'德文或英文均可，完全客製化。5堂 €450，10堂 €900，20堂 €1,800。'},
+    {name:'Pathway 銜接課程',special:true,tags:['銜接歐洲大學','依程度安排'],price:'請洽詢',desc:'為有意升讀德國或歐洲大學的學員設計，結合德語語言能力訓練與學術英語（EAP）技能。'},
+    {name:'工作體驗計畫（EU/EEA 限定）',special:true,tags:['EU/EEA 護照持有者限定'],price:'安置費 €600',desc:'EU/EEA 護照持有者可安置德國本地工作職位，結合語言課程與真實職場體驗。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（半膳）',meta:'16歲以上・交通最長 60 分鐘',price:'€305/週起',desc:'住宿德國本地家庭含早晚餐，德語沉浸效果最強。未滿 18 歲必須選擇此方案。'},
+    {name:'Kiez Hostel（共用房間）',meta:'18歲以上・地鐵 35 分鐘',price:'€150/週起（淡季）',desc:'4–8 人共用房間，費用最低，旺季（5–10月）€250/週。'},
+    {name:'Kiez Hostel（單人房）',meta:'18歲以上・地鐵 35 分鐘',price:'€363/週起（淡季）',desc:'個人單人房，共用衛浴，旺季 €725/週，週六或週日入住。'},
+    {name:'Prenzlauer Berg 宿舍（套房）',meta:'18歲以上・電車 40 分鐘・4週以上',price:'€475/週起',desc:'現代化個人套房，4 週以上享長住優惠，適合中長期學員。'},
+    {name:'Meininger 飯店（含早餐）',meta:'18歲以上・步行 5 分鐘',price:'€555/週起（淡季）',desc:'距校最近，飯店式環境含早餐。旺季（3月底–10月）€692/週。'},
+  ],
+  fees:[{l:'報名費',v:'€70'},{l:'材料費 1–4週',v:'€50'},{l:'材料費 12–23週',v:'€150'},{l:'城市稅（柏林）',v:'7.5%/晚'},{l:'電匯手續費（台灣）',v:'€50'},{l:'住宿安置費',v:'€45'}],
+  calcCourses:[{n:'德文標準（上午）',pw:320},{n:'德文密集（上午）',pw:360},{n:'德文 Premium 30',pw:500},{n:'英文標準（下午）',pw:320},{n:'英文密集（下午）',pw:360},{n:'英文 Premium 30',pw:500}],
+  calcAccomm:[{n:'寄宿家庭 半膳',pw:305},{n:'Kiez Hostel 共用房（淡季）',pw:150},{n:'Prenzlauer Berg 套房',pw:475},{n:'Meininger 飯店（淡季）',pw:555}],
+  day:[
+    {time:'08:00 起床',title:'柏林式早晨',desc:'從 Homestay 出發，或從宿舍步行，柏林的早晨有一種創意城市特有的悠閒感，路上有各種塗鴉和藝術裝置。'},
+    {time:'09:00–12:15',title:'德文或英文課程',desc:'德文班從德語字母和發音開始，老師用系統化的方式帶你進入德語邏輯；英文班在下午，可以上午學德文下午學英文。'},
+    {time:'12:15 午餐',title:'校區附近 Moabit 覓食',desc:'Moabit 是柏林多元文化的縮影，土耳其烤肉、越南河粉、德式香腸，午餐選擇豐富且平價。'},
+    {time:'下午自由',title:'博物館或街頭文化',desc:'柏林有 170+ 座博物館，或者沿著 East Side Gallery（柏林圍牆）散步，感受這座城市承載的歷史重量。'},
+    {time:'週末',title:'湖泊、夜生活或出城',desc:'週末去柏林周邊的湖泊游泳（夏天）、體驗柏林著名的夜生活，或搭火車 2 小時到布拉格、2.5 小時到波蘭。'},
+  ],
+  qa:[
+    {q:'完全零基礎可以來學德文嗎？',a:'完全可以。EP 柏林德文課程從初學者（A1 Beginner）開始，不需要任何德語基礎。開課第一週會進行程度分班測驗，確保每位學員都在最適合自己的班級。零基礎學員通常會被安排在 A1 班，從字母發音、基本問候語開始學習。'},
+    {q:'德文班和英文班可以同時報名嗎？',a:'可以。上午德文課＋下午英文課是很多學員選擇的組合，同時推進兩種語言，在柏林這個德英環境都很豐富的城市效果非常好。建議每種語言至少選標準課程（20堂），兩者搭配一天課程約 09:00–17:00。'},
+    {q:'柏林的治安好嗎？台灣人去安全嗎？',a:'柏林整體是安全的旅遊與學習城市，但和所有大城市一樣，需注意隨身財物，避免在深夜獨自在偏僻地區行走。EP 柏林校區位於市中心 Moabit 區，鄰近布蘭登堡門，屬於安全的學習環境。學校在入學定向時會提供當地安全注意事項說明。'},
+  ],
+},
+paris:{
+  name:'巴黎',region:'歐洲',tag:'tag-eu',flag:'🇫🇷',
+  addr:'98 Rue Didot, 75014 Paris, France',cur:'€',
+  intro:'巴黎，光之城，全球時尚、藝術與美食的永恆中心。EP 巴黎同時提供法文與英文課程，是 EP 全球獨一無二的雙語學習校區。校區位於巴黎 14 區的安靜住宅街道，交通便利、環境安全，距蒙帕納斯火車站與多條地鐵線僅數分鐘步行。在這裡學法語，你不只是在學一門語言，而是在學一種生活方式。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'每語言容量',v:'60 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'法語：週一 09:00；英語：週一 13:00'},{l:'語言選擇',v:'法文 ＋ 英文'}],
+  feats:[
+    {i:'🗣️',t:'法文 ＋ 英文雙語校區',d:'少數同時提供法語與英語課程的 EP 校區，可選擇專攻法語，或搭配英語課程提升雙語能力。'},
+    {i:'🗼',t:'鄰近巴黎三大地標',d:'艾菲爾鐵塔、羅浮宮、巴黎聖母院均可輕鬆抵達，週末的文化體驗讓語言學習更有深度。'},
+    {i:'🚄',t:'超級連結的城市',d:'巴黎擁有 9 條鐵路幹線、2 座國際機場、300 多條巴士路線，前往歐洲各國極為便捷。'},
+    {i:'🍽️',t:'美食之都',d:'全球米其林星級餐廳最多的城市，從街頭可頌到頂級料理，每一餐都是文化體驗。'},
+    {i:'👗',t:'時尚之都',d:'每年兩次的巴黎時裝週，加上遍佈全城的精品旗艦店，讓時尚愛好者的留學生活豐富無比。'},
+  ],
+  who:[
+    {i:'🗣️',t:'想學法文的學員',d:'在法語的發源地學習法語，課外完全沉浸在法語環境中，進步速度遠超在台灣學習。'},
+    {i:'🌐',t:'想雙語並進的學員',d:'可上午學法文、下午學英文，在同一個校區同時推進兩種語言能力。'},
+    {i:'🎨',t:'對藝術、時尚、文化有熱情',d:'巴黎的博物館、藝廊、時尚活動密度全球最高，對創意產業有興趣的學員在此大量汲取靈感。'},
+    {i:'📜',t:'需要 DELF 法語認證',d:'校區提供 DELF 法語考試備考選修課程，適合需要取得正式法語資格的學員。'},
+  ],
+  courses:[
+    {name:'法文標準課程（上午）Classic Morning — French',special:false,tags:['20堂/週','09:00–12:15','初級→高級'],price:'€320/週起',desc:'每週 20 堂法文課，使用 Inspire（Hachette）等法語主流教材，涵蓋法語聽說讀寫四大技能。'},
+    {name:'法文密集課程（上午）Semi-intensive Morning — French',special:false,tags:['25堂/週','09:00–13:30','初級→高級'],price:'€360/週起',desc:'標準法文課程加入選修模組，選修包含 DELF 備考、法語口語強化、法語文化主題等。'},
+    {name:'英文標準課程（下午）Classic Afternoon — English',special:false,tags:['20堂/週','13:45–17:00','初級→高級'],price:'€320/週起',desc:'下午英文標準課程，適合上午學法文下午強化英語的學員，雙語並進效果最佳。'},
+    {name:'英文密集課程（下午）Semi-intensive Afternoon — English',special:false,tags:['25堂/週','12:30–17:00','初級→高級'],price:'€360/週起',desc:'下午版密集英文課程，含選修模組強化特定技能。'},
+    {name:'一對一個人教學（法文或英文）',special:false,tags:['60分鐘/堂','任何程度'],price:'€90/堂起',desc:'法文或英文皆可，完全客製化。5堂 €450，10堂 €900，20堂 €1,800。'},
+    {name:'工作體驗計畫（EU/EEA 限定）',special:true,tags:['EU/EEA 護照持有者限定'],price:'安置費 €600',desc:'EU/EEA 護照持有者可在巴黎安置工作職位，結合語言課程與法國職場體驗。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（半膳）',meta:'16歲以上・含5天晚餐（週日至週四）',price:'€440/週起',desc:'住宿法國本地家庭，半膳含早餐與週日至週四晚餐，法語沉浸效果極佳。週六或週日入住。'},
+    {name:'寄宿家庭（僅早餐）',meta:'16歲以上',price:'€355/週起',desc:'含每日早餐，午晚餐自理，適合喜歡在外探索巴黎餐飲文化的學員。'},
+    {name:'Enjoy Hostel（三人宿舍）',meta:'18歲以上・步行 16 分鐘',price:'€350/週',desc:'2星級青旅三人床位，費用最低，適合預算有限的學員。'},
+    {name:'FIAP 學生宿舍（單人套房＋半膳）',meta:'18歲以上・大眾交通 20 分鐘',price:'€780/週',desc:'3星級學生宿舍含早晚餐，設施舒適，適合重視安心住宿的學員。'},
+    {name:'Adagio 服務式公寓',meta:'18歲以上・大眾交通 20 分鐘・4週以上',price:'€680/週起',desc:'獨立工作室套房，廚房齊備，自由度高。住宿觀光稅另計（€2.60+/晚）。'},
+  ],
+  fees:[{l:'報名費',v:'€70'},{l:'材料費 1–4週',v:'€50'},{l:'材料費 12–23週',v:'€150'},{l:'觀光稅（依住宿）',v:'€2.60+/晚'},{l:'電匯手續費（台灣）',v:'€50'},{l:'住宿安置費',v:'€45'}],
+  calcCourses:[{n:'法文標準（上午）',pw:320},{n:'法文密集（上午）',pw:360},{n:'英文標準（下午）',pw:320},{n:'英文密集（下午）',pw:360}],
+  calcAccomm:[{n:'寄宿家庭 半膳',pw:440},{n:'寄宿家庭 僅早餐',pw:355},{n:'Enjoy Hostel 宿舍',pw:350},{n:'Adagio 服務式公寓',pw:680}],
+  day:[
+    {time:'07:30 起床',title:'法國式早晨',desc:'Homestay 早餐通常有可頌和咖啡，Host Family 用法語和你打招呼，語言沉浸在第一口咖啡前就開始了。'},
+    {time:'09:00–12:15',title:'法文課程（上午班）',desc:'從法語字母、發音規則開始，老師只說法語，一開始聽不懂很正常，但大腦會被迫快速適應。'},
+    {time:'12:15 午餐',title:'巴黎 14 區的麵包店',desc:'學校附近是安靜的住宅區，走幾步就有正宗法國麵包店，€3 一個三明治，坐在路邊吃就是電影場景。'},
+    {time:'13:00–17:00',title:'英文課程（下午班選修）',desc:'上午法文、下午英文，同一個校區讓你雙語並進，對職場有需求的學員這個組合性價比極高。'},
+    {time:'下午自由',title:'巴黎就是戶外教室',desc:'羅浮宮、奧賽博物館、艾菲爾鐵塔步行或地鐵都到得了，下午的巴黎是全世界最好的語言沉浸環境之一。'},
+    {time:'週末',title:'時裝週、市集、出城',desc:'週末的跳蚤市場是練法語的好地方，或搭 Eurostar 2 小時到倫敦，4 小時到阿姆斯特丹。'},
+  ],
+  qa:[
+    {q:'完全零基礎可以來學法文嗎？',a:'完全可以。EP 巴黎法文課程從初學者（A1）開始，不需要任何法語基礎。入學時會進行程度測驗，確保你被安排在最合適的班級。零基礎的學員從字母、發音、日常問候語開始，在真實的法語環境中學習效果非常好。'},
+    {q:'台灣人去法國短期留學需要申根簽嗎？',a:'台灣護照持有者入境申根區（包含法國）可以免簽停留最長 90 天（每 180 天計算）。90 天以內的語言課程不需要另外辦簽證。如果課程超過 90 天，則需要申請法國長期學生簽（VLS-TS），建議提前 3–4 個月開始準備。'},
+    {q:'巴黎的寄宿家庭和其他城市比起來為什麼比較貴？',a:'巴黎的整體生活成本是西歐最高的城市之一，寄宿家庭半膳 €440/週起確實比英國或馬爾他高。但巴黎寄宿家庭的特色是讓你直接住在法國家庭中，課後用法語溝通，語言進步速度最快。如果預算有限，可以考慮選擇 Enjoy Hostel（€350/週）或搭配下午英文課降低整體費用。'},
+  ],
+},
+malta:{
+  name:'馬爾他',region:'歐洲',tag:'tag-eu',flag:'🇲🇹',
+  addr:'West Block, Marguerite Mangion St, St. Julian\'s, STJ 3180',cur:'€',
+  intro:'馬爾他是地中海中央的陽光島嶼，全年日照超過 300 天，擁有清澈碧藍的海水、豐富的古羅馬與騎士歷史，以及輕鬆愜意的生活步調。EP 馬爾他是全球最大的 EP 校區，可容納多達 500 名學生，坐落於熱鬧的海濱社區 St. Julian\'s，俯瞰 Spinola Bay 海灣，距離藍泉（Blue Lagoon）、Valletta 古城、Gozo 島皆可輕鬆前往。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'500 人（EP 全球最大）'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（上午 10:00 / 下午 13:00 / 晚間 17:00）'},{l:'校區特色',v:'EP 全球最大校區'}],
+  feats:[
+    {i:'☀️',t:'全年 300 天以上日照',d:'地中海氣候溫暖舒適，幾乎全年都可在海邊活動，戶外生活品質無與倫比。'},
+    {i:'🌊',t:'校區俯瞰 Spinola Bay',d:'校舍緊鄰海灣，周邊餐廳、咖啡廳、商店密集，是歐洲最美麗的學習環境之一。'},
+    {i:'👥',t:'EP 全球最大校區',d:'容納 500 名學生，來自全球各地的同學讓社交環境極為豐富多元，是認識國際朋友的最佳場所。'},
+    {i:'🏰',t:'歷史文化豐富',d:'馬爾他擁有 7,000 年歷史，巨石神廟、騎士城堡遍布全島，《冰與火之歌》《神鬼戰士》均在此取景。'},
+    {i:'💰',t:'歐洲最高性價比英語留學地',d:'相較於英國、愛爾蘭，馬爾他的學費與住宿費用更低，氣候更好，是預算有限但想在歐洲學英語的首選。'},
+  ],
+  who:[
+    {i:'☀️',t:'喜愛陽光與海灘的學員',d:'馬爾他的地中海環境讓留學生活充滿度假感，邊學英語邊享受海島生活，其他校區無法複製的體驗。'},
+    {i:'💰',t:'預算有限想留在歐洲',d:'比英國、愛爾蘭學費低，比巴黎、柏林生活費親民，是歐洲英語環境中性價比最高的選擇。'},
+    {i:'📜',t:'商業英語或專業證書需求',d:'校區提供商業英語課程（需 B1+ 程度）與商業管理專業證書，適合有職場進修需求的學員。'},
+    {i:'🌍',t:'想探索地中海文化',d:'馬爾他地理位置優越，前往義大利、西班牙、希臘等地都很方便，是歐洲旅遊探索的絕佳基地。'},
+    {i:'💼',t:'工作體驗需求者（EU）',d:'提供 Work Experience 計畫（EU/EEA 限定），讓 EU 籍學員在課程期間合法累積職場經驗。'},
+  ],
+  courses:[
+    {name:'標準英語（上午）Classic Morning',special:false,tags:['20堂/週','09:00–12:15','初學者→高級'],price:'€295/週起',desc:'每週 20 堂標準英語課，一般英語或商業英語（商業英語需 B1+ 以上）。24 週以上長期學員享折扣。'},
+    {name:'標準英語（下午）Classic Afternoon',special:false,tags:['20堂/週','13:45–17:00','初學者→高級'],price:'€240/週起',desc:'下午版標準英語課，費用比上午版更低，適合希望上午自由安排行程的學員。'},
+    {name:'標準英語（晚間）Classic Evening',special:false,tags:['20堂/週','17:30–20:45','初學者→高級'],price:'€200/週起',desc:'晚間課程費用最低，白天可在馬爾他觀光，晚上上課，靈活度最高。'},
+    {name:'密集英語（上午）Semi-intensive Morning',special:false,tags:['25堂/週','09:00–13:30','初學者→高級'],price:'€405/週起',desc:'標準課程加入選修加強模組，每週 25 堂，選修主題每 4 週更換。'},
+    {name:'密集英語（下午）Semi-intensive Afternoon',special:false,tags:['25堂/週','12:30–17:00','初學者→高級'],price:'€285/週起',desc:'下午版密集課程，含選修模組，費用比上午版更低。'},
+    {name:'超密集英語 Super-intensive',special:false,tags:['40堂/週','09:00–17:00','初學者→高級'],price:'€535/週起',desc:'全天上課，每週 40 堂，強度最高，適合短期內需快速大幅提升英語的學員。'},
+    {name:'長期課程方案（24–35 週）',special:false,tags:['上午/下午均適用','24 週以上'],price:'€190/週起',desc:'24–35 週 €190/週，36 週以上 €160/週，是馬爾他最超值的長期學習方案。'},
+    {name:'一對一個人教學',special:false,tags:['60分鐘/堂','任何程度'],price:'€105/堂起',desc:'完全客製化課程。5堂 €525，10堂 €1,050，20堂 €2,100。'},
+    {name:'商業管理專業證書 I — Business Management & Leadership I',special:true,tags:['20堂/週','需 B1+ 程度','2 週'],price:'€700/課程',desc:'職場英語強化課程第一階段，涵蓋領導力、商務溝通與簡報技巧。開課日（2026）：1/12、4/27、6/15、11/16。'},
+    {name:'商業管理專業證書 II — Business Management & Leadership II',special:true,tags:['20堂/週','需先完成證書 I','2 週'],price:'€700/課程',desc:'第二階段深入專案管理與商業談判，結業獲正式認證。開課日（2026）：1/26、5/11、6/29、11/30。'},
+    {name:'工作體驗計畫（EU/EEA 限定）',special:true,tags:['EU/EEA 護照持有者限定'],price:'安置費 €600',desc:'EU/EEA 護照持有者可安置馬爾他本地工作職位，兼職或全職均可，結合語言學習與職場體驗。'},
+  ],
+  accomm:[
+    {name:'學生宿舍 Campus Hub（單人套房）',meta:'16歲以上・巴士 20 分鐘',price:'€375/週',desc:'16 歲以上即可入住，單人套房設施現代。未滿 18 歲需訂單人套房，雙人房不接受情侶入住。'},
+    {name:'學生宿舍 Campus Hub（雙人套房）',meta:'16歲以上・巴士 20 分鐘',price:'€250/週（每人）',desc:'兩人共享套房，每人費用更低，適合與朋友同行的學員。'},
+    {name:'共享公寓（標準）',meta:'18歲以上・巴士 30 分鐘',price:'€190/週',desc:'與其他學員共住公寓，費用最低，適合喜愛獨立生活的學員。'},
+  ],
+  fees:[{l:'報名費',v:'€50'},{l:'材料費 1–4週',v:'€47'},{l:'材料費 12–23週',v:'€141'},{l:'ECO 稅（住宿）',v:'€5'},{l:'押金（宿舍）',v:'€150'},{l:'電匯手續費（台灣）',v:'€50'}],
+  calcCourses:[{n:'標準上午（Classic Morning）',pw:295},{n:'標準下午（Classic Afternoon）',pw:240},{n:'標準晚間（Classic Evening）',pw:200},{n:'密集上午（Semi-intensive Morning）',pw:405},{n:'超密集（Super-intensive）',pw:535},{n:'長期方案 24–35週',pw:190}],
+  calcAccomm:[{n:'宿舍 Campus Hub 單人套房',pw:375},{n:'宿舍 Campus Hub 雙人套房（每人）',pw:250},{n:'共享公寓',pw:190}],
+  day:[
+    {time:'09:30 起床',title:'地中海的早晨',desc:'St. Julian\'s 的生活步調悠閒，窗外是陽光和海風，騎摩托車或走路就能到校，不需要擠地鐵。'},
+    {time:'10:00–12:15',title:'英語課程',desc:'早上 10 點開始的課程比英國晚一點，讓你有更悠閒的早晨。班上 500 人校區的多元國籍讓每天都有新的對話對象。'},
+    {time:'12:15 午餐',title:'Spinola Bay 邊的餐廳',desc:'學校就俯瞰海灣，課後走路幾分鐘到海邊的餐廳吃午餐，這在其他校區是很難複製的體驗。'},
+    {time:'下午自由',title:'海灘、游泳、探索',desc:'步行可達多個海泳點，或搭巴士去 Valletta 古城、Blue Lagoon，整個馬爾他島都是你的課外教室。'},
+    {time:'晚間課程選項',title:'Classic Evening 17:30',desc:'馬爾他提供晚間課程，白天可以完全自由活動，想要最大化探索時間的學員的最佳選擇。'},
+    {time:'週末',title:'Gozo、Comino、義大利',desc:'週末搭渡輪去 Gozo 農村，或去 Comino 的 Blue Lagoon 浮潛；飛義大利西西里島只要 1 小時。'},
+  ],
+  qa:[
+    {q:'馬爾他是英語系國家嗎？英語教學品質怎麼樣？',a:'是的，馬爾他英語是官方語言之一（另一種是馬爾他語），也是前英國殖民地，英語在日常生活中廣泛使用。EP 馬爾他的教師均持有合格語言教學資格，課堂英語使用標準英語（非馬爾他腔），英語學習環境完全真實，且 EP 獲有英國文化協會認證。'},
+    {q:'馬爾他這麼小，住幾個月夠玩嗎？',a:'馬爾他雖然面積小，但景點密集，主要有三個島：主島馬爾他（Valletta 古城、Blue Lagoon）、Gozo 島（農村風景與潛水天堂）、Comino 島（Blue Lagoon 所在地）。加上 EP 馬爾他每週末有安排不同的社交活動與出遊，3 個月以內不會玩膩。如果想更遠，飛義大利西西里島只要 1 小時，羅馬約 2.5 小時，地理位置探索歐洲非常方便。'},
+    {q:'馬爾他的申根簽怎麼辦？',a:'馬爾他是申根成員國，台灣護照持有者在申根區每 180 天最多可免簽停留 90 天。超過 90 天則需申請馬爾他學生許可證（Student Residence Permit），EP 馬爾他有提供簽證協助服務（visa service fee €50 選購），可以協助文件準備。'},
+  ],
+},
+dubai:{
+  name:'杜拜',region:'中東',tag:'tag-me',flag:'🇦🇪',
+  addr:'Block 3, Dubai Knowledge Park, Al Sufouh 2, Dubai, UAE',cur:'USD',
+  intro:'杜拜是 21 世紀最驚人的城市奇蹟，短短數十年間從沙漠崛起為全球頂尖的商業、觀光與教育中心。EP 杜拜校區位於 Dubai Knowledge Park，這是一個專為教育機構設計的學術園區，雲集全球知名大學分校與語言機構。豐富的課外活動包含沙漠越野、阿布達比城市遊覽、遊艇出海等，讓留學體驗無比精彩。',
+  info:[{l:'最低年齡',v:'16 歲（持 1 年學生簽）或 18 歲（持 6 個月教育簽）'},{l:'校區容量',v:'480 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:30 報到）'},{l:'校區位置',v:'Dubai Knowledge Park'}],
+  feats:[
+    {i:'🏫',t:'Dubai Knowledge Park 學術社區',d:'園區內齊聚全球頂尖大學分校與教育機構，學術氛圍濃厚，設有食堂、圖書館、IT 實驗室等完整設施。'},
+    {i:'🌍',t:'全球商業與金融中心',d:'杜拜是中東最重要的商業樞紐，國際企業總部密集，在此學習英語自然接觸真實的全球商業語境。'},
+    {i:'🏜️',t:'豐富的課外活動',d:'社交計畫包含沙漠越野、阿布達比城市導覽、遊艇出海、購物體驗等，留學生活體驗感極強。'},
+    {i:'🏬',t:'全球購物天堂',d:'杜拜商場（Dubai Mall）是全球最大購物中心，城市購物、美食、娛樂選項豐富，生活便利程度世界頂尖。'},
+    {i:'📜',t:'商業與數位行銷專業認證',d:'提供 DMI 國際認可的商業管理與數位行銷專業證書，讓英語進修與職涯發展同步。'},
+  ],
+  who:[
+    {i:'💼',t:'商業環境工作者或求職者',d:'杜拜是中東商業重鎮，在此學習英語同時接觸國際商業環境，對有意在中東或國際企業發展的學員大有助益。'},
+    {i:'📜',t:'想取得國際商業認證',d:'DMI 認可的商業管理與數位行銷專業證書，在全球職場具有高度認可度，適合想提升職場競爭力的學員。'},
+    {i:'✨',t:'嚮往奢華生活體驗',d:'杜拜的城市體驗本身就是留學的一部分，從沙漠到摩天樓，學習之外的生活體驗無可複製。'},
+    {i:'🌏',t:'中東或南亞背景的學員',d:'杜拜地理位置居中，對來自中東、南亞、東非的學員而言，是最近的英語留學目的地之一。'},
+  ],
+  courses:[
+    {name:'標準英語／商業英語（上午）Classic Morning',special:false,tags:['20堂/週','08:45–12:00','初學者→高級'],price:'USD $350/週起',desc:'每週 20 堂標準英語課，可選一般英語或商業英語方向（商業英語需 B1+ 以上）。費率：7–12 週 $305，13–24 週 $285。'},
+    {name:'標準英語／IELTS（中午）Classic Brunch',special:false,tags:['20堂/週','12:30–15:45','初學者→高級'],price:'USD $320/週起',desc:'中午時段標準課程，可選一般英語或 IELTS 備考方向（IELTS 需 B1+ 以上）。費率：7–12 週 $275，13–24 週 $255。'},
+    {name:'彈性輕量課程 Classic Light Flexi',special:false,tags:['15堂/週','15:45–18:15 或 18:30–21:00'],price:'USD $280/週起',desc:'每週 15 堂輕量課程，可選下午或晚間時段。費率：7–12 週 $235，13–24 週 $215，適合工作中的學員。'},
+    {name:'超密集英語 Super-intensive',special:false,tags:['40堂/週','08:45–15:45','初學者→高級'],price:'USD $505/週起',desc:'上午＋中午全天課程，每週 40 堂，強度最高。費率：7–12 週 $465。'},
+    {name:'一對一個人教學',special:false,tags:['60分鐘/堂','任何程度'],price:'USD $125/堂起',desc:'完全客製化個人課程。5堂 $625，10堂 $1,250，20堂 $2,500。'},
+    {name:'商業管理專業證書 I',special:true,tags:['20堂/週','08:45–12:00','需 B1+ 程度','2 週'],price:'USD $700/課程',desc:'DMI 合作課程，領導力與商務溝通第一階段。開課日（2026）：4/27、11/16。'},
+    {name:'數位行銷專業證書 — Certified Digital Marketing Professional',special:true,tags:['20堂/週','需 B2 程度','4 週'],price:'USD $2,445/課程',desc:'DMI 國際認可的數位行銷資格，涵蓋 SEO、社群媒體、數位廣告與數據分析。開課日（2026）：1/12、6/15、9/21。'},
+  ],
+  accomm:[
+    {name:'學生宿舍 Myriad / KSK（雙人房）',meta:'16歲以上・接駁車 40 分鐘・3週以上',price:'USD $260/週起',desc:'學校提供接駁車，雙人房費用最低。16–17 歲只能入住 KSK 單人房。'},
+    {name:'學生宿舍 Myriad / KSK（單人房）',meta:'16歲以上・接駁車 40 分鐘',price:'USD $450/週起（3週以上）',desc:'個人單人房，提供完整私人空間。1–2 週 $520。'},
+    {name:'學生宿舍（單人套房）',meta:'18歲以上・接駁車 40 分鐘',price:'USD $500/週起（3週以上）',desc:'獨立套房，提供最大個人空間，設施完善。'},
+    {name:'共享公寓 ESAW（雙人室）',meta:'18歲以上・接駁車 20 分鐘',price:'USD $230/週起',desc:'4–5 人共用雙人室，費用最低，另有雙人套房（$330）與私人房間（$305）可選。'},
+  ],
+  fees:[{l:'報名費',v:'USD $75'},{l:'材料費 1–4週',v:'USD $65'},{l:'材料費 12–23週',v:'USD $190'},{l:'保險（12週以下）',v:'USD $120'},{l:'電匯手續費（台灣）',v:'USD $60'},{l:'住宿安置費',v:'USD $75'}],
+  calcCourses:[{n:'標準上午（Classic Morning）',pw:350},{n:'標準中午（Classic Brunch）',pw:320},{n:'彈性輕量（Classic Light Flexi）',pw:280},{n:'超密集（Super-intensive）',pw:505}],
+  calcAccomm:[{n:'宿舍 雙人房（3週以上）',pw:260},{n:'宿舍 單人房（3週以上）',pw:450},{n:'共享公寓 ESAW 雙人室',pw:230}],
+  day:[
+    {time:'07:30 起床',title:'Knowledge Park 的早晨',desc:'宿舍或公寓出發，搭學校接駁車到 Knowledge Park，園區內有來自全球的大學分校，整個環境就是國際學術社區。'},
+    {time:'08:45–12:00',title:'英語課程',desc:'標準課或商業英語，班上同學來自中東、南亞、東歐、亞洲各地，是全球最多元化的班級組成之一。'},
+    {time:'12:00 午餐',title:'杜拜美食文化',desc:'Knowledge Park 的食堂和附近有各國餐廳，沙瓦瑪、印度咖哩、黎巴嫩料理，食物本身就是文化體驗。'},
+    {time:'下午自由',title:'杜拜商場或沙漠',desc:'世界最大的杜拜購物中心就在附近，或者報名社交計畫的沙漠越野，杜拜的下午從來不無聊。'},
+    {time:'日落後',title:'杜拜的黃金時段',desc:'杜拜的夜晚才是最美的時候，從 Burj Khalifa 觀景台看夜景、在 JBR 海灘散步，每晚都有值得拍的畫面。'},
+    {time:'週末',title:'阿布達比或水上活動',desc:'阿布達比日車程 1 小時，學校也會安排城市導覽。或租船出海，在波斯灣上度過一個下午。'},
+  ],
+  qa:[
+    {q:'去杜拜念語言學校需要辦什麼簽證？',a:'台灣護照持有者入境阿聯酋通常可以免簽停留 30–90 天（依入境情形而定）。短期課程（1 個月左右）可以觀光身份入境。較長期的就讀有兩種選擇：18 歲以上可辦 6 個月教育簽，16 歲以上可辦 1 年學生簽，費用與辦理方式建議直接洽詢 EP 杜拜或我們顧問協助處理。'},
+    {q:'杜拜的課程是美元計費，換算成台幣大概是多少？',a:'杜拜的課程以美元（USD）計費，以目前匯率約 1 USD ≈ 32–33 新台幣計算，標準上午課程 $350/週約合台幣 11,200–11,550 元，搭配住宿（共享公寓 $230/週）一週總費用約台幣 18,500–19,000 元。建議實際報名時以當天匯率試算，匯差可達 5–8%。'},
+    {q:'杜拜是伊斯蘭國家，生活上有很多限制嗎？',a:'杜拜是阿聯酋最國際化的城市，對外籍人士相當開放。超市有酒類販售區（持護照可購買），餐廳選擇非常多元，著裝上公共場所需穿著得體（不需要穿長袍）。EP 校區位於 Knowledge Park，是國際化程度很高的學術環境，學員來自全球各地，生活方式與其他國際城市相差不大。'},
+  ],
+},
+toronto:{
+  name:'多倫多',region:'北美',tag:'tag-na',flag:'🇨🇦',
+  addr:'36 Victoria Street, Toronto ON M5C 1H3, Canada',cur:'CA$',
+  intro:'多倫多是加拿大最大城市、北美第四大都會區，以極度多元的文化背景聞名全球——超過 100 個族裔在此共居，是真正意義上的世界縮影。EP 多倫多校區位於市中心心臟地帶，步行可達 CN 塔、濱水區、Distillery District 與 PATH 地下城，是探索這座城市最理想的出發點。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'150 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:30 報到）'},{l:'最長修讀',v:'24 週（ETA 持有者）'}],
+  feats:[
+    {i:'📍',t:'多倫多市中心黃金地段',d:'校區距 CN 塔、Ripley\'s Aquarium、Harbourfront 濱水區均在步行範圍內，是探索多倫多最方便的基地。'},
+    {i:'🌍',t:'全球最多元的城市',d:'多倫多 100+ 族裔共居，是練習英語最真實的國際環境，課外接觸各種英語口音與文化，語言適應力大幅提升。'},
+    {i:'🏙️',t:'北美最大地下購物城 PATH',d:'PATH 延伸超過 30 公里，連結辦公大樓、購物中心與地鐵站，冬天也可舒適地購物與通勤。'},
+    {i:'🎬',t:'多倫多國際電影節（TIFF）',d:'每年 9 月舉辦，是全球三大電影節之一，讓多倫多的文化生活在留學期間更豐富多彩。'},
+    {i:'📜',t:'完整的專業證書課程',d:'多倫多校區提供商業管理與數位行銷專業證書課程，是北美地區取得 EP 職場英語認證的唯一選擇。'},
+  ],
+  who:[
+    {i:'🌏',t:'想體驗北美留學的學員',d:'加拿大簽證相對容易申請，多倫多的多元文化讓語言學習環境真實豐富，是體驗北美生活的最佳入口。'},
+    {i:'📜',t:'職場英語與專業認證需求者',d:'商業管理與數位行銷專業證書讓語言進修與職涯目標並行，適合有明確職場目標的成人學員。'},
+    {i:'🎓',t:'準備銜接加拿大大學',d:'校區提供 Pathway 銜接課程，透過 EP 合作院校網絡協助銜接加拿大高等教育，是升學移民的前置準備。'},
+    {i:'💰',t:'相較美國成本更低的北美選擇',d:'多倫多的學費與生活費用低於紐約、舊金山等美國大城市，是體驗北美生活的高性價比選擇。'},
+  ],
+  courses:[
+    {name:'標準英語／IELTS（上午）Classic Morning',special:false,tags:['20堂/週','09:00–12:15','初學者→高級'],price:'CA$ 430/週起',desc:'每週 20 堂標準英語課，可選一般英語或 IELTS 備考方向（IELTS 需 B1+ 以上）。費率：7–12 週 $420，13–24 週 $410。24 週方案僅限 ETA 持有者。'},
+    {name:'密集英語（上午）Semi-intensive Morning',special:false,tags:['25堂/週','09:00–13:45','初學者→高級'],price:'CA$ 480/週起',desc:'標準課程加入選修模組，每週 25 堂，加強特定技能。費率：7–12 週 $470，13–24 週 $460。'},
+    {name:'一對一個人教學',special:false,tags:['60分鐘/堂','任何程度'],price:'CA$ 160/堂起',desc:'完全客製化個人課程。5堂 $800，10堂 $1,600，20堂 $3,200。'},
+    {name:'商業管理專業證書 I',special:true,tags:['20堂/週','09:00–12:15','需 B1+ 程度','2 週'],price:'CA$ 700/課程',desc:'DMI 合作課程第一階段，涵蓋領導力與商務溝通。開課日（2026）：1/12、4/27、6/15、11/16。'},
+    {name:'數位行銷專業證書 — Certified Digital Marketing Professional',special:true,tags:['20堂/週','需 B2 程度','4 週'],price:'CA$ 2,090/課程',desc:'DMI 國際認可數位行銷資格，全球職場適用。開課日：1/12、3/30、7/20、10/19。'},
+    {name:'Pathway 銜接課程 — Pathway Programme',special:true,tags:['銜接加拿大及全球大學','依程度安排'],price:'請洽詢',desc:'為有意升讀加拿大或海外大學的學員設計，結合學術英語（EAP）技能訓練，透過 EP 合作院校協助入學申請。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（半膳）',meta:'16歲以上・低季・交通最長 60 分鐘',price:'CA$ 360/週起',desc:'住宿加拿大本地家庭含早晚餐（週一至五），英語沉浸效果最佳。高季（4/26–9/5）$390/週。'},
+    {name:'寄宿家庭（全膳）',meta:'16歲以上・低季',price:'CA$ 390/週起',desc:'三餐全包，最省心，高季 $420/週。未滿 18 歲須選半膳以上並建議訂機場接送。'},
+    {name:'CASA 學生宿舍（共用臥室）',meta:'18歲以上',price:'CA$ 365/週',desc:'共用臥室與衛浴，費用最低，適合喜歡社交環境的學員。'},
+    {name:'CASA 學生宿舍（單人房）',meta:'18歲以上',price:'CA$ 400/週',desc:'個人單人房含共用衛浴，平衡隱私與費用的選擇。'},
+    {name:'CASA Dreamhouse Yorkville（私人衛浴）',meta:'18歲以上・5週以上',price:'CA$ 590/週',desc:'Yorkville 精華地段高端學生公寓，提供私人衛浴，是最舒適的學生住宿選擇。'},
+  ],
+  fees:[{l:'報名費',v:'CA$ 175'},{l:'材料費 1–4週',v:'CA$ 85'},{l:'材料費 12–24週',v:'CA$ 250'},{l:'保險費',v:'CA$ 21/週'},{l:'電匯手續費（台灣）',v:'CA$ 80'},{l:'住宿安置費',v:'CA$ 250'}],
+  calcCourses:[{n:'標準上午（Classic Morning）',pw:430},{n:'密集上午（Semi-intensive Morning）',pw:480}],
+  calcAccomm:[{n:'寄宿家庭 半膳（低季）',pw:360},{n:'寄宿家庭 全膳（低季）',pw:390},{n:'CASA 共用臥室',pw:365},{n:'CASA 單人房',pw:400},{n:'CASA Yorkville 私人衛浴',pw:590}],
+  day:[
+    {time:'08:00 起床',title:'加拿大式早晨',desc:'從 Homestay 出發，搭地鐵或步行到市中心校區，多倫多是個友善城市，路上的人常對你微笑。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'班上通常有來自南美洲、東歐、亞洲的同學，多倫多本身的多元文化讓課外也是真實的英語練習場。'},
+    {time:'12:15 午餐',title:'市中心覓食',desc:'學校步行可達 CN 塔、Eaton Centre，午餐選擇多元，從越南河粉到加拿大楓葉糖漿鬆餅都找得到。'},
+    {time:'下午自由',title:'PATH 地下城或濱水區',desc:'下雨天去 PATH（全球最大地下城）逛；天氣好走到 Harbourfront 湖邊，多倫多的湖景讓人忘記這是一個內陸城市。'},
+    {time:'週末',title:'尼加拉瀑布或市集',desc:'搭巴士 1.5 小時到尼加拉瀑布，或探索 Kensington Market、Distillery District 手工市集，每個週末都有具體的去處。'},
+  ],
+  qa:[
+    {q:'台灣人去加拿大讀語言學校需要辦什麼簽證？',a:'台灣護照持有者入境加拿大需要辦 eTA（電子旅行授權），申請簡單、費用 CAD $7，通常幾分鐘至幾天核准。短期課程（6 個月以內）可以以觀光身份入境，不需要另辦學生簽。超過 6 個月或有申請正式學生簽需求的學員，需要辦 Study Permit，建議提前 2–3 個月申請。'},
+    {q:'加拿大冬天很冷嗎？多倫多的天氣怎麼樣？',a:'多倫多冬天確實寒冷，12 月至 2 月均溫約 -5°C 至 -10°C，偶爾會有暴風雪。但多倫多的地下城 PATH 系統讓你幾乎不需要到戶外就能通勤、購物、用餐。春天（4–5月）和秋天（9–10月）氣候宜人，夏天（6–8月）溫暖舒適，25–30°C，是最受歡迎的入學時段。'},
+    {q:'多倫多和溫哥華比起來哪個比較好？',a:'兩個城市各有特色。多倫多是加拿大最大城市，商業機會更多、多元文化程度更高、EP 校區就在市中心；溫哥華氣候更溫和、靠海山景優美，但整體費用（尤其住宿）通常比多倫多高。EP 目前在加拿大只有多倫多校區，所以選 EP 就是選多倫多。'},
+  ],
+},
+brisbane:{
+  name:'布里斯本',region:'大洋洲',tag:'tag-au',flag:'🇦🇺',
+  addr:'Level 3, 115 Queen Street, Brisbane QLD 4000, Australia',cur:'AU$',
+  intro:'布里斯本是澳洲昆士蘭州首府，以陽光明媚的氣候、輕鬆友善的城市風格與豐富的戶外生活著稱。EP 布里斯本是全市地理位置最核心的英語學校，坐落於 Queen Street Mall 步行商圈，距中央火車站步行僅 5 分鐘，距中央巴士站僅 1 分鐘。布里斯本正在快速成長，將主辦 2032 年夏季奧運，是澳洲最具活力的新興城市之一。',
+  info:[{l:'最低年齡',v:'18 歲以上'},{l:'校區容量',v:'216 人'},{l:'最大班級',v:'18 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:45 報到）'},{l:'CRICOS 代碼',v:'04187G'}],
+  feats:[
+    {i:'📍',t:'Queen Street Mall 最核心位置',d:'位於布里斯本最繁忙的步行商圈，四周商店、咖啡廳、餐廳圍繞，課後生活極為便利。'},
+    {i:'☀️',t:'氣候宜人、戶外生活豐富',d:'全年氣溫溫暖，陽光充足，海灘、國家公園、摩頓島等自然景點近在咫尺，戶外活動選項豐富。'},
+    {i:'🏆',t:'2032 年夏季奧運主辦城市',d:'布里斯本正積極建設迎接奧運，城市基礎設施快速升級，是澳洲目前成長最快的城市之一。'},
+    {i:'📜',t:'CRICOS 認可的正式學術課程',d:'EP 布里斯本持有澳洲 CRICOS 認可資格（04187G），提供符合學生簽規定的正式英語課程。'},
+    {i:'🌉',t:'Riverside 餐飲與文化核心',d:'Howard Smith Wharves、South Bank 文化區、Gallery of Modern Art 等世界級文化設施均在步行或短距離範圍內。'},
+  ],
+  who:[
+    {i:'📜',t:'需要 CRICOS 認可課程的學員',d:'持澳洲學生簽證者須就讀 CRICOS 認可課程，EP 布里斯本提供符合規定的正式英語與 IELTS 備考課程。'},
+    {i:'☀️',t:'嚮往澳洲陽光生活的學員',d:'布里斯本的氣候與戶外生活方式是許多學員選擇澳洲留學的主因，城市規模適中、步調悠閒。'},
+    {i:'✈️',t:'澳洲打工度假簽（WHV）持有者',d:'Working Holiday 簽證持有者可在布里斯本修讀最多 17 週課程，結合打工度假與英語進修。'},
+    {i:'📈',t:'看好澳洲長期發展的學員',d:'2032 奧運帶動布里斯本長期發展，對考慮澳洲長期居留或移民的學員，布里斯本是值得關注的城市。'},
+  ],
+  courses:[
+    {name:'標準英語（上午）Classic Morning',special:false,tags:['15小時/週','09:00–12:15','初級→高級'],price:'AU$ 400/週起',desc:'每週 15 小時標準英語課，涵蓋四大技能。費率：12–23 週 $380/週，24 週以上不提供此方案。'},
+    {name:'密集英語（上午）Semi-intensive Morning',special:false,tags:['20小時/週','09:00–13:30','初級→高級','CRICOS: 118983J'],price:'AU$ 475/週起',desc:'每週 20 小時密集英語課程，含選修加強模組，是布里斯本最受歡迎的課程方案。費率：12–23 週 $455，24 週以上 $430。學生簽可讀最長 62 週。'},
+    {name:'密集英語 ＋ IELTS 備考組合',special:true,tags:['20小時/週','09:00–13:30','初級→高級','CRICOS: 113974F'],price:'AU$ 475/週起',desc:'密集英語課程加入 IELTS 備考模組，同時提升英語能力並備戰 IELTS 考試。持 CRICOS 課程代碼 113974F，符合學生簽規定。費率：12–23 週 $455，24 週以上 $430。'},
+    {name:'一對一個人教學',special:false,tags:['60分鐘/堂','任何程度'],price:'AU$ 135/堂起',desc:'完全客製化個人課程。5堂 $675，10堂 $1,350，20堂 $2,700。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（半膳）',meta:'18歲以上・週六/日入住・交通最長 60 分鐘',price:'AU$ 420/週起',desc:'住宿澳洲本地家庭，含週一至五早餐、週六日全天三餐，英語沉浸效果最佳。'},
+    {name:'寄宿家庭（僅晚餐）',meta:'18歲以上',price:'AU$ 385/週起',desc:'含每晚晚餐，早午餐自理，彈性較高。'},
+    {name:'EP House Share（單人房）',meta:'18歲以上・大眾交通 40–50 分鐘',price:'AU$ 300/週',desc:'與其他學員共住 EP 管理的房屋，費用較低，社交氛圍好。'},
+    {name:'Bunk Brisbane 青旅（宿舍房）',meta:'18歲以上・大眾交通 10 分鐘',price:'AU$ 395/週起（8–10人房）',desc:'4–6 人宿舍床位 $415/週，8–10 人房 $395/週，女生專屬 4 人房 $438/週，費用最低。'},
+    {name:'Student One 學生公寓（套房）',meta:'18歲以上・步行 12 分鐘',price:'AU$ 679/週',desc:'現代化工作室套房，距校最近的高品質選擇，設施完善。'},
+    {name:'CLLIX 精品公寓（套房）',meta:'18歲以上・步行 11 分鐘・最短住 4 週',price:'AU$ 1,332/週',desc:'精品公寓等級的住宿體驗，設施豪華，適合追求最高生活品質的學員。'},
+  ],
+  fees:[{l:'報名費',v:'AU$ 250'},{l:'材料費 1–4週',v:'AU$ 75'},{l:'材料費 12–23週',v:'AU$ 250'},{l:'旅遊保險',v:'AU$ 30/週'},{l:'電匯手續費（台灣）',v:'AU$ 110'},{l:'住宿安置費',v:'AU$ 385'}],
+  calcCourses:[{n:'標準上午（Classic Morning）',pw:400},{n:'密集上午（Semi-intensive Morning）',pw:475},{n:'密集 ＋ IELTS 備考',pw:475}],
+  calcAccomm:[{n:'寄宿家庭 半膳',pw:420},{n:'EP House Share 單人房',pw:300},{n:'Bunk Brisbane 宿舍',pw:395},{n:'Student One 套房',pw:679}],
+  day:[
+    {time:'08:00 起床',title:'昆士蘭的陽光早晨',desc:'布里斯本幾乎每天都是晴天，從 Homestay 出發，步行或搭公車，Queen Street Mall 就是學校門口的日常場景。'},
+    {time:'09:00–13:30',title:'密集英語課程',desc:'20 小時/週的密集課程，早上上課，老師的課程設計強調口說輸出，下課後的語感一天天在積累。'},
+    {time:'13:30 午餐',title:'Queen Street Mall 周邊',desc:'學校在布里斯本最熱鬧的步行商圈，午餐選擇從連鎖到獨立餐廳都有，幾澳幣就能吃飽。'},
+    {time:'下午自由',title:'South Bank 或 Story Bridge',desc:'步行 10 分鐘到 South Bank 人工海灘游泳，或走上 Story Bridge 俯瞰布里斯本，下午完全不需要交通費。'},
+    {time:'週末',title:'黃金海岸或摩頓島',desc:'搭火車 1 小時到黃金海岸衝浪，或搭渡輪到摩頓島看野生袋鼠、浮潛，澳洲的週末就是這樣花的。'},
+  ],
+  qa:[
+    {q:'澳洲學生簽、觀光簽、打工度假簽有什麼不同？可以讀多久？',a:'三種簽證對語言課程的限制不同。學生簽（Student Visa）最長可讀 62 週，需要申請 CRICOS 認可課程（EP 布里斯本持有 04187G），費用較高但保障最完整。觀光簽（Tourist Visa）最多讀 12 週，適合短期進修。打工度假簽（WHV）最多讀 17 週，可以同時打工賺取生活費，適合 18–30 歲的學員，台灣人每年有一定名額。'},
+    {q:'布里斯本和雪梨、墨爾本比起來生活費差很多嗎？',a:'布里斯本的整體生活費用比雪梨和墨爾本低約 10–20%，尤其是住宿費用。同樣等級的學生宿舍，布里斯本通常比雪梨便宜 $50–100/週。加上 EP 布里斯本的校區就在市中心 Queen Street Mall，交通便利性遠優於需要通勤的其他城市學校，是性價比相當高的選擇。'},
+    {q:'布里斯本天氣適合全年入學嗎？',a:'布里斯本全年氣候溫暖，沒有真正的嚴冬，最低溫冬天（6–8月）約 10–15°C，夏天（12–2月）約 25–30°C 但較潮濕。全年都適合入學，但夏季（12–2月）偶有暴雨，冬季（6–8月）是最舒適的時段，也是台灣學員最多選擇的入學季節。'},
+  ],
+},
+};
+
+const CEFR_DATA=[
+  {level:'A1',label:'初學者',color:'#94A3B8',barPct:8,hours:'從零開始',ielts:'—',equiv:'多益 220 以下',desc:'能理解並使用最基本的日常問候語、自我介紹。'},
+  {level:'A2',label:'基礎',color:'#64748B',barPct:18,hours:'約 80–180 小時',ielts:'—',equiv:'多益 225–549',desc:'能理解簡單的句子，處理最基本的溝通，例如購物、問路。'},
+  {level:'B1',label:'中級',color:'#F59E0B',barPct:35,hours:'約 180–400 小時（累計）',ielts:'IELTS 4.0–5.0',equiv:'多益 550–784',desc:'能應付旅行、工作中的常見情境，表達想法但語法仍不穩定。'},
+  {level:'B2',label:'中高級',color:'#F97316',barPct:55,hours:'約 400–600 小時（累計）',ielts:'IELTS 5.5–6.5',equiv:'多益 785–899',desc:'能流暢討論複雜主題，閱讀英文文章，撰寫較正式的信件或報告。'},
+  {level:'C1',label:'高級',color:'#EF4444',barPct:75,hours:'約 600–800 小時（累計）',ielts:'IELTS 7.0–8.0',equiv:'多益 900–989',desc:'能在職場上用英語有效溝通，理解專業文本，表達細膩的語義差別。'},
+  {level:'C2',label:'精通',color:'#8B5CF6',barPct:95,hours:'約 1,000–1,200 小時（累計）',ielts:'IELTS 8.5–9.0',equiv:'多益 990',desc:'接近母語程度，能完全自如地應對任何英語情境。'},
+];
+
+function renderCEFR(d){
+  // Work out weeks from semi-intensive (22hrs/wk) to move one level from d's typical entry point
+  const rows=CEFR_DATA.map(c=>`
+    <div class="cefr-row">
+      <div><span class="cefr-badge"><span class="cefr-dot" style="background:${c.color}"></span>${c.level} <span style="font-weight:400;color:var(--text2);font-size:12px">${c.label}</span></span></div>
+      <div class="cefr-bar-wrap"><div class="cefr-bar-bg"><div class="cefr-bar-fill" style="width:${c.barPct}%;background:${c.color}"></div></div></div>
+      <div class="cefr-hours">${c.hours}</div>
+      <div class="cefr-equiv">${c.ielts}<br><span style="font-size:10px">${c.equiv}</span></div>
+    </div>`).join('');
+  return `<div class="cefr-wrap">
+    <div class="cefr-row header">
+      <div class="cefr-lbl">級距</div>
+      <div class="cefr-lbl">程度條</div>
+      <div class="cefr-lbl" style="text-align:right;padding-right:8px">所需學習時數</div>
+      <div class="cefr-lbl" style="text-align:right">對應考試成績</div>
+    </div>
+    ${rows}
+    <div class="cefr-note">
+      📌 <strong>遊學的加速效果</strong>：根據 Cambridge 官方資料，相鄰兩個 CEFR 等級之間約需 <strong>200 小時</strong>的引導學習時間。密集課程（Semi-intensive）每週約 22 小時，<strong>大約 9–10 週即可累積 200 小時</strong>，相當於在台灣補習一年以上的接觸量。沉浸式環境下課後持續接觸英語，實際進步速度通常更快。<br><br>
+      ⚠️ <strong>注意</strong>：進步速度因人而異，受出發前程度、在當地說英文的積極度、住宿環境等因素影響。上述為一般性參考，不代表保證進度。
+    </div>
+  </div>`;
+}
+
+
+
+// ── LIVING COST DATA ──
+const LIVING={
+  '£':{rate:40,items:[
+    {i:'🚇',l:'交通月票',v:'£60–90'},
+    {i:'🍱',l:'午餐（每天）',v:'£6–12/天'},
+    {i:'🛒',l:'超市採購',v:'£30–50/週'},
+    {i:'☕',l:'咖啡 / 飲料',v:'£3–5/杯'},
+    {i:'🎭',l:'娛樂、週末活動',v:'£100–200/月'},
+    {i:'📱',l:'當地 SIM 卡',v:'£10–20/月'},
+  ],total:'£600–1,000／月',twd:'約台幣 24,000–40,000 元'},
+  '€':{rate:35,items:[
+    {i:'🚇',l:'交通月票',v:'€50–80'},
+    {i:'🍱',l:'午餐（每天）',v:'€5–10/天'},
+    {i:'🛒',l:'超市採購',v:'€25–45/週'},
+    {i:'☕',l:'咖啡 / 飲料',v:'€2–4/杯'},
+    {i:'🎭',l:'娛樂、週末活動',v:'€80–180/月'},
+    {i:'📱',l:'當地 SIM 卡',v:'€10–20/月'},
+  ],total:'€500–900／月',twd:'約台幣 17,500–31,500 元'},
+  'USD':{rate:32,items:[
+    {i:'🚇',l:'交通月票',v:'$100–150'},
+    {i:'🍱',l:'午餐（每天）',v:'$8–15/天'},
+    {i:'🛒',l:'超市採購',v:'$40–60/週'},
+    {i:'☕',l:'咖啡 / 飲料',v:'$3–6/杯'},
+    {i:'🎭',l:'娛樂、週末活動',v:'$100–200/月'},
+    {i:'📱',l:'當地 SIM 卡',v:'$15–25/月'},
+  ],total:'$600–1,100／月',twd:'約台幣 19,200–35,200 元'},
+  'CA$':{rate:23,items:[
+    {i:'🚇',l:'交通月票',v:'CA$130–160'},
+    {i:'🍱',l:'午餐（每天）',v:'CA$10–18/天'},
+    {i:'🛒',l:'超市採購',v:'CA$50–80/週'},
+    {i:'☕',l:'咖啡 / 飲料',v:'CA$3–6/杯'},
+    {i:'🎭',l:'娛樂、週末活動',v:'CA$100–200/月'},
+    {i:'📱',l:'當地 SIM 卡',v:'CA$20–35/月'},
+  ],total:'CA$800–1,400／月',twd:'約台幣 18,400–32,200 元'},
+  'AU$':{rate:21,items:[
+    {i:'🚇',l:'交通月票',v:'AU$150–180'},
+    {i:'🍱',l:'午餐（每天）',v:'AU$12–20/天'},
+    {i:'🛒',l:'超市採購',v:'AU$60–90/週'},
+    {i:'☕',l:'咖啡 / 飲料',v:'AU$4–6/杯'},
+    {i:'🎭',l:'娛樂、週末活動',v:'AU$100–250/月'},
+    {i:'📱',l:'當地 SIM 卡',v:'AU$20–40/月'},
+  ],total:'AU$900–1,600／月',twd:'約台幣 18,900–33,600 元'},
+};
+
+// ── COMPARE STATE ──
+const compareSet=new Set();
+
+function toggleCmp(e,key){
+  e.stopPropagation();
+  const el=document.getElementById('cmp-'+key);
+  if(compareSet.has(key)){
+    compareSet.delete(key);
+    el.classList.remove('checked');
+    el.textContent='';
+  } else {
+    if(compareSet.size>=3){alert('最多同時比較 3 個校區');return;}
+    compareSet.add(key);
+    el.classList.add('checked');
+    el.textContent='✓';
+  }
+  const btn=document.getElementById('compareBtnTop');
+  const cnt=document.getElementById('compareCount');
+  if(compareSet.size>0){
+    btn.classList.add('has-items');
+    cnt.textContent=`比較 ${compareSet.size} 個校區`;
+  } else {
+    btn.classList.remove('has-items');
+    cnt.textContent='比較校區';
+  }
+}
+
+function openCompare(){
+  if(compareSet.size<2){alert('請先在左側選擇至少 2 個校區（點校區名稱旁的小方框）');return;}
+  const keys=[...compareSet];
+  const rows=[
+    ['最低年齡',k=>D[k].info.find(i=>i.l==='最低年齡')?.v||'—'],
+    ['校區容量',k=>D[k].info.find(i=>i.l==='校區容量')?.v||'—'],
+    ['語言選擇',k=>D[k].info.find(i=>i.l==='語言選擇')?.v||'英文'],
+    ['課程週費起（最低）',k=>D[k].calcCourses[0].pw+' '+D[k].cur+'/週'],
+    ['住宿週費起（最低）',k=>D[k].calcAccomm[D[k].calcAccomm.length-1].pw+' '+D[k].cur+'/週'],
+    ['特色課程',k=>D[k].courses.filter(c=>c.special).map(c=>c.name.split('—')[0].trim().split(' ').slice(-2).join(' ')).join('、')||'—'],
+    ['校區特色',k=>D[k].feats.map(f=>f.t).join('、')],
+  ];
+  let html=`<table class="compare-table"><thead><tr><th>比較項目</th>${keys.map(k=>`<th>${D[k].flag} ${D[k].name}</th>`).join('')}</tr></thead><tbody>`;
+  rows.forEach(([lbl,fn])=>{
+    html+=`<tr><td>${lbl}</td>${keys.map(k=>`<td>${fn(k)}</td>`).join('')}</tr>`;
+  });
+  html+=`</tbody></table>`;
+  document.getElementById('compareBody').innerHTML=html;
+  document.getElementById('compareOverlay').classList.add('open');
+}
+function closeCompare(){document.getElementById('compareOverlay').classList.remove('open')}
+function closeCompareIfBg(e){if(e.target===document.getElementById('compareOverlay'))closeCompare()}
+
+// ── RENDER HELPERS ──
+function accommType(name){
+  if(/寄宿家庭|Homestay/.test(name)) return {cls:'atype-home',label:'🏠 寄宿家庭'};
+  if(/青旅|Hostel|Bunk|hostel/.test(name)) return {cls:'atype-hostel',label:'🛏 青年旅館'};
+  if(/飯店|Hotel|酒店/.test(name)) return {cls:'atype-hotel',label:'🏨 飯店'};
+  if(/公寓|Apt|apt|CLLIX|Adagio|套房|Studio|FIAP/.test(name)) return {cls:'atype-apt',label:'🏢 服務式公寓'};
+  return {cls:'atype-dorm',label:'🏫 學生宿舍'};
+}
+
+function renderCalcLiving(d,key){
+  const L=LIVING[d.cur]||LIVING['£'];
+  const cs=d.calcCourses.map(c=>`<option value="${c.pw}">${c.n}</option>`).join('');
+  const as=d.calcAccomm.map(a=>`<option value="${a.pw}">${a.n}</option>`).join('');
+  const ws=[1,2,3,4,6,8,10,12,16,20,24].map(w=>`<option value="${w}"${w===4?' selected':''}>${w} 週</option>`).join('');
+  const livItems=L.items.map(it=>`
+    <div class="living-item">
+      <div class="living-item-icon">${it.i}</div>
+      <div class="living-item-lbl">${it.l}</div>
+      <div class="living-item-val">${it.v}</div>
+    </div>`).join('');
+  return `
+  <div class="calc-v2" id="calc-${key}">
+    <div class="calc-controls-row">
+      <div class="calc-field">
+        <div class="calc-field-lbl">課程方案</div>
+        <select id="cc-${key}" onchange="recalc('${key}')">${cs}</select>
+      </div>
+      <div class="calc-field">
+        <div class="calc-field-lbl">住宿類型</div>
+        <select id="ca-${key}" onchange="recalc('${key}')">${as}</select>
+      </div>
+      <div class="calc-field">
+        <div class="calc-field-lbl">修讀週數</div>
+        <select id="cw-${key}" onchange="recalc('${key}')">${ws}</select>
+      </div>
+    </div>
+    <div class="calc-result-row" id="cr-${key}">
+      <div class="calc-res-cell"><div class="calc-res-lbl">課程費用</div><div class="calc-res-val" id="cv-course-${key}">—</div></div>
+      <div class="calc-res-cell"><div class="calc-res-lbl">住宿費用</div><div class="calc-res-val" id="cv-accomm-${key}">—</div></div>
+      <div class="calc-res-cell">
+        <div class="calc-res-lbl">預估總費用</div>
+        <div class="calc-res-val" id="cv-total-${key}">—</div>
+        <div class="calc-res-twd" id="cv-twd-${key}"></div>
+      </div>
+    </div>
+    <div class="calc-note-row">以週費起價 × 週數估算，供現場參考。不含報名費、材料費等一次性費用，實際報價依完整價目表確認。</div>
+  </div>
+
+  <div class="living-v2" style="margin-top:12px">
+    <div class="living-header">
+      <span>🧾 當地生活費參考（每月估算）</span>
+      <span>不含住宿，僅日常開銷</span>
+    </div>
+    <div class="living-items">
+      ${livItems}
+      <div class="living-total" style="grid-column:1/-1;padding:12px 16px;background:var(--pink-l);border-top:1px solid var(--pink-m);display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:11px;color:var(--pink-d);font-weight:700;margin-bottom:2px">每月生活費總估算</div>
+          <div style="font-size:10px;color:var(--pink)">不含住宿費用</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:18px;font-weight:700;color:var(--pink-d)">${L.total}</div>
+          <div style="font-size:11px;color:var(--pink);margin-top:1px">${L.twd}</div>
+        </div>
+      </div>
+    </div>
+    <div class="living-note">⚠️ 以上為參考估算，實際費用因個人消費習慣差異較大。匯率以常見區間估算，出發前請以當日匯率確認。建議出發時多帶一個月備用金。</div>
+  </div>`;
+}
+
+function recalc(key){
+  const d=D[key];
+  const cp=parseInt(document.getElementById('cc-'+key).value)||0;
+  const ap=parseInt(document.getElementById('ca-'+key).value)||0;
+  const w=parseInt(document.getElementById('cw-'+key).value)||1;
+  const ct=cp*w,at=ap*w,tot=ct+at;
+  const L=LIVING[d.cur]||LIVING['£'];
+  const twdLow=Math.round(tot*L.rate*0.95/1000)*1000;
+  const twdHigh=Math.round(tot*L.rate*1.05/1000)*1000;
+  document.getElementById('cv-course-'+key).textContent=d.cur+' '+ct.toLocaleString();
+  document.getElementById('cv-accomm-'+key).textContent=d.cur+' '+at.toLocaleString();
+  document.getElementById('cv-total-'+key).textContent=d.cur+' '+tot.toLocaleString();
+  document.getElementById('cv-twd-'+key).textContent='≈ 台幣 '+twdLow.toLocaleString()+'–'+twdHigh.toLocaleString()+' 元';
+}
+
+function renderCEFR(){
+  const rows=CEFR_DATA.map(c=>`
+    <div class="cefr-row-v2">
+      <div class="cefr-badge-v2">
+        <div class="cefr-lvl" style="color:${c.color}">${c.level}</div>
+        <div class="cefr-name">${c.name}</div>
+      </div>
+      <div class="cefr-bar-wrap">
+        <div class="cefr-bar-bg">
+          <div class="cefr-bar-fill" style="width:${c.bar}%;background:${c.color}"></div>
+        </div>
+      </div>
+      <div class="cefr-hours-v2">${c.hours}</div>
+      <div class="cefr-exam">IELTS ${c.ielts}<br><span style="color:var(--ink4)">多益 ${c.toeic}</span></div>
+    </div>`).join('');
+  return `<div class="cefr-v2">
+    <div class="cefr-header">
+      <div class="cefr-h-lbl">級距</div>
+      <div class="cefr-h-lbl">程度條</div>
+      <div class="cefr-h-lbl" style="text-align:right">所需學習時數</div>
+      <div class="cefr-h-lbl" style="text-align:right">對應考試</div>
+    </div>
+    ${rows}
+    <div class="cefr-note-v2">
+      📌 <strong>遊學的加速效果</strong>：根據 Cambridge 官方資料，相鄰兩個 CEFR 等級之間需約 <strong>200 小時</strong>引導學習時間。密集課程（Semi-intensive）每週約 22 小時，<strong>約 9–10 週即累積 200 小時</strong>，相當於在台灣補習一年以上的接觸量。沉浸式環境加上課外持續接觸，實際進步速度通常更快。<br><br>
+      ⚠️ 進步速度因人而異，受出發前程度、在當地說英文的積極度、住宿環境等因素影響，上述為一般性參考。
+    </div>
+  </div>`;
+}
+
+function renderPreknow(){
+  return `<div class="preknow-wrap anim-in">
+    <div style="margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid var(--bdr)">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--pink);margin-bottom:8px">全域說明</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:30px;color:var(--ink);margin-bottom:10px">出發前必知</div>
+      <div style="font-size:14px;color:var(--ink2);line-height:1.85;max-width:640px">在選擇校區之前，先了解這三件事：EP 是什麼樣的學校、台灣人去各國需要辦什麼簽證、出發後遇到問題有什麼支援。</div>
+    </div>
+
+    <div class="preknow-sec-title">🏅 EP 學校認證資質</div>
+    <div style="background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r-lg);padding:18px 20px;margin-bottom:8px">
+      <div style="font-size:14px;color:var(--ink2);line-height:1.8;margin-bottom:14px">EP 隸屬於 <strong>GEDU Global Education Group</strong>，在全球 12 個國家設有 14 個校區。以下是 EP 持有的主要認證：</div>
+      <div class="cert-row">
+        <div class="cert-badge"><span class="cert-dot"></span>🇬🇧 英國文化協會（British Council）</div>
+        <div class="cert-badge"><span class="cert-dot"></span>English UK 會員</div>
+        <div class="cert-badge"><span class="cert-dot"></span>elt council 認證</div>
+        <div class="cert-badge"><span class="cert-dot"></span>🇦🇪 杜拜教育局認可</div>
+        <div class="cert-badge"><span class="cert-dot"></span>🇫🇷 Qualiopi（法國）認證</div>
+        <div class="cert-badge"><span class="cert-dot"></span>🇨🇦 Languages Canada 認可</div>
+        <div class="cert-badge"><span class="cert-dot"></span>ACCET 認可</div>
+        <div class="cert-badge"><span class="cert-dot"></span>🇮🇪 愛爾蘭教育部 EI 認可</div>
+        <div class="cert-badge"><span class="cert-dot"></span>🇩🇪 Bildungsurlaub（德國）認可</div>
+        <div class="cert-badge"><span class="cert-dot"></span>🇦🇺 CRICOS 04187G</div>
+        <div class="cert-badge" style="background:var(--pink-l);border-color:var(--pink-m)"><span class="cert-dot"></span>⭐ ST Star Awards 2024</div>
+        <div class="cert-badge" style="background:var(--pink-l);border-color:var(--pink-m)"><span class="cert-dot"></span>⭐ ST Star Awards 2025</div>
+      </div>
+    </div>
+
+    <div class="preknow-sec-title">✈️ 台灣學生簽證概覽</div>
+    <div style="background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r-lg);padding:18px 20px;margin-bottom:8px">
+      <div style="font-size:13px;color:var(--ink2);line-height:1.8;margin-bottom:14px"><strong>實際簽證規定可能隨政策調整，出發前請務必以官方最新資訊確認。</strong></div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="pk-visa-item"><b>🇬🇧 英國</b>：標準訪客簽（Standard Visitor）最長停留 6 個月，期間不能打工。想合法打工需申請 YMS（Youth Mobility Scheme）簽，適用 18–30 歲特定國籍（含台灣），每年有名額限制。</div>
+        <div class="pk-visa-item"><b>🇮🇪 愛爾蘭</b>：台灣護照免簽入境最長 90 天。超過 90 天需申請學生簽。Work &amp; Study 計畫讓非 EU 學員合法每週兼職最多 20 小時。</div>
+        <div class="pk-visa-item"><b>🇩🇪 德國</b>：申根區，90 天以內免簽。超過 90 天需申請語言課程學生簽（National Visa），建議提前 3–4 個月辦理。</div>
+        <div class="pk-visa-item"><b>🇫🇷 法國</b>：申根區，90 天以內免簽。超過 90 天需辦 VLS-TS 長期學生簽，台灣可透過法國在台協會申請，建議提前 2–3 個月。</div>
+        <div class="pk-visa-item"><b>🇲🇹 馬爾他</b>：申根區，90 天以內免簽。超過 90 天需辦馬爾他學生居留許可，EP 馬爾他提供簽證協助服務。</div>
+        <div class="pk-visa-item"><b>🇦🇪 杜拜（阿聯酋）</b>：台灣護照可免簽入境，停留 30–90 天。較長期就讀可選 6 個月教育簽（18歲以上）或 1 年學生簽（16歲以上）。</div>
+        <div class="pk-visa-item"><b>🇨🇦 加拿大</b>：需申請 eTA（CA$7，線上幾天核准）。觀光身份最長讀 6 個月語言課程，超過需辦 Study Permit。</div>
+        <div class="pk-visa-item"><b>🇦🇺 澳洲</b>：學生簽可讀最長 62 週 CRICOS 課程；觀光簽最多讀 12 週；打工度假簽（WHV）最多讀 17 週且可合法打工，適用 18–30 歲台灣人。</div>
+      </div>
+    </div>
+
+    <div class="preknow-sec-title">🤝 出發後，你不是自己一個人</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-bottom:10px">
+      ${[
+        ['🏫','當地 Student Experience Manager','每間校區均設有專屬學生服務管理員，負責入學定向、班級分配、課程調整、住宿協調與日常問題處理。'],
+        ['👋','第一週學生大使陪伴','抵達當日有 Orientation Tour，第一週有學生大使全程陪伴，協助熟悉校園環境和當地生活。'],
+        ['📱','放洋顧問持續聯絡','出發後放洋顧問仍持續關心。遇到課程調整、住宿問題或緊急狀況，隨時可以聯絡顧問協助。'],
+        ['🔄','課程與住宿可以調整','覺得課程太快或太慢？寄宿家庭相處不順？這些問題都有標準處理流程，跟顧問說，我們幫你。'],
+      ].map(([ic,t,d])=>`
+        <div style="background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r-lg);padding:16px 17px">
+          <div style="font-size:20px;margin-bottom:9px">${ic}</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px">${t}</div>
+          <div style="font-size:12px;color:var(--ink2);line-height:1.65">${d}</div>
+        </div>`).join('')}
+    </div>
+    <div style="background:var(--pink-l);border:1px solid var(--pink-m);border-radius:var(--r-lg);padding:14px 18px;font-size:13px;color:var(--pink-d);line-height:1.75">
+      💬 <strong>選好校區後，點左側導覽進入詳細介紹。</strong>每個校區頁面都有完整的課程資訊、住宿選項、費用試算與常見問題解答。每個校區名稱旁的 <strong>□ 小方框</strong>可加入比較，最多選 3 個校區並排比較。
+    </div>
+  </div>`;
+}
+
+// ── RENDER CAMPUS ──
+function render(key){
+  const d=D[key];
+  const dayHtml=d.day?(d.day.map(t=>`
+    <div class="day-slot">
+      <div class="day-dot"><div class="day-dot-inner"></div></div>
+      <div class="day-time-lbl">${t.time}</div>
+      <div class="day-content">
+        <div class="day-title">${t.title}</div>
+        <div class="day-desc">${t.desc}</div>
+      </div>
+    </div>`).join('')):'';
+
+  const html=`
+  <div class="page-anchor" id="anchor-bar">
+    <button class="anchor-btn active" onclick="jumpTo('sec-info')">基本資訊</button>
+    <button class="anchor-btn" onclick="jumpTo('sec-feat')">校區特色</button>
+    <button class="anchor-btn" onclick="jumpTo('sec-who')">適合對象</button>
+    <button class="anchor-btn" onclick="jumpTo('sec-course')">課程</button>
+    <button class="anchor-btn" onclick="jumpTo('sec-accomm')">住宿</button>
+    <button class="anchor-btn" onclick="jumpTo('sec-calc')">費用試算</button>
+    <button class="anchor-btn" onclick="jumpTo('sec-day')">一天生活</button>
+    <button class="anchor-btn" onclick="jumpTo('sec-cefr')">語言進步</button>
+    <button class="anchor-btn" onclick="jumpTo('sec-qa')">Q&amp;A</button>
+  </div>
+  <div class="campus-wrap anim-in">
+    <div class="campus-hero">
+      <div class="region-tag ${d.tag}">${d.flag} ${d.region}</div>
+      <h1 class="campus-name">${d.name}</h1>
+      <div class="campus-addr">📍 ${d.addr}</div>
+      <p class="campus-intro">${d.intro}</p>
+    </div>
+
+    <div id="sec-info"><div class="sec-title">校區基本資訊</div>
+    <div class="info-grid">${d.info.map(i=>`<div class="info-card"><div class="info-lbl">${i.l}</div><div class="info-val">${i.v}</div></div>`).join('')}</div></div>
+
+    <div id="sec-feat"><div class="sec-title">校區特色</div>
+    <div class="feat-grid">${d.feats.map(f=>`<div class="feat-card"><div class="feat-icon">${f.i}</div><div><div class="feat-title">${f.t}</div><div class="feat-desc">${f.d}</div></div></div>`).join('')}</div></div>
+
+    <div id="sec-who"><div class="sec-title">適合哪些學員</div>
+    <div class="who-grid">${d.who.map(w=>`<div class="who-card"><div class="who-head"><span class="who-icon">${w.i}</span><span class="who-title">${w.t}</span></div><div class="who-desc">${w.d}</div></div>`).join('')}</div></div>
+
+    <div id="sec-course"><div class="sec-title">課程詳細介紹</div>
+    <div class="course-list">${d.courses.map((c,ci)=>{
+      const {cls:actCls,label:actLabel}=accommType('');
+      return `<div class="course-card${c.special?' special':''}" id="cc-card-${key}-${ci}">
+        ${c.special?`<div style="padding:8px 15px 0"><div class="special-badge">★ 特色課程</div></div>`:''}
+        <div class="course-hd" onclick="toggleCourse('${key}',${ci})">
+          ${c.special?`<div class="special-dot"></div>`:''}
+          <div class="course-name">${c.name}</div>
+          <div class="course-tags-inline">${c.tags.slice(0,2).map(t=>`<span class="course-tag">${t}</span>`).join('')}</div>
+          <div class="course-price-inline">${c.price}</div>
+          <div class="course-chevron">▾</div>
+        </div>
+        <div class="course-body">
+          <div class="course-full-tags">${c.tags.map(t=>`<span class="course-tag">${t}</span>`).join('')}</div>
+          ${c.desc}
+        </div>
+      </div>`;
+    }).join('')}</div></div>
+
+    <div id="sec-accomm"><div class="sec-title">住宿選項</div>
+    <div class="accomm-grid">${d.accomm.map(a=>{
+      const {cls,label}=accommType(a.name);
+      return `<div class="accomm-card">
+        <div class="accomm-type-badge ${cls}">${label}</div>
+        <div class="accomm-name">${a.name}</div>
+        <div class="accomm-meta">${a.meta}</div>
+        <div class="accomm-price">${a.price}</div>
+        <div class="accomm-desc">${a.desc}</div>
+      </div>`;
+    }).join('')}</div></div>
+
+    <div class="sec-title advisor-only">其他費用參考</div>
+    <div class="fees-row advisor-only">${d.fees.map(f=>`<div class="fee-chip"><b>${f.l}</b> ${f.v}</div>`).join('')}</div>
+
+    <div id="sec-calc"><div class="sec-title">費用快速試算</div>
+    ${renderCalcLiving(d,key)}</div>
+
+    <div id="sec-day"><div class="sec-title">在這裡的一天</div>
+    <div class="day-timeline">${dayHtml}</div></div>
+
+    <div id="sec-cefr"><div class="sec-title">語言進步速度參考——CEFR 級距</div>
+    ${renderCEFR()}</div>
+
+    <div class="sec-title">出國回來你會帶走什麼</div>
+    <div class="returns-grid">
+      ${[
+        ['🗣️','開口不再猶豫','沉浸式環境讓你習慣「先說再修正」。回來之後說英語的反應速度和自信心，是在台灣怎麼補都補不出來的。'],
+        ['🌍','真正的國際視野','班上同學來自西班牙、日本、巴西、沙烏地阿拉伯……你會第一次真正理解「文化差異」不只是教科書上的詞。'],
+        ['🧭','對自己的認識','一個人在異地解決問題、適應陌生環境，你會發現自己比想像的更能扛事。這種獨立性，任何課程都教不了。'],
+        ['🤝','跨國人脈與友誼','你的同學將來可能是各國的工程師、設計師、創業者。這段關係，有時候是未來職涯裡意想不到的連結。'],
+        ['📄','結業證書與學習記錄','語言學校結業證書代表一段完整的語言學習歷程，搭配語言考試成績放在履歷，是職場有意義的加分。'],
+        ['🔋','語感最強的備考黃金期','剛回台灣的 1–2 個月是英語狀態最好的時候，這時備考多益、雅思、托福，效率遠高於從零開始。'],
+      ].map(([ic,t,d])=>`<div class="return-card"><div class="return-icon">${ic}</div><div class="return-title">${t}</div><div class="return-desc">${d}</div></div>`).join('')}
+    </div>
+
+    <div id="sec-qa"><div class="sec-title">常見問題 Q&A</div>
+    <div class="qa-list">${d.qa.map((q,qi)=>`
+      <div class="qa-item" id="qa-${key}-${qi}">
+        <div class="qa-q" onclick="toggleQA('${key}',${qi})">
+          <div class="qa-q-mark">Q</div>
+          <div class="qa-q-text">${q.q}</div>
+          <div class="qa-arrow">▾</div>
+        </div>
+        <div class="qa-a">${q.a}</div>
+      </div>`).join('')}</div></div>
+
+    <div class="divider"></div>
+    <div class="note-panel advisor-only" id="note-panel-${key}">
+      <div class="note-panel-title">📝 顧問備注 <span style="font-weight:400;color:var(--ink4);font-size:10px;text-transform:none;letter-spacing:0">（存入 Supabase，業務手冊同步可見）</span></div>
+      <div class="note-fields">
+        <div class="note-field">
+          <label>學生姓名</label>
+          <input type="text" id="note-name-${key}" placeholder="選填">
+        </div>
+        <div class="note-field">
+          <label>預計週數</label>
+          <select id="note-weeks-${key}">
+            <option value="">— 選擇 —</option>
+            <option>1–2 週</option><option>3–4 週</option>
+            <option>5–8 週</option><option>9–12 週</option>
+            <option>3–6 個月</option><option>6 個月以上</option>
+          </select>
+        </div>
+        <div class="note-field">
+          <label>課程方向</label>
+          <select id="note-course-${key}">
+            <option value="">— 選擇 —</option>
+            <option>一般英語（General English）</option>
+            <option>密集英語（Semi-intensive）</option>
+            <option>IELTS 備考</option>
+            <option>商業英語</option>
+            <option>德文課程</option>
+            <option>法文課程</option>
+            <option>專業證書課程</option>
+            <option>帶薪實習計畫</option>
+            <option>Work &amp; Study（愛爾蘭）</option>
+            <option>Pathway 銜接課程</option>
+            <option>尚未確定</option>
+          </select>
+        </div>
+        <div class="note-field">
+          <label>住宿偏好</label>
+          <select id="note-accomm-${key}">
+            <option value="">— 選擇 —</option>
+            <option>寄宿家庭（Homestay）</option>
+            <option>學生宿舍</option>
+            <option>共享公寓</option>
+            <option>青年旅館</option>
+            <option>飯店 / 服務式公寓</option>
+            <option>尚未確定</option>
+          </select>
+        </div>
+      </div>
+      <label style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:5px">備注 / 特殊需求</label>
+      <textarea class="note-textarea" id="note-memo-${key}" placeholder="例：預算約 20 萬、英文程度 B1、媽媽非常在意安全問題、考慮與朋友一起報名…"></textarea>
+      <div class="note-actions">
+        <button class="note-save-btn" id="note-btn-${key}" onclick="saveNote('${key}')">儲存備注</button>
+        <span class="note-status" id="note-status-${key}"></span>
+      </div>
+      <div class="note-history" id="note-history-${key}">
+        <div class="note-history-title">此校區的備注記錄</div>
+        <div id="note-list-${key}" style="color:var(--ink4);font-size:11px">載入中…</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="cta-bar">
+      <div class="cta-text">
+        <div class="cta-title">對 ${d.name} 有興趣？</div>
+        <div class="cta-sub">告訴顧問你的想法，我們幫你確認課程、住宿與出發時間。</div>
+      </div>
+      <div class="cta-action">
+        <button class="cta-btn cta-btn-ghost advisor-only" onclick="toggleCmp(event,'${key}')">加入比較 □</button>
+      </div>
+    </div>
+    <div style="height:1rem"></div>
+  </div>`;
+
+  const campusEl=document.getElementById('campus-panel');
+  document.getElementById('panel-preknow').style.display='none';
+  campusEl.style.display='block';
+  campusEl.innerHTML=html;
+  document.getElementById('main').scrollTop=0;
+  recalc(key);
+  initAnchorObserver();
+  loadNotes(key);
+}
+
+// ── DEMO MODE ──
+let demoMode=false;
+function toggleDemo(){
+  demoMode=!demoMode;
+  document.body.classList.toggle('demo-mode',demoMode);
+  document.getElementById('demoIcon').textContent=demoMode?'🔒':'👁';
+  document.getElementById('demoLabel').textContent=demoMode?'退出展示':'展示模式';
+  document.getElementById('advisorBadge').style.display=demoMode?'none':'';
+  document.getElementById('compareBtnTop').style.display=demoMode?'none':'';
+}
+
+// ── SUPABASE NOTE FUNCTIONS ──
+// Table: ep_consult_notes
+// SQL to create:
+// CREATE TABLE ep_consult_notes (
+//   id          bigserial PRIMARY KEY,
+//   campus_key  text NOT NULL,
+//   campus_name text,
+//   student     text,
+//   weeks       text,
+//   course_dir  text,
+//   accomm_pref text,
+//   memo        text,
+//   created_at  timestamptz DEFAULT now()
+// );
+// ALTER TABLE ep_consult_notes ENABLE ROW LEVEL SECURITY;
+// CREATE POLICY "anon_all" ON ep_consult_notes FOR ALL USING (true) WITH CHECK (true);
+
+async function saveNote(key){
+  const btn=document.getElementById('note-btn-'+key);
+  const status=document.getElementById('note-status-'+key);
+  const name=document.getElementById('note-name-'+key).value.trim();
+  const weeks=document.getElementById('note-weeks-'+key).value;
+  const course=document.getElementById('note-course-'+key).value;
+  const accomm=document.getElementById('note-accomm-'+key).value;
+  const memo=document.getElementById('note-memo-'+key).value.trim();
+  if(!memo && !name){
+    status.textContent='請至少填寫學生姓名或備注內容';
+    status.className='note-status err';
+    return;
+  }
+  btn.disabled=true;
+  btn.textContent='儲存中…';
+  status.textContent='';
+  const payload={
+    campus_key:key,
+    campus_name:D[key]?.name||key,
+    student:name||null,
+    weeks:weeks||null,
+    course_dir:course||null,
+    accomm_pref:accomm||null,
+    memo:memo||null,
+  };
+  const res=await sb('POST','ep_consult_notes',payload);
+  if(res){
+    status.textContent='✓ 已儲存';
+    status.className='note-status ok';
+    document.getElementById('note-name-'+key).value='';
+    document.getElementById('note-weeks-'+key).value='';
+    document.getElementById('note-course-'+key).value='';
+    document.getElementById('note-accomm-'+key).value='';
+    document.getElementById('note-memo-'+key).value='';
+    loadNotes(key);
+    setTimeout(()=>{status.textContent='';},3000);
+  } else {
+    // Fallback: save to localStorage if Supabase not configured
+    const stored=JSON.parse(localStorage.getItem('ep_notes_'+key)||'[]');
+    stored.unshift({...payload,created_at:new Date().toISOString(),id:Date.now()});
+    localStorage.setItem('ep_notes_'+key,JSON.stringify(stored.slice(0,20)));
+    status.textContent='⚠ 暫存至本機（Supabase 未連線）';
+    status.className='note-status err';
+    renderNoteList(key,stored);
+    document.getElementById('note-memo-'+key).value='';
+  }
+  btn.disabled=false;
+  btn.textContent='儲存備注';
+}
+
+async function loadNotes(key){
+  const listEl=document.getElementById('note-list-'+key);
+  if(!listEl)return;
+  // Try Supabase first
+  const res=await sb('GET','ep_consult_notes',null,
+    'campus_key=eq.'+key+'&order=created_at.desc&limit=10');
+  if(res && Array.isArray(res)){
+    renderNoteList(key,res);
+    return;
+  }
+  // Fallback localStorage
+  const stored=JSON.parse(localStorage.getItem('ep_notes_'+key)||'[]');
+  renderNoteList(key,stored);
+}
+
+function renderNoteList(key,items){
+  const listEl=document.getElementById('note-list-'+key);
+  if(!listEl)return;
+  if(!items||!items.length){
+    listEl.innerHTML='<span style="color:var(--ink4);font-size:11px">尚無備注記錄</span>';
+    return;
+  }
+  listEl.innerHTML=items.map(n=>`
+    <div class="note-item">
+      <div class="note-item-meta">
+        <span>${n.student?'👤 '+n.student:'匿名'} ${n.weeks?'· '+n.weeks:''} ${n.course_dir?'· '+n.course_dir:''}</span>
+        <span>${n.created_at?new Date(n.created_at).toLocaleDateString('zh-TW',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):''}</span>
+      </div>
+      ${n.memo?`<div>${n.memo}</div>`:''}
+      ${n.accomm_pref?`<div style="color:var(--ink4);margin-top:2px;font-size:10px">住宿：${n.accomm_pref}</div>`:''}
+    </div>`).join('');
+}
+
+function toggleCourse(key,ci){
+  const card=document.getElementById(`cc-card-${key}-${ci}`);
+  card.classList.toggle('open');
+}
+
+function toggleQA(key,qi){
+  document.getElementById(`qa-${key}-${qi}`).classList.toggle('open');
+}
+
+function jumpTo(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  const main=document.getElementById('main');
+  const mainRect=main.getBoundingClientRect();
+  const elRect=el.getBoundingClientRect();
+  const offset=elRect.top - mainRect.top + main.scrollTop - 46;
+  main.scrollTo({top:offset,behavior:'smooth'});
+}
+
+function initAnchorObserver(){
+  const secs=['sec-info','sec-feat','sec-who','sec-course','sec-accomm','sec-calc','sec-day','sec-cefr','sec-qa'];
+  const main=document.getElementById('main');
+  main.addEventListener('scroll',()=>{
+    const btns=document.querySelectorAll('.anchor-btn');
+    if(!btns.length) return;
+    let active=0;
+    secs.forEach((id,i)=>{
+      const el=document.getElementById(id);
+      if(!el) return;
+      const top=el.getBoundingClientRect().top - main.getBoundingClientRect().top;
+      if(top < 100) active=i;
+    });
+    btns.forEach((b,i)=>b.classList.toggle('active',i===active));
+  },{passive:true});
+}
+
+function show(key){
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
+  if(key==='preknow'){
+    document.getElementById('panel-preknow').innerHTML=renderPreknow();
+    document.getElementById('panel-preknow').style.display='block';
+    document.getElementById('campus-panel').style.display='none';
+    document.getElementById('main').scrollTop=0;
+    return;
+  }
+  const nb=document.getElementById('nb-'+key);
+  if(nb) nb.classList.add('on');
+  render(key);
+}
+
+show('preknow');
+</script>
+</body>
+</html>
