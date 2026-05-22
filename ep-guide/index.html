@@ -579,8 +579,6 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink)
 .note-status{font-size:11px;color:var(--ink4)}
 .note-status.ok{color:#16A34A}
 .note-status.err{color:#DC2626}
-.note-history{margin-top:14px;border-top:1px solid var(--bdr);padding-top:12px}
-.note-history-title{font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
 .note-item{
   padding:9px 11px;background:var(--sur2);border-radius:var(--r-sm);
   margin-bottom:6px;font-size:11px;color:var(--ink2);line-height:1.6;
@@ -1715,8 +1713,12 @@ function render(key){
 
     <div class="divider"></div>
     <div class="note-panel advisor-only" id="note-panel-${key}">
-      <div class="note-panel-title">📝 顧問備注 <span style="font-weight:400;color:var(--ink4);font-size:10px;text-transform:none;letter-spacing:0">（存入 Supabase，業務手冊同步可見）</span></div>
+      <div class="note-panel-title">📝 諮詢記錄 <span style="font-weight:400;color:var(--ink4);font-size:10px;text-transform:none;letter-spacing:0">填完後複製貼到 2026 諮詢大表</span></div>
       <div class="note-fields">
+        <div class="note-field">
+          <label>業務姓名 <span style="color:#E53E3E">*</span></label>
+          <input type="text" id="note-advisor-${key}" placeholder="必填">
+        </div>
         <div class="note-field">
           <label>學生姓名</label>
           <input type="text" id="note-name-${key}" placeholder="選填">
@@ -1759,16 +1761,50 @@ function render(key){
             <option>尚未確定</option>
           </select>
         </div>
+        <div class="note-field">
+          <label>預算範圍</label>
+          <select id="note-budget-${key}">
+            <option value="">— 選擇 —</option>
+            <option>10 萬以內</option>
+            <option>10–15 萬</option>
+            <option>15–20 萬</option>
+            <option>20–30 萬</option>
+            <option>30 萬以上</option>
+            <option>不確定</option>
+          </select>
+        </div>
       </div>
       <label style="font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:5px">備注 / 特殊需求</label>
       <textarea class="note-textarea" id="note-memo-${key}" placeholder="例：預算約 20 萬、英文程度 B1、媽媽非常在意安全問題、考慮與朋友一起報名…"></textarea>
+
       <div class="note-actions">
-        <button class="note-save-btn" id="note-btn-${key}" onclick="saveNote('${key}')">儲存備注</button>
+        <button class="note-save-btn" id="note-btn-${key}" onclick="saveNote('${key}')">儲存 &amp; 產生複製內容</button>
         <span class="note-status" id="note-status-${key}"></span>
       </div>
-      <div class="note-history" id="note-history-${key}">
-        <div class="note-history-title">此校區的備注記錄</div>
-        <div id="note-list-${key}" style="color:var(--ink4);font-size:11px">載入中…</div>
+
+      <!-- 複製區塊，儲存後才顯示 -->
+      <div id="note-copy-box-${key}" style="display:none;margin-top:14px">
+        <div style="background:#FFF3CD;border:1.5px solid #F59E0B;border-radius:var(--r-sm);padding:10px 14px;margin-bottom:10px;display:flex;align-items:flex-start;gap:10px">
+          <span style="font-size:16px;flex-shrink:0">⚠️</span>
+          <div style="font-size:12px;color:#7C4A00;line-height:1.65">
+            <strong>✓ 已儲存，記得複製下方內容貼到 2026 諮詢大表</strong><br>
+            複製後請立即貼到共用表格，系統不會在此顯示歷史記錄。
+          </div>
+        </div>
+        <div style="position:relative">
+          <textarea id="note-copy-text-${key}" readonly
+            style="width:100%;padding:11px 14px;font-size:12px;font-family:'DM Mono',monospace;
+            line-height:1.7;border:1px solid var(--bdr2);border-radius:var(--r-sm);
+            background:#F8F9FA;color:var(--ink);resize:none;height:180px;outline:none"
+          ></textarea>
+          <button onclick="copyNote('${key}')" id="note-copy-btn-${key}"
+            style="position:absolute;top:8px;right:8px;padding:5px 12px;
+            background:var(--pink);color:#fff;border:none;border-radius:var(--r-sm);
+            font-size:11px;font-weight:700;cursor:pointer;font-family:'Noto Sans TC',sans-serif">
+            複製
+          </button>
+        </div>
+        <div id="note-copied-${key}" style="font-size:11px;color:#16A34A;margin-top:5px;display:none">✓ 已複製到剪貼簿，請貼到 2026 諮詢大表</div>
       </div>
     </div>
 
@@ -1792,7 +1828,6 @@ function render(key){
   document.getElementById('main').scrollTop=0;
   recalc(key);
   initAnchorObserver();
-  loadNotes(key);
 }
 
 // ── DEMO MODE ──
@@ -1807,104 +1842,128 @@ function toggleDemo(){
 }
 
 // ── SUPABASE NOTE FUNCTIONS ──
-// Table: ep_consult_notes
-// SQL to create:
-// CREATE TABLE ep_consult_notes (
-//   id          bigserial PRIMARY KEY,
-//   campus_key  text NOT NULL,
-//   campus_name text,
-//   student     text,
-//   weeks       text,
-//   course_dir  text,
-//   accomm_pref text,
-//   memo        text,
-//   created_at  timestamptz DEFAULT now()
+// Supabase table: ep_consult_notes
+// Run this SQL in Supabase Dashboard → SQL Editor:
+//
+// CREATE TABLE IF NOT EXISTS ep_consult_notes (
+//   id           bigserial PRIMARY KEY,
+//   advisor_name text NOT NULL,
+//   campus_key   text NOT NULL,
+//   campus_name  text,
+//   student      text,
+//   weeks        text,
+//   course_dir   text,
+//   accomm_pref  text,
+//   budget       text,
+//   memo         text,
+//   status       text DEFAULT 'pending',
+//   created_at   timestamptz DEFAULT now()
 // );
 // ALTER TABLE ep_consult_notes ENABLE ROW LEVEL SECURITY;
-// CREATE POLICY "anon_all" ON ep_consult_notes FOR ALL USING (true) WITH CHECK (true);
+// CREATE POLICY "anon_all" ON ep_consult_notes
+//   FOR ALL USING (true) WITH CHECK (true);
+
+function buildCopyText(advisor,name,campusName,weeks,course,accomm,budget,memo){
+  const now=new Date();
+  const dateStr=now.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})
+    +' '+now.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'});
+  return [
+    '📋 遊學諮詢記錄｜'+dateStr,
+    '業務：'+advisor,
+    '學生：'+(name||'（未填）'),
+    '意向校區：'+campusName,
+    '預計週數：'+(weeks||'未確定'),
+    '課程方向：'+(course||'未確定'),
+    '住宿偏好：'+(accomm||'未確定'),
+    '預算範圍：'+(budget||'未確定'),
+    '備注：'+(memo||'（無）'),
+  ].join('\n');
+}
 
 async function saveNote(key){
   const btn=document.getElementById('note-btn-'+key);
   const status=document.getElementById('note-status-'+key);
+  const advisor=document.getElementById('note-advisor-'+key).value.trim();
   const name=document.getElementById('note-name-'+key).value.trim();
   const weeks=document.getElementById('note-weeks-'+key).value;
   const course=document.getElementById('note-course-'+key).value;
   const accomm=document.getElementById('note-accomm-'+key).value;
+  const budget=document.getElementById('note-budget-'+key).value;
   const memo=document.getElementById('note-memo-'+key).value.trim();
+  if(!advisor){
+    status.textContent='⚠ 請填寫業務姓名';
+    status.className='note-status err';
+    document.getElementById('note-advisor-'+key).focus();
+    return;
+  }
   if(!memo && !name){
-    status.textContent='請至少填寫學生姓名或備注內容';
+    status.textContent='⚠ 請至少填寫學生姓名或備注';
     status.className='note-status err';
     return;
   }
   btn.disabled=true;
   btn.textContent='儲存中…';
   status.textContent='';
+  const campusName=D[key]?.name||key;
   const payload={
+    advisor_name:advisor,
     campus_key:key,
-    campus_name:D[key]?.name||key,
+    campus_name:campusName,
     student:name||null,
     weeks:weeks||null,
     course_dir:course||null,
     accomm_pref:accomm||null,
+    budget:budget||null,
     memo:memo||null,
+    status:'pending',
   };
   const res=await sb('POST','ep_consult_notes',payload);
+  const copyText=buildCopyText(advisor,name,campusName,weeks,course,accomm,budget,memo);
   if(res){
     status.textContent='✓ 已儲存';
     status.className='note-status ok';
-    document.getElementById('note-name-'+key).value='';
-    document.getElementById('note-weeks-'+key).value='';
-    document.getElementById('note-course-'+key).value='';
-    document.getElementById('note-accomm-'+key).value='';
-    document.getElementById('note-memo-'+key).value='';
-    loadNotes(key);
-    setTimeout(()=>{status.textContent='';},3000);
   } else {
-    // Fallback: save to localStorage if Supabase not configured
-    const stored=JSON.parse(localStorage.getItem('ep_notes_'+key)||'[]');
+    const stored=JSON.parse(localStorage.getItem('ep_notes_fallback')||'[]');
     stored.unshift({...payload,created_at:new Date().toISOString(),id:Date.now()});
-    localStorage.setItem('ep_notes_'+key,JSON.stringify(stored.slice(0,20)));
-    status.textContent='⚠ 暫存至本機（Supabase 未連線）';
+    localStorage.setItem('ep_notes_fallback',JSON.stringify(stored.slice(0,50)));
+    status.textContent='⚠ Supabase 未連線，已暫存本機';
     status.className='note-status err';
-    renderNoteList(key,stored);
-    document.getElementById('note-memo-'+key).value='';
   }
+  // Always show copy box
+  const copyBox=document.getElementById('note-copy-box-'+key);
+  const copyTextEl=document.getElementById('note-copy-text-'+key);
+  copyTextEl.value=copyText;
+  copyBox.style.display='block';
+  copyTextEl.style.height='auto';
+  copyTextEl.style.height=(copyTextEl.scrollHeight+4)+'px';
+  // Clear fields
+  ['note-advisor-','note-name-','note-weeks-','note-course-','note-accomm-','note-budget-','note-memo-'].forEach(id=>{
+    const el=document.getElementById(id+key);
+    if(el) el.value='';
+  });
   btn.disabled=false;
-  btn.textContent='儲存備注';
+  btn.textContent='儲存 & 產生複製內容';
+  setTimeout(()=>{ copyBox.scrollIntoView({behavior:'smooth',block:'nearest'}); },150);
 }
 
-async function loadNotes(key){
-  const listEl=document.getElementById('note-list-'+key);
-  if(!listEl)return;
-  // Try Supabase first
-  const res=await sb('GET','ep_consult_notes',null,
-    'campus_key=eq.'+key+'&order=created_at.desc&limit=10');
-  if(res && Array.isArray(res)){
-    renderNoteList(key,res);
-    return;
-  }
-  // Fallback localStorage
-  const stored=JSON.parse(localStorage.getItem('ep_notes_'+key)||'[]');
-  renderNoteList(key,stored);
+function copyNote(key){
+  const el=document.getElementById('note-copy-text-'+key);
+  el.select();
+  el.setSelectionRange(0,99999);
+  try{ navigator.clipboard.writeText(el.value).catch(()=>document.execCommand('copy')); }
+  catch(e){ document.execCommand('copy'); }
+  const indicator=document.getElementById('note-copied-'+key);
+  const btn=document.getElementById('note-copy-btn-'+key);
+  indicator.style.display='block';
+  btn.textContent='✓ 已複製';
+  btn.style.background='#16A34A';
+  setTimeout(()=>{
+    indicator.style.display='none';
+    btn.textContent='複製';
+    btn.style.background='';
+  },3000);
 }
 
-function renderNoteList(key,items){
-  const listEl=document.getElementById('note-list-'+key);
-  if(!listEl)return;
-  if(!items||!items.length){
-    listEl.innerHTML='<span style="color:var(--ink4);font-size:11px">尚無備注記錄</span>';
-    return;
-  }
-  listEl.innerHTML=items.map(n=>`
-    <div class="note-item">
-      <div class="note-item-meta">
-        <span>${n.student?'👤 '+n.student:'匿名'} ${n.weeks?'· '+n.weeks:''} ${n.course_dir?'· '+n.course_dir:''}</span>
-        <span>${n.created_at?new Date(n.created_at).toLocaleDateString('zh-TW',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):''}</span>
-      </div>
-      ${n.memo?`<div>${n.memo}</div>`:''}
-      ${n.accomm_pref?`<div style="color:var(--ink4);margin-top:2px;font-size:10px">住宿：${n.accomm_pref}</div>`:''}
-    </div>`).join('');
-}
 
 function toggleCourse(key,ci){
   const card=document.getElementById(`cc-card-${key}-${ci}`);
