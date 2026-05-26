@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>放洋顧問｜工具導覽</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#E8195A;--pink-d:#A80F3C;--pink-l:rgba(232,25,90,0.08);--pink-b:rgba(232,25,90,0.2);
+  --ink:#0F0D0C;--ink2:#3A3633;--ink3:#7A7570;--ink4:#B5B0AB;
+  --bg:#F8F6F3;--surface:#FFF;--border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.12);
+  --teal:#0D7C6A;--teal-l:rgba(13,124,106,0.08);--teal-b:rgba(13,124,106,0.2);
+  --amber:#D97706;--amber-l:rgba(217,119,6,0.08);
+  --blue:#2563EB;--blue-l:rgba(37,99,235,0.08);
+  --purple:#7C3AED;--purple-l:rgba(124,58,237,0.08);
+  --sans:'Noto Sans TC',sans-serif;--serif:'Noto Serif TC',serif;--mono:'DM Mono',monospace;
+  --sh:0 1px 3px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.05);
+  --sh2:0 4px 12px rgba(0,0,0,0.09),0 16px 40px rgba(0,0,0,0.07);
+}
+html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;color:var(--ink);background:var(--bg)}
+.layout{display:flex;height:100%}
+.sb{width:248px;min-width:248px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.sb-brand{padding:18px 16px 14px;border-bottom:1px solid var(--border);background:var(--pink);background:linear-gradient(135deg,var(--pink-d),var(--pink))}
+.sb-logo{display:flex;align-items:center;gap:9px}
+.sb-dot{width:28px;height:28px;background:rgba(255,255,255,0.2);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sb-dot svg{width:15px;height:15px;fill:#fff}
+.sb-name{font-size:13px;font-weight:700;color:#fff}
+.sb-sub{font-size:10.5px;color:rgba(255,255,255,0.75);margin-top:2px}
+.sb-unit{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink4);padding:12px 16px 4px}
+.sb-nav{flex:1;overflow-y:auto;padding-bottom:16px}
+.sb-nav::-webkit-scrollbar{width:3px}
+.sb-nav::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 16px;cursor:pointer;transition:background .12s;font-size:12.5px;color:var(--ink2)}
+.nav-item:hover{background:var(--bg)}
+.nav-item.active{background:var(--pink-l);color:var(--pink);font-weight:500}
+.nav-item.active .ni-dot{background:var(--pink)}
+.ni-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);flex-shrink:0}
+.ni-badge{margin-left:auto;font-size:9px;font-weight:700;padding:1px 6px;border-radius:20px}
+.b-ext{background:rgba(37,99,235,0.1);color:var(--blue)}
+.b-imp{background:var(--pink-l);color:var(--pink)}
+.main{flex:1;overflow-y:auto;background:var(--bg)}
+.main::-webkit-scrollbar{width:5px}
+.main::-webkit-scrollbar-thumb{background:var(--border2);border-radius:5px}
+.panel{display:none;padding:36px 44px 64px;max-width:820px}
+.panel.active{display:block}
+.panel-ey{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--pink);margin-bottom:7px}
+.panel-title{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--ink);line-height:1.25;margin-bottom:8px}
+.panel-desc{font-size:13.5px;color:var(--ink3);line-height:1.8;max-width:580px;margin-bottom:28px;border-left:3px solid var(--border2);padding-left:14px}
+.sl{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink4);margin:28px 0 12px;display:flex;align-items:center;gap:10px}
+.sl::after{content:'';flex:1;height:1px;background:var(--border)}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--sh);transition:all .18s;cursor:pointer}
+.tool-card:hover{box-shadow:var(--sh2);transform:translateY(-2px);border-color:var(--pink-b)}
+.tool-flag{font-size:9.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-bottom:10px;display:inline-block}
+.tf-pink{background:var(--pink-l);color:var(--pink)}
+.tf-teal{background:var(--teal-l);color:var(--teal)}
+.tf-blue{background:var(--blue-l);color:var(--blue)}
+.tf-amber{background:var(--amber-l);color:var(--amber)}
+.tf-purple{background:var(--purple-l);color:var(--purple)}
+.tool-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;font-family:var(--serif);line-height:1.3}
+.tool-desc{font-size:12px;color:var(--ink3);line-height:1.6;margin-bottom:10px}
+.tool-link{font-size:11.5px;font-weight:600;color:var(--pink);display:flex;align-items:center;gap:4px}
+.icard{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:12px;box-shadow:var(--sh)}
+.icard-title{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.irow{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);font-size:13px;color:var(--ink2);line-height:1.6}
+.irow:last-child{border-bottom:none;padding-bottom:0}
+.irow-key{color:var(--ink3);font-weight:500;flex-shrink:0;min-width:100px}
+
+/* FLOW */
+.flow-item{display:flex;gap:16px;position:relative;padding-bottom:20px}
+.flow-item:last-child{padding-bottom:0}
+.flow-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:32px}
+.flow-num{width:32px;height:32px;border-radius:50%;background:var(--pink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:var(--mono);flex-shrink:0;z-index:1;box-shadow:0 0 0 4px var(--bg)}
+.flow-line{width:1.5px;flex:1;background:var(--border2);margin-top:4px;min-height:16px}
+.flow-item:last-child .flow-line{display:none}
+.flow-content{flex:1;padding-top:5px}
+.flow-title{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.flow-desc{font-size:12.5px;color:var(--ink3);line-height:1.7}
+
+/* WORK SPLIT */
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.split-card{border-radius:12px;padding:20px;border:1px solid var(--border)}
+.split-card.front{background:linear-gradient(135deg,rgba(232,25,90,0.04),rgba(232,25,90,0.01));border-color:var(--pink-b)}
+.split-card.back{background:linear-gradient(135deg,rgba(13,124,106,0.04),rgba(13,124,106,0.01));border-color:var(--teal-b)}
+.split-header{display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.split-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.split-icon.f{background:var(--pink-l)}
+.split-icon.b{background:var(--teal-l)}
+.split-label{font-size:13px;font-weight:700;color:var(--ink);line-height:1.2}
+.split-sub{font-size:10.5px;color:var(--ink3)}
+.split-item{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--ink2);line-height:1.55}
+.split-item:last-child{border-bottom:none;padding-bottom:0}
+.split-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.split-dot.f{background:var(--pink)}
+.split-dot.b{background:var(--teal)}
+.split-warning{background:rgba(217,119,6,0.06);border:1px solid rgba(217,119,6,0.2);border-radius:8px;padding:12px 14px;font-size:12.5px;color:var(--amber);line-height:1.7;margin-top:12px}
+.split-warning strong{color:var(--ink)}
+
+/* CONTRACT CLAUSES */
+.clause-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.clause-tab{font-size:12px;padding:5px 13px;border-radius:20px;cursor:pointer;border:1px solid var(--border2);background:var(--surface);color:var(--ink3);transition:all .13s;font-family:var(--sans)}
+.clause-tab:hover{border-color:var(--border2);color:var(--ink)}
+.clause-tab.active{background:var(--pink);border-color:var(--pink);color:#fff;font-weight:500}
+.clause-panel{display:none}
+.clause-panel.active{display:block}
+.clause-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:12px;box-shadow:var(--sh)}
+.clause-header{padding:13px 16px;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.clause-num{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--pink-l);color:var(--pink);font-family:var(--mono)}
+.clause-name{font-size:13.5px;font-weight:600;color:var(--ink)}
+.clause-body{padding:14px 16px;font-size:13px;color:var(--ink2);line-height:1.8}
+.clause-body strong{color:var(--ink);font-weight:600}
+.clause-body .hi{color:var(--pink);font-weight:600}
+.clause-tip{background:rgba(232,25,90,0.05);border-left:3px solid var(--pink);padding:10px 14px;border-radius:0 6px 6px 0;font-size:12.5px;color:var(--pink-d);line-height:1.65;margin-top:10px}
+
+/* CANCEL TABLE */
+.cancel-table{width:100%;border-collapse:collapse;font-size:13px}
+.cancel-table th{text-align:left;padding:9px 12px;font-size:10px;font-weight:700;color:var(--ink3);border-bottom:2px solid var(--border2);text-transform:uppercase;letter-spacing:0.05em;background:var(--bg)}
+.cancel-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2);vertical-align:middle}
+.cancel-table tr:last-child td{border-bottom:none}
+.pct{font-size:15px;font-weight:700;font-family:var(--mono)}
+.pct.high{color:#DC2626}
+.pct.mid{color:var(--amber)}
+.pct.low{color:var(--teal)}
+
+/* NOTICE */
+.notice{border-radius:10px;padding:13px 16px;margin-bottom:14px;font-size:13px;line-height:1.7;display:flex;gap:12px;align-items:flex-start;border:1px solid}
+.notice.pink{background:var(--pink-l);border-color:var(--pink-b);color:var(--pink-d)}
+.notice.amber{background:var(--amber-l);border-color:rgba(217,119,6,0.2);color:var(--amber)}
+.notice.teal{background:var(--teal-l);border-color:var(--teal-b);color:var(--teal)}
+.notice-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<nav class="sb">
+  <div class="sb-brand">
+    <div class="sb-logo">
+      <div class="sb-dot"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="sb-name">放洋留遊學</div><div class="sb-sub">顧問內部工具導覽</div></div>
+    </div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-unit">總覽</div>
+    <div class="nav-item active" onclick="go('home')"><div class="ni-dot"></div>首頁</div>
+
+    <div class="sb-unit">線上工具</div>
+    <div class="nav-item" onclick="go('ops')"><div class="ni-dot"></div>業務心法手冊<span class="ni-badge b-ext">↗</span></div>
+    <div class="nav-item" onclick="go('ep')"><div class="ni-dot"></div>EP 產品介紹<span class="ni-badge b-ext">↗</span></div>
+    <div class="nav-item" onclick="go('quotesys')"><div class="ni-dot"></div>報價系統<span class="ni-badge b-ext">↗</span></div>
+
+    <div class="sb-unit">銷售參考</div>
+    <div class="nav-item" onclick="go('tour-manual')"><div class="ni-dot"></div>遊學團手冊</div>
+    <div class="nav-item" onclick="go('flow')"><div class="ni-dot"></div>服務流程總覽</div>
+
+    <div class="sb-unit">作業規範</div>
+    <div class="nav-item" onclick="go('split')"><div class="ni-dot"></div>前後端工作分配<span class="ni-badge b-imp">重要</span></div>
+    <div class="nav-item" onclick="go('contract')"><div class="ni-dot"></div>合約重點條款<span class="ni-badge b-imp">必讀</span></div>
+  </nav>
+</nav>
+
+<main class="main">
+
+<!-- HOME -->
+<div class="panel active" id="p-home">
+  <div class="panel-ey">放洋顧問 · 內部</div>
+  <div class="panel-title">顧問工具導覽</div>
+  <div class="panel-desc">這個頁面整合了放洋顧問日常使用的所有工具與作業規範，包含線上工具連結、前後端工作分配說明，以及合約重點條款解析。</div>
+
+  <div class="sl">線上工具</div>
+  <div class="tool-grid">
+    <div class="tool-card" onclick="go('ops')">
+      <div class="tool-flag tf-pink">銷售話術</div>
+      <div class="tool-name">遊學一條龍<br>業務心法手冊</div>
+      <div class="tool-desc">8 步驟話術、FAQ、AI 問答、業務發問即時回覆。</div>
+      <div class="tool-link">→ 開啟手冊</div>
+    </div>
+    <div class="tool-card" onclick="go('ep')">
+      <div class="tool-flag tf-teal">顧問參考</div>
+      <div class="tool-name">EP English Path<br>產品介紹</div>
+      <div class="tool-desc">12 校區完整資訊、費用試算、課程比較，顧問內部使用。</div>
+      <div class="tool-link">→ 開啟 EP Guide</div>
+    </div>
+    <div class="tool-card" onclick="go('quotesys')">
+      <div class="tool-flag tf-blue">報價工具</div>
+      <div class="tool-name">EP 報價系統</div>
+      <div class="tool-desc">快速產出報價單，輸入校區/週數/住宿，自動換算台幣。</div>
+      <div class="tool-link">→ 開啟報價系統</div>
+    </div>
+    <div class="tool-card" onclick="go('tour-manual')">
+      <div class="tool-flag tf-amber">遊學團</div>
+      <div class="tool-name">遊學團手冊<br>重點摘要</div>
+      <div class="tool-desc">遊學團各路線、費用、行程重點，適合向學員介紹時參考。</div>
+      <div class="tool-link">→ 查看摘要</div>
+    </div>
+  </div>
+
+  <div class="sl">作業規範</div>
+  <div class="tool-grid">
+    <div class="tool-card" onclick="go('split')">
+      <div class="tool-flag tf-pink">必讀規範</div>
+      <div class="tool-name">前後端工作分配</div>
+      <div class="tool-desc">付款前（前端）和付款後（後端）的工作項目與交接重點，付款時要確認完畢的所有項目。</div>
+      <div class="tool-link">→ 查看分工說明</div>
+    </div>
+    <div class="tool-card" onclick="go('contract')">
+      <div class="tool-flag tf-purple">合約條款</div>
+      <div class="tool-name">合約重點條款<br>互動式導覽</div>
+      <div class="tool-desc">退費比例、費用包含項目、強制保險規定等關鍵條款，顧問必須熟記的內容。</div>
+      <div class="tool-link">→ 查看合約重點</div>
+    </div>
+  </div>
+</div>
+
+<!-- OPS -->
+<div class="panel" id="p-ops">
+  <div class="panel-ey">線上工具</div>
+  <div class="panel-title">遊學一條龍業務心法手冊</div>
+  <div class="panel-desc">放洋全集團業務核心工具。顧問最常用的是 FAQ 的 AI 問答系統，以及 EP 相關問題的自動引用資料庫功能。</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">連結</div><div><a href="https://jojo880714.github.io/fanyang-tools/ops-manual/" target="_blank" style="color:var(--pink);font-weight:600;text-decoration:none">https://jojo880714.github.io/fanyang-tools/ops-manual/ ↗</a></div></div>
+    <div class="irow"><div class="irow-key">顧問重點</div><div>FAQ 提問區：涉及 EP 校區/費用/簽證的問題，Claude 會自動引用 EP 資料庫回答</div></div>
+    <div class="irow"><div class="irow-key">管理員 PIN</div><div>向主管索取，用於審核 FAQ 回答、置頂、加入精選</div></div>
+  </div>
+</div>
+
+<!-- EP -->
+<div class="panel" id="p-ep">
+  <div class="panel-ey">線上工具</div>
+  <div class="panel-title">EP English Path 產品介紹</div>
+  <div class="panel-desc">EP 12 個校區的完整資訊，含費用試算、課程比較、住宿說明。這是顧問內部使用的工具，不對學員開放。</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">連結</div><div><a href="https://jojo880714.github.io/fanyang-tools/ep-guide/" target="_blank" style="color:var(--pink);font-weight:600;text-decoration:none">https://jojo880714.github.io/fanyang-tools/ep-guide/ ↗</a></div></div>
+    <div class="irow"><div class="irow-key">涵蓋校區</div><div>倫敦×2、伯明罕、里茲、都柏林、柏林、巴黎、馬爾他、杜拜、多倫多、布里斯本</div></div>
+    <div class="irow"><div class="irow-key">使用方式</div><div>左側選校區 → 查看課程/住宿/費用 → 右上角「比較校區」最多 3 個並排 → 費用試算計算器</div></div>
+    <div class="irow"><div class="irow-key">注意</div><div>顧問內部使用，不要直接把這個連結傳給學員</div></div>
+  </div>
+
+  <div class="sl">EP 12 校區速查</div>
+  <div class="icard">
+    <div class="icard-title">各校區定位</div>
+    <div class="irow"><div class="irow-key">🇬🇧 Canary Wharf</div><div>30 歲以上成熟學習者獨立分班。有商業管理/數位行銷證書、YMS 帶薪實習方案。</div></div>
+    <div class="irow"><div class="irow-key">🇬🇧 Greenford</div><div>EP 全球總部，16 歲以上，500 人大校，免費校車接駁，適合首次出國。</div></div>
+    <div class="irow"><div class="irow-key">🇬🇧 伯明罕</div><div>市中心，Bullring 購物中心對面，生活費比倫敦低 30–40%，有 IELTS 課程。</div></div>
+    <div class="irow"><div class="irow-key">🇬🇧 里茲</div><div>大學城氛圍，週末可去約克/湖區，有 IELTS 課程。</div></div>
+    <div class="irow"><div class="irow-key">🇮🇪 都柏林</div><div>一級歷史建築校舍，海濱，Work & Study 合法打工，Pathway 銜接課。</div></div>
+    <div class="irow"><div class="irow-key">🇩🇪 柏林</div><div>德文 + 英文雙語，可上午學德文下午學英文，有 Pathway。</div></div>
+    <div class="irow"><div class="irow-key">🇫🇷 巴黎</div><div>法文 + 英文雙語，住宿費最高，語言沉浸效果強。</div></div>
+    <div class="irow"><div class="irow-key">🇲🇹 馬爾他</div><div>EP 全球最大（500人），地中海氣候，費用最低，有晚間課。</div></div>
+    <div class="irow"><div class="irow-key">🇦🇪 杜拜</div><div>Knowledge Park 學術園區，有商業管理/數位行銷證書。</div></div>
+    <div class="irow"><div class="irow-key">🇨🇦 多倫多</div><td>市中心，Pathway 銜接課，有商業管理/數位行銷證書。</td></div>
+    <div class="irow"><div class="irow-key">🇦🇺 布里斯本</div><div>CRICOS 認可，學生簽可讀 62 週，WHV 最多 17 週。</div></div>
+  </div>
+</div>
+
+<!-- QUOTATION SYSTEM -->
+<div class="panel" id="p-quotesys">
+  <div class="panel-ey">報價工具</div>
+  <div class="panel-title">EP 報價系統教學</div>
+  <div class="panel-desc">報價系統可以快速產出格式化的報價單，顧問填入校區、週數、住宿類型，系統自動計算並換算台幣。</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">系統連結</div><div><a href="https://jojo880714.github.io/FY-quotation-system-EP-/" target="_blank" style="color:var(--pink);font-weight:600;text-decoration:none">https://jojo880714.github.io/FY-quotation-system-EP-/ ↗</a></div></div>
+  </div>
+
+  <div class="sl">使用步驟</div>
+  <div class="flow-item"><div class="flow-left"><div class="flow-num">1</div><div class="flow-line"></div></div>
+    <div class="flow-content"><div class="flow-title">選擇校區與課程</div>
+    <div class="flow-desc">選擇 EP 校區（如 Brisbane）→ 選擇課程類型（標準上午/密集/超密集）→ 輸入週數。</div></div></div>
+  <div class="flow-item"><div class="flow-left"><div class="flow-num">2</div><div class="flow-line"></div></div>
+    <div class="flow-content"><div class="flow-title">選擇住宿</div>
+    <div class="flow-desc">選擇住宿類型（寄宿家庭半膳/全膳/宿舍）→ 系統自動帶入每週費用。</div></div></div>
+  <div class="flow-item"><div class="flow-left"><div class="flow-num">3</div><div class="flow-line"></div></div>
+    <div class="flow-content"><div class="flow-title">填入學員資料</div>
+    <div class="flow-desc">填入學員姓名、Email、開始日期，這些資訊會出現在報價單上。</div></div></div>
+  <div class="flow-item"><div class="flow-left"><div class="flow-num">4</div><div class="flow-line"></div></div>
+    <div class="flow-content"><div class="flow-title">確認費用明細與台幣換算</div>
+    <div class="flow-desc">系統自動加入：課程費 + 註冊費 + 教材費 + 銀行手續費 + 住宿費，並依當日匯率估算台幣總額（備注：實際匯款以當天匯率為準）。</div></div></div>
+  <div class="flow-item"><div class="flow-left"><div class="flow-num">5</div><div class="flow-line"></div></div>
+    <div class="flow-content"><div class="flow-title">下載或截圖報價單</div>
+    <div class="flow-desc">報價單格式與放洋品牌一致，可直接截圖或下載傳給學員。</div></div></div>
+
+  <div class="sl">報價注意事項</div>
+  <div class="notice pink">
+    <div class="notice-icon">⚠️</div>
+    <div><strong>台幣換算僅供參考</strong>：報價單上的台幣金額依當日匯率計算，實際匯款時以當天匯率為準。告知學員時務必說明「以實際匯款日匯率為準」。</div>
+  </div>
+  <div class="notice amber">
+    <div class="notice-icon">💡</div>
+    <div><strong>報價前確認費用</strong>：EP 的課程費和住宿費每年會調整，報價前務必確認報價系統內的費用是最新版本，不確定時向主管確認。</div>
+  </div>
+</div>
+
+<!-- TOUR MANUAL -->
+<div class="panel" id="p-tour-manual">
+  <div class="panel-ey">銷售參考</div>
+  <div class="panel-title">遊學團手冊重點</div>
+  <div class="panel-desc">2026 放洋遊學團實體手冊的內容摘要，適合顧問向學員介紹遊學團時快速查閱。</div>
+  <div class="icard">
+    <div class="icard-title">2026 自辦遊學團場次</div>
+    <div class="irow"><div class="irow-key">🇬🇧 英國倫敦</div><div>7/18–8/2、8/1–8/16（14天）・9–17歲・NT$210,000 起・5/15前 NT$200,000</div></div>
+    <div class="irow"><div class="irow-key">🇮🇪 愛爾蘭都柏林</div><div>7/11–7/26、7/25–8/9（14天）・10–17歲・NT$200,000 起・5/15前 NT$190,000</div></div>
+    <div class="irow"><div class="irow-key">🇲🇹 馬爾他</div><div>7/4–7/19、7/18–8/2（14天）・8–17歲・NT$175,000 起・5/15前 NT$165,000</div></div>
+    <div class="irow"><div class="irow-key">🇫🇷 法國巴黎</div><div>7/4–7/19、7/18–8/2（14天）・8–17歲・NT$196,000 起・5/15前 NT$186,000</div></div>
+  </div>
+  <div class="notice teal">
+    <div class="notice-icon">💰</div>
+    <div><strong>績效說明</strong>：自辦遊學團皆可拆績效。獎金計算：（團費 - 機票及相關成本）× 3%，出團後次月 10 號發放。暑假團（7–8月）→ 9月10號發放。</div>
+  </div>
+  <div class="icard">
+    <div class="icard-title">費用包含項目</div>
+    <div class="irow"><div class="irow-key">✅ 包含</div><div>經濟艙來回機票、機場來回接送、全食宿（Full Board）、校外教學門票、課程費、教材費、結業證書、500萬旅平險 + 50萬意外醫療險 + 1000萬履約保證保險</div></div>
+    <div class="irow"><div class="irow-key">❌ 不包含</div><div>新辦護照費（約 NT$1,600）、個人零用錢、行李超重費、私人開銷</div></div>
+  </div>
+</div>
+
+<!-- FLOW -->
+<div class="panel" id="p-flow">
+  <div class="panel-ey">服務流程</div>
+  <div class="panel-title">服務流程總覽</div>
+  <div class="panel-desc">個人遊學與遊學團的服務流程對照。兩者的核心差異在於個人遊學是「開放式，學員隨時可入學」，遊學團是「固定場次，需在出發前 4–6 週完成繳費」。</div>
+  <div class="sl">個人遊學（8 步驟）</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">Step 1</div><div>需求釐清（目的、時程、程度、預算、住宿偏好）+ <strong>洋碩備考切入</strong></div></div>
+    <div class="irow"><div class="irow-key">Step 2</div><div>選校選地（三層漏斗：國家→城市→學校）</div></div>
+    <div class="irow"><div class="irow-key">Step 3</div><div>報價確認（費用逐項說明，拆清楚讓客戶安心）</div></div>
+    <div class="irow"><div class="irow-key">Step 4</div><div>簽證 &amp; 保險辦理（報名後立刻啟動）</div></div>
+    <div class="irow"><div class="irow-key">Step 5</div><div>行前準備 Checklist（出發前 4 週主動聯繫）</div></div>
+    <div class="irow"><div class="irow-key">Step 6</div><div>入學 &amp; 分班（提前打預防針）</div></div>
+    <div class="irow"><div class="irow-key">Step 7</div><div>中期追蹤（第 7–10 天主動關心）</div></div>
+    <div class="irow"><div class="irow-key">Step 8</div><div>成果回顧 + <strong>洋碩考試切入</strong> + 留學導流</div></div>
+  </div>
+  <div class="sl">遊學團（8 步驟）</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">Step 1</div><div>方案定制（背景分析，選適合場次）</div></div>
+    <div class="irow"><div class="irow-key">Step 2</div><div>報名意向確認，提交護照影本建檔</div></div>
+    <div class="irow"><div class="irow-key">Step 3</div><div>席次確認，繳交定金（夏季團 4 月底前）</div></div>
+    <div class="irow"><div class="irow-key">Step 4</div><div>官方入學申請，與校方行政對接</div></div>
+    <div class="irow"><div class="irow-key">Step 5</div><div>費用結清（語言學校：開課前 4 週；全包式：開課前 6 週）</div></div>
+    <div class="irow"><div class="irow-key">Step 6</div><div>簽證辦理，文件準備</div></div>
+    <div class="irow"><div class="irow-key">Step 7</div><div>行前說明會 + 學員包發放</div></div>
+    <div class="irow"><div class="irow-key">Step 8</div><div>海外抵達追蹤，全程遠端支援</div></div>
+  </div>
+</div>
+
+<!-- SPLIT -->
+<div class="panel" id="p-split">
+  <div class="panel-ey">作業規範</div>
+  <div class="panel-title">前後端工作分配</div>
+  <div class="panel-desc">放洋的服務流程以「學員付款」為分界，分為前端（付款前，業務顧問確認）和後端（付款後，行政執行）。<br>前端最重要的原則：<strong>付款時所有方案細節必須已確認完畢，不能事後更改。</strong></div>
+
+  <div class="notice pink">
+    <div class="notice-icon">⚠️</div>
+    <div><strong>付款前必須確認完畢的項目</strong>：課程方案（校區/週數/課程類型）、住宿類型（Homestay/宿舍/房型）、是否需要接送機、開始日期。這些一旦付款後若要變更，可能產生手續費或無法更改。</div>
+  </div>
+
+  <div class="split-grid">
+    <div class="split-card front">
+      <div class="split-header">
+        <div class="split-icon f">👤</div>
+        <div><div class="split-label">前端工作</div><div class="split-sub">學員付款前・業務顧問負責</div></div>
+      </div>
+      <div class="split-item"><div class="split-dot f"></div>了解學員需求：目的、時程、程度、預算</div>
+      <div class="split-item"><div class="split-dot f"></div>推薦校區與課程方案（使用 EP Guide）</div>
+      <div class="split-item"><div class="split-dot f"></div>使用報價系統產出報價單，說明費用明細</div>
+      <div class="split-item"><div class="split-dot f"></div>確認住宿類型（Homestay/宿舍/房型）</div>
+      <div class="split-item"><div class="split-dot f"></div>確認是否需要接送機服務</div>
+      <div class="split-item"><div class="split-dot f"></div>確認開始日期與週數</div>
+      <div class="split-item"><div class="split-dot f"></div>說明退費條款（依合約第 18 條）</div>
+      <div class="split-item"><div class="split-dot f"></div>收取定金、取得學員同意書</div>
+      <div class="split-item"><div class="split-dot f"></div>協助填寫合約，確認簽署</div>
+      <div class="split-item"><div class="split-dot f"></div>確認學員審閱期（合約第 1 條，5 天以上）</div>
+    </div>
+    <div class="split-card back">
+      <div class="split-header">
+        <div class="split-icon b">⚙️</div>
+        <div><div class="split-label">後端工作</div><div class="split-sub">學員付款後・行政執行</div></div>
+      </div>
+      <div class="split-item"><div class="split-dot b"></div>向海外學校完成正式報名申請</div>
+      <div class="split-item"><div class="split-dot b"></div>提交報名表、護照影本等文件</div>
+      <div class="split-item"><div class="split-dot b"></div>跑付款流程：匯款至海外學校</div>
+      <div class="split-item"><div class="split-dot b"></div>確認學校收款，取得入學確認信（LOA）</div>
+      <div class="split-item"><div class="split-dot b"></div>安排住宿（Homestay 媒合或宿舍申請）</div>
+      <div class="split-item"><div class="split-dot b"></div>協助辦理簽證所需文件</div>
+      <div class="split-item"><div class="split-dot b"></div>確認接送機安排（如有需要）</div>
+      <div class="split-item"><div class="split-dot b"></div>提供 Homestay 家庭資料給學員</div>
+      <div class="split-item"><div class="split-dot b"></div>安排保險</div>
+      <div class="split-item"><div class="split-dot b"></div>建立緊急聯絡機制，行前說明</div>
+    </div>
+  </div>
+
+  <div class="split-warning">
+    <strong>常見錯誤提醒：</strong>不要在學員付款後才討論住宿或是否接送機——這些必須在付款前就確認，因為學校的安排程序（Homestay 媒合、接送機預約）需要提前作業，事後更改可能需要額外費用甚至無法處理。
+  </div>
+</div>
+
+<!-- CONTRACT -->
+<div class="panel" id="p-contract">
+  <div class="panel-ey">合約重點</div>
+  <div class="panel-title">合約重點條款導覽</div>
+  <div class="panel-desc">《海外旅遊學習定型化契約》共 40 條。以下整理顧問必須熟悉的關鍵條款，依使用情境分類。</div>
+
+  <div class="clause-tabs">
+    <div class="clause-tab active" onclick="showClause('refund')">退費規定</div>
+    <div class="clause-tab" onclick="showClause('fee')">費用包含</div>
+    <div class="clause-tab" onclick="showClause('insurance')">保險規定</div>
+    <div class="clause-tab" onclick="showClause('minor')">未成年人</div>
+    <div class="clause-tab" onclick="showClause('change')">行程變更</div>
+    <div class="clause-tab" onclick="showClause('others')">其他重點</div>
+  </div>
+
+  <!-- REFUND -->
+  <div class="clause-panel active" id="cp-refund">
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 18 條</span><div class="clause-name">出發前甲方任意解除契約賠償基準</div></div>
+      <div class="clause-body">
+        <table class="cancel-table">
+          <thead><tr><th>解約時間</th><th>賠償比例</th><th>業務說法</th></tr></thead>
+          <tbody>
+            <tr><td>出發前第 41 天以前</td><td><span class="pct low">5%</span></td><td>損失最小，越早說越好</td></tr>
+            <tr><td>出發前第 31–40 天</td><td><span class="pct low">10%</span></td><td>約 1–2 週前的猶豫期</td></tr>
+            <tr><td>出發前第 21–30 天</td><td><span class="pct mid">20%</span></td><td>已快出發，損失開始擴大</td></tr>
+            <tr><td>出發前第 2–20 天</td><td><span class="pct mid">30%</span></td><td>學校已確認排班，損失大</td></tr>
+            <tr><td>出發前第 1 天</td><td><span class="pct high">50%</span></td><td>隔天要出發才說，損失一半</td></tr>
+            <tr><td>出發當天或未通知</td><td><span class="pct high">100%</span></td><td>全額沒收</td></tr>
+          </tbody>
+        </table>
+        <div class="clause-tip">💬 向學員說明時：「越早確定、越早告訴我們，萬一有變動損失才最小。出發前 41 天以前取消只需賠 5%，但出發前一天才說就要賠 50%。所以不管任何原因要改變計畫，第一時間跟我說。」</div>
+      </div>
+    </div>
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 19 條</span><div class="clause-name">出發前法定原因（不可抗力）解除契約</div></div>
+      <div class="clause-body">
+        因不可抗力（天災、戰爭等）或以下法定原因，雙方均可解除契約，<span class="hi">不負損害賠償責任</span>：<br><br>
+        <strong>學員可免責解約的情況：</strong>懷孕或分娩、本人或配偶/三親等內親屬有<strong>重大傷病診斷書</strong>、親屬死亡。<br><br>
+        乙方（放洋）扣除已支出的必要費用後（<span class="hi">最高不超過總費用的 10%</span>），退還餘款。
+        <div class="clause-tip">💬 學員說「媽媽生病不能去了」→ 確認是否符合「重大傷病項目」且有醫師診斷書。有的話可適用第 19 條，損失最小。</div>
+      </div>
+    </div>
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 7 條</span><div class="clause-name">課程研修費用退費原則</div></div>
+      <div class="clause-body">
+        課程費的退費原則<span class="hi">依各學校的 T&amp;C（條款與條件）而定</span>，需在簽約前明確告知學員。<br><br>
+        EP 的通用原則：<br>
+        · 僅課程報名：<strong>開課前至少 4 週</strong>完成繳費<br>
+        · 課程 + 住宿：<strong>開課前至少 6 週</strong>完成繳費<br>
+        · 住宿費：入住後前 4 週通常不退<br>
+        · 課程費：依取消時間點退款比例不同
+        <div class="clause-tip">💬 在報價說明時主動說：「我建議確定日期前先跟我確認退費條款，有任何變動越早說損失越小。」</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEE -->
+  <div class="clause-panel" id="cp-fee">
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 6 條</span><div class="clause-name">費用包含與不包含項目</div></div>
+      <div class="clause-body">
+        <strong>✅ 費用包含：</strong><br>
+        護照費、簽證費（代辦）、課程研修費、交通費（行程中）、住宿費（宿舍/Homestay）、餐膳費（依方案）、遊覽費及課程活動費、接送費（機場接送，<span class="hi">個人語言學校可能不包含，需另購</span>）、服務費、機場稅捐<br><br>
+        <strong>❌ 費用不包含：</strong><br>
+        私人交通費、洗衣費、電話費、個人傷病醫療費、行李超重費、個人小費、未列入行程的機票/簽證費、個人投保的傷害保險/醫療保險
+        <div class="clause-tip">💬 學員常問「接機有沒有包？」→ 個人語言學校（非遊學團）預設不包含接送機，需要的話單獨加購。遊學團通常包含。</div>
+      </div>
+    </div>
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 5 條</span><div class="clause-name">費用給付方式</div></div>
+      <div class="clause-body">
+        預設給付方式（雙方另有書面約定可調整）：<br><br>
+        · 簽約時全部繳清，或<br>
+        · 簽約時繳第一期，餘款於<span class="hi">出發前 60 天</span>繳清<br><br>
+        <strong>付款方式：</strong>現金、信用卡、支票
+        <div class="clause-tip">💬 強調：乙方（放洋）收費後必須開立正式發票或收據，請學員務必保留。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSURANCE -->
+  <div class="clause-panel" id="cp-insurance">
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 34 條</span><div class="clause-name">責任保險與履約保證保險（法定最低金額）</div></div>
+      <div class="clause-body">
+        乙方（放洋）<span class="hi">出發前必須投保</span>：<br><br>
+        <strong>責任保險：</strong><br>
+        · 每人意外死亡：<span class="hi">NT$200 萬</span>（15歲以下依法上限亦為此）<br>
+        · 每人意外體傷醫療費：<span class="hi">NT$20 萬</span><br>
+        · 家屬前往海外處理善後：NT$10 萬<br>
+        · 旅遊證件遺失損害賠償：NT$2,000<br><br>
+        <strong>履約保證保險：</strong><br>
+        · 最低投保金額：<span class="hi">NT$1,000 萬</span>（確保放洋若倒閉仍能退費）
+        <div class="clause-tip">💬 學員問「這個安全嗎？」→ 「我們有投保 1,000 萬履約保證保險，就算萬一有任何公司問題，保險公司也會在保額範圍內保障你的費用。」</div>
+      </div>
+    </div>
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">補充說明</span><div class="clause-name">遊學團費用中的保險內容</div></div>
+      <div class="clause-body">
+        2026 放洋自辦遊學團費用已包含：<br><br>
+        · 500 萬旅行平安險<br>
+        · 50 萬意外醫療險（但合約第 34 條法定最低為 20 萬）<br>
+        · 1,000 萬履約保證保險<br><br>
+        個人語言學校方案：保險通常<span class="hi">不包含在課程費中</span>，需要單獨購買。顧問應主動提醒並協助推薦適合的保險方案。
+      </div>
+    </div>
+  </div>
+
+  <!-- MINOR -->
+  <div class="clause-panel" id="cp-minor">
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 3 條</span><div class="clause-name">未成年人訂約規定</div></div>
+      <div class="clause-body">
+        <strong>限制行為能力人（7–17歲）：</strong>需得法定代理人（父母）允許或承認，合約才有效。<br><br>
+        <strong>無行為能力人（7歲以下）：</strong>應由法定代理人代為及代受意思表示。
+        <div class="clause-tip">💬 未成年學員報名時：合約必須由家長簽署，並保留家長同意書。建議同時讓家長出席簽約，或取得書面同意。</div>
+      </div>
+    </div>
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 10 條</span><div class="clause-name">未成年人證照保管</div></div>
+      <div class="clause-body">
+        未成年學員的護照，<span class="hi">可依雙方協議</span>由放洋代為保管（需法定代理人書面同意）。<br><br>
+        代管的護照，放洋須以善良管理人之注意保管，學員得隨時取回，放洋不得拒絕。
+        <div class="clause-tip">💬 遊學團常見做法：旅途中由領隊統一保管未成年學員護照，通關後歸還。需事先取得家長書面同意。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHANGE -->
+  <div class="clause-panel" id="cp-change">
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 22 條</span><div class="clause-name">不可抗力導致行程變更</div></div>
+      <div class="clause-body">
+        因不可抗力（天災、航班取消等）導致無法履行課程/交通/食宿時，放洋得依實際需要變更。<br><br>
+        · 超出原費用：<span class="hi">由放洋負擔</span><br>
+        · 因變更減省費用：<span class="hi">應退還學員</span><br>
+        · 學員不同意變更：可終止契約，放洋應退還未實施部分費用
+      </div>
+    </div>
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 23 條</span><div class="clause-name">可歸責放洋之行程變更（違約）</div></div>
+      <div class="clause-body">
+        放洋未依合約品質辦理課程/食宿/行程，學員可要求支付<span class="hi">差額 2 倍</span>的違約金。<br><br>
+        若放洋無法說明差額或提供憑據，違約金至少為<span class="hi">總費用的 5%</span>。
+        <div class="clause-tip">💬 實務提醒：廣告內容、說帖說明、說明會承諾，都算合約的一部分（第 2 條）。不要過度承諾學員無法保證的事。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OTHERS -->
+  <div class="clause-panel" id="cp-others">
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 1 條</span><div class="clause-name">契約審閱期</div></div>
+      <div class="clause-body">
+        交付合約後，<span class="hi">審閱期間應有 5 日以上</span>。<br>違反此規定，合約條款不構成合約內容（但學員可主張合約仍有效）。
+        <div class="clause-tip">💬 實務做法：交付合約後，5 天後才能正式簽署。可事先讓學員了解內容，避免倉促簽約引起糾紛。</div>
+      </div>
+    </div>
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 12 條</span><div class="clause-name">服務人員與領隊規定</div></div>
+      <div class="clause-body">
+        · 放洋應指派<span class="hi">具旅遊學習地語文能力</span>的人員全程隨團<br>
+        · 課程活動（遊學團）：應指派具<span class="hi">領隊執業證照</span>的領隊全程隨團<br>
+        · 違反此規定導致學員損害，學員可請求賠償
+      </div>
+    </div>
+    <div class="clause-card">
+      <div class="clause-header"><span class="clause-num">第 16 條</span><div class="clause-name">遊學團最低組團人數</div></div>
+      <div class="clause-body">
+        最低出團人數：<span class="hi">不得高於 15 人</span>。<br><br>
+        未達最低人數時，放洋得解除契約，但<span class="hi">至少應在出發前 7 天通知學員</span>。<br>
+        怠於通知導致學員損害，賠償金額至少為<span class="hi">總費用的 10%</span>。
+        <div class="clause-tip">💬 現行場次：各團名額 10 人，1 人報名即可出發。達 10 人成團可贈送一名領隊。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+function go(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const panel = document.getElementById('p-' + id);
+  if(panel) { panel.classList.add('active'); document.querySelector('.main').scrollTo({top:0,behavior:'smooth'}); }
+  document.querySelectorAll('.nav-item').forEach(item => {
+    if((item.getAttribute('onclick')||'').includes("'"+id+"'")) item.classList.add('active');
+  });
+}
+
+function showClause(id) {
+  document.querySelectorAll('.clause-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.clause-tab').forEach(t => t.classList.remove('active'));
+  const panel = document.getElementById('cp-' + id);
+  if(panel) panel.classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>
