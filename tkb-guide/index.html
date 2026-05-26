@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TKB 放洋留遊學｜工具導覽</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#E8195A;--pink-d:#A80F3C;--pink-l:rgba(232,25,90,0.08);--pink-b:rgba(232,25,90,0.2);
+  --ink:#0F0D0C;--ink2:#3A3633;--ink3:#7A7570;--ink4:#B5B0AB;
+  --bg:#F8F6F3;--surface:#FFF;--border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.12);
+  --teal:#0D7C6A;--teal-l:rgba(13,124,106,0.08);--teal-b:rgba(13,124,106,0.2);
+  --amber:#D97706;--amber-l:rgba(217,119,6,0.08);
+  --blue:#2563EB;--blue-l:rgba(37,99,235,0.08);
+  --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--mono:'DM Mono',monospace;
+  --sh:0 1px 3px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.05);
+  --sh2:0 4px 12px rgba(0,0,0,0.09),0 16px 40px rgba(0,0,0,0.07);
+}
+html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;color:var(--ink);background:var(--bg)}
+
+/* ── LAYOUT ── */
+.layout{display:flex;height:100%}
+
+/* ── SIDEBAR ── */
+.sb{width:240px;min-width:240px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.sb-brand{padding:18px 16px 14px;border-bottom:1px solid var(--border)}
+.sb-logo{display:flex;align-items:center;gap:9px;margin-bottom:2px}
+.sb-dot{width:28px;height:28px;background:var(--pink);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sb-dot svg{width:15px;height:15px;fill:#fff}
+.sb-name{font-size:13px;font-weight:700;color:var(--pink)}
+.sb-sub{font-size:11px;color:var(--ink3);margin-top:1px}
+.sb-unit{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink4);padding:12px 16px 4px}
+.sb-nav{flex:1;overflow-y:auto;padding-bottom:16px}
+.sb-nav::-webkit-scrollbar{width:3px}
+.sb-nav::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 16px;cursor:pointer;transition:background .12s;font-size:12.5px;color:var(--ink2)}
+.nav-item:hover{background:var(--bg)}
+.nav-item.active{background:var(--pink-l);color:var(--pink);font-weight:500}
+.nav-item.active .ni-dot{background:var(--pink)}
+.ni-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:background .12s}
+.ni-badge{margin-left:auto;font-size:9px;font-weight:700;padding:1px 6px;border-radius:20px}
+.b-external{background:rgba(37,99,235,0.1);color:var(--blue)}
+.b-pdf{background:rgba(220,38,38,0.1);color:#DC2626}
+.b-doc{background:rgba(217,119,6,0.1);color:var(--amber)}
+
+/* ── MAIN ── */
+.main{flex:1;overflow-y:auto;background:var(--bg)}
+.main::-webkit-scrollbar{width:5px}
+.main::-webkit-scrollbar-thumb{background:var(--border2);border-radius:5px}
+.panel{display:none;padding:36px 44px 64px;max-width:800px}
+.panel.active{display:block}
+.panel-ey{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--pink);margin-bottom:7px}
+.panel-title{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--ink);line-height:1.25;margin-bottom:8px}
+.panel-desc{font-size:13.5px;color:var(--ink3);line-height:1.8;max-width:580px;margin-bottom:28px;border-left:3px solid var(--border2);padding-left:14px}
+
+/* ── TOOL CARDS ── */
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--sh);transition:all .18s;text-decoration:none;display:block;cursor:pointer}
+.tool-card:hover{box-shadow:var(--sh2);transform:translateY(-2px);border-color:var(--pink-b)}
+.tool-flag{font-size:9.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-bottom:10px;display:inline-block}
+.tf-online{background:var(--pink-l);color:var(--pink)}
+.tf-pdf{background:rgba(220,38,38,0.08);color:#DC2626}
+.tf-doc{background:var(--amber-l);color:var(--amber)}
+.tf-link{background:var(--blue-l);color:var(--blue)}
+.tool-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;font-family:var(--serif);line-height:1.3}
+.tool-desc{font-size:12px;color:var(--ink3);line-height:1.6;margin-bottom:10px}
+.tool-link{font-size:11.5px;font-weight:600;color:var(--pink);display:flex;align-items:center;gap:4px}
+
+/* ── SECTION LABEL ── */
+.sl{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink4);margin:28px 0 12px;display:flex;align-items:center;gap:10px}
+.sl::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── FLOW ── */
+.flow-grid{display:flex;flex-direction:column;gap:0}
+.flow-item{display:flex;gap:16px;position:relative;padding-bottom:20px}
+.flow-item:last-child{padding-bottom:0}
+.flow-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:32px}
+.flow-num{width:32px;height:32px;border-radius:50%;background:var(--pink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:var(--mono);flex-shrink:0;z-index:1;box-shadow:0 0 0 4px var(--bg)}
+.flow-line{width:1.5px;flex:1;background:var(--border2);margin-top:4px;min-height:16px}
+.flow-item:last-child .flow-line{display:none}
+.flow-content{flex:1;padding-top:5px}
+.flow-title{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.flow-desc{font-size:12.5px;color:var(--ink3);line-height:1.7}
+.flow-tag{display:inline-block;font-size:10px;font-weight:600;padding:1px 7px;border-radius:4px;margin-left:6px;background:var(--pink-l);color:var(--pink)}
+
+/* ── QUOTATION PREVIEW ── */
+.quot-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--sh)}
+.quot-header{padding:20px 24px 16px;border-bottom:1px solid var(--border)}
+.quot-header-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.quot-brand{font-size:18px;font-weight:700;color:var(--ink)}
+.quot-brand small{display:block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);font-weight:400;margin-bottom:2px}
+.quot-title{font-size:24px;font-weight:700;color:var(--pink);font-family:var(--mono);letter-spacing:0.05em}
+.quot-date{font-size:11px;color:var(--ink4);text-align:right;margin-top:2px}
+.quot-info{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--pink-l);border-radius:8px;overflow:hidden}
+.quot-field{padding:12px 16px}
+.quot-field-label{font-size:9.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--pink);margin-bottom:4px}
+.quot-field-val{font-size:13px;font-weight:600;color:var(--ink)}
+.quot-body{padding:20px 24px}
+.quot-section-title{font-size:9.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+.quot-table{width:100%;border-collapse:collapse}
+.quot-table th{text-align:left;padding:7px 10px;font-size:10px;font-weight:700;color:var(--ink3);border-bottom:1.5px solid var(--border2);text-transform:uppercase;letter-spacing:0.05em}
+.quot-table td{padding:9px 10px;border-bottom:1px solid var(--border);font-size:13px;color:var(--ink2)}
+.quot-table td:last-child{text-align:right;font-weight:500;color:var(--ink);font-family:var(--mono)}
+.quot-total{background:var(--pink);border-radius:8px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.quot-total-label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.85)}
+.quot-total-label small{display:block;font-size:10px;opacity:0.7;margin-top:1px}
+.quot-total-val{font-size:24px;font-weight:700;color:#fff;font-family:var(--mono)}
+.quot-footer{padding:12px 24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.quot-note{font-size:10.5px;color:var(--ink4)}
+.quot-co{font-size:12px;font-weight:700;color:var(--ink)}
+
+/* ── TOUR TABLE ── */
+.tour-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.tour-table th{text-align:left;padding:8px 10px;font-size:10px;font-weight:700;color:var(--ink3);border-bottom:2px solid var(--border2);text-transform:uppercase;letter-spacing:0.05em;background:var(--bg)}
+.tour-table td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--ink2);line-height:1.5}
+.tour-table tr:last-child td{border-bottom:none}
+.tour-table tr:hover td{background:var(--bg)}
+.tour-hot{background:#FFF3CD;font-weight:600}
+.price-tag{font-size:11px;font-weight:700;color:var(--pink)}
+.badge-sm{font-size:9.5px;font-weight:600;padding:2px 6px;border-radius:4px}
+.bs-own{background:var(--pink-l);color:var(--pink)}
+.bs-partner{background:var(--amber-l);color:var(--amber)}
+
+/* ── CARD ── */
+.icard{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:12px;box-shadow:var(--sh)}
+.icard-title{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.irow{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);font-size:13px;color:var(--ink2);line-height:1.6}
+.irow:last-child{border-bottom:none;padding-bottom:0}
+.irow-key{color:var(--ink3);font-weight:500;flex-shrink:0;min-width:88px}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<nav class="sb">
+  <div class="sb-brand">
+    <div class="sb-logo">
+      <div class="sb-dot"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="sb-name">放洋留遊學</div><div class="sb-sub">TKB 全單位工具導覽</div></div>
+    </div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-unit">總覽</div>
+    <div class="nav-item active" onclick="go('home')"><div class="ni-dot"></div>首頁</div>
+
+    <div class="sb-unit">銷售工具</div>
+    <div class="nav-item" onclick="go('ops')"><div class="ni-dot"></div>遊學一條龍手冊<span class="ni-badge b-external">線上</span></div>
+    <div class="nav-item" onclick="go('tour-manual')"><div class="ni-dot"></div>遊學團手冊<span class="ni-badge b-pdf">實體</span></div>
+    <div class="nav-item" onclick="go('pitch')"><div class="ni-dot"></div>說帖參考<span class="ni-badge b-doc">文件</span></div>
+    <div class="nav-item" onclick="go('quotation')"><div class="ni-dot"></div>報價單範例</div>
+
+    <div class="sb-unit">服務流程</div>
+    <div class="nav-item" onclick="go('flow-individual')"><div class="ni-dot"></div>個人遊學流程</div>
+    <div class="nav-item" onclick="go('flow-group')"><div class="ni-dot"></div>遊學團流程</div>
+
+    <div class="sb-unit">場次資訊</div>
+    <div class="nav-item" onclick="go('tours')"><div class="ni-dot"></div>2026 遊學團場次</div>
+  </nav>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- HOME -->
+<div class="panel active" id="p-home">
+  <div class="panel-ey">TKB 全單位</div>
+  <div class="panel-title">放洋遊學工具導覽</div>
+  <div class="panel-desc">這個頁面整合了所有與「遊學」相關的銷售工具與服務流程，適用於洋碩美語及各合作單位的業務人員。每個工具都有說明與連結，點擊即可使用。</div>
+
+  <div class="sl">銷售工具</div>
+  <div class="tool-grid">
+    <div class="tool-card" onclick="go('ops')">
+      <div class="tool-flag tf-online">線上工具</div>
+      <div class="tool-name">遊學一條龍<br>業務心法手冊</div>
+      <div class="tool-desc">8 個步驟的完整銷售話術、客戶 FAQ、洋碩美語切入點說明，業務提問 Claude 自動回覆。</div>
+      <div class="tool-link">→ 開啟線上版</div>
+    </div>
+    <div class="tool-card" onclick="go('tour-manual')">
+      <div class="tool-flag tf-pdf">實體手冊</div>
+      <div class="tool-name">遊學團手冊<br>（PDF 實體版）</div>
+      <div class="tool-desc">遊學團介紹、各國行程、住宿、保險、報名流程、FAQ，適合現場給學員參考。</div>
+      <div class="tool-link">→ 查看手冊重點</div>
+    </div>
+    <div class="tool-card" onclick="go('pitch')">
+      <div class="tool-flag tf-doc">Google 文件</div>
+      <div class="tool-name">說帖參考<br>（場次 + 懶人包）</div>
+      <div class="tool-desc">2026 放洋自辦遊學團場次、各團說帖懶人包、合作廠商場次彙整，業務銷售時的快查文件。</div>
+      <div class="tool-link">→ 開啟 Google 文件</div>
+    </div>
+    <div class="tool-card" onclick="go('quotation')">
+      <div class="tool-flag tf-online">報價參考</div>
+      <div class="tool-name">報價單範例<br>（格式說明）</div>
+      <div class="tool-desc">了解放洋報價單的格式、費用項目說明，向客戶解釋費用明細時的參考依據。</div>
+      <div class="tool-link">→ 查看範例說明</div>
+    </div>
+  </div>
+
+  <div class="sl">服務流程</div>
+  <div class="tool-grid">
+    <div class="tool-card" onclick="go('flow-individual')">
+      <div class="tool-flag" style="background:var(--teal-l);color:var(--teal)">個人遊學</div>
+      <div class="tool-name">個人遊學服務流程</div>
+      <div class="tool-desc">從需求釐清到成果回顧的完整 8 步驟，以及各步驟的業務重點說明。</div>
+      <div class="tool-link">→ 查看流程</div>
+    </div>
+    <div class="tool-card" onclick="go('flow-group')">
+      <div class="tool-flag" style="background:var(--amber-l);color:var(--amber)">遊學團</div>
+      <div class="tool-name">遊學團報名流程</div>
+      <div class="tool-desc">遊學團的 8 個報名步驟，從方案定制到海外抵達追蹤的完整說明。</div>
+      <div class="tool-link">→ 查看流程</div>
+    </div>
+  </div>
+</div>
+
+<!-- OPS MANUAL -->
+<div class="panel" id="p-ops">
+  <div class="panel-ey">線上工具</div>
+  <div class="panel-title">遊學一條龍業務心法手冊</div>
+  <div class="panel-desc">這是放洋全集團業務的核心銷售工具，整合了 8 個步驟的完整話術、客戶 FAQ 與 AI 問答系統。全程只需瀏覽器，不需安裝。</div>
+
+  <div class="icard">
+    <div class="icard-title">工具說明</div>
+    <div class="irow"><div class="irow-key">適用對象</div><div>全集團業務、洋碩美語老師及業務、合作轉介單位</div></div>
+    <div class="irow"><div class="irow-key">使用方式</div><div>開啟下方連結，瀏覽器直接使用，建議加入書籤</div></div>
+    <div class="irow"><div class="irow-key">主要功能</div><div>8 步驟話術、客戶 FAQ、業務即時提問 Claude 自動回覆、管理員審核發布</div></div>
+    <div class="irow"><div class="irow-key">手冊連結</div><div><a href="https://jojo880714.github.io/fanyang-tools/ops-manual/" target="_blank" style="color:var(--pink);font-weight:600;text-decoration:none">https://jojo880714.github.io/fanyang-tools/ops-manual/ ↗</a></div></div>
+  </div>
+
+  <div class="sl">手冊涵蓋內容</div>
+  <div class="tool-grid">
+    <div class="icard" style="margin-bottom:0">
+      <div class="icard-title">8 個服務步驟</div>
+      <div class="irow"><div class="irow-key">Step 1</div><div>需求釐清・目標設定</div></div>
+      <div class="irow"><div class="irow-key">Step 2</div><div>目標地・學校選擇</div></div>
+      <div class="irow"><div class="irow-key">Step 3</div><div>方案報價・確認</div></div>
+      <div class="irow"><div class="irow-key">Step 4</div><div>簽證・保險辦理</div></div>
+      <div class="irow"><div class="irow-key">Step 5</div><div>行前準備 Checklist</div></div>
+      <div class="irow"><div class="irow-key">Step 6</div><div>入學・分班測驗</div></div>
+      <div class="irow"><div class="irow-key">Step 7</div><div>中期追蹤・問題處理</div></div>
+      <div class="irow"><div class="irow-key">Step 8</div><div>成果回顧・升級規劃</div></div>
+    </div>
+    <div class="icard" style="margin-bottom:0">
+      <div class="icard-title">業務工具區</div>
+      <div class="irow"><div class="irow-key">引導表</div><div>電話諮詢引導對話結構</div></div>
+      <div class="irow"><div class="irow-key">退費規則</div><div>EP 退費 &amp; 改期規則、YMS 說明</div></div>
+      <div class="irow"><div class="irow-key">產品說明</div><div>雅思/多益/遊學三線不打架</div></div>
+      <div class="irow"><div class="irow-key">洋碩切入點</div><div>Step 1 &amp; Step 8 的補教導流說明</div></div>
+      <div class="irow"><div class="irow-key">FAQ</div><div>業務即時提問，Claude 自動回覆</div></div>
+      <div class="irow"><div class="irow-key">轉介説明</div><div>洋碩學員優先排程說明</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOUR MANUAL -->
+<div class="panel" id="p-tour-manual">
+  <div class="panel-ey">實體手冊</div>
+  <div class="panel-title">遊學團手冊重點摘要</div>
+  <div class="panel-desc">手冊為實體 PDF，由業務向學員展示或發放。以下是各章節的重點摘要，方便快速查閱。</div>
+
+  <div class="sl">手冊架構（共 18 頁）</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">啟航（p.2-6）</div><div>遊學地圖、15 個目的地國家介紹（美、英、加、愛爾蘭、法、馬爾他、日、菲律賓）</div></div>
+    <div class="irow"><div class="irow-key">學習成長（p.7-8）</div><div>三大方案比較表（全包式遊學團 / 成年個人自助 / 名校學術遊學團）、CEFR 語言程度表</div></div>
+    <div class="irow"><div class="irow-key">實境體驗（p.9-10）</div><div>名校合作（JHU、UCB、哥大）、專業師資、11 項獨家體驗活動</div></div>
+    <div class="irow"><div class="irow-key">生活照護（p.11）</div><div>學生宿舍 vs 寄宿家庭比較、三種保險說明（旅平險、醫療險、不便險）</div></div>
+    <div class="irow"><div class="irow-key">品牌介紹（p.12）</div><div>TKB 放洋 4 大優勢、前後端顧問團隊服務內容</div></div>
+    <div class="irow"><div class="irow-key">成功見證（p.13）</div><div>4 位成功案例（密西根、UCL、CMU 等）附 QR Code</div></div>
+    <div class="irow"><div class="irow-key">行前必讀（p.14-15）</div><div>5 大 FAQ、報名 8 步驟流程圖</div></div>
+    <div class="irow"><div class="irow-key">早鳥優惠（p.16）</div><div>暑假團 4/30 前；寒假團前年 11/30 前。三大禮遇說明</div></div>
+    <div class="irow"><div class="irow-key">品牌合作（p.17-18）</div><div>TKB 放洋 + 洋碩美語獨家合作、GPA 全科課程介紹</div></div>
+  </div>
+
+  <div class="sl">三大方案快速比較</div>
+  <div style="overflow-x:auto">
+  <table class="tour-table">
+    <thead><tr><th>比較項目</th><th>全包式遊學團</th><th>成年個人自助遊學</th><th>名校學術遊學團</th></tr></thead>
+    <tbody>
+      <tr><td>適合對象</td><td>8–17 歲青少年</td><td>18 歲以上大學生/上班族</td><td>15–24 歲，計畫申請名校</td></tr>
+      <tr><td>開課時間</td><td>每年寒假（1月）暑假（7–8月）</td><td>全年每週一可入學</td><td>寒假 &amp; 暑期限定</td></tr>
+      <tr><td>費用</td><td>中高：含機票/全食宿/保險</td><td>靈活自選，依預算調整</td><td>最高：含名校學費、官方證書</td></tr>
+      <tr><td>熱門地點</td><td>英、美、澳、愛爾蘭、加拿大、德</td><td>全球熱門城市</td><td>美國常春藤、澳洲頂尖大學</td></tr>
+      <tr><td>住宿</td><td>嚴選宿舍或寄宿家庭</td><td>自由選擇</td><td>名校校園宿舍</td></tr>
+      <tr><td>課程核心</td><td>溝通式英語、跨文化體驗</td><td>語言技能、商務英文</td><td>名校官方課程、AI 科研、領導力</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="sl">各國預計花費參考</div>
+  <div style="overflow-x:auto">
+  <table class="tour-table">
+    <thead><tr><th>國家</th><th>純學費/週起</th><th>全包式費用</th><th>最佳季節</th></tr></thead>
+    <tbody>
+      <tr><td>🇺🇸 美國</td><td>NT$15,000+</td><td>NT$200,000</td><td>7–8 月</td></tr>
+      <tr><td>🇬🇧 英國</td><td>NT$12,000+</td><td>NT$200,000</td><td>7–8 月</td></tr>
+      <tr><td>🇨🇦 加拿大</td><td>NT$10,000+</td><td>NT$190,000</td><td>7–8 月</td></tr>
+      <tr><td>🇫🇷 法國</td><td>NT$13,000+</td><td>NT$210,000</td><td>7–8 月</td></tr>
+      <tr><td>🇮🇪 愛爾蘭 + 馬爾他</td><td>NT$10,000+</td><td>NT$175,000 起</td><td>6–8 月</td></tr>
+      <tr><td>🇯🇵 日本</td><td>NT$10,000+</td><td>NT$125,000</td><td>全年皆宜</td></tr>
+      <tr><td>🇵🇭 菲律賓</td><td>NT$7,500+</td><td>NT$75,000</td><td>1–2 月</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- PITCH -->
+<div class="panel" id="p-pitch">
+  <div class="panel-ey">Google 文件</div>
+  <div class="panel-title">說帖參考（場次懶人包）</div>
+  <div class="panel-desc">業務快查文件，包含 2026 放洋自辦遊學團的場次、費用、行程懶人包，以及合作廠商場次彙整。向學員介紹時的主要參考依據。</div>
+
+  <div class="icard">
+    <div class="icard-title">文件連結</div>
+    <div class="irow"><div class="irow-key">文件連結</div><div><a href="https://docs.google.com/document/d/1YJ-I0b2J-tPDRocDuiPS6ryD7klsb8FhKU2yppE3_xk/edit?tab=t.0" target="_blank" style="color:var(--pink);font-weight:600;text-decoration:none">開啟 Google 文件 ↗</a></div></div>
+    <div class="irow"><div class="irow-key">包含內容</div><div>2026 放洋自辦遊學團 8 個場次、英/愛/馬/法四條線說帖懶人包、35 個合作廠商場次</div></div>
+    <div class="irow"><div class="irow-key">使用時機</div><div>現場向學員介紹遊學方案時快速查閱費用與行程；轉介學員前確認最新場次與名額</div></div>
+  </div>
+
+  <div class="sl">放洋自辦遊學團 2026 場次速覽</div>
+  <div style="overflow-x:auto">
+  <table class="tour-table">
+    <thead><tr><th></th><th>路線</th><th>日期</th><th>適合年齡</th><th>定價</th><th>優惠價（5/15前）</th><th>名額</th></tr></thead>
+    <tbody>
+      <tr class="tour-hot"><td><span class="badge-sm bs-own">自辦</span></td><td>🇬🇧 英國倫敦</td><td>7/18–8/2<br>8/1–8/16</td><td>9–17歲</td><td>NT$215,000</td><td>NT$200,000</td><td>各10人</td></tr>
+      <tr class="tour-hot"><td><span class="badge-sm bs-own">自辦</span></td><td>🇮🇪 愛爾蘭都柏林</td><td>7/11–7/26<br>7/25–8/9</td><td>10–17歲</td><td>NT$205,000</td><td>NT$190,000</td><td>各10人</td></tr>
+      <tr><td><span class="badge-sm bs-own">自辦</span></td><td>🇲🇹 馬爾他</td><td>7/4–7/19<br>7/18–8/2</td><td>8–17歲</td><td>NT$180,000</td><td>NT$165,000</td><td>各10人</td></tr>
+      <tr><td><span class="badge-sm bs-own">自辦</span></td><td>🇫🇷 法國巴黎</td><td>7/4–7/19<br>7/18–8/2</td><td>8–17歲</td><td>NT$201,000</td><td>NT$186,000</td><td>各10人</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:11px;color:var(--ink4);margin-top:8px">黃底為熱賣團。全集團業務皆可拆績效（扣除機票成本後 3%），出團後次月 10 號發放。</p>
+</div>
+
+<!-- QUOTATION -->
+<div class="panel" id="p-quotation">
+  <div class="panel-ey">報價參考</div>
+  <div class="panel-title">報價單格式說明</div>
+  <div class="panel-desc">以下為放洋報價系統產出的報價單格式範例（以 EP Brisbane 4 週為例）。向學員說明費用時可對照各欄位解釋。</div>
+
+  <div class="quot-wrap">
+    <div class="quot-header">
+      <div class="quot-header-top">
+        <div class="quot-brand"><small>Language School Quotation</small>放洋留遊學</div>
+        <div><div class="quot-title">QUOTATION</div><div class="quot-date">2026-5-22</div></div>
+      </div>
+      <div class="quot-info">
+        <div class="quot-field"><div class="quot-field-label">學生姓名 Student</div><div class="quot-field-val">—（學員姓名）</div></div>
+        <div class="quot-field"><div class="quot-field-label">電子信箱 Email</div><div class="quot-field-val">—（學員信箱）</div></div>
+        <div class="quot-field"><div class="quot-field-label">學校・校區</div><div class="quot-field-val">EP・Brisbane</div></div>
+        <div class="quot-field"><div class="quot-field-label">週數 / 開始日期</div><div class="quot-field-val">4週 / 2026-05-22</div></div>
+      </div>
+    </div>
+    <div class="quot-body">
+      <div class="quot-section-title">費用明細 Cost Breakdown</div>
+      <table class="quot-table">
+        <thead><tr><th>費用項目</th><th>金額</th></tr></thead>
+        <tbody>
+          <tr><td>經典上午課程 (15h)</td><td>A$1,600</td></tr>
+          <tr><td>註冊費</td><td>A$250</td></tr>
+          <tr><td>教材費（短期）</td><td>A$75</td></tr>
+          <tr><td>銀行轉帳手續費</td><td>A$110</td></tr>
+          <tr><td>寄宿家庭 - 單人房（特別半食宿）</td><td>A$1,680</td></tr>
+        </tbody>
+      </table>
+      <div class="quot-total">
+        <div class="quot-total-label">台幣含稅總費用<small>實際以匯款日匯率為準</small></div>
+        <div class="quot-total-val">NT$ 87,254</div>
+      </div>
+    </div>
+    <div class="quot-footer">
+      <div class="quot-note">以上報價僅供參考，實際費用依學校公告為準。</div>
+      <div class="quot-co">放洋留遊學</div>
+    </div>
+  </div>
+
+  <div class="sl">費用項目說明</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">課程費</div><div>依課程類型（標準/密集/超密集）× 週數計算。EP 布里斯本標準上午課 AU$400/週，此為 4 週 = A$1,600</div></div>
+    <div class="irow"><div class="irow-key">註冊費</div><div>每位學員一次性費用，各校區不同，EP 布里斯本為 AU$250</div></div>
+    <div class="irow"><div class="irow-key">教材費</div><div>短期（1–4週）AU$75；長期（12–23週）AU$250；各校區標準不同</div></div>
+    <div class="irow"><div class="irow-key">銀行手續費</div><div>從台灣匯款到海外學校的手續費，EP 澳洲為 AU$110</div></div>
+    <div class="irow"><div class="irow-key">住宿費</div><div>依住宿類型（Homestay/宿舍）× 週數。此為 Homestay 半食宿 AU$420/週 × 4 週 = A$1,680</div></div>
+    <div class="irow"><div class="irow-key">台幣換算</div><div>依當日匯率換算，報價單上的台幣金額僅供參考，匯款當日以當天匯率為準</div></div>
+  </div>
+</div>
+
+<!-- FLOW INDIVIDUAL -->
+<div class="panel" id="p-flow-individual">
+  <div class="panel-ey">服務流程</div>
+  <div class="panel-title">個人遊學服務流程</div>
+  <div class="panel-desc">放洋個人遊學的完整服務流程共 8 個步驟，從第一次接觸到回台後的升學導流。詳細話術請參考「遊學一條龍業務心法手冊」。</div>
+
+  <div class="flow-grid">
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">1</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">需求釐清・目標設定 <span class="flow-tag">洋碩切入點</span></div>
+        <div class="flow-desc">了解客戶去的主要目的（語言進步、文化體驗、職涯探索、親子遊學）、時程、英文程度、預算、是否一個人去。英文程度問完後自然帶入洋碩美語：「出發前先衝分數，分班測驗更有底氣。」</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">2</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">目標地・學校選擇</div>
+        <div class="flow-desc">三層漏斗：國家 → 城市 → 學校。先問條件，再推薦，最多給 2 個選項讓客戶選。國家選擇考量：英語系/非英語系、預算、簽證、飛行距離。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">3</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">方案報價・確認</div>
+        <div class="flow-desc">依序說明：課程費 → 住宿費 → 活動課（選配）→ 代辦費 → 客戶自理（機票/生活費/保險）。把費用拆清楚，不讓大數字嚇跑客戶。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">4</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">簽證・保險辦理</div>
+        <div class="flow-desc">報名後立刻啟動，不要等到出發前兩週。依目的地確認簽證類型（免簽/eTA/學生簽）、辦理時程、所需文件。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">5</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">行前準備 Checklist</div>
+        <div class="flow-desc">出發前 4 週主動聯繫客戶，逐項確認：機票、接機、Homestay 資料、緊急聯絡人、簽證核發、保險、SIM 卡規劃、換匯。主動聯繫是差異化，也是建立口碑最重要的時機。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">6</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">入學・分班測驗</div>
+        <div class="flow-desc">提前幫客戶打預防針：分班測驗不是考試，是找到最適合的班級。就算分到基礎班也完全沒問題，之後想升班跟老師說一聲即可。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">7</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">中期追蹤・問題處理</div>
+        <div class="flow-desc">第 7–10 天第一次主動關心，第 3–4 週中期確認，回台前 1–2 週預熱成果回顧。常見問題：Homestay 相處、換班、生病、錢不夠。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">8</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">成果回顧・升級規劃 <span class="flow-tag">洋碩切入點</span></div>
+        <div class="flow-desc">回台第 1 週語感最好，是考多益/雅思的黃金期。「你現在語感最好，是考試的最佳時機。」第 2–4 週若有留學意願，連結留學一條龍服務。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOW GROUP -->
+<div class="panel" id="p-flow-group">
+  <div class="panel-ey">服務流程</div>
+  <div class="panel-title">遊學團報名流程</div>
+  <div class="panel-desc">放洋遊學團的完整報名流程共 8 個步驟，從方案定制到海外追蹤。這是放洋顧問協助學員完成遊學的標準作業流程。</div>
+
+  <div class="flow-grid">
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">1</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">菁英成長對話與方案定制</div>
+        <div class="flow-desc">分析學員學術背景與職涯目標，從全球熱門城市中精選最契合的教育環境與課程方案。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">2</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">報名意向確認與資料建檔</div>
+        <div class="flow-desc">提交護照影本與基本資料，啟動個人專屬學術檔案，並同步啟動與海外校方的名額保留程序。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">3</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">席次確認與定金保障機制</div>
+        <div class="flow-desc">夏季課程建議於 4 月底前完成定金繳納，享有優先位子保證。熱門校區名額競爭激烈，早訂早保障。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">4</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">官方入學申請與行政對接</div>
+        <div class="flow-desc">放洋顧問協助填寫官方入學申請表、遞交學歷證明，與校方招生處無縫對接，確保在第一時間取得入學許可。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">5</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">費用結清與入學文件取得</div>
+        <div class="flow-desc">僅報名語言學校：開課前 <strong>4 週</strong>完成繳費；報名全包式/學術遊學團：開課前 <strong>6 週</strong>完成繳費。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">6</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">簽證專業辦理與文件資料準備</div>
+        <div class="flow-desc">針對需要辦理簽證的國家，顧問提供精確的文件清單與面試輔導，確保簽證順利核發。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">7</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">專屬行前說明會與學員包領取</div>
+        <div class="flow-desc">出發前舉辦行前說明會，學員領取專屬學員包（含生活指南、當地緊急聯繫卡、必備物資）。</div>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-left"><div class="flow-num">8</div><div class="flow-line"></div></div>
+      <div class="flow-content">
+        <div class="flow-title">海外抵達追蹤與持續支援</div>
+        <div class="flow-desc">飛機落地後服務並未結束。無論學習適應或生活求助，放洋的專業支援機制陪伴學員直到旅程完美落幕。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOURS -->
+<div class="panel" id="p-tours">
+  <div class="panel-ey">場次資訊</div>
+  <div class="panel-title">2026 遊學團場次總覽</div>
+  <div class="panel-desc">以下為 2026 年放洋自辦與合作廠商遊學團場次。自辦場次可拆績效（扣除機票後 3%），合作廠商場次無績效。</div>
+
+  <div class="sl">放洋自辦遊學團（可拆績效）</div>
+  <div style="overflow-x:auto">
+  <table class="tour-table">
+    <thead><tr><th></th><th>路線</th><th>日期（14天）</th><th>年齡</th><th>定價</th><th>優惠（5/15前）</th><th>名額</th></tr></thead>
+    <tbody>
+      <tr class="tour-hot"><td><span class="badge-sm bs-own">自辦</span></td><td>🇬🇧 英國倫敦</td><td>7/18–8/2</td><td>9–17歲</td><td>NT$215,000</td><td>NT$200,000</td><td>10人</td></tr>
+      <tr class="tour-hot"><td><span class="badge-sm bs-own">自辦</span></td><td>🇬🇧 英國倫敦</td><td>8/1–8/16</td><td>9–17歲</td><td>NT$215,000</td><td>NT$200,000</td><td>10人</td></tr>
+      <tr class="tour-hot"><td><span class="badge-sm bs-own">自辦</span></td><td>🇮🇪 愛爾蘭都柏林</td><td>7/11–7/26</td><td>10–17歲</td><td>NT$205,000</td><td>NT$190,000</td><td>10人</td></tr>
+      <tr class="tour-hot"><td><span class="badge-sm bs-own">自辦</span></td><td>🇮🇪 愛爾蘭都柏林</td><td>7/25–8/9</td><td>10–17歲</td><td>NT$205,000</td><td>NT$190,000</td><td>10人</td></tr>
+      <tr><td><span class="badge-sm bs-own">自辦</span></td><td>🇲🇹 馬爾他</td><td>7/4–7/19</td><td>8–17歲</td><td>NT$180,000</td><td>NT$165,000</td><td>10人</td></tr>
+      <tr><td><span class="badge-sm bs-own">自辦</span></td><td>🇲🇹 馬爾他</td><td>7/18–8/2</td><td>8–17歲</td><td>NT$180,000</td><td>NT$165,000</td><td>10人</td></tr>
+      <tr><td><span class="badge-sm bs-own">自辦</span></td><td>🇫🇷 法國巴黎</td><td>7/4–7/19</td><td>8–17歲</td><td>NT$201,000</td><td>NT$186,000</td><td>10人</td></tr>
+      <tr><td><span class="badge-sm bs-own">自辦</span></td><td>🇫🇷 法國巴黎</td><td>7/18–8/2</td><td>8–17歲</td><td>NT$201,000</td><td>NT$186,000</td><td>10人</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:11px;color:var(--ink4);margin-top:8px;margin-bottom:20px">黃底為熱賣團。績效獎金於出團後次月 10 號發放。報名截止日：5/15。</p>
+
+  <div class="sl">合作廠商場次（無績效）</div>
+  <div style="overflow-x:auto">
+  <table class="tour-table">
+    <thead><tr><th>廠商</th><th>路線</th><th>日期</th><th>年齡</th><th>定價</th><th>4/30前優惠</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇬🇧 倫敦南岸大學 + 法比荷 22天</td><td>7/25–8/15</td><td>13–21歲</td><td>NT$237,000</td><td>NT$232,000</td></tr>
+      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇬🇧 倫敦 UCL + 法比荷 22天</td><td>7/4–7/25</td><td>12–17歲</td><td>NT$257,000</td><td>NT$252,000</td></tr>
+      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇺🇸 加州 UCLA + 美西名校 21天</td><td>7/12–8/1 / 7/26–8/15</td><td>10–19歲</td><td>NT$277,000</td><td>NT$272,000</td></tr>
+      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇨🇦 溫哥華 UBC 16天</td><td>7/5–7/20 / 7/19–8/3</td><td>9–18歲</td><td>NT$207,000</td><td>NT$202,000</td></tr>
+      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇦🇺 黃金海岸 + 雙樂園 23天</td><td>7/3–7/25 / 7/24–8/15</td><td>6歲以上</td><td>NT$197,000</td><td>NT$192,000</td></tr>
+      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇵🇭 宿霧一對一密集 28天</td><td>7/5–8/1 / 7/26–8/22</td><td>15歲以上</td><td>NT$147,000</td><td>NT$142,000</td></tr>
+      <tr><td><span class="badge-sm bs-partner">ISEC</span></td><td>🇦🇺 墨爾本私立文法學校入班</td><td>7/16–7/30</td><td>13–18歲</td><td>NT$188,000</td><td>各折3,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:11px;color:var(--ink4);margin-top:8px">合作廠商場次無績效，有需要請轉介給放洋處理。完整場次請查看說帖文件。</p>
+</div>
+
+</main>
+</div>
+
+<script>
+function go(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const panel = document.getElementById('p-' + id);
+  if(panel) { panel.classList.add('active'); document.querySelector('.main').scrollTo({top:0,behavior:'smooth'}); }
+  document.querySelectorAll('.nav-item').forEach(item => {
+    if((item.getAttribute('onclick')||'').includes("'"+id+"'")) item.classList.add('active');
+  });
+}
+</script>
+</body>
+</html>
