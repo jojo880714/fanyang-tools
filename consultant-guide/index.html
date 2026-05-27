@@ -170,6 +170,12 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="nav-item" onclick="go('faq-ext')"><div class="ni-dot"></div>外單位業務 FAQ</div>
     <div class="nav-item" onclick="go('diff')"><div class="ni-dot"></div>放洋差異化說法</div>
     <div class="nav-item" onclick="go('refund-simple')"><div class="ni-dot"></div>退費簡易說明</div>
+
+    <div class="sb-unit" style="color:var(--pink)">顧問專屬</div>
+    <div class="nav-item" onclick="go('ep')"><div class="ni-dot"></div>EP 產品介紹<span class="ni-badge b-external">↗</span></div>
+    <div class="nav-item" onclick="go('quotesys')"><div class="ni-dot"></div>報價系統教學<span class="ni-badge b-external">↗</span></div>
+    <div class="nav-item" onclick="go('split')"><div class="ni-dot"></div>前後端工作分配<span class="ni-badge" style="background:var(--pink-l);color:var(--pink)">必讀</span></div>
+    <div class="nav-item" onclick="go('contract')"><div class="ni-dot"></div>合約重點條款<span class="ni-badge" style="background:var(--pink-l);color:var(--pink)">必讀</span></div>
   </nav>
 </nav>
 
@@ -177,6 +183,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 <main class="main">
 
 <!-- HOME -->
+
 <div class="panel active" id="p-home">
   <div class="panel-ey">放洋顧問 · 內部</div>
   <div class="panel-title">顧問工具導覽</div>
@@ -221,7 +228,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="tool-card" onclick="go('quotesys')" style="border-color:rgba(37,99,235,0.25)">
       <div class="tool-flag" style="background:rgba(37,99,235,0.08);color:#2563EB">報價工具</div>
       <div class="tool-name">EP 報價系統<br>教學說明</div>
-      <div class="tool-desc">快速產出報價單，輸入校區/週數/住宿，系統自動換算台幣總費用。</div>
+      <div class="tool-desc">快速產出報價單，輸入校區/週數/住宿，系統自動換算台幣。</div>
       <div class="tool-link">→ 開啟報價系統</div>
     </div>
     <div class="tool-card" onclick="go('split')" style="border-color:var(--pink-b)">
@@ -255,7 +262,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
-<!-- OPS MANUAL -->
 <div class="panel" id="p-ops">
   <div class="panel-ey">線上工具</div>
   <div class="panel-title">遊學一條龍業務心法手冊</div>
@@ -294,7 +300,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
-<!-- TOUR MANUAL -->
 <div class="panel" id="p-tour-manual">
   <div class="panel-ey">實體手冊</div>
   <div class="panel-title">遊學團手冊重點摘要</div>
@@ -345,7 +350,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
-<!-- PITCH -->
 <div class="panel" id="p-pitch">
   <div class="panel-ey">Google 文件</div>
   <div class="panel-title">說帖參考（場次懶人包）</div>
@@ -373,7 +377,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   <p style="font-size:11px;color:var(--ink4);margin-top:8px">黃底為熱賣團。全集團業務皆可拆績效（扣除機票成本後 3%），出團後次月 10 號發放。</p>
 </div>
 
-<!-- QUOTATION -->
 <div class="panel" id="p-quotation">
   <div class="panel-ey">報價參考</div>
   <div class="panel-title">報價單格式說明</div>
@@ -426,7 +429,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
-<!-- FLOW INDIVIDUAL -->
 <div class="panel" id="p-flow-individual">
   <div class="panel-ey">服務流程</div>
   <div class="panel-title">個人遊學服務流程</div>
@@ -497,7 +499,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
-<!-- FLOW GROUP -->
 <div class="panel" id="p-flow-group">
   <div class="panel-ey">服務流程</div>
   <div class="panel-title">遊學團報名流程</div>
@@ -568,9 +569,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
-</div>
-
-<!-- TOURS -->
 <div class="panel" id="p-tours">
   <div class="panel-ey">場次資訊</div>
   <div class="panel-title">2026 遊學團場次總覽</div>
@@ -612,8 +610,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   <p style="font-size:11px;color:var(--ink4);margin-top:8px">合作廠商場次無績效，有需要請轉介給放洋處理。完整場次請查看說帖文件。</p>
 </div>
 
-
-<!-- FUTURE DESTINATIONS -->
 <div class="panel" id="p-future">
   <div class="panel-ey">預計新增</div>
   <div class="panel-title">新增海外廠商國家線</div>
@@ -639,41 +635,38 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
-<!-- BONUS -->
 <div class="panel" id="p-bonus">
   <div class="panel-ey">合作機制</div>
   <div class="panel-title">獎金拆分說明</div>
-  <div class="panel-desc">外單位（洋碩美語各區、合作單位）轉介遊學學員給放洋，成功出團後可獲得績效獎金。以下為計算方式與注意事項。</div>
+  <div class="panel-desc">外單位（洋碩美語各區、合作單位）轉介遊學學員給放洋，成功出團後可獲得績效獎金。</div>
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
     <div class="icard" style="border-left:3px solid var(--pink);margin-bottom:0">
       <div class="icard-title" style="color:var(--pink)">🗺️ 遊學團獎金計算</div>
       <div class="irow"><div class="irow-key">計算公式</div><div>（定價 − 機票 − 保險）× <strong>3%</strong></div></div>
-      <div class="irow"><div class="irow-key">說明</div><div>扣除機票費與保險費後，以此<strong>淨利</strong>乘以 3%</div></div>
-      <div class="irow"><div class="irow-key">計算基礎</div><div>由放洋統一計算，業務不需自行試算，出團後由放洋提供明細</div></div>
+      <div class="irow"><div class="irow-key">計算基礎</div><div>放洋統一計算，出團後提供明細，業務不需自行試算</div></div>
     </div>
     <div class="icard" style="border-left:3px solid var(--teal);margin-bottom:0">
       <div class="icard-title" style="color:var(--teal)">👤 個人遊學獎金計算</div>
       <div class="irow"><div class="irow-key">計算公式</div><div>定價 × <strong>3%</strong></div></div>
-      <div class="irow"><div class="irow-key">說明</div><div>直接以學員實付的定價乘以 3%，計算最簡單</div></div>
-      <div class="irow"><div class="irow-key">試算範例</div><div>學員報名費 NT$100,000 → 獎金 <strong style="color:var(--teal)">NT$3,000</strong></div></div>
+      <div class="irow"><div class="irow-key">試算範例</div><div>學員費用 NT$100,000 → 獎金 <strong style="color:var(--teal)">NT$3,000</strong></div></div>
     </div>
   </div>
+
   <div class="icard">
     <div class="icard-title">共同規定</div>
-    <div class="irow"><div class="irow-key">誰有資格</div><div>全集團業務、洋碩美語各區業務、合作轉介單位，須轉介至放洋服務（不能自行操作）</div></div>
-    <div class="irow"><div class="irow-key">合作廠商場次</div><div>⚠️ 無績效。ISEC、東南遊學等合作廠商場次不拆績效，有需要請轉介給放洋處理即可</div></div>
+    <div class="irow"><div class="irow-key">誰有資格</div><div>全集團業務、洋碩美語各區業務、合作轉介單位，須轉介至放洋服務</div></div>
+    <div class="irow"><div class="irow-key">合作廠商場次</div><div>⚠️ ISEC、東南遊學等合作廠商場次不拆績效</div></div>
   </div>
 
-  <div class="sl">結算週期對照</div>
+  <div class="sl">獎金發放週期</div>
   <div class="icard">
-    <div style="overflow-x:auto">
     <table style="width:100%;border-collapse:collapse;font-size:13px">
       <thead><tr style="border-bottom:2px solid var(--border2)">
-        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:0.05em;background:var(--bg)">團別</th>
-        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:0.05em;background:var(--bg)">出團月份</th>
-        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:0.05em;background:var(--bg)">業績結算區間</th>
-        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:0.05em;background:var(--bg)">獎金發放日</th>
+        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">團別</th>
+        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">出團月份</th>
+        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">業績結算</th>
+        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">獎金發放日</th>
       </tr></thead>
       <tbody>
         <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">寒假遊學團</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">1–2 月</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">依發票開立日期</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--pink)">3 月 10 號</td></tr>
@@ -681,13 +674,9 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
         <tr><td style="padding:9px 12px;color:var(--ink2)">個人遊學</td><td style="padding:9px 12px;color:var(--ink2)">全年滾動</td><td style="padding:9px 12px;color:var(--ink2)">依回國日期</td><td style="padding:9px 12px;font-weight:700;color:var(--teal)">回國後次月 10 號</td></tr>
       </tbody>
     </table>
-    </div>
   </div>
-
-
 </div>
 
-<!-- REFERRAL -->
 <div class="panel" id="p-referral">
   <div class="panel-ey">合作機制</div>
   <div class="panel-title">轉介資源表單說明</div>
@@ -724,7 +713,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
-<!-- COLLAB -->
 <div class="panel" id="p-collab">
   <div class="panel-ey">合作機制</div>
   <div class="panel-title">後續合作形式</div>
@@ -764,7 +752,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
-<!-- QUALIFY -->
 <div class="panel" id="p-qualify">
   <div class="panel-ey">業務支援</div>
   <div class="panel-title">學員快速適合度判斷</div>
@@ -772,7 +759,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 
   <div class="sl">問題一：年齡</div>
   <div class="icard">
-    <div class="irow"><div class="irow-key">8–17 歲</div><div>👉 <strong>自辦遊學團</strong>（英國/愛爾蘭/馬爾他/法國）。家長一起來諮詢，強調全程照顧、保險、領隊隨行。</div></div>
+    <div class="irow"><div class="irow-key">8–17 歲</div><div>👉 <strong>自辦遊學團</strong>（英國/愛爾蘭/馬爾他/法國）。家長一起來諮詢，強調全程照顧、保險、語校老師全程接送機。10人成團另有台灣領隊隨行。</div></div>
     <div class="irow"><div class="irow-key">16–17 歲</div><div>👉 可以遊學團也可以個人遊學（部分校區 16 歲可入學）。確認家長是否同意獨自前往。</div></div>
     <div class="irow"><div class="irow-key">18 歲以上</div><div>👉 <strong>個人遊學</strong>（全球 EP 校區或其他合作學校）。詢問問題二。</div></div>
   </div>
@@ -794,7 +781,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
-<!-- FAQ EXT -->
 <div class="panel" id="p-faq-ext">
   <div class="panel-ey">業務支援</div>
   <div class="panel-title">外單位業務 FAQ</div>
@@ -815,12 +801,11 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   <div class="icard">
     <div class="icard-title">關於保障與服務</div>
     <div class="irow"><div class="irow-key">學員出了問題誰負責？</div><div>放洋全程負責，外單位業務不需要介入。放洋顧問從出發前到回台全程支援，當地出問題直接聯繫放洋。</div></div>
-    <div class="irow"><div class="irow-key">遊學團安全嗎？</div><div>遊學團有台灣領隊全程隨行（10人成團），費用含 500 萬旅平險 + 1000 萬履約保證保險。</div></div>
+    <div class="irow"><div class="irow-key">遊學團安全嗎？</div><div>費用含 500 萬旅平險 + 1000 萬履約保證保險。無論人數多少，當地語校老師負責接機。<strong>10人成團</strong>另贈台灣領隊全程隨行。</div></div>
     <div class="irow"><div class="irow-key">我可以把績效算給學員折扣嗎？</div><div>不可以。績效是發給轉介業務個人的，不能轉讓或折抵學員費用。折扣請找放洋確認是否有其他優惠方案。</div></div>
   </div>
 </div>
 
-<!-- DIFF -->
 <div class="panel" id="p-diff">
   <div class="panel-ey">業務支援</div>
   <div class="panel-title">放洋差異化說法</div>
@@ -840,76 +825,93 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="icard-title">TKB 放洋的核心差異</div>
     <div class="irow"><div class="irow-key">完整路徑</div><div>遊學（放洋）→ 備考（洋碩美語）→ 留學申請（放洋留學部）。少數能一條龍服務到底的業者。</div></div>
     <div class="irow"><div class="irow-key">EP 獨家優勢</div><div>EP 班級最多 15 人（業界常見 20–25 人）、30+ 成熟學習者獨立分班、ST Star Awards 2024 &amp; 2025 連續得獎。</div></div>
-    <div class="irow"><div class="irow-key">遊學團執行力</div><div>自辦遊學團含台灣領隊全程隨行（10人成團）、1000萬履約保證保險，不只是「幫你訂學校」。</div></div>
+    <div class="irow"><div class="irow-key">遊學團執行力</div><div>1人報名即可出發，當地語校老師負責接機與生活支援。<strong>10人成團</strong>另贈台灣領隊全程隨行，1000萬履約保證保險，不只是「幫你訂學校」。</div></div>
   </div>
 </div>
 
-<!-- REFUND SIMPLE -->
 
-
+<div class="panel" id="p-refund-simple">
+  <div class="panel-ey">業務支援</div>
+  <div class="panel-title">退費簡易說明</div>
+  <div class="panel-desc">顧問遇到學員問退費問題時的標準說法。</div>
+  <div style="display:flex;gap:10px;margin-bottom:16px;padding:12px 14px;background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.18);border-radius:8px;font-size:12.5px;line-height:1.7">
+    <span style="font-size:16px;flex-shrink:0">ℹ️</span>
+    <div><strong style="color:var(--blue)">遊學團 vs 個人遊學退費規定不同</strong><br>
+    <span style="color:var(--ink2)">下方比例表僅適用<strong>放洋自辦遊學團</strong>（合約第 18 條）。<strong>個人遊學</strong>依各語言學校退費規定，細節查詢各校後說明。</span></div>
+  </div>
+  <div class="icard">
+    <div style="font-size:11px;font-weight:700;color:var(--pink);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">🗺️ 遊學團退費比例（合約第 18 條）</div>
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <thead><tr style="border-bottom:2px solid var(--border2)">
+        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">取消時間</th>
+        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">損失</th>
+        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">說法</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 41 天以前</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--teal);font-size:15px">5%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">越早說損失越小</td></tr>
+        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 31–40 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">10%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">約 1 個月前</td></tr>
+        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 21–30 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">20%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">損失開始擴大</td></tr>
+        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 2–20 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">30%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">快出發才說，損失很大</td></tr>
+        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 1 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:#DC2626;font-size:15px">50%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">隔天出發才說，一半沒了</td></tr>
+        <tr><td style="padding:9px 12px">出發當天或未通知</td><td style="padding:9px 12px;font-weight:700;color:#DC2626;font-size:15px">100%</td><td style="padding:9px 12px;font-size:12px;color:var(--ink3)">全額沒收</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="icard" style="margin-top:4px;border-left:3px solid var(--teal)">
+    <div class="icard-title" style="color:var(--teal)">👤 個人遊學退費（依各語言學校規定）</div>
+    <div class="irow"><div class="irow-key">EP 通用原則</div><div>住宿費：入住後前 4 週通常不退。課程費：依取消時間按比例退</div></div>
+    <div class="irow"><div class="irow-key">繳費時間</div><div>僅課程：開課前 4 週；課程+住宿：開課前 6 週</div></div>
+    <div class="irow"><div class="irow-key">注意</div><div>各校細節不同，學員問具體金額時，查詢各校正式條款後說明</div></div>
+  </div>
+</div>
 <div class="panel" id="p-ep">
   <div class="panel-ey">顧問專屬</div>
   <div class="panel-title">EP English Path 產品介紹</div>
   <div class="panel-desc">EP 12 個校區的完整資訊，含費用試算、課程比較、住宿說明。這是顧問內部使用的工具，不對學員開放連結。</div>
   <div class="icard">
     <div class="irow"><div class="irow-key">工具連結</div><div><a href="https://jojo880714.github.io/fanyang-tools/ep-guide/" target="_blank" style="color:var(--pink);font-weight:600;text-decoration:none">https://jojo880714.github.io/fanyang-tools/ep-guide/ ↗</a></div></div>
-    <div class="irow"><div class="irow-key">涵蓋校區</div><div>倫敦×2、伯明罕、里茲、都柏林、柏林、巴黎、馬爾他、杜拜、多倫多、布里斯本（共 11 校區）</div></div>
-    <div class="irow"><div class="irow-key">使用方式</div><div>左側選校區 → 查看課程/住宿/費用 → 右上角「比較校區」最多 3 個並排 → 費用試算計算器</div></div>
+    <div class="irow"><div class="irow-key">涵蓋校區</div><div>倫敦×2、伯明罕、里茲、都柏林、柏林、巴黎、馬爾他、杜拜、多倫多、布里斯本</div></div>
+    <div class="irow"><div class="irow-key">使用方式</div><div>左側選校區 → 查看課程/住宿/費用 → 比較校區（最多3個）→ 費用試算</div></div>
     <div class="irow"><div class="irow-key">注意</div><div>⚠️ 顧問內部使用，不要直接把這個連結傳給學員</div></div>
   </div>
   <div class="sl">EP 校區定位速查</div>
   <div class="icard">
-    <div class="irow"><div class="irow-key">🇬🇧 Canary Wharf</div><div>30 歲以上獨立分班。商業管理/數位行銷證書、YMS 帶薪實習。</div></div>
-    <div class="irow"><div class="irow-key">🇬🇧 Greenford</div><div>EP 全球總部，16 歲以上，500 人大校，免費校車，適合首次出國。</div></div>
-    <div class="irow"><div class="irow-key">🇬🇧 伯明罕</div><div>市中心，生活費比倫敦低 30–40%，有 IELTS 課程。</div></div>
-    <div class="irow"><div class="irow-key">🇬🇧 里茲</div><div>大學城，週末可去約克/湖區，有 IELTS 課程。</div></div>
-    <div class="irow"><div class="irow-key">🇮🇪 都柏林</div><div>海濱，Work &amp; Study 合法打工，Pathway 銜接課。</div></div>
-    <div class="irow"><div class="irow-key">🇩🇪 柏林</div><div>德文 + 英文雙語，有 Pathway。</div></div>
-    <div class="irow"><div class="irow-key">🇫🇷 巴黎</div><div>法文 + 英文雙語，語言沉浸效果強。</div></div>
-    <div class="irow"><div class="irow-key">🇲🇹 馬爾他</div><div>EP 全球最大（500人），費用最低，有晚間課。</div></div>
-    <div class="irow"><div class="irow-key">🇦🇪 杜拜</div><div>Knowledge Park 學術園區，商業管理/數位行銷證書。</div></div>
-    <div class="irow"><div class="irow-key">🇨🇦 多倫多</div><div>市中心，Pathway 銜接課，商業管理/數位行銷證書。</div></div>
-    <div class="irow"><div class="irow-key">🇦🇺 布里斯本</div><div>CRICOS 認可，學生簽可讀 62 週，WHV 最多 17 週。</div></div>
+    <div class="irow"><div class="irow-key">🇬🇧 Canary Wharf</div><div>30歲以上獨立分班，YMS帶薪實習，商業管理/數位行銷證書</div></div>
+    <div class="irow"><div class="irow-key">🇬🇧 Greenford</div><div>EP總部，500人大校，免費校車，16歲以上，適合首次出國</div></div>
+    <div class="irow"><div class="irow-key">🇬🇧 伯明罕</div><div>市中心，生活費比倫敦低30–40%，有雅思課</div></div>
+    <div class="irow"><div class="irow-key">🇬🇧 里茲</div><div>大學城，週末可去約克/湖區，有雅思課</div></div>
+    <div class="irow"><div class="irow-key">🇮🇪 都柏林</div><div>海濱，Work &amp; Study合法打工，Pathway銜接課</div></div>
+    <div class="irow"><div class="irow-key">🇩🇪 柏林</div><div>德文+英文雙語，有Pathway</div></div>
+    <div class="irow"><div class="irow-key">🇫🇷 巴黎</div><div>法文+英文雙語，語言沉浸效果強</div></div>
+    <div class="irow"><div class="irow-key">🇲🇹 馬爾他</div><div>EP全球最大（500人），地中海氣候，費用最低</div></div>
+    <div class="irow"><div class="irow-key">🇦🇪 杜拜</div><div>Knowledge Park，商業管理/數位行銷證書</div></div>
+    <div class="irow"><div class="irow-key">🇨🇦 多倫多</div><div>市中心，Pathway銜接課，商業管理/數位行銷證書</div></div>
+    <div class="irow"><div class="irow-key">🇦🇺 布里斯本</div><div>CRICOS認可，學生簽最長62週，WHV最多17週</div></div>
   </div>
 </div>
 <div class="panel" id="p-quotesys">
   <div class="panel-ey">顧問專屬</div>
   <div class="panel-title">EP 報價系統教學</div>
-  <div class="panel-desc">報價系統可快速產出格式化的報價單，顧問填入校區、週數、住宿類型，系統自動計算並換算台幣。</div>
+  <div class="panel-desc">快速產出格式化報價單，顧問填入校區、週數、住宿類型，系統自動計算並換算台幣。</div>
   <div class="icard">
     <div class="irow"><div class="irow-key">系統連結</div><div><a href="https://jojo880714.github.io/FY-quotation-system-EP-/" target="_blank" style="color:var(--pink);font-weight:600;text-decoration:none">https://jojo880714.github.io/FY-quotation-system-EP-/ ↗</a></div></div>
   </div>
   <div class="sl">使用步驟</div>
   <div class="flow-grid">
-    <div class="flow-item"><div class="flow-left"><div class="flow-num">1</div><div class="flow-line"></div></div>
-      <div class="flow-content"><div class="flow-title">選擇校區與課程</div>
-      <div class="flow-desc">選擇 EP 校區（如 Brisbane）→ 選擇課程類型（標準上午/密集/超密集）→ 輸入週數。</div></div></div>
-    <div class="flow-item"><div class="flow-left"><div class="flow-num">2</div><div class="flow-line"></div></div>
-      <div class="flow-content"><div class="flow-title">選擇住宿</div>
-      <div class="flow-desc">選擇住宿類型（寄宿家庭半膳/全膳/宿舍）→ 系統自動帶入每週費用。</div></div></div>
-    <div class="flow-item"><div class="flow-left"><div class="flow-num">3</div><div class="flow-line"></div></div>
-      <div class="flow-content"><div class="flow-title">填入學員資料</div>
-      <div class="flow-desc">填入學員姓名、Email、開始日期，這些資訊會出現在報價單上。</div></div></div>
-    <div class="flow-item"><div class="flow-left"><div class="flow-num">4</div><div class="flow-line"></div></div>
-      <div class="flow-content"><div class="flow-title">確認費用明細</div>
-      <div class="flow-desc">系統自動加入課程費 + 註冊費 + 教材費 + 銀行手續費 + 住宿費，並依當日匯率估算台幣總額。</div></div></div>
-    <div class="flow-item"><div class="flow-left"><div class="flow-num">5</div><div class="flow-line"></div></div>
-      <div class="flow-content"><div class="flow-title">下載或截圖報價單</div>
-      <div class="flow-desc">報價單格式與放洋品牌一致，可直接截圖或下載傳給學員。</div></div></div>
-  </div>
-  <div class="icard" style="background:var(--pink-l);border-color:var(--pink-b)">
-    <div class="irow"><div class="irow-key" style="color:var(--pink)">⚠️ 注意</div><div>台幣換算僅供參考，實際匯款以當天匯率為準。向學員說明時務必補充「以實際匯款日匯率為準」。</div></div>
+    <div class="flow-item"><div class="flow-left"><div class="flow-num">1</div><div class="flow-line"></div></div><div class="flow-content"><div class="flow-title">選擇校區與課程</div><div class="flow-desc">選校區 → 選課程類型（標準上午/密集/超密集）→ 輸入週數。</div></div></div>
+    <div class="flow-item"><div class="flow-left"><div class="flow-num">2</div><div class="flow-line"></div></div><div class="flow-content"><div class="flow-title">選擇住宿</div><div class="flow-desc">選住宿類型（Homestay半膳/全膳/宿舍）→ 系統自動帶入每週費用。</div></div></div>
+    <div class="flow-item"><div class="flow-left"><div class="flow-num">3</div><div class="flow-line"></div></div><div class="flow-content"><div class="flow-title">填入學員資料</div><div class="flow-desc">填入姓名、Email、開始日期，這些資訊會出現在報價單上。</div></div></div>
+    <div class="flow-item"><div class="flow-left"><div class="flow-num">4</div><div class="flow-line"></div></div><div class="flow-content"><div class="flow-title">確認費用明細</div><div class="flow-desc">系統自動加入課程費+註冊費+教材費+銀行手續費+住宿費，並依當日匯率估算台幣總額。</div></div></div>
+    <div class="flow-item"><div class="flow-left"><div class="flow-num">5</div></div><div class="flow-content"><div class="flow-title">下載或截圖報價單</div><div class="flow-desc">格式與放洋品牌一致，直接截圖或下載傳給學員。告知學員台幣金額以實際匯款日為準。</div></div></div>
   </div>
 </div>
 <div class="panel" id="p-split">
   <div class="panel-ey">顧問專屬</div>
   <div class="panel-title">前後端工作分配</div>
-  <div class="panel-desc">放洋的服務流程以「學員付款」為分界，分為前端（付款前，顧問確認）和後端（付款後，行政執行）。<br><strong>付款時所有方案細節必須已確認完畢，不能事後更改。</strong></div>
-
+  <div class="panel-desc">以「學員付款」為分界。<strong>付款時所有方案細節必須已確認完畢，不能事後更改。</strong></div>
   <div class="icard" style="background:var(--pink-l);border-color:var(--pink-b);margin-bottom:16px">
-    <div class="irow"><div class="irow-key" style="color:var(--pink)">付款前必確認</div><div>課程方案（校區/週數/課程類型）、住宿類型（Homestay/宿舍/房型）、是否需要接送機、開始日期。一旦付款後若要變更，可能產生手續費或無法更改。</div></div>
+    <div class="irow"><div class="irow-key" style="color:var(--pink)">付款前必確認</div><div>課程方案（校區/週數/課程類型）、住宿類型（Homestay/宿舍/房型）、是否需要接送機、開始日期</div></div>
   </div>
-
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
     <div style="border-radius:12px;padding:20px;background:rgba(232,25,90,0.03);border:1px solid var(--pink-b)">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)">
@@ -921,42 +923,41 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
         <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>推薦校區與課程（使用 EP Guide）</div>
         <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>使用報價系統產出報價單</div>
         <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>確認住宿類型與房型</div>
-        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>確認是否需要接送機服務</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>確認是否需要接送機</div>
         <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>確認開始日期與週數</div>
-        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>說明退費條款（依合約第 18 條）</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>說明退費條款（合約第 18 條）</div>
         <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>收取定金、取得學員同意書</div>
         <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>協助填寫合約，確認簽署</div>
-        <div style="padding:5px 0;display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>確認審閱期（合約第 1 條，5 天以上）</div>
+        <div style="padding:5px 0;display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px"></span>確認審閱期（第 1 條，5 天以上）</div>
       </div>
     </div>
-    <div style="border-radius:12px;padding:20px;background:rgba(13,124,106,0.03);border:1px solid rgba(13,124,106,0.2)">
+    <div style="border-radius:12px;padding:20px;background:rgba(13,124,106,0.03);border:1px solid var(--teal-b)">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)">
-        <div style="width:32px;height:32px;border-radius:8px;background:rgba(13,124,106,0.08);display:flex;align-items:center;justify-content:center;font-size:16px">⚙️</div>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--teal-l);display:flex;align-items:center;justify-content:center;font-size:16px">⚙️</div>
         <div><div style="font-size:13px;font-weight:600;color:var(--ink)">後端工作</div><div style="font-size:10.5px;color:var(--ink3)">學員付款後・行政執行</div></div>
       </div>
       <div style="font-size:12.5px;color:var(--ink2);line-height:1.55">
-        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:#0D7C6A;flex-shrink:0;margin-top:5px"></span>向海外學校完成正式報名申請</div>
-        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:#0D7C6A;flex-shrink:0;margin-top:5px"></span>提交報名表、護照影本等文件</div>
-        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:#0D7C6A;flex-shrink:0;margin-top:5px"></span>跑付款流程：匯款至海外學校</div>
-        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:#0D7C6A;flex-shrink:0;margin-top:5px"></span>確認學校收款，取得入學確認信（LOA）</div>
-        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:#0D7C6A;flex-shrink:0;margin-top:5px"></span>安排住宿（Homestay 媒合或宿舍申請）</div>
-        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:#0D7C6A;flex-shrink:0;margin-top:5px"></span>協助辦理簽證所需文件</div>
-        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:#0D7C6A;flex-shrink:0;margin-top:5px"></span>確認接送機安排（如有需要）</div>
-        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:#0D7C6A;flex-shrink:0;margin-top:5px"></span>提供 Homestay 家庭資料給學員</div>
-        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:#0D7C6A;flex-shrink:0;margin-top:5px"></span>安排保險</div>
-        <div style="padding:5px 0;display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:#0D7C6A;flex-shrink:0;margin-top:5px"></span>建立緊急聯絡機制，行前說明</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px"></span>向海外學校完成正式報名申請</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px"></span>提交報名表、護照影本等文件</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px"></span>跑付款流程：匯款至海外學校</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px"></span>確認學校收款，取得入學確認信（LOA）</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px"></span>安排住宿（Homestay媒合或宿舍申請）</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px"></span>協助辦理簽證所需文件</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px"></span>確認接送機安排（如有需要）</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px"></span>提供Homestay家庭資料給學員</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px"></span>安排保險</div>
+        <div style="padding:5px 0;display:flex;gap:7px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px"></span>建立緊急聯絡機制，行前說明</div>
       </div>
     </div>
   </div>
-
   <div style="background:rgba(217,119,6,0.06);border:1px solid rgba(217,119,6,0.2);border-radius:8px;padding:12px 14px;font-size:12.5px;color:var(--amber);line-height:1.7;margin-top:12px">
-    <strong>常見錯誤：</strong>不要在學員付款後才討論住宿或接送機——這些必須在付款前確認，因為 Homestay 媒合和接送機預約需要提前作業，事後更改可能需要額外費用甚至無法處理。
+    <strong>常見錯誤：</strong>不要在學員付款後才討論住宿或接送機——這些必須在付款前確認，事後更改可能需要額外費用甚至無法處理。
   </div>
 </div>
 <div class="panel" id="p-contract">
   <div class="panel-ey">顧問專屬</div>
   <div class="panel-title">合約重點條款導覽</div>
-  <div class="panel-desc">《海外旅遊學習定型化契約》共 40 條。以下整理顧問必須熟悉的關鍵條款，依情境分類，每個條款下方有業務說法提示。</div>
+  <div class="panel-desc">《海外旅遊學習定型化契約》共 40 條。以下整理顧問必須熟悉的關鍵條款，依情境分類。</div>
 
   <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">
     <button class="clause-tab active" onclick="showClause('refund',this)">退費規定</button>
@@ -971,41 +972,31 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="icard">
       <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 18 條：出發前甲方任意解除契約賠償基準</div>
       <table style="width:100%;border-collapse:collapse;font-size:13px">
-        <thead><tr style="border-bottom:2px solid var(--border2)">
-          <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);background:var(--bg);text-transform:uppercase">解約時間</th>
-          <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);background:var(--bg);text-transform:uppercase">賠償</th>
-          <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);background:var(--bg);text-transform:uppercase">說法</th>
-        </tr></thead>
+        <thead><tr style="border-bottom:2px solid var(--border2)"><th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);background:var(--bg);text-transform:uppercase">解約時間</th><th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);background:var(--bg);text-transform:uppercase">賠償</th><th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);background:var(--bg);text-transform:uppercase">說法</th></tr></thead>
         <tbody>
-          <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前第 41 天以前</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:#0D7C6A;font-size:15px">5%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">越早說損失越小</td></tr>
+          <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前第 41 天以前</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--teal);font-size:15px">5%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">越早說損失越小</td></tr>
           <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前第 31–40 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">10%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">約 1 個月前</td></tr>
           <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前第 21–30 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">20%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">損失開始擴大</td></tr>
-          <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前第 2–20 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">30%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">快出發才說，損失很大</td></tr>
-          <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前第 1 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:#DC2626;font-size:15px">50%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">隔天出發才說，損失一半</td></tr>
+          <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前第 2–20 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">30%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">快出發才說</td></tr>
+          <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前第 1 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:#DC2626;font-size:15px">50%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">隔天出發才說</td></tr>
           <tr><td style="padding:9px 12px">出發當天或未通知</td><td style="padding:9px 12px;font-weight:700;color:#DC2626;font-size:15px">100%</td><td style="padding:9px 12px;font-size:12px;color:var(--ink3)">全額沒收</td></tr>
         </tbody>
       </table>
-      <div style="background:rgba(232,25,90,0.05);border-left:3px solid var(--pink);padding:10px 14px;border-radius:0 6px 6px 0;font-size:12.5px;color:var(--pink-d);line-height:1.65;margin-top:10px">💬 「越早確定越早告訴我，萬一有變動損失才最小。出發前 41 天以前取消只需賠 5%，但出發前一天才說就要賠 50%。」</div>
-    </div>
-    <div class="icard">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 19 條：法定原因（不可抗力）免責解約</div>
-      <div class="irow"><div class="irow-key">免責情況</div><div>本人懷孕/分娩、本人或三親等內親屬有重大傷病診斷書、三親等內親屬死亡、不可抗力天災</div></div>
-      <div class="irow"><div class="irow-key">退費方式</div><div>扣除已支出必要費用（最高不超過總費用 <strong>10%</strong>）後退還餘款</div></div>
+      <div style="background:rgba(232,25,90,0.05);border-left:3px solid var(--pink);padding:10px 14px;border-radius:0 6px 6px 0;font-size:12.5px;color:var(--pink-d);line-height:1.65;margin-top:10px">💬 「越早確定越早告訴我，萬一有變動損失才最小。」</div>
     </div>
     <div class="icard">
       <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">個人遊學退費（各語言學校規定）</div>
-      <div class="irow"><div class="irow-key">EP 通用原則</div><div>住宿費：入住後前 4 週通常不退。課程費：依取消時間按比例退</div></div>
-      <div class="irow"><div class="irow-key">繳費時間</div><div>僅課程：開課前 4 週；課程+住宿：開課前 6 週</div></div>
-      <div class="irow"><div class="irow-key">注意</div><div>各校區細節不同，學員問具體金額時，查詢該校正式條款後再說明</div></div>
+      <div class="irow"><div class="irow-key">EP通用原則</div><div>住宿費：入住後前4週通常不退。課程費：依取消時間按比例退</div></div>
+      <div class="irow"><div class="irow-key">繳費時間</div><div>僅課程：開課前4週；課程+住宿：開課前6週</div></div>
     </div>
   </div>
 
   <div class="clause-panel" id="cp-fee" style="display:none">
     <div class="icard">
       <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 6 條：費用包含與不包含</div>
-      <div class="irow"><div class="irow-key">✅ 包含</div><div>護照/簽證代辦、課程研修費、行程內交通、住宿（宿舍/Homestay）、餐膳、遊覽費、接送費（⚠️ 個人語言學校可能不包含，需另購）、機場稅捐</div></div>
-      <div class="irow"><div class="irow-key">❌ 不包含</div><div>私人交通費、洗衣/電話費、個人傷病醫療費、行李超重費、行程外機票/簽證費、個人小費、個人投保的保險費</div></div>
-      <div style="background:rgba(232,25,90,0.05);border-left:3px solid var(--pink);padding:10px 14px;border-radius:0 6px 6px 0;font-size:12.5px;color:var(--pink-d);line-height:1.65;margin-top:10px">💬 學員常問「接機有沒有包？」→ 個人語言學校預設不包含，需要另購。遊學團通常包含。</div>
+      <div class="irow"><div class="irow-key">✅ 包含</div><div>護照/簽證代辦、課程費、行程內交通、住宿、餐膳、遊覽費、接送費（⚠️ 個人語言學校可能不包含）、機場稅捐</div></div>
+      <div class="irow"><div class="irow-key">❌ 不包含</div><div>私人交通費、洗衣/電話費、個人傷病醫療費、行李超重費、個人小費、個人保險費</div></div>
+      <div style="background:rgba(232,25,90,0.05);border-left:3px solid var(--pink);padding:10px 14px;border-radius:0 6px 6px 0;font-size:12.5px;color:var(--pink-d);line-height:1.65;margin-top:10px">💬 「接機有沒有包？」→ 個人語言學校預設不包含，需另購。遊學團通常包含。</div>
     </div>
   </div>
 
@@ -1013,100 +1004,36 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="icard">
       <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 34 條：法定最低投保金額</div>
       <div class="irow"><div class="irow-key">意外死亡</div><div>每人 <strong>NT$200 萬</strong></div></div>
-      <div class="irow"><div class="irow-key">意外體傷醫療</div><div>每人 <strong>NT$20 萬</strong></div></div>
-      <div class="irow"><div class="irow-key">家屬善後費用</div><div>NT$10 萬</div></div>
-      <div class="irow"><div class="irow-key">履約保證保險</div><div>最低 <strong>NT$1,000 萬</strong>（確保放洋若倒閉仍能退費）</div></div>
-      <div class="irow"><div class="irow-key">遊學團實際</div><div>500萬旅平險 + 50萬意外醫療 + 1,000萬履約保證（高於法定最低）</div></div>
+      <div class="irow"><div class="irow-key">意外醫療</div><div>每人 <strong>NT$20 萬</strong></div></div>
+      <div class="irow"><div class="irow-key">履約保證</div><div>最低 <strong>NT$1,000 萬</strong></div></div>
+      <div class="irow"><div class="irow-key">遊學團實際</div><div>500萬旅平 + 50萬意外醫療 + 1,000萬履約（高於法定）</div></div>
     </div>
   </div>
 
   <div class="clause-panel" id="cp-minor" style="display:none">
     <div class="icard">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 3 條：未成年人訂約</div>
-      <div class="irow"><div class="irow-key">7–17 歲</div><div>需得法定代理人（父母）允許或承認，合約才有效。建議家長出席簽約或取得書面同意。</div></div>
-      <div class="irow"><div class="irow-key">7 歲以下</div><div>應由法定代理人代為及代受意思表示。</div></div>
-    </div>
-    <div class="icard">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 10 條：未成年人護照保管</div>
-      <div class="irow"><div class="irow-key">保管方式</div><div>可依雙方協議由放洋代管，需法定代理人書面同意。學員得隨時取回，放洋不得拒絕。</div></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 3 條：未成年人訂約 / 第 10 條：護照保管</div>
+      <div class="irow"><div class="irow-key">7–17歲</div><div>需父母允許或承認，合約才有效。建議家長出席簽約或取得書面同意。</div></div>
+      <div class="irow"><div class="irow-key">護照保管</div><div>旅途中可由領隊統一保管，需事先取得家長書面同意。</div></div>
     </div>
   </div>
 
   <div class="clause-panel" id="cp-change" style="display:none">
     <div class="icard">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 22 條：不可抗力行程變更</div>
-      <div class="irow"><div class="irow-key">超出費用</div><div>由放洋負擔</div></div>
-      <div class="irow"><div class="irow-key">減省費用</div><div>應退還學員</div></div>
-      <div class="irow"><div class="irow-key">學員不同意</div><div>可終止契約，放洋退還未實施部分費用</div></div>
-    </div>
-    <div class="icard">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 23 條：可歸責放洋之行程變更（違約）</div>
-      <div class="irow"><div class="irow-key">違約金</div><div>差額 <strong>2 倍</strong>；無法說明差額時，至少為總費用的 <strong>5%</strong></div></div>
-      <div style="background:rgba(232,25,90,0.05);border-left:3px solid var(--pink);padding:10px 14px;border-radius:0 6px 6px 0;font-size:12.5px;color:var(--pink-d);line-height:1.65;margin-top:10px">💬 廣告內容、說帖說明、說明會承諾，都算合約一部分（第 2 條）。不要過度承諾無法保證的事。</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 22/23 條：行程變更</div>
+      <div class="irow"><div class="irow-key">不可抗力</div><div>超出費用由放洋負擔，減省費用應退學員，學員不同意可終止合約</div></div>
+      <div class="irow"><div class="irow-key">放洋違約</div><div>差額 2 倍違約金；無法說明差額時，至少總費用 5%</div></div>
+      <div style="background:rgba(232,25,90,0.05);border-left:3px solid var(--pink);padding:10px 14px;border-radius:0 6px 6px 0;font-size:12.5px;color:var(--pink-d);line-height:1.65;margin-top:10px">💬 廣告、說帖、說明會承諾都算合約內容（第 2 條）。不要過度承諾。</div>
     </div>
   </div>
 
   <div class="clause-panel" id="cp-others" style="display:none">
     <div class="icard">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 1 條：契約審閱期（5 天以上）</div>
-      <div class="irow"><div class="irow-key">規定</div><div>交付合約後，審閱期應有 <strong>5 日以上</strong>才能簽署。違反此規定，條款不構成合約內容。</div></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 1 條：審閱期 / 第 16 條：最低人數</div>
+      <div class="irow"><div class="irow-key">審閱期</div><div>交付合約後應有 <strong>5 日以上</strong>才能簽署</div></div>
+      <div class="irow"><div class="irow-key">最低人數</div><div>不得高於 15 人，未達應於出發前 7 天通知學員</div></div>
+      <div class="irow"><div class="irow-key">現行做法</div><div>放洋自辦團 1 人即可出發，10 人成團贈領隊</div></div>
     </div>
-    <div class="icard">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 16 條：最低組團人數</div>
-      <div class="irow"><div class="irow-key">規定</div><div>最低出團人數不得高於 15 人。未達人數，至少出發前 <strong>7 天</strong>通知學員。</div></div>
-      <div class="irow"><div class="irow-key">現行做法</div><div>放洋自辦團 1 人報名即可出發，10 人成團贈送領隊。</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="panel" id="p-refund-simple">
-  <div class="panel-ey">業務支援</div>
-  <div class="panel-title">退費簡易說明</div>
-  <div class="panel-desc">顧問遇到學員問退費問題時的標準說法。詳細退費條款由顧問負責，這裡整理大原則。</div>
-
-  <div style="display:flex;gap:10px;margin-bottom:16px;padding:12px 14px;background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.18);border-radius:8px;font-size:12.5px;line-height:1.7">
-    <span style="font-size:16px;flex-shrink:0">ℹ️</span>
-    <div><strong style="color:var(--blue)">遊學團 vs 個人遊學的退費規定不同</strong><br>
-    <span style="color:var(--ink2)">下方退費比例表僅適用於<strong>放洋自辦遊學團</strong>（合約第 18 條）。<br>
-    <strong>個人遊學</strong>的退費依各語言學校退費規定，每間學校不一樣，細節查詢各校後再說明。</span></div>
-  </div>
-
-  <div style="background:var(--pink-l);border:1px solid var(--pink-b);border-radius:8px;padding:12px 14px;font-size:12.5px;color:var(--pink-d);line-height:1.7;margin-bottom:16px">
-    <strong>核心原則（遊學團）：越早說、損失越小。</strong>出發前 41 天以前取消，損失只有 5%；出發當天才說，全額沒收。
-  </div>
-
-  <div class="icard">
-    <div style="font-size:11px;font-weight:700;color:var(--pink);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">🗺️ 遊學團退費比例（合約第 18 條）</div>
-    <div style="overflow-x:auto">
-    <table style="width:100%;border-collapse:collapse;font-size:13px">
-      <thead><tr style="border-bottom:2px solid var(--border2)">
-        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">取消時間</th>
-        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">損失比例</th>
-        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">說法</th>
-      </tr></thead>
-      <tbody>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 41 天以前</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:#0D7C6A;font-size:15px">5%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">越早說損失越小</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 31–40 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">10%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">約 1 個月前</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 21–30 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">20%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">損失開始擴大</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 2–20 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">30%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">快出發才說，損失很大</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 1 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:#DC2626;font-size:15px">50%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">隔天出發才說，損失一半</td></tr>
-        <tr><td style="padding:9px 12px">出發當天或未通知</td><td style="padding:9px 12px;font-weight:700;color:#DC2626;font-size:15px">100%</td><td style="padding:9px 12px;font-size:12px;color:var(--ink3)">全額沒收</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-
-  <div class="icard" style="margin-top:4px;border-left:3px solid var(--teal)">
-    <div class="icard-title" style="color:var(--teal)">👤 個人遊學退費（依各語言學校規定）</div>
-    <div class="irow"><div class="irow-key">EP 通用原則</div><div>住宿費：入住後前 4 週通常不退。課程費：依取消時間按比例退</div></div>
-    <div class="irow"><div class="irow-key">繳費時間</div><div>僅課程：開課前 4 週；課程+住宿：開課前 6 週</div></div>
-    <div class="irow"><div class="irow-key">注意</div><div>各校細節不同，學員問具體金額時，查詢各校正式退費條款後再說明</div></div>
-  </div>
-
-  <div class="icard" style="margin-top:4px">
-    <div class="icard-title">特殊可免責取消（損失最小）</div>
-    <div class="irow"><div class="irow-key">適用情況</div><div>本人懷孕/分娩、三親等內親屬有<strong>重大傷病診斷書</strong>、三親等內親屬死亡、不可抗力天災</div></div>
-    <div class="irow"><div class="irow-key">退費方式</div><div>扣除已支出必要費用（最高不超過總費用 10%）後退還餘款</div></div>
   </div>
 </div>
 </main>
@@ -1119,20 +1046,21 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 .clause-panel{display:none}
 .clause-panel.active{display:block}
 </style>
+
 <script>
 function showClause(id, el) {
-  document.querySelectorAll('.clause-panel').forEach(p => { p.style.display='none'; p.classList.remove('active'); });
-  document.querySelectorAll('.clause-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.clause-panel').forEach(function(p){ p.style.display='none'; p.classList.remove('active'); });
+  document.querySelectorAll('.clause-tab').forEach(function(t){ t.classList.remove('active'); });
   var panel = document.getElementById('cp-' + id);
   if(panel) { panel.style.display='block'; panel.classList.add('active'); }
   if(el) el.classList.add('active');
 }
 function go(id) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const panel = document.getElementById('p-' + id);
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('active'); });
+  var panel = document.getElementById('p-' + id);
   if(panel) { panel.classList.add('active'); document.querySelector('.main').scrollTo({top:0,behavior:'smooth'}); }
-  document.querySelectorAll('.nav-item').forEach(item => {
+  document.querySelectorAll('.nav-item').forEach(function(item) {
     if((item.getAttribute('onclick')||'').includes("'"+id+"'")) item.classList.add('active');
   });
 }
