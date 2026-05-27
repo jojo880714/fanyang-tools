@@ -44,6 +44,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 .b-external{background:rgba(37,99,235,0.1);color:var(--blue)}
 .b-pdf{background:rgba(220,38,38,0.1);color:#DC2626}
 .b-doc{background:rgba(217,119,6,0.1);color:var(--amber)}
+.b-beta{background:var(--pink);color:#fff;animation:beta-pulse 2.4s ease-in-out infinite}
+@keyframes beta-pulse{0%,100%{opacity:1}50%{opacity:0.7}}
 
 /* ── MAIN ── */
 .main{flex:1;overflow-y:auto;background:var(--bg)}
@@ -54,6 +56,60 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 .panel-ey{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--pink);margin-bottom:7px}
 .panel-title{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--ink);line-height:1.25;margin-bottom:8px}
 .panel-desc{font-size:13.5px;color:var(--ink3);line-height:1.8;max-width:580px;margin-bottom:28px;border-left:3px solid var(--border2);padding-left:14px}
+
+/* ── BETA BANNER ── */
+.beta-banner{background:linear-gradient(135deg,var(--pink-l),rgba(232,25,90,0.03));border:1px solid var(--pink-b);border-left:4px solid var(--pink);border-radius:10px;padding:14px 18px;margin-bottom:28px;display:flex;align-items:center;gap:14px;box-shadow:var(--sh)}
+.beta-banner-icon{font-size:24px;flex-shrink:0;line-height:1}
+.beta-banner-text{flex:1;min-width:0}
+.beta-banner-title{font-size:13px;font-weight:700;color:var(--pink-d);margin-bottom:3px;display:flex;align-items:center;gap:8px}
+.beta-banner-tag{font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:20px;background:var(--pink);color:#fff;letter-spacing:0.05em}
+.beta-banner-desc{font-size:12.5px;color:var(--ink2);line-height:1.6}
+.beta-banner-btn{background:var(--pink);color:#fff;border:none;padding:9px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;flex-shrink:0;font-family:var(--sans);white-space:nowrap;transition:background .12s,transform .12s}
+.beta-banner-btn:hover{background:var(--pink-d);transform:translateY(-1px)}
+
+/* ── FEEDBACK ── */
+/* 輸入卡 */
+.fb-input-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;box-shadow:var(--sh);margin-bottom:8px}
+.fb-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.fb-form-group{display:flex;flex-direction:column;gap:5px}
+.fb-form-group-full{margin-bottom:14px}
+.fb-form-group label{font-size:10.5px;font-weight:600;color:var(--ink3);letter-spacing:0.03em;text-transform:uppercase}
+.fb-form-group select,.fb-form-group input,.fb-form-group textarea{padding:8px 10px;border:1px solid var(--border2);border-radius:6px;font-size:13px;font-family:var(--sans);color:var(--ink);background:var(--surface);transition:border-color .12s,box-shadow .12s}
+.fb-form-group select:focus,.fb-form-group input:focus,.fb-form-group textarea:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 3px var(--pink-l)}
+.fb-form-group textarea{resize:vertical;min-height:80px;line-height:1.6}
+.fb-form-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:10px;border-top:1px solid var(--border)}
+.fb-submit-btn{background:var(--pink);color:#fff;border:none;padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:background .12s,transform .1s}
+.fb-submit-btn:hover:not(:disabled){background:var(--pink-d)}
+.fb-submit-btn:active:not(:disabled){transform:translateY(1px)}
+.fb-submit-btn:disabled{opacity:0.5;cursor:not-allowed}
+.fb-msg{font-size:12px;font-weight:500;transition:opacity .2s}
+.fb-msg-success{color:var(--teal)}
+.fb-msg-error{color:#DC2626}
+
+/* 列表 */
+.fb-list-header{display:flex;align-items:center;gap:10px;margin:28px 0 12px}
+.fb-list-title{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink4)}
+.fb-list-line{flex:1;height:1px;background:var(--border)}
+.fb-refresh-btn{background:none;border:1px solid var(--border2);color:var(--ink3);padding:3px 11px;border-radius:14px;font-size:10px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .12s;letter-spacing:0.03em;display:flex;align-items:center;gap:4px}
+.fb-refresh-btn:hover{background:var(--bg);color:var(--ink2);border-color:var(--ink4)}
+
+.fb-loading,.fb-empty,.fb-error{padding:36px 24px;text-align:center;font-size:13px;color:var(--ink3);background:var(--surface);border:1px dashed var(--border2);border-radius:10px}
+.fb-error{color:#DC2626;border-color:rgba(220,38,38,0.3);background:rgba(220,38,38,0.04)}
+.fb-empty strong{color:var(--ink2);font-weight:600}
+
+.fb-entry{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--sh);transition:box-shadow .15s}
+.fb-entry:hover{box-shadow:var(--sh2)}
+.fb-entry-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.fb-entry-cat{font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:4px;background:var(--pink-l);color:var(--pink);white-space:nowrap}
+.fb-entry-name{font-size:12px;font-weight:600;color:var(--ink)}
+.fb-entry-name.anon{color:var(--ink4);font-weight:500}
+.fb-entry-time{font-size:11px;color:var(--ink4)}
+.fb-entry-status{margin-left:auto;font-size:10px;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:0.03em}
+.fb-st-new{background:rgba(37,99,235,0.1);color:var(--blue)}
+.fb-st-progress{background:var(--amber-l);color:var(--amber)}
+.fb-st-done{background:var(--teal-l);color:var(--teal)}
+.fb-st-rejected{background:var(--border);color:var(--ink3)}
+.fb-entry-body{font-size:13px;color:var(--ink2);line-height:1.7;white-space:pre-wrap;word-break:break-word}
 
 /* ── TOOL CARDS ── */
 .tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
@@ -143,6 +199,9 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     </div>
   </div>
   <nav class="sb-nav">
+    <div class="sb-unit" style="color:var(--pink)">內部封測</div>
+    <div class="nav-item" onclick="go('feedback')"><div class="ni-dot"></div>意見回饋<span class="ni-badge b-beta">封測中</span></div>
+
     <div class="sb-unit">總覽</div>
     <div class="nav-item active" onclick="go('home')"><div class="ni-dot"></div>首頁</div>
 
@@ -185,6 +244,18 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 <!-- HOME -->
 
 <div class="panel active" id="p-home">
+
+  <!-- ▼▼▼ 內部封測 BANNER ▼▼▼ -->
+  <div class="beta-banner">
+    <div class="beta-banner-icon">🧪</div>
+    <div class="beta-banner-text">
+      <div class="beta-banner-title">內部封測中 · 你的回饋很重要 <span class="beta-banner-tag">BETA</span></div>
+      <div class="beta-banner-desc">這個工具還在持續調整。UI 不順、用起來怪怪、資訊有誤、想新增功能，都歡迎回報。</div>
+    </div>
+    <button class="beta-banner-btn" onclick="go('feedback')">前往回報 →</button>
+  </div>
+  <!-- ▲▲▲ 內部封測 BANNER ▲▲▲ -->
+
   <div class="panel-ey">放洋顧問 · 內部</div>
   <div class="panel-title">顧問工具導覽</div>
   <div class="panel-desc">這個頁面整合了放洋顧問日常使用的所有工具與作業規範，包含 TKB 全單位的銷售工具，以及顧問專屬的 EP 介紹、報價系統、合約條款與前後端工作分配說明。</div>
@@ -261,6 +332,53 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     </div>
   </div>
 </div>
+
+<!-- ▼▼▼ 意見回饋 PANEL ▼▼▼ -->
+<div class="panel" id="p-feedback">
+  <div class="panel-ey" style="color:var(--pink)">🧪 內部封測</div>
+  <div class="panel-title">意見回饋專區</div>
+  <div class="panel-desc">這個工具目前是<strong>內部封測階段</strong>，會邊用邊調整。你寫的回報所有人都看得到，可以一起討論。<strong>僅限放洋內部使用</strong>，不適當內容會被刪除。</div>
+
+  <!-- 留言輸入區 -->
+  <div class="fb-input-card">
+    <div class="fb-form-row">
+      <div class="fb-form-group">
+        <label for="fb-category">分類</label>
+        <select id="fb-category">
+          <option value="🎨 UI">🎨 UI / 介面問題</option>
+          <option value="⚙️ 功能">⚙️ 功能流暢度</option>
+          <option value="⚠️ 資訊錯誤">⚠️ 資訊錯誤</option>
+          <option value="💡 建議">💡 新功能建議</option>
+        </select>
+      </div>
+      <div class="fb-form-group">
+        <label for="fb-name">名字（選填）</label>
+        <input type="text" id="fb-name" placeholder="不填顯示「匿名」" maxlength="50">
+      </div>
+    </div>
+    <div class="fb-form-group fb-form-group-full">
+      <label for="fb-content">內容</label>
+      <textarea id="fb-content" rows="4" placeholder="清楚描述你遇到的問題或建議，越具體越好。例如：在哪一頁、做了什麼、預期看到什麼、實際看到什麼⋯⋯" maxlength="2000"></textarea>
+    </div>
+    <div class="fb-form-actions">
+      <span id="fb-status-msg" class="fb-msg"></span>
+      <button id="fb-submit-btn" class="fb-submit-btn" onclick="submitFeedback()">送出回報</button>
+    </div>
+  </div>
+
+  <!-- 列表標題 + 重新整理鈕 -->
+  <div class="fb-list-header">
+    <span class="fb-list-title">大家的回報</span>
+    <span class="fb-list-line"></span>
+    <button class="fb-refresh-btn" onclick="loadFeedback()">↻ 重新整理</button>
+  </div>
+
+  <!-- 留言列表 -->
+  <div id="fb-list">
+    <div class="fb-loading">載入中⋯⋯</div>
+  </div>
+</div>
+<!-- ▲▲▲ 意見回饋 PANEL ▲▲▲ -->
 
 <div class="panel" id="p-ops">
   <div class="panel-ey">線上工具</div>
@@ -1029,7 +1147,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 
   <div class="clause-panel" id="cp-others" style="display:none">
     <div class="icard">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 1 條：審閱期 / 第 16 條：最低人數</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">第 1 條：審閱期 / 第 16 條:最低人數</div>
       <div class="irow"><div class="irow-key">審閱期</div><div>交付合約後應有 <strong>5 日以上</strong>才能簽署</div></div>
       <div class="irow"><div class="irow-key">最低人數</div><div>不得高於 15 人，未達應於出發前 7 天通知學員</div></div>
       <div class="irow"><div class="irow-key">現行做法</div><div>放洋自辦團 1 人即可出發，10 人成團贈領隊</div></div>
@@ -1048,6 +1166,15 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 </style>
 
 <script>
+// ============================================================
+// 意見回饋 — GAS Web App 設定
+// ============================================================
+// 部署完 Google Apps Script 後，把這裡的 URL 替換成你的 Web App URL
+// 格式類似：https://script.google.com/macros/s/AKfycb.../exec
+// 詳細部署步驟見：部署說明.md
+const FEEDBACK_API_URL = 'https://script.google.com/macros/s/AKfycbxlBHpmcd-1ZYwuGNxlvdwh6NkvVguRw0PzFT3irjrnJ28z6zRvlK3Etn7eb13sdd0eTQ/exec';
+// ============================================================
+
 function showClause(id, el) {
   document.querySelectorAll('.clause-panel').forEach(function(p){ p.style.display='none'; p.classList.remove('active'); });
   document.querySelectorAll('.clause-tab').forEach(function(t){ t.classList.remove('active'); });
@@ -1055,6 +1182,7 @@ function showClause(id, el) {
   if(panel) { panel.style.display='block'; panel.classList.add('active'); }
   if(el) el.classList.add('active');
 }
+
 function go(id) {
   document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
   document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('active'); });
@@ -1063,6 +1191,148 @@ function go(id) {
   document.querySelectorAll('.nav-item').forEach(function(item) {
     if((item.getAttribute('onclick')||'').includes("'"+id+"'")) item.classList.add('active');
   });
+  // 切到「意見回饋」時自動載入留言
+  if (id === 'feedback') {
+    loadFeedback();
+  }
+}
+
+// ============================================================
+// 意見回饋：讀取、送出、渲染
+// ============================================================
+
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function formatTime(isoStr) {
+  if (!isoStr) return '';
+  var date = new Date(isoStr);
+  if (isNaN(date.getTime())) return '';
+  var now = new Date();
+  var diffMs = now - date;
+  var diffMin = Math.floor(diffMs / 60000);
+  var diffHr = Math.floor(diffMs / 3600000);
+  var diffDay = Math.floor(diffMs / 86400000);
+  if (diffMin < 1) return '剛剛';
+  if (diffMin < 60) return diffMin + ' 分鐘前';
+  if (diffHr < 24) return diffHr + ' 小時前';
+  if (diffDay < 7) return diffDay + ' 天前';
+  var m = (date.getMonth() + 1).toString().padStart(2, '0');
+  var d = date.getDate().toString().padStart(2, '0');
+  return date.getFullYear() + '/' + m + '/' + d;
+}
+
+function statusClass(status) {
+  switch (status) {
+    case '處理中': return 'fb-st-progress';
+    case '已修正': return 'fb-st-done';
+    case '不採納': return 'fb-st-rejected';
+    default: return 'fb-st-new';
+  }
+}
+
+function renderEntry(entry) {
+  var isAnon = !entry.name || entry.name === '匿名';
+  return '<div class="fb-entry">' +
+    '<div class="fb-entry-head">' +
+      '<span class="fb-entry-cat">' + escapeHtml(entry.category) + '</span>' +
+      '<span class="fb-entry-name' + (isAnon ? ' anon' : '') + '">' + escapeHtml(entry.name || '匿名') + '</span>' +
+      '<span class="fb-entry-time">' + formatTime(entry.timestamp) + '</span>' +
+      '<span class="fb-entry-status ' + statusClass(entry.status) + '">' + escapeHtml(entry.status || '新') + '</span>' +
+    '</div>' +
+    '<div class="fb-entry-body">' + escapeHtml(entry.content) + '</div>' +
+  '</div>';
+}
+
+function loadFeedback() {
+  var list = document.getElementById('fb-list');
+  if (!list) return;
+
+  // 還沒設定 API URL
+  if (FEEDBACK_API_URL === 'GAS_WEB_APP_URL_HERE') {
+    list.innerHTML = '<div class="fb-error">⚠️ 後端尚未設定。請參考「部署說明.md」完成 Google Apps Script 部署後，將 Web App URL 填入 HTML 第 1 個 &lt;script&gt; 標籤裡的 <code>FEEDBACK_API_URL</code> 變數。</div>';
+    return;
+  }
+
+  list.innerHTML = '<div class="fb-loading">載入中⋯⋯</div>';
+
+  fetch(FEEDBACK_API_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (!data.success) throw new Error(data.error || '未知錯誤');
+      if (!data.entries || data.entries.length === 0) {
+        list.innerHTML = '<div class="fb-empty"><strong>還沒有人留言</strong><br>要當第一個嗎？上方有輸入框可以填寫。</div>';
+        return;
+      }
+      list.innerHTML = data.entries.map(renderEntry).join('');
+    })
+    .catch(function(err) {
+      list.innerHTML = '<div class="fb-error">載入失敗：' + escapeHtml(err.message) + '<br>請點上方「↻ 重新整理」再試一次，或聯繫負責人。</div>';
+    });
+}
+
+function submitFeedback() {
+  var category = document.getElementById('fb-category').value;
+  var name = document.getElementById('fb-name').value.trim();
+  var content = document.getElementById('fb-content').value.trim();
+  var btn = document.getElementById('fb-submit-btn');
+  var msg = document.getElementById('fb-status-msg');
+
+  msg.textContent = '';
+  msg.className = 'fb-msg';
+
+  if (!content) {
+    msg.textContent = '⚠️ 請輸入內容';
+    msg.className = 'fb-msg fb-msg-error';
+    return;
+  }
+
+  if (FEEDBACK_API_URL === 'GAS_WEB_APP_URL_HERE') {
+    msg.textContent = '⚠️ 後端尚未設定，請聯繫管理員';
+    msg.className = 'fb-msg fb-msg-error';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '送出中⋯⋯';
+
+  fetch(FEEDBACK_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ category: category, name: name, content: content })
+  })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (!data.success) throw new Error(data.error || '送出失敗');
+      // 清空表單
+      document.getElementById('fb-content').value = '';
+      document.getElementById('fb-name').value = '';
+      msg.textContent = '✅ 已送出，感謝你的回報！';
+      msg.className = 'fb-msg fb-msg-success';
+      // 重新載入列表
+      loadFeedback();
+      // 3 秒後清除訊息
+      setTimeout(function() {
+        if (msg.textContent.indexOf('已送出') !== -1) {
+          msg.textContent = '';
+        }
+      }, 3000);
+    })
+    .catch(function(err) {
+      msg.textContent = '❌ ' + err.message;
+      msg.className = 'fb-msg fb-msg-error';
+    })
+    .finally(function() {
+      btn.disabled = false;
+      btn.textContent = '送出回報';
+    });
 }
 </script>
 </body>
