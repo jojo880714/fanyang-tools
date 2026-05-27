@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TKB 放洋留遊學｜工具導覽</title>
+<title>TKB 放洋留遊學｜全集團工具導覽</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -129,6 +129,199 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 .irow{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);font-size:13px;color:var(--ink2);line-height:1.6}
 .irow:last-child{border-bottom:none;padding-bottom:0}
 .irow-key{color:var(--ink3);font-weight:500;flex-shrink:0;min-width:88px}
+
+/* ── FAQ styles ── */
+.faq-controls{margin-bottom:16px}
+.faq-search-wrap{position:relative;margin-bottom:12px}
+.faq-search-wrap input{
+  width:100%;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r-sm,6px);padding:9px 14px 9px 38px;
+  font-size:13px;color:var(--ink);font-family:var(--sans);outline:none;
+  transition:border-color .18s,box-shadow .18s;box-shadow:var(--sh);
+}
+.faq-search-wrap input:focus{border-color:var(--pink);box-shadow:0 0 0 3px var(--pink-l)}
+.faq-search-wrap input::placeholder{color:var(--ink4)}
+.faq-search-wrap::before{
+  content:'';position:absolute;left:13px;top:50%;transform:translateY(-50%);
+  width:14px;height:14px;background:var(--ink4);
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M9 3a6 6 0 100 12A6 6 0 009 3zm-8 6a8 8 0 1114.32 4.906l4.387 4.387-1.414 1.414-4.387-4.387A8 8 0 011 9z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.faq-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.faq-tab{
+  font-size:12px;padding:5px 13px;border-radius:20px;cursor:pointer;
+  border:1px solid var(--border2);background:var(--surface);color:var(--ink3);
+  transition:all .13s;font-family:var(--sans);
+}
+.faq-tab:hover{color:var(--ink2)}
+.faq-tab.active{background:var(--pink);border-color:var(--pink);color:#fff;font-weight:500}
+.faq{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r,10px);margin-bottom:8px;
+  overflow:hidden;box-shadow:var(--sh);
+}
+.faq-q{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 16px;cursor:pointer;transition:background .13s;
+}
+.faq-q:hover{background:var(--bg)}
+.faq.open .faq-q{background:var(--bg);border-bottom:1px solid var(--border)}
+.faq-q-text{font-size:13.5px;font-weight:500;color:var(--ink);flex:1;line-height:1.35}
+.faq-cat-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-right:4px}
+.faq-chev{color:var(--ink4);font-size:14px;transition:transform .2s;flex-shrink:0}
+.faq.open .faq-chev{transform:rotate(180deg)}
+.faq-a{
+  display:none;padding:14px 16px;
+  font-size:13.5px;color:var(--ink2);line-height:1.8;
+}
+.faq.open .faq-a{display:block}
+
+/* ── Q&A module styles ── */
+.qa-submit-box{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r,10px);padding:20px;margin-bottom:24px;box-shadow:var(--sh);
+}
+.qa-submit-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.qa-submit-desc{font-size:12.5px;color:var(--ink3);margin-bottom:14px;line-height:1.6}
+.qa-textarea{
+  width:100%;background:var(--bg);border:1.5px solid var(--border);
+  border-radius:8px;padding:11px 14px;font-size:13.5px;color:var(--ink);
+  font-family:var(--sans);outline:none;resize:vertical;min-height:80px;
+  line-height:1.65;transition:border-color .18s,box-shadow .18s;
+}
+.qa-textarea:focus{border-color:var(--pink);box-shadow:0 0 0 3px var(--pink-l)}
+.qa-textarea::placeholder{color:var(--ink4)}
+.qa-submit-row{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
+.qa-name-input{
+  flex:1;background:var(--bg);border:1.5px solid var(--border);
+  border-radius:8px;padding:9px 12px;font-size:13px;color:var(--ink);
+  font-family:var(--sans);outline:none;transition:border-color .18s;min-width:120px;
+}
+.qa-name-input:focus{border-color:var(--pink)}
+.qa-name-input::placeholder{color:var(--ink4)}
+.qa-submit-cat{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:8px;padding:9px 12px;font-size:13px;color:var(--ink);
+  font-family:var(--sans);outline:none;cursor:pointer;
+  transition:border-color .18s;flex:1;min-width:120px;
+  -webkit-appearance:none;
+}
+.qa-btn-send{
+  background:var(--pink);color:#fff;border:none;
+  border-radius:8px;padding:9px 20px;font-size:13px;font-weight:600;
+  font-family:var(--sans);cursor:pointer;white-space:nowrap;
+  box-shadow:0 3px 10px rgba(232,25,90,0.3);transition:all .2s;
+}
+.qa-btn-send:hover{background:var(--pink-d)}
+.qa-btn-send:disabled{opacity:0.5;pointer-events:none}
+.qa-list{margin-top:4px}
+.qa-item{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r,10px);margin-bottom:10px;box-shadow:var(--sh);overflow:hidden;
+}
+.qa-item-q{display:flex;align-items:flex-start;gap:12px;padding:14px 16px}
+.qa-q-bubble{
+  background:var(--pink-l);border-radius:6px;
+  padding:2px 8px;font-size:10px;font-weight:700;
+  color:var(--pink);flex-shrink:0;margin-top:2px;
+}
+.qa-q-text{font-size:13.5px;font-weight:500;color:var(--ink);flex:1;line-height:1.5}
+.qa-q-meta{font-size:11px;color:var(--ink4);white-space:nowrap;margin-top:2px}
+.qa-item-a{
+  border-top:1px solid var(--border);padding:14px 16px;
+  display:flex;align-items:flex-start;gap:12px;background:var(--bg);
+}
+.qa-a-bubble{
+  background:var(--teal-l,rgba(13,124,106,0.08));border-radius:6px;
+  padding:2px 8px;font-size:10px;font-weight:700;color:var(--teal);flex-shrink:0;margin-top:2px;
+}
+.qa-a-text{font-size:13.5px;color:var(--ink2);flex:1;line-height:1.75}
+.qa-vote-row{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);
+}
+.qa-vote-btn{
+  font-size:12px;padding:4px 10px;border-radius:6px;
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--ink2);cursor:pointer;font-family:var(--sans);transition:all .15s;
+}
+.qa-vote-btn:hover{border-color:var(--border2);color:var(--ink)}
+.qa-vote-btn.voted{opacity:0.5;pointer-events:none}
+.qa-empty{text-align:center;padding:32px 20px;color:var(--ink4);font-size:13px}
+.qa-count{font-size:11.5px;color:var(--ink3);margin-bottom:12px}
+.qa-count span{color:var(--pink);font-weight:600}
+.admin-bar{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;background:var(--bg);
+  border:1px solid var(--border);border-radius:var(--r,10px);margin-bottom:16px;
+}
+.admin-bar.active{background:rgba(13,124,106,0.06);border-color:var(--teal-b,rgba(13,124,106,0.2))}
+.admin-pin-input{
+  flex:1;background:var(--surface);border:1.5px solid var(--border);
+  border-radius:6px;padding:7px 10px;font-size:13px;color:var(--ink);
+  font-family:var(--mono);outline:none;letter-spacing:0.15em;transition:border-color .18s;
+}
+.admin-pin-input:focus{border-color:var(--teal)}
+.admin-btn{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:6px;padding:7px 14px;font-size:12px;font-weight:600;
+  color:var(--ink3);cursor:pointer;font-family:var(--sans);transition:all .15s;white-space:nowrap;
+}
+.admin-btn:hover{border-color:var(--border2);color:var(--ink)}
+.admin-btn.active{background:var(--teal-l,rgba(13,124,106,0.08));border-color:var(--teal-b,rgba(13,124,106,0.2));color:var(--teal)}
+.admin-status{font-size:12px;color:var(--ink3);flex:1}
+.admin-status.on{color:var(--teal);font-weight:500}
+.qa-admin-status{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;background:var(--bg);border-top:1px solid var(--border);
+  gap:10px;flex-wrap:wrap;
+}
+.qa-status-badge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px}
+.qa-status-badge.published{background:var(--teal-l,rgba(13,124,106,0.08));color:var(--teal);border:1px solid var(--teal-b,rgba(13,124,106,0.2))}
+.qa-status-badge.pending{background:var(--amber-l,rgba(217,119,6,0.08));color:var(--amber);border:1px solid rgba(217,119,6,0.2)}
+.qa-action-btns{display:flex;gap:6px;flex-wrap:wrap}
+.qa-act-btn{
+  font-size:11.5px;font-weight:500;padding:5px 12px;border-radius:6px;
+  cursor:pointer;font-family:var(--sans);transition:all .15s;
+  background:var(--surface);border:1px solid var(--border);color:var(--ink2);
+}
+.qa-act-btn:hover{border-color:var(--border2);color:var(--ink)}
+.qa-act-btn.primary{background:var(--pink-l);border-color:var(--pink-b);color:var(--pink);font-weight:600}
+.qa-act-btn.primary:hover{background:var(--pink);color:#fff}
+.qa-act-btn.danger{color:#DC2626;border-color:rgba(220,38,38,0.2)}
+.qa-act-btn.danger:hover{background:rgba(220,38,38,0.06)}
+.qa-answer-form{border-top:1px solid var(--border);padding:12px 16px;background:rgba(13,124,106,0.04);display:none}
+.qa-answer-form.show{display:block}
+.qa-answer-ta{
+  width:100%;background:var(--surface);border:1.5px solid var(--border);
+  border-radius:6px;padding:9px 12px;font-size:13px;color:var(--ink);
+  font-family:var(--sans);outline:none;resize:vertical;min-height:64px;line-height:1.65;
+}
+.qa-answer-ta:focus{border-color:var(--teal)}
+.qa-answer-row{display:flex;gap:8px;margin-top:8px}
+.qa-btn-publish{
+  background:var(--teal);color:#fff;border:none;
+  border-radius:6px;padding:7px 16px;font-size:12.5px;font-weight:600;
+  font-family:var(--sans);cursor:pointer;transition:all .15s;
+}
+.qa-btn-publish:hover{background:#0a6358}
+
+/* ── Badge colors ── */
+.t-pink{background:var(--pink-l);color:var(--pink);border:1px solid var(--pink-b)}
+.t-teal{background:var(--teal-l,rgba(13,124,106,0.08));color:var(--teal);border:1px solid var(--teal-b,rgba(13,124,106,0.2))}
+.t-amber{background:var(--amber-l,rgba(217,119,6,0.08));color:var(--amber);border:1px solid rgba(217,119,6,0.2)}
+.t-red{background:rgba(220,38,38,0.07);color:#DC2626;border:1px solid rgba(220,38,38,0.18)}
+.t-blue{background:var(--blue-l,rgba(37,99,235,0.08));color:var(--blue);border:1px solid rgba(37,99,235,0.18)}
+.t-purple{background:rgba(124,58,237,0.08);color:#7C3AED;border:1px solid rgba(124,58,237,0.18)}
+
+/* ── CSS vars needed ── */
+:root{
+  --r:10px;--r-sm:6px;
+  --pink-l:rgba(232,25,90,0.08);
+  --teal-l:rgba(13,124,106,0.08);
+  --teal-b:rgba(13,124,106,0.2);
+  --amber-l:rgba(217,119,6,0.08);
+}
+
 </style>
 </head>
 <body>
@@ -139,7 +332,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   <div class="sb-brand">
     <div class="sb-logo">
       <div class="sb-dot"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-      <div><div class="sb-name">放洋留遊學</div><div class="sb-sub">TKB 全單位工具導覽</div></div>
+      <div><div class="sb-name">放洋留遊學</div><div class="sb-sub">TKB 全集團工具導覽</div></div>
     </div>
   </div>
   <nav class="sb-nav">
@@ -158,15 +351,16 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 
     <div class="sb-unit">場次資訊</div>
     <div class="nav-item" onclick="go('tours')"><div class="ni-dot"></div>2026 遊學團場次</div>
+    <div class="nav-item" onclick="go('individual')"><div class="ni-dot"></div>個人遊學國家線</div>
     <div class="nav-item" onclick="go('future')"><div class="ni-dot"></div>預計新增國家線</div>
 
     <div class="sb-unit">合作機制</div>
-    <div class="nav-item" onclick="go('bonus')"><div class="ni-dot"></div>獎金拆分說明<span class="ni-badge b-imp" style="background:var(--pink-l);color:var(--pink)">必讀</span></div>
+    <div class="nav-item" onclick="go('qualify')"><div class="ni-dot"></div>學員快速適合度判斷<span class="ni-badge" style="background:var(--pink-l);color:var(--pink)">必讀</span></div>
+    <div class="nav-item" onclick="go('bonus')"><div class="ni-dot"></div>獎金拆分說明<span class="ni-badge" style="background:var(--pink-l);color:var(--pink)">必讀</span></div>
     <div class="nav-item" onclick="go('referral')"><div class="ni-dot"></div>轉介資源表單說明</div>
     <div class="nav-item" onclick="go('collab')"><div class="ni-dot"></div>後續合作形式</div>
 
     <div class="sb-unit">業務支援</div>
-    <div class="nav-item" onclick="go('qualify')"><div class="ni-dot"></div>學員快速適合度判斷</div>
     <div class="nav-item" onclick="go('faq-ext')"><div class="ni-dot"></div>外單位業務 FAQ</div>
     <div class="nav-item" onclick="go('diff')"><div class="ni-dot"></div>放洋差異化說法</div>
   </nav>
@@ -178,9 +372,9 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 <!-- HOME -->
 
 <div class="panel active" id="p-home">
-  <div class="panel-ey">TKB 全單位</div>
+  <div class="panel-ey">TKB 全集團</div>
   <div class="panel-title">放洋遊學工具導覽</div>
-  <div class="panel-desc">這個頁面整合了所有與「遊學」相關的銷售工具與服務流程，適用於洋碩美語及各合作單位的業務人員。每個工具都有說明與連結，點擊即可使用。</div>
+  <div class="panel-desc">這個頁面整合了所有與「放洋個人遊學／遊學團」相關的銷售工具與服務流程，適用於 TKB 全集團各合作單位的業務人員。每個工具都有說明與連結，點擊即可使用。</div>
 
   <div class="sl">銷售工具</div>
   <div class="tool-grid">
@@ -208,6 +402,18 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
       <div class="tool-desc">了解放洋報價單的格式、費用項目說明，向客戶解釋費用明細時的參考依據。</div>
       <div class="tool-link">→ 查看範例說明</div>
     </div>
+    <div class="tool-card" onclick="go('bonus')" style="border-color:var(--pink-b);border-width:2px">
+      <div class="tool-flag tf-online" style="background:var(--pink);color:#fff">必讀</div>
+      <div class="tool-name">獎金拆分說明</div>
+      <div class="tool-desc">個人遊學定價 × 3%，遊學團扣除機票及相關成本後 × 3%。發放週期與計算方式說明。</div>
+      <div class="tool-link">→ 查看獎金說明</div>
+    </div>
+    <div class="tool-card" onclick="go('qualify')" style="border-color:var(--pink-b);border-width:2px">
+      <div class="tool-flag tf-online" style="background:var(--pink);color:#fff">必讀</div>
+      <div class="tool-name">學員快速適合度判斷</div>
+      <div class="tool-desc">2 個問題快速判斷學員適合哪條線，直接連到對應場次資訊。</div>
+      <div class="tool-link">→ 查看判斷工具</div>
+    </div>
   </div>
 
   <div class="sl">服務流程</div>
@@ -225,12 +431,86 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
       <div class="tool-link">→ 查看流程</div>
     </div>
   </div>
+
+  <div class="sl">場次資訊</div>
+  <div class="tool-grid">
+    <div class="tool-card" onclick="go('tours')">
+      <div class="tool-flag" style="background:var(--amber-l);color:var(--amber)">遊學團</div>
+      <div class="tool-name">2026 遊學團場次</div>
+      <div class="tool-desc">放洋自辦遊學團（可拆績效）與合作廠商場次的完整路線、日期、價格、優惠彙整。</div>
+      <div class="tool-link">→ 查看場次</div>
+    </div>
+    <div class="tool-card" onclick="go('individual')">
+      <div class="tool-flag" style="background:var(--teal-l);color:var(--teal)">個人遊學</div>
+      <div class="tool-name">個人遊學國家線</div>
+      <div class="tool-desc">EP English Path 11 個校區介紹，含英國、愛爾蘭、歐洲、中東、北美、大洋洲。</div>
+      <div class="tool-link">→ 查看校區</div>
+    </div>
+    <div class="tool-card" onclick="go('future')">
+      <div class="tool-flag" style="background:rgba(217,119,6,0.08);color:var(--amber)">即將推出</div>
+      <div class="tool-name">預計新增國家線</div>
+      <div class="tool-desc">菲律賓、泰國、日本、西班牙、義大利、南非、古巴等新路線洽談中。</div>
+      <div class="tool-link">→ 查看名單</div>
+    </div>
+  </div>
+
+  <div class="sl">合作機制</div>
+  <div class="tool-grid">
+    <div class="tool-card" onclick="go('referral')">
+      <div class="tool-flag" style="background:var(--pink-l);color:var(--pink)">轉介</div>
+      <div class="tool-name">轉介資源表單說明</div>
+      <div class="tool-desc">轉介表單收集的資訊、標準 4 步驟轉介流程，以及表單連結說明。</div>
+      <div class="tool-link">→ 查看流程</div>
+    </div>
+    <div class="tool-card" onclick="go('collab')">
+      <div class="tool-flag" style="background:var(--pink-l);color:var(--pink)">長期合作</div>
+      <div class="tool-name">後續合作形式</div>
+      <div class="tool-desc">遊學學員回台後的洋碩證照課、留學申請、再次遊學等導流路徑與長期合作邏輯。</div>
+      <div class="tool-link">→ 查看合作路徑</div>
+    </div>
+  </div>
+
+  <div class="sl">業務支援</div>
+  <div class="tool-grid">
+    <div class="tool-card" onclick="go('faq-ext')">
+      <div class="tool-flag" style="background:var(--blue-l);color:var(--blue)">FAQ</div>
+      <div class="tool-name">外單位業務 FAQ</div>
+      <div class="tool-desc">最常見的客戶問題與標準回應，找不到答案可直接發問，Claude 自動回覆＋管理員審核。</div>
+      <div class="tool-link">→ 查看 FAQ</div>
+    </div>
+    <div class="tool-card" onclick="go('diff')">
+      <div class="tool-flag" style="background:var(--blue-l);color:var(--blue)">話術</div>
+      <div class="tool-name">放洋差異化說法</div>
+      <div class="tool-desc">學員拿其他遊學業者或自己直接報名來比較時，外單位業務的標準回應與話術。</div>
+      <div class="tool-link">→ 查看話術</div>
+    </div>
+  </div>
 </div>
 
 <div class="panel" id="p-ops">
   <div class="panel-ey">線上工具</div>
   <div class="panel-title">遊學一條龍業務心法手冊</div>
   <div class="panel-desc">外單位的工作只有一件事：<strong>需求釐清</strong>。了解學員的目的、時程、預算、年齡後，填寫轉介表單交給放洋，後續全程由放洋顧問接手。手冊內有需求釐清的問題清單與話術，其他步驟供參考。</div>
+
+  <div style="display:flex;align-items:center;gap:0;margin-bottom:24px;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;font-size:13px">
+    <div style="padding:14px 18px;background:var(--pink-l);border-right:1px solid var(--pink-b);flex:1;text-align:center">
+      <div style="font-size:10px;font-weight:700;color:var(--pink);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px">外單位做</div>
+      <div style="font-weight:600;color:var(--ink)">需求釐清</div>
+      <div style="font-size:11px;color:var(--ink3);margin-top:3px">目的、時程、預算、年齡</div>
+    </div>
+    <div style="padding:14px 8px;font-size:18px;color:var(--ink4)">→</div>
+    <div style="padding:14px 18px;background:var(--teal-l);border-left:1px solid var(--teal-b);flex:1;text-align:center">
+      <div style="font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px">填寫轉介表單</div>
+      <div style="font-weight:600;color:var(--ink)">交給放洋顧問</div>
+      <div style="font-size:11px;color:var(--ink3);margin-top:3px">後續全程由放洋處理</div>
+    </div>
+    <div style="padding:14px 8px;font-size:18px;color:var(--ink4)">→</div>
+    <div style="padding:14px 18px;background:var(--bg);flex:1;text-align:center">
+      <div style="font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px">放洋接手</div>
+      <div style="font-weight:600;color:var(--ink)">選校・報價・申請</div>
+      <div style="font-size:11px;color:var(--ink3);margin-top:3px">簽證・行前・追蹤</div>
+    </div>
+  </div>
 
   <div class="icard">
     <div class="icard-title">工具說明</div>
@@ -247,7 +527,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
       <div class="irow"><div class="irow-key">Step 1</div><div>需求釐清・目標設定</div></div>
       <div class="irow"><div class="irow-key">Step 2</div><div>目標地・學校選擇</div></div>
       <div class="irow"><div class="irow-key">Step 3</div><div>方案報價・確認</div></div>
-      <div class="irow"><div class="irow-key">Step 4</div><div>簽證・保險辦理</div></div>
+      <div class="irow"><div class="irow-key">Step 4</div><div>簽證辦理</div></div>
       <div class="irow"><div class="irow-key">Step 5</div><div>行前準備 Checklist</div></div>
       <div class="irow"><div class="irow-key">Step 6</div><div>入學・分班測驗</div></div>
       <div class="irow"><div class="irow-key">Step 7</div><div>中期追蹤・問題處理</div></div>
@@ -267,26 +547,35 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 
 <div class="panel" id="p-tour-manual">
   <div class="panel-ey">實體手冊</div>
-  <div class="panel-title">遊學團手冊重點摘要</div>
-  <div class="panel-desc">手冊為實體 PDF，由業務向學員展示或發放。以下是各章節的重點摘要，方便快速查閱。</div>
+  <div class="panel-title">遊學團手冊</div>
+  <div class="panel-desc">2026 放洋遊學團完整型錄，包含各國介紹、三大方案比較、住宿選擇、報名流程與行前必讀。可直接向學員展示或發送 PDF 連結。</div>
 
-  <div class="sl">手冊架構（共 18 頁）</div>
-  <div class="icard">
-    <div class="irow"><div class="irow-key">啟航（p.2-6）</div><div>遊學地圖、15 個目的地國家介紹（美、英、加、愛爾蘭、法、馬爾他、日、菲律賓）</div></div>
-    <div class="irow"><div class="irow-key">學習成長（p.7-8）</div><div>三大方案比較表（全包式遊學團 / 成年個人自助 / 名校學術遊學團）、CEFR 語言程度表</div></div>
-    <div class="irow"><div class="irow-key">實境體驗（p.9-10）</div><div>名校合作（JHU、UCB、哥大）、專業師資、11 項獨家體驗活動</div></div>
-    <div class="irow"><div class="irow-key">生活照護（p.11）</div><div>學生宿舍 vs 寄宿家庭比較、三種保險說明（旅平險、醫療險、不便險）</div></div>
-    <div class="irow"><div class="irow-key">品牌介紹（p.12）</div><div>TKB 放洋 4 大優勢、前後端顧問團隊服務內容</div></div>
-    <div class="irow"><div class="irow-key">成功見證（p.13）</div><div>4 位成功案例（密西根、UCL、CMU 等）附 QR Code</div></div>
-    <div class="irow"><div class="irow-key">行前必讀（p.14-15）</div><div>5 大 FAQ、報名 8 步驟流程圖</div></div>
-    <div class="irow"><div class="irow-key">早鳥優惠（p.16）</div><div>暑假團 4/30 前；寒假團前年 11/30 前。三大禮遇說明</div></div>
-    <div class="irow"><div class="irow-key">品牌合作（p.17-18）</div><div>TKB 放洋 + 洋碩美語獨家合作、GPA 全科課程介紹</div></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <div style="font-size:12px;color:var(--ink3)">📄 手冊共 20 頁，可在下方直接翻閱</div>
+    <a href="https://drive.google.com/file/d/19xzLMGRMpl3lE4zqb9rYMo86LsmHQ63i/view?usp=sharing" target="_blank" style="font-size:12px;font-weight:600;color:var(--pink);text-decoration:none;padding:5px 12px;border:1px solid var(--pink-b);border-radius:20px;background:var(--pink-l)">↗ 開新分頁</a>
   </div>
 
-  <div class="sl">三大方案快速比較</div>
-  <div style="overflow-x:auto">
-  <table class="tour-table">
-    <thead><tr><th>比較項目</th><th>全包式遊學團</th><th>成年個人自助遊學</th><th>名校學術遊學團</th></tr></thead>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--sh)">
+    <iframe
+      src="https://drive.google.com/file/d/19xzLMGRMpl3lE4zqb9rYMo86LsmHQ63i/preview"
+      width="100%"
+      height="600"
+      frameborder="0"
+      allow="autoplay"
+      style="display:block"
+    ></iframe>
+  </div>
+
+  <div style="margin-top:16px">
+  <div class="sl">三大方案比較</div>
+  <div style="overflow-x:auto;margin-bottom:20px">
+  <table class="tour-table" style="min-width:600px">
+    <thead><tr>
+      <th>比較項目</th>
+      <th>全包式遊學團</th>
+      <th>成年個人自助遊學</th>
+      <th>名校學術遊學團</th>
+    </tr></thead>
     <tbody>
       <tr><td>適合對象</td><td>8–17 歲青少年</td><td>18 歲以上大學生/上班族</td><td>15–24 歲，計畫申請名校</td></tr>
       <tr><td>開課時間</td><td>每年寒假（1月）暑假（7–8月）</td><td>全年每週一可入學</td><td>寒假 &amp; 暑期限定</td></tr>
@@ -294,52 +583,65 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
       <tr><td>熱門地點</td><td>英、美、澳、愛爾蘭、加拿大、德</td><td>全球熱門城市</td><td>美國常春藤、澳洲頂尖大學</td></tr>
       <tr><td>住宿</td><td>嚴選宿舍或寄宿家庭</td><td>自由選擇</td><td>名校校園宿舍</td></tr>
       <tr><td>課程核心</td><td>溝通式英語、跨文化體驗</td><td>語言技能、商務英文</td><td>名校官方課程、AI 科研、領導力</td></tr>
+      <tr><td>學習成果</td><td>國際視野、社交自信、基礎獨立能力</td><td>語言實戰力、職場競爭力</td><td>官方證照、教授推薦信、名校學分</td></tr>
     </tbody>
   </table>
   </div>
 
-  <div class="sl">各國預計花費參考</div>
-  <div style="overflow-x:auto">
-  <table class="tour-table">
-    <thead><tr><th>國家</th><th>純學費/週起</th><th>全包式費用</th><th>最佳季節</th></tr></thead>
-    <tbody>
-      <tr><td>🇺🇸 美國</td><td>NT$15,000+</td><td>NT$200,000</td><td>7–8 月</td></tr>
-      <tr><td>🇬🇧 英國</td><td>NT$12,000+</td><td>NT$200,000</td><td>7–8 月</td></tr>
-      <tr><td>🇨🇦 加拿大</td><td>NT$10,000+</td><td>NT$190,000</td><td>7–8 月</td></tr>
-      <tr><td>🇫🇷 法國</td><td>NT$13,000+</td><td>NT$210,000</td><td>7–8 月</td></tr>
-      <tr><td>🇮🇪 愛爾蘭 + 馬爾他</td><td>NT$10,000+</td><td>NT$175,000 起</td><td>6–8 月</td></tr>
-      <tr><td>🇯🇵 日本</td><td>NT$10,000+</td><td>NT$125,000</td><td>全年皆宜</td></tr>
-      <tr><td>🇵🇭 菲律賓</td><td>NT$7,500+</td><td>NT$75,000</td><td>1–2 月</td></tr>
-    </tbody>
-  </table>
+  <div class="sl">手冊重點章節</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">啟航（p.2–6）</div><div>遊學地圖、主要目的地國家介紹（美、英、加、愛爾蘭、法、馬爾他、日、菲律賓等）</div></div>
+    <div class="irow"><div class="irow-key">學習成長（p.7–8）</div><div>全包式遊學團 / 成年個人自助 / 名校學術遊學團三大方案比較、CEFR 語言程度表</div></div>
+    <div class="irow"><div class="irow-key">實境體驗（p.9–10）</div><div>名校合作（JHU、UCB、哥大）、11 項獨家體驗活動</div></div>
+    <div class="irow"><div class="irow-key">生活照護（p.11）</div><div>學生宿舍 vs 寄宿家庭比較、三種保險說明</div></div>
+    <div class="irow"><div class="irow-key">行前必讀（p.14–15）</div><div>5 大 FAQ、報名 8 步驟流程</div></div>
+    <div class="irow"><div class="irow-key">早鳥優惠（p.16）</div><div>暑假團 4/30 前；寒假團前年 11/30 前。三大禮遇說明</div></div>
+  </div>
   </div>
 </div>
 
 <div class="panel" id="p-pitch">
   <div class="panel-ey">Google 文件</div>
   <div class="panel-title">說帖參考（場次懶人包）</div>
-  <div class="panel-desc">業務快查文件，包含 2026 放洋自辦遊學團的場次、費用、行程懶人包，以及合作廠商場次彙整。向學員介紹時的主要參考依據。<br><span style="font-size:12px;color:var(--amber)">⚠️ 寒假團資訊確認後將同步更新此頁。</span></div>
+  <div class="panel-desc">依學員情況快速找到對應說帖，點選類型後直接跳到對應的場次與費用資訊。<br><span style="font-size:12px;color:var(--amber)">⚠️ 寒假團資訊確認後將同步更新此頁。</span></div>
 
+  <div class="sl">我的學員是⋯⋯</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+    <div onclick="go('tours')" style="cursor:pointer;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--sh);transition:all .18s" onmouseover="this.style.borderColor='var(--pink-b)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="font-size:20px;margin-bottom:8px">🧒</div>
+      <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">8–17 歲青少年</div>
+      <div style="font-size:12px;color:var(--ink3);margin-bottom:10px">未成年，家長帶來諮詢</div>
+      <div style="font-size:11.5px;font-weight:600;color:var(--pink)">→ 查看自辦遊學團場次 ↓</div>
+    </div>
+    <div onclick="go('individual')" style="cursor:pointer;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--sh);transition:all .18s" onmouseover="this.style.borderColor='var(--pink-b)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="font-size:20px;margin-bottom:8px">🎓</div>
+      <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">18 歲以上，想提升英文</div>
+      <div style="font-size:12px;color:var(--ink3);margin-bottom:10px">大學生、上班族、空白期</div>
+      <div style="font-size:11.5px;font-weight:600;color:var(--pink)">→ 查看個人遊學國家線 ↓</div>
+    </div>
+    <div onclick="go('individual')" style="cursor:pointer;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--sh);transition:all .18s" onmouseover="this.style.borderColor='var(--pink-b)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="font-size:20px;margin-bottom:8px">💼</div>
+      <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">18 歲以上，想打工度假</div>
+      <div style="font-size:12px;color:var(--ink3);margin-bottom:10px">YMS（英國帶薪實習）、Working Holiday</div>
+      <div style="font-size:11.5px;font-weight:600;color:var(--pink)">→ 查看個人遊學（含 YMS）↓</div>
+    </div>
+  </div>
+
+  <div class="sl">完整說帖文件</div>
   <div class="icard">
-    <div class="icard-title">文件連結</div>
-    <div class="irow"><div class="irow-key">文件連結</div><div><a href="https://docs.google.com/document/d/1YJ-I0b2J-tPDRocDuiPS6ryD7klsb8FhKU2yppE3_xk/edit?tab=t.0" target="_blank" style="color:var(--pink);font-weight:600;text-decoration:none">開啟 Google 文件 ↗</a></div></div>
-    <div class="irow"><div class="irow-key">包含內容</div><div>2026 放洋自辦遊學團 8 個場次、英/愛/馬/法四條線說帖懶人包、35 個合作廠商場次</div></div>
+    <div class="irow"><div class="irow-key">說帖連結</div><div><a href="https://docs.google.com/document/d/1YJ-I0b2J-tPDRocDuiPS6ryD7klsb8FhKU2yppE3_xk/edit?tab=t.0" target="_blank" style="color:var(--pink);font-weight:600;text-decoration:none">開啟 Google 文件 ↗</a></div></div>
+    <div class="irow"><div class="irow-key">包含內容</div><div>2026 放洋自辦遊學團 8 個場次說帖懶人包（含個別遊學團簡報、說帖、相關校區照片）、合作廠商 35 個場次</div></div>
     <div class="irow"><div class="irow-key">使用時機</div><div>現場向學員介紹遊學方案時快速查閱費用與行程；轉介學員前確認最新場次與名額</div></div>
   </div>
 
-  <div class="sl">放洋自辦遊學團 2026 場次速覽</div>
-  <div style="overflow-x:auto">
-  <table class="tour-table">
-    <thead><tr><th></th><th>路線</th><th>日期</th><th>適合年齡</th><th>定價</th><th>優惠價（5/15前）</th><th>名額</th></tr></thead>
-    <tbody>
-      <tr class="tour-hot"><td><span class="badge-sm bs-own">自辦</span></td><td>🇬🇧 英國倫敦</td><td>7/18–8/2<br>8/1–8/16</td><td>9–17歲</td><td>NT$215,000</td><td>NT$200,000</td><td>各10人</td></tr>
-      <tr class="tour-hot"><td><span class="badge-sm bs-own">自辦</span></td><td>🇮🇪 愛爾蘭都柏林</td><td>7/11–7/26<br>7/25–8/9</td><td>10–17歲</td><td>NT$205,000</td><td>NT$190,000</td><td>各10人</td></tr>
-      <tr><td><span class="badge-sm bs-own">自辦</span></td><td>🇲🇹 馬爾他</td><td>7/4–7/19<br>7/18–8/2</td><td>8–17歲</td><td>NT$180,000</td><td>NT$165,000</td><td>各10人</td></tr>
-      <tr><td><span class="badge-sm bs-own">自辦</span></td><td>🇫🇷 法國巴黎</td><td>7/4–7/19<br>7/18–8/2</td><td>8–17歲</td><td>NT$201,000</td><td>NT$186,000</td><td>各10人</td></tr>
-    </tbody>
-  </table>
+  <div class="sl">自辦遊學團 2026 快速一覽</div>
+  <div class="icard" style="background:var(--pink-l);border:1px solid var(--pink-b)">
+    <div class="irow"><div class="irow-key">🇬🇧 英國倫敦</div><div>9–17 歲・NT$200,000–215,000（5/15 前優惠）</div></div>
+    <div class="irow"><div class="irow-key">🇮🇪 愛爾蘭都柏林</div><div>10–17 歲・NT$190,000–205,000（5/15 前優惠）</div></div>
+    <div class="irow"><div class="irow-key">🇲🇹 馬爾他</div><div>8–17 歲・NT$165,000–180,000（5/15 前優惠）</div></div>
+    <div class="irow"><div class="irow-key">🇫🇷 法國巴黎</div><div>8–17 歲・NT$186,000–201,000（5/15 前優惠）</div></div>
+    <div class="irow" style="border-bottom:none;padding-top:10px"><div class="irow-key"></div><div><a onclick="go('tours')" style="font-size:12px;color:var(--pink);font-weight:600;cursor:pointer">→ 查看完整場次（含日期梯次、合作廠商場次）</a></div></div>
   </div>
-  <p style="font-size:11px;color:var(--ink4);margin-top:8px">黃底為熱賣團。全集團業務皆可拆績效（扣除機票成本後 3%），出團後次月 10 號發放。</p>
 </div>
 
 <div class="panel" id="p-quotation">
@@ -383,6 +685,13 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     </div>
   </div>
 
+  <div class="sl">台幣換算與捨去規則</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">捨去尾數</div><div>報價金額統一捨去尾數：<strong>500 元以下捨去為 0</strong>，<strong>501–999 元取為 500</strong></div></div>
+    <div class="irow"><div class="irow-key">範例</div><div>NT$87,254 → NT$87,000　／　NT$87,654 → NT$87,500</div></div>
+    <div class="irow"><div class="irow-key">匯率說明</div><div>台幣換算依匯款當日匯率為準，報價單上的金額僅供參考</div></div>
+  </div>
+
   <div class="sl">費用項目說明</div>
   <div class="icard">
     <div class="irow"><div class="irow-key">課程費</div><div>依課程類型（標準/密集/超密集）× 週數計算。EP 布里斯本標準上午課 AU$400/週，此為 4 週 = A$1,600</div></div>
@@ -408,56 +717,56 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="flow-item">
       <div class="flow-left"><div class="flow-num" style="background:var(--pink)">1</div><div class="flow-line"></div></div>
       <div class="flow-content" style="background:var(--pink-l);border:1px solid var(--pink-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
-        <div class="flow-title">需求釐清 <span class="flow-tag">外單位做這步就好</span></div>
+        <div class="flow-title">需求釐清 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--pink-l);color:var(--pink);margin-left:4px">外單位</span></div>
         <div class="flow-desc">問清楚：去的目的、想去的國家、大概時間、英文程度、預算。這些資訊填進轉介表單，放洋顧問就能直接接著談。如果學員英文程度不夠，順便提洋碩美語先衝一下分數。</div>
       </div>
     </div>
     <div class="flow-item">
       <div class="flow-left"><div class="flow-num" style="background:var(--teal)">2</div><div class="flow-line"></div></div>
       <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
-        <div class="flow-title">選校選地｜放洋顧問接手</div>
+        <div class="flow-title">選校選地 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--teal-l);color:var(--teal);margin-left:4px">放洋</span></div>
         <div class="flow-desc">顧問依需求推薦國家和學校，最多給 2 個選項讓學員選，不讓選擇太多變成困擾。</div>
       </div>
     </div>
     <div class="flow-item">
       <div class="flow-left"><div class="flow-num" style="background:var(--teal)">3</div><div class="flow-line"></div></div>
       <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
-        <div class="flow-title">報價・確認方案</div>
+        <div class="flow-title">報價・確認方案 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--teal-l);color:var(--teal);margin-left:4px">放洋</span></div>
         <div class="flow-desc">顧問逐項說明費用：課程費、住宿費、代辦費、學員自理（機票/生活費/保險）。費用拆清楚，學員才不會被大數字嚇跑。</div>
       </div>
     </div>
     <div class="flow-item">
       <div class="flow-left"><div class="flow-num" style="background:var(--teal)">4</div><div class="flow-line"></div></div>
       <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
-        <div class="flow-title">簽證・保險辦理</div>
+        <div class="flow-title">簽證辦理 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--teal-l);color:var(--teal);margin-left:4px">放洋</span></div>
         <div class="flow-desc">報名後立刻啟動，不等到出發前才辦。依目的地確認需要哪種簽證、需要哪些文件。</div>
       </div>
     </div>
     <div class="flow-item">
       <div class="flow-left"><div class="flow-num" style="background:var(--teal)">5</div><div class="flow-line"></div></div>
       <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
-        <div class="flow-title">出發前確認</div>
+        <div class="flow-title">出發前確認 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--teal-l);color:var(--teal);margin-left:4px">放洋</span></div>
         <div class="flow-desc">出發前 4 週主動聯繫：機票訂了嗎？接機安排好了嗎？Homestay 資料收到了嗎？簽證下來了嗎？這些小事主動幫學員確認，是放洋跟其他業者的差異。</div>
       </div>
     </div>
     <div class="flow-item">
       <div class="flow-left"><div class="flow-num" style="background:var(--teal)">6</div><div class="flow-line"></div></div>
       <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
-        <div class="flow-title">入學・分班</div>
+        <div class="flow-title">入學・分班 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--teal-l);color:var(--teal);margin-left:4px">放洋</span></div>
         <div class="flow-desc">提前幫學員打預防針：到了學校第一天會有分班測驗，這不是考試，是幫你找到最適合的班級，分到基礎班完全沒關係。</div>
       </div>
     </div>
     <div class="flow-item">
       <div class="flow-left"><div class="flow-num" style="background:var(--teal)">7</div><div class="flow-line"></div></div>
       <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
-        <div class="flow-title">在學期間追蹤</div>
+        <div class="flow-title">在學期間追蹤 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--teal-l);color:var(--teal);margin-left:4px">放洋</span></div>
         <div class="flow-desc">第 7–10 天主動傳訊問一下狀況，第 3–4 週確認學習情況，回台前 1–2 週預告接下來的計畫。常見問題：Homestay 相處不順、想換班、生病、零用錢快沒了。</div>
       </div>
     </div>
     <div class="flow-item">
       <div class="flow-left"><div class="flow-num" style="background:var(--teal)">8</div><div class="flow-line"></div></div>
       <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
-        <div class="flow-title">回台・成果規劃 <span class="flow-tag" style="background:rgba(13,124,106,0.12);color:var(--teal)">洋碩切入點</span></div>
+        <div class="flow-title">回台・成果規劃 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--teal-l);color:var(--teal);margin-left:4px">放洋</span> <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:rgba(124,58,237,0.08);color:#7C3AED;margin-left:4px">洋碩切入點</span></div>
         <div class="flow-desc">回台第 1 週語感最好，是考多益/雅思的黃金期。話術：「你現在語感最好，現在去考分數會比以前好很多。」若學員有留學意願，連結放洋留學申請服務。</div>
       </div>
     </div>
@@ -479,7 +788,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
       <div class="flow-left"><div class="flow-num" style="background:var(--pink)">1</div><div class="flow-line"></div></div>
       <div class="flow-content" style="background:var(--pink-l);border:1px solid var(--pink-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
         <div class="flow-title">需求釐清・確認方案 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--pink-l);color:var(--pink);margin-left:4px">外單位</span></div>
-        <div class="flow-desc">問清楚學員的年齡、想去哪個國家、大概時間和預算。確認符合遊學團年齡（8–17歲）後，填轉介表單交給放洋。</div>
+        <div class="flow-desc">問清楚學員的年齡、英文程度、想去哪個國家、大概時間和預算。確認符合遊學團年齡（8–17歲）後，填轉介表單交給放洋。英文程度供放洋分班與學員包準備參考。</div>
       </div>
     </div>
     <div class="flow-item">
@@ -537,7 +846,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 <div class="panel" id="p-tours">
   <div class="panel-ey">場次資訊</div>
   <div class="panel-title">2026 遊學團場次總覽</div>
-  <div class="panel-desc">以下為 2026 年放洋自辦與合作廠商遊學團場次。自辦場次可拆績效（扣除機票後 3%），合作廠商場次無績效。</div>
+  <div class="panel-desc">以下為 2026 年放洋自辦與合作廠商遊學團場次。自辦遊學團可拆績效（扣除機票及其相關成本後 3%），合作廠商場次無績效。</div>
 
   <div class="sl">放洋自辦遊學團（可拆績效）</div>
   <div style="overflow-x:auto">
@@ -555,7 +864,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     </tbody>
   </table>
   </div>
-  <p style="font-size:11px;color:var(--ink4);margin-top:8px;margin-bottom:20px">黃底為熱賣團。績效獎金於出團後次月 10 號發放。報名截止日：5/15。</p>
+  <p style="font-size:11px;color:var(--ink4);margin-top:8px;margin-bottom:20px">黃底為熱賣團。績效獎金於<strong>出團結束後次月 10 號</strong>發放（如 7–8 月出團 → 9/10 發放）。報名截止日：5/15。</p>
 
   <div class="sl">合作廠商場次（無績效）</div>
   <div style="overflow-x:auto">
@@ -573,6 +882,13 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </table>
   </div>
   <p style="font-size:11px;color:var(--ink4);margin-top:8px">合作廠商場次無績效，有需要請轉介給放洋處理。完整場次請查看說帖文件。</p>
+
+  <div class="icard" style="background:var(--pink-l);border:1px solid var(--pink-b);margin-top:14px">
+    <div class="icard-title" style="color:var(--pink)">💡 合作廠商場次為什麼還要轉？</div>
+    <div class="irow"><div class="irow-key">累積信任</div><div>學員透過你完成第一次遊學，下一次遊學、留學、證照課就會回來找你。</div></div>
+    <div class="irow"><div class="irow-key">後續轉化</div><div>遊學回台後的多益/雅思/托福課（洋碩）、留學申請（放洋留學部）、再次遊學都是有績效的。一個學員的長期價值遠高於單次績效。</div></div>
+    <div class="irow"><div class="irow-key">服務一致</div><div>由放洋對接合作廠商，學員端體驗一致；外單位不需要學習各家廠商的細節。</div></div>
+  </div>
 </div>
 
 <div class="panel" id="p-future">
@@ -621,6 +937,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   <div class="icard">
     <div class="icard-title">共同規定</div>
     <div class="irow"><div class="irow-key">誰有資格</div><div>全集團業務、洋碩美語各區業務、合作轉介單位，須轉介至放洋服務</div></div>
+    <div class="irow"><div class="irow-key">績效拆分</div><div>依慣例 <strong>65 / 35</strong>（放洋 65%，轉介單位 35%）</div></div>
     <div class="irow"><div class="irow-key">合作廠商場次</div><div>⚠️ ISEC、東南遊學等合作廠商場次不拆績效</div></div>
   </div>
 
@@ -630,15 +947,19 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
       <thead><tr style="border-bottom:2px solid var(--border2)">
         <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">團別</th>
         <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">出團月份</th>
-        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">業績結算</th>
+        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">業績認列</th>
         <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">獎金發放日</th>
       </tr></thead>
       <tbody>
         <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">寒假遊學團</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">1–2 月</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">依發票開立日期</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--pink)">3 月 10 號</td></tr>
         <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">暑假遊學團</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">7–8 月</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">依發票開立日期</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--pink)">9 月 10 號</td></tr>
-        <tr><td style="padding:9px 12px;color:var(--ink2)">個人遊學</td><td style="padding:9px 12px;color:var(--ink2)">全年滾動</td><td style="padding:9px 12px;color:var(--ink2)">依回國日期</td><td style="padding:9px 12px;font-weight:700;color:var(--teal)">回國後次月 10 號</td></tr>
+        <tr><td style="padding:9px 12px;color:var(--ink2)">個人遊學</td><td style="padding:9px 12px;color:var(--ink2)">全年滾動</td><td style="padding:9px 12px;color:var(--ink2)">依發票開立日期</td><td style="padding:9px 12px;font-weight:700;color:var(--teal)">回國後次月 10 號</td></tr>
       </tbody>
     </table>
+  </div>
+
+  <div style="background:var(--bg);border:1px dashed var(--border2);border-radius:8px;padding:12px 14px;font-size:12px;color:var(--ink3);line-height:1.7;margin-top:10px">
+    📝 <strong>業績認列 vs 獎金發放</strong>：業績「認列」（記在你帳上）依發票開立日期；實際「發放」（撥款給你）依上表時間。個人遊學特別說明：必須等學員回國後，於回國次月 10 號發放，避免學員途中異動退費影響結算。
   </div>
 </div>
 
@@ -685,7 +1006,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 
   <div class="sl">遊學學員回台後的導流路徑</div>
   <div class="icard" style="border-left:3px solid var(--pink)">
-    <div class="irow"><div class="irow-key">🎓 洋碩備考課</div><div><strong>時機：</strong>回台後 1–2 個月內，語感最好的時候。<br><strong>導流話術：</strong>「你現在語感最好，是考多益/雅思/托福的黃金期，現在衝分數比以前快很多。」<br><strong>適合方向：</strong>多益（職場加分）、雅思（申請留學必備）、托福（申請美國/加拿大）</div></div>
+    <div class="irow"><div class="irow-key">🎓 洋碩證照課</div><div><strong>時機：</strong>回台後 1–2 個月內，語感最好的時候。<br><strong>導流話術：</strong>「你現在語感最好，是考多益/雅思/托福的黃金期，現在衝分數比以前快很多。」<br><strong>課程選擇：</strong>多益（職場加分）、雅思（申請留學必備）、托福（申請美國/加拿大）</div></div>
     <div class="irow"><div class="irow-key">✈️ 留學申請</div><div><strong>時機：</strong>遊學回來後確認想繼續升學的學員。<br><strong>導流話術：</strong>「你有了遊學的經驗，選校的時候想法更清楚了，要不要繼續走留學這條路？」<br><strong>服務：</strong>由放洋留學部門接手，選校規劃 + 書審 + 申請送件</div></div>
     <div class="irow"><div class="irow-key">🔄 再次遊學</div><div><strong>時機：</strong>上次去 2–4 週、這次想去更長、或換不同國家。<br><strong>導流話術：</strong>「上次 4 週你覺得不夠，這次想試試 3 個月的嗎？」</div></div>
   </div>
@@ -698,23 +1019,16 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 
   <div class="sl">洋碩美語課程資源</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
-    <div class="icard" style="margin-bottom:0;padding:14px 16px">
-      <div style="font-size:11px;font-weight:700;color:var(--pink);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px">📋 專案課程</div>
-      <div class="irow" style="padding:5px 0;border-bottom:none"><div style="font-size:12.5px;color:var(--ink2)">課程內容依各區最新公告為主，請洽各區洋碩顧問確認目前開設項目。</div></div>
-    </div>
-    <div class="icard" style="margin-bottom:0;padding:14px 16px">
-      <div style="font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px">🏆 證照課</div>
-      <div class="irow" style="padding:4px 0"><div class="irow-key" style="min-width:60px">多益 TOEIC</div><div>職場求職加分，每月都有考試場次</div></div>
-      <div class="irow" style="padding:4px 0"><div class="irow-key" style="min-width:60px">雅思 IELTS</div><div>留學必備，目標 6.0–7.0+</div></div>
-      <div class="irow" style="padding:4px 0"><div class="irow-key" style="min-width:60px">托福 TOEFL</div><div>申請美加名校必備，目標 80–100+</div></div>
-      <div class="irow" style="padding:4px 0;border-bottom:none"><div class="irow-key" style="min-width:60px">GRE・GMAT</div><div>申請研究所/商學院，進階證照</div></div>
-    </div>
+  <div class="icard">
+    <div class="icard-title">回台後可導流的洋碩課程</div>
+    <div class="irow"><div class="irow-key">🏆 多益 TOEIC</div><div>職場求職加分，每月都有考試場次。遊學回台後語感最好，是衝高分的黃金期。</div></div>
+    <div class="irow"><div class="irow-key">🏆 雅思 IELTS</div><div>留學必備，目標 6.0–7.0+。若學員有意申請留學，雅思是必經之路。</div></div>
+    <div class="irow"><div class="irow-key">🏆 托福 TOEFL</div><div>申請美國/加拿大名校必備，目標 80–100+。</div></div>
+    <div class="irow"><div class="irow-key">🏆 GRE・GMAT</div><div>申請研究所/商學院的進階證照，多用於美加碩士申請。</div></div>
+    <div class="irow"><div class="irow-key">📋 專案課程</div><div>各區還有專案課程（如客製化考前衝刺、團報優惠等），課程內容依各區最新公告為主，請洽各區洋碩顧問確認目前開設項目。</div></div>
   </div>
 
-  <div style="background:var(--pink-l);border:1px solid var(--pink-b);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--pink-d);line-height:1.8;margin-top:4px">
-    💬 <strong>對外單位的核心 pitch</strong>：「學員去遊學是從你這裡出去的，回來語感最好的時候也應該回到你這裡備考。放洋幫你服務學員的海外期，你繼續服務他的備考期，兩邊都有業績，學員也得到完整的服務。」
-  </div>
+
 </div>
 
 <div class="panel" id="p-qualify">
@@ -724,19 +1038,19 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 
   <div class="sl">問題一：年齡</div>
   <div class="icard">
-    <div class="irow"><div class="irow-key">8–17 歲</div><div>👉 <strong>自辦遊學團</strong>（英國/愛爾蘭/馬爾他/法國）。家長一起來諮詢，強調全程照顧、保險、語校老師全程接送機。10人成團另有台灣領隊隨行。</div></div>
+    <div class="irow"><div class="irow-key">8–17 歲</div><div>👉 <strong>自辦遊學團</strong>（英國/愛爾蘭/馬爾他/法國）。家長一起來諮詢，強調全程照顧、保險、語校老師全程接送機。10人成團另有台灣領隊隨行。<br><a onclick="go('tours')" style="font-size:11.5px;color:var(--pink);font-weight:600;cursor:pointer">→ 查看自辦遊學團場次</a></div></div>
     <div class="irow"><div class="irow-key">16–17 歲</div><div>👉 可以遊學團也可以個人遊學（部分校區 16 歲可入學）。確認家長是否同意獨自前往。</div></div>
-    <div class="irow"><div class="irow-key">18 歲以上</div><div>👉 <strong>個人遊學</strong>（全球 EP 校區或其他合作學校）。詢問問題二。</div></div>
+    <div class="irow"><div class="irow-key">18 歲以上</div><div>👉 <strong>個人遊學</strong>（全球 EP 校區或其他合作學校）。詢問問題二。<br><a onclick="go('individual')" style="font-size:11.5px;color:var(--pink);font-weight:600;cursor:pointer">→ 查看個人遊學國家線</a></div></div>
   </div>
 
   <div class="sl">問題二（18歲以上）：主要目的是什麼</div>
   <div class="icard">
-    <div class="irow"><div class="irow-key">想提升英文</div><div>👉 EP 英語系校區（英國/加拿大/澳洲/愛爾蘭/馬爾他）。預算高選英國，預算中選加拿大/澳洲，預算低選馬爾他。</div></div>
+    <div class="irow"><div class="irow-key">想提升英文</div><div>👉 EP 英語系校區（英國/加拿大/澳洲/愛爾蘭/馬爾他）。預算高選英國，預算中選加拿大/澳洲，預算低選馬爾他。<br><a onclick="go('individual')" style="font-size:11.5px;color:var(--pink);font-weight:600;cursor:pointer">→ 查看個人遊學校區</a></div></div>
     <div class="irow"><div class="irow-key">想學其他語言</div><div>👉 EP 柏林（德文）或 EP 巴黎（法文），或日語/西語廠商路線（即將上線）。</div></div>
     <div class="irow"><div class="irow-key">想打工賺錢</div><div>👉 YMS 帶薪實習方案（英國，18–30歲台灣人可申請），或澳洲 Working Holiday。</div></div>
     <div class="irow"><div class="irow-key">想探索留學可能</div><div>👉 先推遊學體驗，回來後導流留學申請。EP 有 Pathway 大學銜接課程。</div></div>
     <div class="irow"><div class="irow-key">親子一起去</div><div>👉 加拿大 SSLC 親子課程（6–12歲兒童 + 家長監護班），或自辦遊學團（8–17歲）。</div></div>
-    <div class="irow"><div class="irow-key">衝口說密集訓練</div><div>👉 菲律賓一對一課程（即將上線），費用最低，進步最快，適合短期密集備考後出發。</div></div>
+    <div class="irow"><div class="irow-key">衝口說密集訓練</div><div>👉 菲律賓一對一課程（即將上線），費用最低，進步最快，適合短期密集備考後出發。<br><a onclick="go('future')" style="font-size:11.5px;color:var(--pink);font-weight:600;cursor:pointer">→ 查看預計新增國家線</a></div></div>
   </div>
 
   <div class="sl">快速排除不適合的學員</div>
@@ -746,30 +1060,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
-<div class="panel" id="p-faq-ext">
-  <div class="panel-ey">業務支援</div>
-  <div class="panel-title">外單位業務 FAQ</div>
-  <div class="panel-desc">第一次接觸遊學產品的業務夥伴最常問的問題，以及標準回答。</div>
 
-  <div class="icard">
-    <div class="icard-title">關於產品</div>
-    <div class="irow"><div class="irow-key">遊學和旅遊差在哪？</div><div>遊學有固定的語言課程（通常早上上課），下午才自由活動；旅遊沒有課程。遊學通常 2 週以上，旅遊幾天就好。</div></div>
-    <div class="irow"><div class="irow-key">遊學和留學差在哪？</div><div>留學拿正式學歷文憑（1年以上），遊學不給文憑，重點是語言進步和體驗。很多人先遊學確認喜歡，再決定要不要留學。</div></div>
-    <div class="irow"><div class="irow-key">英文不好的學員可以去嗎？</div><div>可以。語言學校有 A1–C1 的分班測驗，基礎班到高級班都有，英文不好的人去就是為了學英文。</div></div>
-  </div>
-  <div class="icard">
-    <div class="icard-title">關於轉介流程</div>
-    <div class="irow"><div class="irow-key">我需要懂所有細節才能推薦嗎？</div><div>不需要。你的工作是識別學員有意願並轉介表單，細節全部由放洋顧問處理。你不需要懂簽證、學校申請、住宿安排。</div></div>
-    <div class="irow"><div class="irow-key">學員問我不會回答怎麼辦？</div><div>直接說「這個讓放洋的專業顧問跟你詳細說明」，不要硬撐。填表單後放洋顧問 1–2 天內主動聯繫。</div></div>
-    <div class="irow"><div class="irow-key">學員問價格，我可以報嗎？</div><div>可以給大概範圍（例如英國遊學團 NT$20 萬左右），詳細報價由放洋出。不要承諾具體數字，因為費用依週數/住宿/時間不同。</div></div>
-  </div>
-  <div class="icard">
-    <div class="icard-title">關於保障與服務</div>
-    <div class="irow"><div class="irow-key">學員出了問題誰負責？</div><div>放洋全程負責，外單位業務不需要介入。放洋顧問從出發前到回台全程支援，當地出問題直接聯繫放洋。</div></div>
-    <div class="irow"><div class="irow-key">遊學團安全嗎？</div><div>費用含 500 萬旅平險 + 1000 萬履約保證保險。無論人數多少，當地語校老師負責接機。<strong>10人成團</strong>另贈台灣領隊全程隨行。</div></div>
-    <div class="irow"><div class="irow-key">我可以把績效算給學員折扣嗎？</div><div>不可以。績效是發給轉介業務個人的，不能轉讓或折抵學員費用。折扣請找放洋確認是否有其他優惠方案。</div></div>
-  </div>
-</div>
 
 <div class="panel" id="p-diff">
   <div class="panel-ey">業務支援</div>
@@ -788,16 +1079,522 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
   <div class="icard">
     <div class="icard-title">TKB 放洋的核心差異</div>
-    <div class="irow"><div class="irow-key">完整路徑</div><div>遊學（放洋）→ 備考（洋碩美語）→ 留學申請（放洋留學部）。少數能一條龍服務到底的業者。</div></div>
-    <div class="irow"><div class="irow-key">EP 獨家優勢</div><div>EP 班級最多 15 人（業界常見 20–25 人）、30+ 成熟學習者獨立分班、ST Star Awards 2024 &amp; 2025 連續得獎。</div></div>
+    <div class="irow"><div class="irow-key">完整路徑</div><div>遊學（放洋）→ 證照備考（洋碩美語）→ 留學申請（放洋留學部）。少數能一條龍服務到底的業者。</div></div>
     <div class="irow"><div class="irow-key">遊學團執行力</div><div>1人報名即可出發，當地語校老師負責接機與生活支援。<strong>10人成團</strong>另贈台灣領隊全程隨行，1000萬履約保證保險，不只是「幫你訂學校」。</div></div>
   </div>
 </div>
 
+<div class="panel" id="p-individual">
+  <div class="panel-ey">場次資訊</div>
+  <div class="panel-title">個人遊學國家線</div>
+  <div class="panel-desc">個人遊學全年每週一可入學，彈性最高。以下為目前 EP English Path 開放的校區，詳細費用請洽放洋顧問。<br><span style="font-size:12px;color:var(--amber)">⚠️ 此頁面校區資訊與費用將隨課表更新同步更新。</span></div>
+
+  <div class="sl">🇬🇧 英國</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">倫敦 Greenford</div><div>EP 全球總部，16歲以上，500人大校，免費校車接駁。適合首次出國、想在大城市體驗生活的學員。</div></div>
+    <div class="irow"><div class="irow-key">倫敦 Canary Wharf</div><div>30歲以上獨立分班，商業管理/數位行銷證書課程，YMS帶薪實習方案。適合在職人士進修。</div></div>
+    <div class="irow"><div class="irow-key">伯明罕</div><div>市中心 Bullring 旁，生活費比倫敦低 30–40%，有雅思備考課。想省錢又要英倫體驗的首選。</div></div>
+    <div class="irow"><div class="irow-key">里茲</div><div>大學城氛圍，週末可去約克、湖區，有雅思備考課。喜歡安靜學習環境的學員適合。</div></div>
+  </div>
+
+  <div class="sl">🇮🇪 愛爾蘭</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">都柏林</div><div>海濱城市，Work & Study 合法打工+讀書，Pathway 大學銜接課。想邊讀書邊賺錢的首選。</div></div>
+  </div>
+
+  <div class="sl">🌍 歐洲</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">🇲🇹 馬爾他</div><div>EP 全球最大校（500人），地中海氣候，費用最低。預算有限但想去歐洲的最佳選擇。</div></div>
+    <div class="irow"><div class="irow-key">🇩🇪 柏林</div><div>德文＋英文雙語課程，有 Pathway 銜接。對德語有興趣或打算申請德國大學的學員。</div></div>
+    <div class="irow"><div class="irow-key">🇫🇷 巴黎</div><div>法文＋英文雙語課程，語言沉浸效果強。對法語有興趣或嚮往巴黎生活的學員。</div></div>
+  </div>
+
+  <div class="sl">🌏 中東</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">🇦🇪 杜拜</div><div>Knowledge Park 學術園區，商業管理/數位行銷證書課程。想體驗中東文化又想拿證照的學員。</div></div>
+  </div>
+
+  <div class="sl">🌎 北美・大洋洲</div>
+  <div class="icard">
+    <div class="irow"><div class="irow-key">🇨🇦 多倫多</div><div>市中心，Pathway 大學銜接課，商業管理/數位行銷證書。喜歡北美生活方式、考慮之後移民的學員。</div></div>
+    <div class="irow"><div class="irow-key">🇦🇺 布里斯本</div><div>CRICOS 認可，學生簽最長可讀 62 週，WHV 最多 17 週。想長期留學或打工度假的學員。</div></div>
+  </div>
+
+  <div style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:12px 14px;font-size:12.5px;color:var(--teal);line-height:1.7;margin-top:4px">
+    💡 詳細費用請洽放洋顧問試算，或使用報價系統取得完整報價單。個人遊學費用依校區、週數、住宿類型而異。
+  </div>
+</div>
+
+<div class="panel" id="p-faq-ext">
+  <div class="panel-ey">業務支援</div>
+  <div class="panel-title">外單位業務 FAQ</div>
+  <div class="panel-desc">外單位業務最常遇到的問題與標準回答。找不到答案可以直接在下方提問，Claude 會自動回覆，放洋主管會進行審核確認。<br><span style="font-size:12px;color:var(--ink3)">🟢 綠色邊框 = 管理員已審核　🟡 橘色邊框 = AI 自動回覆・待審核</span></div>
+
+  <div id="extFaqControls" style="margin-bottom:16px">
+    <div class="faq-search-wrap" style="margin-bottom:12px">
+      <input type="text" id="extFaqSearch" placeholder="搜尋問題，例如：轉介、費用、安全..." oninput="extSearchAll(this.value)">
+    </div>
+    <div class="faq-tabs">
+      <div class="faq-tab active" onclick="extFilterCat('all',this)">全部</div>
+      <div class="faq-tab" onclick="extFilterCat('product',this)">關於產品</div>
+      <div class="faq-tab" onclick="extFilterCat('referral',this)">轉介流程</div>
+      <div class="faq-tab" onclick="extFilterCat('safety',this)">保障安全</div>
+      <div class="faq-tab" onclick="extFilterCat('bonus',this)">獎金</div>
+    </div>
+  </div>
+
+  <div id="extPromotedContainer"></div>
+
+  <div id="extFaqNoResults" style="display:none"></div>
+
+  <div id="extFaqStatic">
+    <div class="faq" data-cat="product" data-q="遊學和旅遊差在哪？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-pink">關於產品</span><div class="faq-q-text">遊學和旅遊差在哪？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">遊學有固定的語言課程（通常早上上課），下午才自由活動；旅遊沒有課程。遊學通常 2 週以上，旅遊幾天就好。</div>
+    </div>
+    <div class="faq" data-cat="product" data-q="遊學和留學差在哪？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-pink">關於產品</span><div class="faq-q-text">遊學和留學差在哪？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">留學拿正式學歷文憑（1年以上），遊學不給文憑，重點是語言進步和體驗。很多人先遊學確認喜歡，再決定要不要留學。</div>
+    </div>
+    <div class="faq" data-cat="product" data-q="英文不好的學員可以去嗎？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-pink">關於產品</span><div class="faq-q-text">英文不好的學員可以去嗎？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">可以。語言學校有 A1–C1 的分班測驗，基礎班到高級班都有，英文不好的人去就是為了學英文。</div>
+    </div>
+    <div class="faq" data-cat="referral" data-q="我需要懂所有細節才能推薦嗎？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-teal">轉介流程</span><div class="faq-q-text">我需要懂所有細節才能推薦嗎？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">不需要。你的工作是識別學員有意願並填寫轉介表單，細節全部由放洋顧問處理。你不需要懂簽證、學校申請、住宿安排。</div>
+    </div>
+    <div class="faq" data-cat="referral" data-q="學員問我不會回答怎麼辦？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-teal">轉介流程</span><div class="faq-q-text">學員問我不會回答怎麼辦？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">直接說「這個讓放洋的專業顧問跟你詳細說明」，不要硬撐。填表單後放洋顧問 1–2 天內主動聯繫。</div>
+    </div>
+    <div class="faq" data-cat="referral" data-q="學員問價格，我可以報嗎？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-teal">轉介流程</span><div class="faq-q-text">學員問價格，我可以報嗎？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">可以給大概範圍（例如英國遊學團 NT$20 萬左右），詳細報價由放洋出。不要承諾具體數字，因為費用依週數/住宿/時間不同。</div>
+    </div>
+    <div class="faq" data-cat="safety" data-q="學員出了問題誰負責？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-red">保障安全</span><div class="faq-q-text">學員出了問題誰負責？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">放洋全程負責，外單位業務不需要介入。放洋顧問從出發前到回台全程支援，當地出問題直接聯繫放洋。</div>
+    </div>
+    <div class="faq" data-cat="safety" data-q="遊學團安全嗎？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-red">保障安全</span><div class="faq-q-text">遊學團安全嗎？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">費用含 500 萬旅平險 + 1000 萬履約保證保險。無論人數多少，當地語校老師負責接機。<strong>10人成團</strong>另贈台灣領隊全程隨行。</div>
+    </div>
+    <div class="faq" data-cat="bonus" data-q="我可以把績效算給學員折扣嗎？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-amber">獎金</span><div class="faq-q-text">我可以把績效算給學員折扣嗎？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">不可以。績效是發給轉介業務個人的（65/35拆分），不能轉讓或折抵學員費用。折扣請找放洋確認是否有其他優惠方案。</div>
+    </div>
+    <div class="faq" data-cat="bonus" data-q="績效什麼時候會發？">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-cat-badge t-amber">獎金</span><div class="faq-q-text">績效什麼時候會發？</div><div class="faq-chev">▾</div></div>
+      <div class="faq-a">遊學團：出團後次月 10 號（暑假團→9月10號，寒假團→3月10號）。個人遊學：依發票開立日期，回國後次月 10 號發放。</div>
+    </div>
+  </div>
+
+  <hr style="margin:24px 0">
+  <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:16px;display:flex;align-items:center;gap:10px">提問區<span style="flex:1;height:1px;background:var(--border)"></span></div>
+
+  <div id="extSetupBanner" style="display:none;background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.3);border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:13px;color:var(--amber);line-height:1.65">
+    <strong>⚙️ 雲端問答尚未啟用</strong>：目前使用本地儲存，僅在此裝置可見。
+  </div>
+
+  <div class="qa-submit-box">
+    <div class="qa-submit-title">💬 有問題問不到答案？直接發問</div>
+    <div class="qa-submit-desc">問題送出後 Claude 會立即自動回覆（🟡 橘色邊框），管理員審核確認後變為 🟢 綠色。</div>
+    <textarea class="qa-textarea" id="extQaInput" placeholder="例如：客戶問說可不可以先訂位但延後付款，這樣可以嗎？"></textarea>
+    <div class="qa-submit-row">
+      <input type="text" class="qa-name-input" id="extQaName" placeholder="你的名字（選填）" style="flex:1.5">
+      <select class="qa-submit-cat" id="extQaCat">
+        <option value="一般問題">一般問題</option>
+        <option value="關於產品">關於產品</option>
+        <option value="轉介流程">轉介流程</option>
+        <option value="保障安全">保障安全</option>
+        <option value="獎金">獎金</option>
+      </select>
+      <button class="qa-btn-send" id="extSendBtn" onclick="submitExtQuestion()">送出問題 →</button>
+    </div>
+  </div>
+
+  <div class="admin-bar" id="extAdminBar">
+    <div class="admin-status" id="extAdminStatus">管理員模式</div>
+    <input type="password" class="admin-pin-input" id="extAdminPin" placeholder="PIN" maxlength="6" onkeydown="if(event.key==='Enter')extAdminLogin()" style="width:100px">
+    <button class="admin-btn" id="extAdminBtn" onclick="extAdminLogin()">解鎖</button>
+  </div>
+
+  <div id="extPromotedSection"></div>
+  <div class="qa-count" id="extQaCount"></div>
+  <div class="qa-list" id="extQaList"></div>
+</div>
 </main>
 
 
 <script>
+
+
+// ── Toggle helpers ──
+function toggleFaq(q) { q.closest('.faq').classList.toggle('open'); }
+function toggleChk(b) {
+  b.classList.toggle('done');
+  b.textContent = b.classList.contains('done') ? '✓' : '';
+}
+function toggleScript(hd) { hd.closest('.script').classList.toggle('open'); }
+
+// ── FAQ search / filter ──
+function filterFaq(q) {
+  q = q.toLowerCase();
+  var visible = 0;
+  document.querySelectorAll('#faqList .faq').forEach(function(item) {
+    var txt = ((item.dataset.q||'')+item.textContent).toLowerCase();
+    var show = (!q || txt.includes(q));
+    item.style.display = show ? '' : 'none';
+    if(show) visible++;
+  });
+  var noRes = document.getElementById('faqNoResults');
+  if(!noRes) return;
+  if(q && visible === 0) {
+    noRes.innerHTML = '<div style="text-align:center;padding:24px;background:var(--surface);border:1px dashed var(--border);border-radius:10px;margin-bottom:12px">'
+      + '<div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px">找不到「' + q + '」的相關答案</div>'
+      + '<div style="font-size:13px;color:var(--ink3);margin-bottom:14px">可以直接發問，Claude 會自動回覆。</div></div>';
+    noRes.style.display = '';
+  } else {
+    noRes.innerHTML = ''; noRes.style.display = 'none';
+  }
+}
+
+function filterFaqCat(cat, tab) {
+  document.querySelectorAll('.faq-tab').forEach(function(t){ t.classList.remove('active'); });
+  tab.classList.add('active');
+  document.querySelectorAll('#faqList .faq').forEach(function(item) {
+    item.style.display = (cat==='all' || item.dataset.cat===cat) ? '' : 'none';
+  });
+}
+
+function scrollToAsk() {
+  var box = document.querySelector('.qa-submit-box');
+  if(box) { box.scrollIntoView({behavior:'smooth', block:'center'}); }
+}
+
+// ── Constants ──
+const ADMIN_PIN = '991234';
+
+// ── External FAQ Q&A Module ──
+var extIsAdmin = false;
+var extQaData = [];
+var extPromotedFAQs = [];
+var EXT_TABLE = 'ext_qa_items';
+var EXT_PROMOTED_TABLE = 'ext_promoted_faqs';
+
+// Normalize item from Supabase (question/category) or local (q/cat)
+function extNorm(item) {
+  return {
+    id: item.id,
+    q: item.question || item.q || '',
+    name: item.name || '匿名業務',
+    cat: item.category || item.cat || '一般問題',
+    time: item.created_at
+      ? new Date(item.created_at).toLocaleDateString('zh-TW',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})
+      : (item.time || ''),
+    answer: item.answer || null,
+    reviewed: item.reviewed || false,
+    pinned: item.pinned || false,
+    helpful: item.helpful || 0,
+    notHelpful: item.not_helpful || item.notHelpful || 0,
+    voted: item.voted || false,
+    _open: item._open || false,
+    _confirmDelete: item._confirmDelete || false
+  };
+}
+
+function extSearchAll(q) {
+  q = q.toLowerCase();
+  var staticVisible = 0;
+  document.querySelectorAll('#extFaqStatic .faq').forEach(function(item) {
+    var txt = ((item.dataset.q||'')+item.textContent).toLowerCase();
+    var show = (!q || txt.includes(q));
+    item.style.display = show ? '' : 'none';
+    if(show) staticVisible++;
+  });
+  var noRes = document.getElementById('extFaqNoResults');
+  if(!noRes) return;
+  if(q && staticVisible === 0 && extQaData.length === 0) {
+    noRes.innerHTML = '<div style="text-align:center;padding:24px;background:var(--surface);border:1px dashed var(--border);border-radius:10px;margin-bottom:12px">'
+      + '<div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px">找不到「' + q + '」的相關答案</div>'
+      + '<div style="font-size:13px;color:var(--ink3);margin-bottom:14px">可以直接發問，Claude 會自動回覆。</div>'
+      + '<button class="qa-btn-send" style="font-size:13px;padding:9px 20px" onclick="document.getElementById(\'extQaInput\').focus();document.getElementById(\'extQaInput\').scrollIntoView({behavior:\'smooth\',block:\'center\'})">直接發問 →</button>'
+      + '</div>';
+    noRes.style.display = '';
+  } else {
+    noRes.innerHTML = ''; noRes.style.display = 'none';
+  }
+}
+
+function extFilterCat(cat, tab) {
+  document.querySelectorAll('#extFaqControls .faq-tab').forEach(function(t){ t.classList.remove('active'); });
+  tab.classList.add('active');
+  document.querySelectorAll('#extFaqStatic .faq').forEach(function(item) {
+    item.style.display = (cat==='all' || item.dataset.cat===cat) ? '' : 'none';
+  });
+}
+
+async function loadExtQA() {
+  try {
+    if(sbReady()) {
+      var d1 = await sb('GET', EXT_TABLE, '', 'order=pinned.desc,created_at.desc');
+      extQaData = (d1 || []).map(extNorm);
+      var d2 = await sb('GET', EXT_PROMOTED_TABLE, '', 'order=created_at.desc');
+      extPromotedFAQs = (d2 || []).map(function(f){
+        return { id: f.id, q: f.question||f.q||'', a: f.answer||'', cat: f.category||'一般問題' };
+      });
+    } else {
+      try {
+        var r1 = await window.storage.get('ext-qa-data');
+        extQaData = r1 ? JSON.parse(r1.value).map(extNorm) : [];
+        var r2 = await window.storage.get('ext-qa-promoted');
+        extPromotedFAQs = r2 ? JSON.parse(r2.value) : [];
+      } catch(e) { extQaData = []; extPromotedFAQs = []; }
+    }
+  } catch(e) { extQaData = []; extPromotedFAQs = []; }
+  renderExtQA();
+  renderExtPromoted();
+  var banner = document.getElementById('extSetupBanner');
+  if(banner) banner.style.display = sbReady() ? 'none' : 'block';
+}
+
+async function submitExtQuestion() {
+  var text = document.getElementById('extQaInput').value.trim();
+  if(!text) return;
+  var name = document.getElementById('extQaName').value.trim() || '匿名業務';
+  var cat = document.getElementById('extQaCat').value || '一般問題';
+  var btn = document.getElementById('extSendBtn');
+  if(btn) { btn.textContent = '⏳ AI 思考中...'; btn.disabled = true; }
+
+  var rawItem = {
+    id: Date.now(), question: text, name: name, category: cat,
+    answer: null, reviewed: false, pinned: false, helpful: 0, not_helpful: 0,
+    created_at: new Date().toISOString()
+  };
+
+  try {
+    var sysPrompt = '你是放洋留遊學的外單位業務培訓助理。用繁體中文回答外單位業務（洋碩顧問、合作單位業務）的問題。語氣專業口語，回答簡潔具體，80-150字。聚焦在轉介流程、如何識別學員、獎金計算、產品說明等。';
+    var response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514', max_tokens: 1000,
+        system: sysPrompt,
+        messages: [{role:'user', content: text}]
+      })
+    });
+    var data = await response.json();
+    if(data.content && data.content[0]) rawItem.answer = data.content[0].text;
+  } catch(e) { rawItem.answer = '目前無法自動回覆，請等待管理員人工回覆。'; }
+
+  if(sbReady()) {
+    var inserted = await sb('POST', EXT_TABLE, {
+      id: rawItem.id, question: rawItem.question, name: rawItem.name,
+      category: rawItem.category, answer: rawItem.answer,
+      reviewed: false, pinned: false, helpful: 0, not_helpful: 0
+    });
+    if(inserted && inserted[0]) rawItem.id = inserted[0].id;
+  } else {
+    try {
+      var existing = [];
+      try { var r = await window.storage.get('ext-qa-data'); existing = r ? JSON.parse(r.value) : []; } catch(e){}
+      existing.unshift(rawItem);
+      await window.storage.set('ext-qa-data', JSON.stringify(existing));
+    } catch(e){}
+  }
+
+  extQaData.unshift(extNorm(rawItem));
+  renderExtQA();
+  document.getElementById('extQaInput').value = '';
+  if(btn) { btn.textContent = '✓ 已送出，AI 已自動回覆'; setTimeout(function(){ btn.textContent = '送出問題 →'; btn.disabled = false; }, 3000); }
+}
+
+function extAdminLogin() {
+  var pin = document.getElementById('extAdminPin').value;
+  if(pin === ADMIN_PIN) {
+    extIsAdmin = true;
+    var bar = document.getElementById('extAdminBar');
+    bar.classList.add('active');
+    document.getElementById('extAdminStatus').textContent = '🔓 管理員模式已開啟';
+    document.getElementById('extAdminStatus').classList.add('on');
+    document.getElementById('extAdminBtn').textContent = '登出';
+    document.getElementById('extAdminBtn').onclick = extAdminLogout;
+    document.getElementById('extAdminPin').style.display = 'none';
+    renderExtQA(); renderExtPromoted();
+  } else {
+    document.getElementById('extAdminPin').style.borderColor = '#DC2626';
+    setTimeout(function(){ document.getElementById('extAdminPin').style.borderColor = ''; }, 1500);
+  }
+}
+
+function extAdminLogout() {
+  extIsAdmin = false;
+  var bar = document.getElementById('extAdminBar');
+  bar.classList.remove('active');
+  document.getElementById('extAdminStatus').textContent = '管理員模式';
+  document.getElementById('extAdminStatus').classList.remove('on');
+  document.getElementById('extAdminBtn').textContent = '解鎖';
+  document.getElementById('extAdminBtn').onclick = extAdminLogin;
+  document.getElementById('extAdminPin').value = '';
+  document.getElementById('extAdminPin').style.display = '';
+  renderExtQA(); renderExtPromoted();
+}
+
+function renderExtPromoted() {
+  var container = document.getElementById('extPromotedSection');
+  if(!container || !extPromotedFAQs.length) {
+    if(container) container.innerHTML = '';
+    return;
+  }
+  var html = '<div style="margin-bottom:16px"><div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;display:flex;align-items:center;gap:8px">📌 精選問答（管理員確認）<span style="flex:1;height:1px;background:var(--teal-b,rgba(13,124,106,0.2))"></span></div>';
+  extPromotedFAQs.forEach(function(f) {
+    var catColor = {
+      '關於產品':'t-pink','轉介流程':'t-teal','保障安全':'t-red','獎金':'t-amber'
+    }[f.cat] || 't-pink';
+    html += '<div class="faq"><div class="faq-q" onclick="toggleFaq(this)">'
+      + '<span class="faq-cat-badge ' + catColor + '">' + f.cat + '</span>'
+      + '<div class="faq-q-text">' + f.q + '</div>'
+      + (extIsAdmin ? '<button style="font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(220,38,38,0.08);color:#DC2626;border:1px solid rgba(220,38,38,0.2);cursor:pointer;margin-right:6px;font-family:var(--sans)" onclick="event.stopPropagation();extRemovePromoted(' + f.id + ')">移除</button>' : '')
+      + '<div class="faq-chev">▾</div></div>'
+      + '<div class="faq-a">' + f.a + '</div></div>';
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function renderExtQA() {
+  var list = document.getElementById('extQaList');
+  var countEl = document.getElementById('extQaCount');
+  if(!list) return;
+
+  if(!extQaData.length) {
+    list.innerHTML = '<div class="qa-empty">還沒有問題 — 有疑問的話在上方提問吧！</div>';
+    if(countEl) countEl.innerHTML = '';
+    return;
+  }
+
+  var pinned = extQaData.filter(function(d){ return d.pinned; });
+  var normal = extQaData.filter(function(d){ return !d.pinned; });
+  var sorted = pinned.concat(normal);
+  var pending = extQaData.filter(function(d){ return !d.reviewed; }).length;
+
+  if(countEl) countEl.innerHTML = extIsAdmin
+    ? '共 <span>' + extQaData.length + '</span> 筆，未審核 <span style="color:var(--amber)">' + pending + '</span> 筆'
+    : '共 <span>' + extQaData.length + '</span> 筆問答';
+
+  var catColor = {
+    '關於產品':'t-pink','轉介流程':'t-teal','保障安全':'t-red','獎金':'t-amber','一般問題':'t-pink'
+  };
+
+  var rows = sorted.map(function(item) {
+    var borderColor = item.pinned ? 'var(--pink)' : (item.reviewed ? 'var(--teal)' : 'var(--amber)');
+    var statusStyle = item.reviewed
+      ? 'background:var(--teal-l,rgba(13,124,106,0.08));color:var(--teal);border:1px solid var(--teal-b,rgba(13,124,106,0.2))'
+      : 'background:rgba(217,119,6,0.08);color:var(--amber);border:1px solid rgba(217,119,6,0.2)';
+    var statusLabel = item.reviewed ? '🟢 管理員已審核' : '🟡 AI 自動回覆・待審核';
+    var catBadge = item.cat ? '<span class="faq-cat-badge ' + (catColor[item.cat]||'t-pink') + '" style="margin-left:6px">' + item.cat + '</span>' : '';
+    var pinnedBadge = item.pinned ? '<span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--pink-l);color:var(--pink);border:1px solid var(--pink-b);margin-left:6px">📌 置頂</span>' : '';
+
+    var answerBlock = '';
+    if(item.answer) {
+      answerBlock = '<div class="qa-item-a">'
+        + '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px">'
+        + '<div class="qa-a-bubble">回覆</div>'
+        + '<span style="font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;' + statusStyle + '">' + statusLabel + '</span>'
+        + '</div>'
+        + '<div class="qa-a-text">' + item.answer + '</div>'
+        + (!extIsAdmin
+          ? '<div class="qa-vote-row"><span style="font-size:11px;color:var(--ink4);margin-right:4px">這個回答有幫助嗎？</span>'
+            + '<button class="qa-vote-btn' + (item.voted?' voted':'') + '" onclick="extVote(' + item.id + ',true)">👍 ' + (item.helpful||0) + '</button>'
+            + '<button class="qa-vote-btn' + (item.voted?' voted':'') + '" onclick="extVote(' + item.id + ',false)">👎 ' + (item.notHelpful||0) + '</button>'
+            + '</div>'
+          : '')
+        + '</div>';
+    }
+
+    var adminSection = '';
+    if(extIsAdmin) {
+      adminSection = '<div class="qa-admin-status">'
+        + '<div style="display:flex;align-items:center;gap:6px"><span class="qa-status-badge ' + (item.reviewed?'published':'pending') + '">' + (item.reviewed?'✓ 已審核':'⏳ 未審核') + '</span></div>'
+        + '<div class="qa-action-btns">'
+        + '<button class="qa-act-btn primary" onclick="extToggleForm(' + item.id + ')">✏️ 編輯</button>'
+        + (!item.reviewed
+          ? '<button class="qa-act-btn" style="color:var(--teal);border-color:var(--teal-b,rgba(13,124,106,0.2))" onclick="extMarkReviewed(' + item.id + ')">✓ 審核</button>'
+          : '<button class="qa-act-btn" onclick="extUnmarkReviewed(' + item.id + ')">撤銷審核</button>')
+        + '<button class="qa-act-btn" style="color:var(--pink);border-color:var(--pink-b)" onclick="extTogglePin(' + item.id + ')">' + (item.pinned?'📌 取消置頂':'📌 置頂') + '</button>'
+        + (!item.reviewed ? '' : '<button class="qa-act-btn" style="color:var(--teal)" onclick="extPromote(' + item.id + ')">📋 加入精選</button>')
+        + '<button class="qa-act-btn danger" onclick="extDelete(' + item.id + ')">刪除</button>'
+        + '</div></div>'
+        + (item._open
+          ? '<div class="qa-answer-form show"><textarea class="qa-answer-ta" id="ext-at-' + item.id + '">' + (item.answer||'') + '</textarea>'
+            + '<div class="qa-answer-row"><button class="qa-btn-publish" onclick="extSaveAnswer(' + item.id + ')">💾 儲存並審核</button></div></div>'
+          : '');
+    }
+
+    return '<div class="qa-item" style="border-left:3px solid ' + borderColor + '">'
+      + '<div class="qa-item-q"><div class="qa-q-bubble">Q</div>'
+      + '<div style="flex:1"><div class="qa-q-text">' + item.q + '</div>'
+      + '<div style="margin-top:4px">' + catBadge + pinnedBadge + '</div></div>'
+      + '<div class="qa-q-meta">' + item.name + '<br>' + item.time + '</div></div>'
+      + answerBlock + adminSection + '</div>';
+  });
+
+  list.innerHTML = rows.join('');
+}
+
+function extVote(id, helpful) {
+  var item = extQaData.find(function(d){ return d.id===id; });
+  if(!item||item.voted) return;
+  if(helpful) item.helpful=(item.helpful||0)+1; else item.notHelpful=(item.notHelpful||0)+1;
+  item.voted=true;
+  sb('PATCH', EXT_TABLE, {helpful:item.helpful, not_helpful:item.notHelpful}, 'id=eq.'+id);
+  renderExtQA();
+}
+function extToggleForm(id) {
+  var item = extQaData.find(function(d){ return d.id===id; });
+  if(item) { item._open=!item._open; renderExtQA(); }
+}
+function extSaveAnswer(id) {
+  var item = extQaData.find(function(d){ return d.id===id; });
+  var ta = document.getElementById('ext-at-'+id);
+  if(!item||!ta||!ta.value.trim()) return;
+  item.answer=ta.value.trim(); item.reviewed=true; item._open=false;
+  sb('PATCH', EXT_TABLE, {answer:item.answer, reviewed:true}, 'id=eq.'+id);
+  renderExtQA();
+}
+function extMarkReviewed(id) {
+  var item = extQaData.find(function(d){ return d.id===id; });
+  if(item) { item.reviewed=true; sb('PATCH', EXT_TABLE, {reviewed:true}, 'id=eq.'+id); renderExtQA(); }
+}
+function extUnmarkReviewed(id) {
+  var item = extQaData.find(function(d){ return d.id===id; });
+  if(item) { item.reviewed=false; sb('PATCH', EXT_TABLE, {reviewed:false}, 'id=eq.'+id); renderExtQA(); }
+}
+function extTogglePin(id) {
+  var item = extQaData.find(function(d){ return d.id===id; });
+  if(item) { item.pinned=!item.pinned; sb('PATCH', EXT_TABLE, {pinned:item.pinned}, 'id=eq.'+id); renderExtQA(); }
+}
+function extPromote(id) {
+  var item = extQaData.find(function(d){ return d.id===id; });
+  if(!item||!item.answer) return;
+  if(extPromotedFAQs.find(function(f){ return f.id===id; })) return;
+  sb('POST', EXT_PROMOTED_TABLE, {id:id, question:item.q, answer:item.answer, category:item.cat||'一般問題'});
+  extPromotedFAQs.unshift({id:id, q:item.q, a:item.answer, cat:item.cat||'一般問題'});
+  renderExtPromoted();
+}
+function extRemovePromoted(id) {
+  sb('DELETE', EXT_PROMOTED_TABLE, '', 'id=eq.'+id);
+  extPromotedFAQs=extPromotedFAQs.filter(function(f){ return f.id!==id; });
+  renderExtPromoted();
+}
+function extDelete(id) {
+  extQaData=extQaData.filter(function(d){ return d.id!==id; });
+  sb('DELETE', EXT_TABLE, '', 'id=eq.'+id);
+  renderExtQA();
+}
+
+
 function go(id) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
