@@ -170,12 +170,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="nav-item" onclick="go('faq-ext')"><div class="ni-dot"></div>外單位業務 FAQ</div>
     <div class="nav-item" onclick="go('diff')"><div class="ni-dot"></div>放洋差異化說法</div>
     <div class="nav-item" onclick="go('refund-simple')"><div class="ni-dot"></div>退費簡易說明</div>
-
-    <div class="sb-unit" style="color:var(--pink)">顧問專屬</div>
-    <div class="nav-item" onclick="go('ep')"><div class="ni-dot"></div>EP 產品介紹<span class="ni-badge b-external">↗</span></div>
-    <div class="nav-item" onclick="go('quotesys')"><div class="ni-dot"></div>報價系統教學<span class="ni-badge b-external">↗</span></div>
-    <div class="nav-item" onclick="go('split')"><div class="ni-dot"></div>前後端工作分配<span class="ni-badge" style="background:var(--pink-l);color:var(--pink)">必讀</span></div>
-    <div class="nav-item" onclick="go('contract')"><div class="ni-dot"></div>合約重點條款<span class="ni-badge" style="background:var(--pink-l);color:var(--pink)">必讀</span></div>
   </nav>
 </nav>
 
@@ -186,14 +180,14 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 <div class="panel active" id="p-home">
   <div class="panel-ey">放洋顧問 · 內部</div>
   <div class="panel-title">顧問工具導覽</div>
-  <div class="panel-desc">這個頁面整合了放洋顧問日常使用的所有工具與作業規範，包含 TKB 全單位的銷售工具，以及顧問專屬的報價系統、EP 學校介紹、合約條款與前後端工作分配說明。</div>
+  <div class="panel-desc">這個頁面整合了放洋顧問日常使用的所有工具與作業規範，包含 TKB 全單位的銷售工具，以及顧問專屬的 EP 介紹、報價系統、合約條款與前後端工作分配說明。</div>
 
   <div class="sl">銷售工具</div>
   <div class="tool-grid">
     <div class="tool-card" onclick="go('ops')">
       <div class="tool-flag tf-online">線上工具</div>
       <div class="tool-name">遊學一條龍<br>業務心法手冊</div>
-      <div class="tool-desc">8 個步驟的完整銷售話術、客戶 FAQ、洋碩美語切入點說明，業務提問 Claude 自動回覆。</div>
+      <div class="tool-desc">外單位只需要做到<strong>需求釐清</strong>，後續全部轉介給放洋顧問處理。手冊內有需求釐清的問題清單與話術參考。</div>
       <div class="tool-link">→ 開啟線上版</div>
     </div>
     <div class="tool-card" onclick="go('tour-manual')">
@@ -233,7 +227,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="tool-card" onclick="go('split')" style="border-color:var(--pink-b)">
       <div class="tool-flag tf-online">作業規範</div>
       <div class="tool-name">前後端工作分配</div>
-      <div class="tool-desc">付款前（前端）和付款後（後端）的工作項目，付款時必須確認完畢的所有事項。</div>
+      <div class="tool-desc">付款前和付款後的工作項目，付款時必須確認完畢的所有事項。</div>
       <div class="tool-link">→ 查看分工說明</div>
     </div>
     <div class="tool-card" onclick="go('contract')" style="border-color:rgba(124,58,237,0.25)">
@@ -265,7 +259,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 <div class="panel" id="p-ops">
   <div class="panel-ey">線上工具</div>
   <div class="panel-title">遊學一條龍業務心法手冊</div>
-  <div class="panel-desc">這是放洋全集團業務的核心銷售工具，整合了 8 個步驟的完整話術、客戶 FAQ 與 AI 問答系統。全程只需瀏覽器，不需安裝。</div>
+  <div class="panel-desc">外單位的工作只有一件事：<strong>需求釐清</strong>。了解學員的目的、時程、預算、年齡後，填寫轉介表單交給放洋，後續全程由放洋顧問接手。手冊內有需求釐清的問題清單與話術，其他步驟供參考。</div>
 
   <div class="icard">
     <div class="icard-title">工具說明</div>
@@ -355,7 +349,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 <div class="panel" id="p-pitch">
   <div class="panel-ey">Google 文件</div>
   <div class="panel-title">說帖參考（場次懶人包）</div>
-  <div class="panel-desc">業務快查文件，包含 2026 放洋自辦遊學團的場次、費用、行程懶人包，以及合作廠商場次彙整。向學員介紹時的主要參考依據。</div>
+  <div class="panel-desc">業務快查文件，包含 2026 放洋自辦遊學團的場次、費用、行程懶人包，以及合作廠商場次彙整。向學員介紹時的主要參考依據。<br><span style="font-size:12px;color:var(--amber)">⚠️ 寒假團資訊確認後將同步更新此頁。</span></div>
 
   <div class="icard">
     <div class="icard-title">文件連結</div>
@@ -436,63 +430,68 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 <div class="panel" id="p-flow-individual">
   <div class="panel-ey">服務流程</div>
   <div class="panel-title">個人遊學服務流程</div>
-  <div class="panel-desc">放洋個人遊學的完整服務流程共 8 個步驟，從第一次接觸到回台後的升學導流。詳細話術請參考「遊學一條龍業務心法手冊」。</div>
+  <div class="panel-desc">個人遊學的完整 8 個步驟。粉紅色是外單位負責的部分，綠色是放洋接手後的部分。</div>
+
+  <div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink3)"><div style="width:12px;height:12px;border-radius:3px;background:var(--pink-l);border:1px solid var(--pink-b)"></div>外單位負責</div>
+    <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink3)"><div style="width:12px;height:12px;border-radius:3px;background:var(--teal-l);border:1px solid var(--teal-b)"></div>放洋接手</div>
+  </div>
 
   <div class="flow-grid">
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">1</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">需求釐清・目標設定 <span class="flow-tag">洋碩切入點</span></div>
-        <div class="flow-desc">了解客戶去的主要目的（語言進步、文化體驗、職涯探索、親子遊學）、時程、英文程度、預算、是否一個人去。英文程度問完後自然帶入洋碩美語：「出發前先衝分數，分班測驗更有底氣。」</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--pink)">1</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--pink-l);border:1px solid var(--pink-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">需求釐清 <span class="flow-tag">外單位做這步就好</span></div>
+        <div class="flow-desc">問清楚：去的目的、想去的國家、大概時間、英文程度、預算。這些資訊填進轉介表單，放洋顧問就能直接接著談。如果學員英文程度不夠，順便提洋碩美語先衝一下分數。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">2</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">目標地・學校選擇</div>
-        <div class="flow-desc">三層漏斗：國家 → 城市 → 學校。先問條件，再推薦，最多給 2 個選項讓客戶選。國家選擇考量：英語系/非英語系、預算、簽證、飛行距離。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">2</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">選校選地｜放洋顧問接手</div>
+        <div class="flow-desc">顧問依需求推薦國家和學校，最多給 2 個選項讓學員選，不讓選擇太多變成困擾。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">3</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">方案報價・確認</div>
-        <div class="flow-desc">依序說明：課程費 → 住宿費 → 活動課（選配）→ 代辦費 → 客戶自理（機票/生活費/保險）。把費用拆清楚，不讓大數字嚇跑客戶。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">3</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">報價・確認方案</div>
+        <div class="flow-desc">顧問逐項說明費用：課程費、住宿費、代辦費、學員自理（機票/生活費/保險）。費用拆清楚，學員才不會被大數字嚇跑。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">4</div><div class="flow-line"></div></div>
-      <div class="flow-content">
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">4</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
         <div class="flow-title">簽證・保險辦理</div>
-        <div class="flow-desc">報名後立刻啟動，不要等到出發前兩週。依目的地確認簽證類型（免簽/eTA/學生簽）、辦理時程、所需文件。</div>
+        <div class="flow-desc">報名後立刻啟動，不等到出發前才辦。依目的地確認需要哪種簽證、需要哪些文件。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">5</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">行前準備 Checklist</div>
-        <div class="flow-desc">出發前 4 週主動聯繫客戶，逐項確認：機票、接機、Homestay 資料、緊急聯絡人、簽證核發、保險、SIM 卡規劃、換匯。主動聯繫是差異化，也是建立口碑最重要的時機。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">5</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">出發前確認</div>
+        <div class="flow-desc">出發前 4 週主動聯繫：機票訂了嗎？接機安排好了嗎？Homestay 資料收到了嗎？簽證下來了嗎？這些小事主動幫學員確認，是放洋跟其他業者的差異。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">6</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">入學・分班測驗</div>
-        <div class="flow-desc">提前幫客戶打預防針：分班測驗不是考試，是找到最適合的班級。就算分到基礎班也完全沒問題，之後想升班跟老師說一聲即可。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">6</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">入學・分班</div>
+        <div class="flow-desc">提前幫學員打預防針：到了學校第一天會有分班測驗，這不是考試，是幫你找到最適合的班級，分到基礎班完全沒關係。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">7</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">中期追蹤・問題處理</div>
-        <div class="flow-desc">第 7–10 天第一次主動關心，第 3–4 週中期確認，回台前 1–2 週預熱成果回顧。常見問題：Homestay 相處、換班、生病、錢不夠。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">7</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">在學期間追蹤</div>
+        <div class="flow-desc">第 7–10 天主動傳訊問一下狀況，第 3–4 週確認學習情況，回台前 1–2 週預告接下來的計畫。常見問題：Homestay 相處不順、想換班、生病、零用錢快沒了。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">8</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">成果回顧・升級規劃 <span class="flow-tag">洋碩切入點</span></div>
-        <div class="flow-desc">回台第 1 週語感最好，是考多益/雅思的黃金期。「你現在語感最好，是考試的最佳時機。」第 2–4 週若有留學意願，連結留學一條龍服務。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">8</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">回台・成果規劃 <span class="flow-tag" style="background:rgba(13,124,106,0.12);color:var(--teal)">洋碩切入點</span></div>
+        <div class="flow-desc">回台第 1 週語感最好，是考多益/雅思的黃金期。話術：「你現在語感最好，現在去考分數會比以前好很多。」若學員有留學意願，連結放洋留學申請服務。</div>
       </div>
     </div>
   </div>
@@ -502,66 +501,73 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 <div class="panel" id="p-flow-group">
   <div class="panel-ey">服務流程</div>
   <div class="panel-title">遊學團報名流程</div>
-  <div class="panel-desc">放洋遊學團的完整報名流程共 8 個步驟，從方案定制到海外追蹤。這是放洋顧問協助學員完成遊學的標準作業流程。</div>
+  <div class="panel-desc">遊學團的 8 個步驟。粉紅色是外單位的部分，綠色是放洋接手後的部分。</div>
+
+  <div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink3)"><div style="width:12px;height:12px;border-radius:3px;background:var(--pink-l);border:1px solid var(--pink-b)"></div>外單位負責</div>
+    <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink3)"><div style="width:12px;height:12px;border-radius:3px;background:var(--teal-l);border:1px solid var(--teal-b)"></div>放洋接手</div>
+  </div>
 
   <div class="flow-grid">
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">1</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">菁英成長對話與方案定制</div>
-        <div class="flow-desc">分析學員學術背景與職涯目標，從全球熱門城市中精選最契合的教育環境與課程方案。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--pink)">1</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--pink-l);border:1px solid var(--pink-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">需求釐清・確認方案 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--pink-l);color:var(--pink);margin-left:4px">外單位</span></div>
+        <div class="flow-desc">問清楚學員的年齡、想去哪個國家、大概時間和預算。確認符合遊學團年齡（8–17歲）後，填轉介表單交給放洋。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">2</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">報名意向確認與資料建檔</div>
-        <div class="flow-desc">提交護照影本與基本資料，啟動個人專屬學術檔案，並同步啟動與海外校方的名額保留程序。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">2</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">報名・建立學員資料 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:rgba(13,124,106,0.12);color:var(--teal);margin-left:4px">放洋</span></div>
+        <div class="flow-desc">收到轉介後，放洋顧問聯繫學員，填寫報名表、繳交護照影本，同步向學校保留名額。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">3</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">席次確認與定金保障機制</div>
-        <div class="flow-desc">夏季課程建議於 4 月底前完成定金繳納，享有優先位子保證。熱門校區名額競爭激烈，早訂早保障。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">3</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">確認席次・繳交定金 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:rgba(13,124,106,0.12);color:var(--teal);margin-left:4px">放洋</span></div>
+        <div class="flow-desc">夏季團建議 4 月底前繳定金。名額熱門，早繳早保住，熱門住宿也一起確定。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">4</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">官方入學申請與行政對接</div>
-        <div class="flow-desc">放洋顧問協助填寫官方入學申請表、遞交學歷證明，與校方招生處無縫對接，確保在第一時間取得入學許可。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">4</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">向學校提出正式申請 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:rgba(13,124,106,0.12);color:var(--teal);margin-left:4px">放洋</span></div>
+        <div class="flow-desc">放洋行政幫學員填申請表、送學歷證明、跟校方聯繫，取得正式入學通知。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">5</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">費用結清與入學文件取得</div>
-        <div class="flow-desc">僅報名語言學校：開課前 <strong>4 週</strong>完成繳費；報名全包式/學術遊學團：開課前 <strong>6 週</strong>完成繳費。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">5</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">繳清費用・取得入學文件 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:rgba(13,124,106,0.12);color:var(--teal);margin-left:4px">放洋</span></div>
+        <div class="flow-desc">僅課程：開課前 4 週繳清；全包式：開課前 6 週繳清，這樣才能確保住宿安排。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">6</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">簽證專業辦理與文件資料準備</div>
-        <div class="flow-desc">針對需要辦理簽證的國家，顧問提供精確的文件清單與面試輔導，確保簽證順利核發。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">6</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">辦理簽證 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:rgba(13,124,106,0.12);color:var(--teal);margin-left:4px">放洋</span></div>
+        <div class="flow-desc">需要簽證的國家由放洋協助確認文件清單，全程陪跑到簽證核發。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">7</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">專屬行前說明會與學員包領取</div>
-        <div class="flow-desc">出發前舉辦行前說明會，學員領取專屬學員包（含生活指南、當地緊急聯繫卡、必備物資）。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">7</div><div class="flow-line"></div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">行前說明會・學員包發放 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:rgba(13,124,106,0.12);color:var(--teal);margin-left:4px">放洋</span></div>
+        <div class="flow-desc">出發前舉辦說明會，發放學員包，裡面有生活指南、當地緊急聯繫卡，讓學員出發前心裡有底。</div>
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num">8</div><div class="flow-line"></div></div>
-      <div class="flow-content">
-        <div class="flow-title">海外抵達追蹤與持續支援</div>
-        <div class="flow-desc">飛機落地後服務並未結束。無論學習適應或生活求助，放洋的專業支援機制陪伴學員直到旅程完美落幕。</div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">8</div></div>
+      <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
+        <div class="flow-title">出發・海外全程支援 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:rgba(13,124,106,0.12);color:var(--teal);margin-left:4px">放洋</span></div>
+        <div class="flow-desc">落地之後服務還沒結束。學習適應、生活問題、突發狀況，都可以找放洋，直到回台。</div>
       </div>
     </div>
   </div>
+</div>
+
 </div>
 
 <!-- TOURS -->
@@ -671,31 +677,14 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
       </tr></thead>
       <tbody>
         <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">寒假遊學團</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">1–2 月</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">依發票開立日期</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--pink)">3 月 10 號</td></tr>
-        <tr><td style="padding:9px 12px;color:var(--ink2)">暑假遊學團</td><td style="padding:9px 12px;color:var(--ink2)">7–8 月</td><td style="padding:9px 12px;color:var(--ink2)">依發票開立日期</td><td style="padding:9px 12px;font-weight:700;color:var(--pink)">9 月 10 號</td></tr>
+        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">暑假遊學團</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">7–8 月</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink2)">依發票開立日期</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--pink)">9 月 10 號</td></tr>
+        <tr><td style="padding:9px 12px;color:var(--ink2)">個人遊學</td><td style="padding:9px 12px;color:var(--ink2)">全年滾動</td><td style="padding:9px 12px;color:var(--ink2)">依回國日期</td><td style="padding:9px 12px;font-weight:700;color:var(--teal)">回國後次月 10 號</td></tr>
       </tbody>
     </table>
     </div>
   </div>
 
-  <div class="sl">試算範例</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-    <div class="icard" style="margin-bottom:0">
-      <div class="icard-title">遊學團範例：英國倫敦（1人）</div>
-      <div class="irow"><div class="irow-key">定價</div><div>NT$215,000</div></div>
-      <div class="irow"><div class="irow-key">− 機票費</div><div>約 NT$40,000（依航班）</div></div>
-      <div class="irow"><div class="irow-key">− 保險費</div><div>約 NT$3,500（旅平+意外醫療）</div></div>
-      <div class="irow"><div class="irow-key">淨利基礎</div><div>約 NT$170,000+（實際由放洋計算）</div></div>
-      <div class="irow"><div class="irow-key">績效獎金</div><div><strong style="color:var(--pink)">約 NT$5,000+ / 人</strong></div></div>
-    </div>
-    <div class="icard" style="margin-bottom:0">
-      <div class="icard-title">個人遊學範例：EP 英國 8 週</div>
-      <div class="irow"><div class="irow-key">定價</div><div>NT$180,000（含課程+住宿）</div></div>
-      <div class="irow"><div class="irow-key">× 3%</div><div></div></div>
-      <div class="irow"><div class="irow-key">績效獎金</div><div><strong style="color:var(--teal)">NT$5,400 / 人</strong></div></div>
-      <div class="irow"><div class="irow-key">計算特點</div><div>公式簡單，直接用學員定價乘以 3%</div></div>
-    </div>
-  </div>
-  <p style="font-size:11.5px;color:var(--ink4);margin-top:4px">⚠️ 遊學團的實際獎金由放洋統一計算，業務不需自行試算，出團後放洋會提供明細。</p>
+
 </div>
 
 <!-- REFERRAL -->
@@ -714,18 +703,21 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 
   <div class="sl">轉介流程</div>
-  <div class="flow-item"><div class="flow-left"><div class="flow-num">1</div><div class="flow-line"></div></div>
-    <div class="flow-content"><div class="flow-title">洋碩顧問 / 外單位業務識別潛在學員</div>
-    <div class="flow-desc">在課程中或諮詢時，發現學員有遊學意願（詳見「學員快速適合度判斷」頁面）。</div></div></div>
-  <div class="flow-item"><div class="flow-left"><div class="flow-num">2</div><div class="flow-line"></div></div>
-    <div class="flow-content"><div class="flow-title">讓學員填寫轉介表單</div>
-    <div class="flow-desc">將表單連結傳給學員（LINE / 現場掃 QR Code），讓學員自行填寫基本資料與需求。表單目前為 Google 表單（即將上線，屆時更新連結）。</div></div></div>
-  <div class="flow-item"><div class="flow-left"><div class="flow-num">3</div><div class="flow-line"></div></div>
-    <div class="flow-content"><div class="flow-title">放洋顧問接收並主動聯繫</div>
-    <div class="flow-desc">放洋顧問收到表單後，1–2 個工作天內主動聯繫學員，安排專屬遊學諮詢。洋碩學員享優先排程。</div></div></div>
-  <div class="flow-item"><div class="flow-left"><div class="flow-num">4</div><div class="flow-line"></div></div>
-    <div class="flow-content"><div class="flow-title">成功出團後發放績效</div>
-    <div class="flow-desc">學員成功出團，轉介單位依獎金拆分標準獲得績效，次月 10 號發放。</div></div></div>
+  <div style="background:var(--pink-l);border:2px solid var(--pink-b);border-radius:12px;padding:18px 20px;margin-bottom:4px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--pink);margin-bottom:14px">標準轉介 4 步驟</div>
+    <div class="flow-item"><div class="flow-left"><div class="flow-num" style="background:var(--pink);box-shadow:0 0 0 4px var(--pink-l)">1</div><div class="flow-line"></div></div>
+      <div class="flow-content"><div class="flow-title" style="color:var(--pink)">識別有遊學意願的學員</div>
+      <div class="flow-desc">在課程中或諮詢時發現學員有興趣，用「學員快速適合度判斷」那頁確認適合哪條線。</div></div></div>
+    <div class="flow-item"><div class="flow-left"><div class="flow-num" style="background:var(--pink);box-shadow:0 0 0 4px var(--pink-l)">2</div><div class="flow-line"></div></div>
+      <div class="flow-content"><div class="flow-title" style="color:var(--pink)">讓學員填寫轉介表單</div>
+      <div class="flow-desc">把表單連結傳給學員（LINE 或現場掃 QR Code），讓他自己填基本資料和需求。Google 表單即將上線，屆時更新連結。</div></div></div>
+    <div class="flow-item"><div class="flow-left"><div class="flow-num" style="background:var(--pink);box-shadow:0 0 0 4px var(--pink-l)">3</div><div class="flow-line"></div></div>
+      <div class="flow-content"><div class="flow-title" style="color:var(--pink)">放洋顧問 1–2 天內主動聯繫</div>
+      <div class="flow-desc">收到表單後放洋顧問主動打電話，安排專屬遊學諮詢。洋碩學員優先排程。</div></div></div>
+    <div class="flow-item"><div class="flow-left"><div class="flow-num" style="background:var(--pink);box-shadow:0 0 0 4px var(--pink-l)">4</div></div>
+      <div class="flow-content"><div class="flow-title" style="color:var(--pink)">出團後發放績效</div>
+      <div class="flow-desc">學員順利出團，轉介單位依獎金規定獲得績效，次月 10 號發放。</div></div></div>
+  </div>
 
   <div style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:12px 14px;font-size:12.5px;color:var(--teal);line-height:1.7;margin-top:4px">
     📋 <strong>表單連結</strong>：Google 表單即將上線，正式連結確認後請更新此處。目前可先口頭收集學員資料後，由外單位業務統一傳給放洋顧問對接。
@@ -750,6 +742,21 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="irow"><div class="irow-key">轉介前</div><div>識別學員遊學意願 → 初步說明遊學產品 → 引導填寫表單 → 轉介給放洋顧問</div></div>
     <div class="irow"><div class="irow-key">服務中</div><div>放洋顧問全程負責，外單位不需要處理細節（簽證、學校申請、住宿安排）</div></div>
     <div class="irow"><div class="irow-key">回台後</div><div>由洋碩顧問接手，提供多益/雅思/托福課程，這是洋碩的主場，形成完整閉環</div></div>
+  </div>
+
+  <div class="sl">洋碩美語課程資源</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+    <div class="icard" style="margin-bottom:0;padding:14px 16px">
+      <div style="font-size:11px;font-weight:700;color:var(--pink);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px">📋 專案課程</div>
+      <div class="irow" style="padding:5px 0;border-bottom:none"><div style="font-size:12.5px;color:var(--ink2)">課程內容依各區最新公告為主，請洽各區洋碩顧問確認目前開設項目。</div></div>
+    </div>
+    <div class="icard" style="margin-bottom:0;padding:14px 16px">
+      <div style="font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px">🏆 證照課</div>
+      <div class="irow" style="padding:4px 0"><div class="irow-key" style="min-width:60px">多益 TOEIC</div><div>職場求職加分，每月都有考試場次</div></div>
+      <div class="irow" style="padding:4px 0"><div class="irow-key" style="min-width:60px">雅思 IELTS</div><div>留學必備，目標 6.0–7.0+</div></div>
+      <div class="irow" style="padding:4px 0"><div class="irow-key" style="min-width:60px">托福 TOEFL</div><div>申請美加名校必備，目標 80–100+</div></div>
+      <div class="irow" style="padding:4px 0;border-bottom:none"><div class="irow-key" style="min-width:60px">GRE・GMAT</div><div>申請研究所/商學院，進階證照</div></div>
+    </div>
   </div>
 
   <div style="background:var(--pink-l);border:1px solid var(--pink-b);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--pink-d);line-height:1.8;margin-top:4px">
@@ -838,52 +845,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 </div>
 
 <!-- REFUND SIMPLE -->
-<div class="panel" id="p-refund-simple">
-  <div class="panel-ey">業務支援</div>
-  <div class="panel-title">退費簡易說明</div>
-  <div class="panel-desc">外單位業務遇到學員問退費問題時的標準說法。詳細合約條款由放洋顧問負責，這裡只需要掌握大原則。</div>
 
-  <div class="notice" style="background:var(--pink-l);border:1px solid var(--pink-b);color:var(--pink-d);border-radius:8px;padding:12px 14px;font-size:12.5px;line-height:1.7;margin-bottom:16px">
-    <strong>核心原則：越早說、損失越小。</strong>出發前 41 天以前取消，損失只有 5%；出發當天才說，全額沒收。所以學員有任何猶豫，第一時間告訴我們。
-  </div>
 
-  <div class="icard">
-    <div style="font-size:11px;font-weight:700;color:var(--pink);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">🗺️ 遊學團退費比例（合約第 18 條）</div>
-    <div style="overflow-x:auto">
-    <table style="width:100%;border-collapse:collapse;font-size:13px">
-      <thead><tr style="border-bottom:2px solid var(--border2)">
-        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">取消時間</th>
-        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">損失比例</th>
-        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">業務說法</th>
-      </tr></thead>
-      <tbody>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 41 天以前</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--teal);font-size:15px">5%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink3);font-size:12px">損失最小，越早說越好</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 31–40 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">10%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink3);font-size:12px">大概 1 個月前</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 21–30 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">20%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink3);font-size:12px">損失開始明顯擴大</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 2–20 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">30%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink3);font-size:12px">快出發才說，損失很大</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 1 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:#DC2626;font-size:15px">50%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink3);font-size:12px">隔天出發才取消，損失一半</td></tr>
-        <tr><td style="padding:9px 12px">出發當天或未通知</td><td style="padding:9px 12px;font-weight:700;color:#DC2626;font-size:15px">100%</td><td style="padding:9px 12px;color:var(--ink3);font-size:12px">全額沒收</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-
-  <div class="icard" style="margin-top:12px;border-left:3px solid var(--teal)">
-    <div class="icard-title" style="color:var(--teal)">👤 個人遊學退費（依各語言學校規定）</div>
-    <div class="irow"><div class="irow-key">EP 通用原則</div><div>住宿費：入住後前 4 週通常不退。課程費：依取消時間按比例退，開課前越早取消退越多</div></div>
-    <div class="irow"><div class="irow-key">繳費時間</div><div>僅課程：開課前 4 週完成繳費；課程+住宿：開課前 6 週完成繳費</div></div>
-    <div class="irow"><div class="irow-key">注意</div><div>各校區細節不同，學員問具體退費金額時，請交由放洋顧問查詢該校的正式退費條款後說明</div></div>
-  </div>
-
-  <div class="icard" style="margin-top:4px">
-    <div class="icard-title">特殊可免責取消情況（損失最小）</div>
-    <div class="irow"><div class="irow-key">適用情況</div><div>本人懷孕或分娩、本人或三親等內親屬有<strong>醫師開立的重大傷病診斷書</strong>、三親等內親屬死亡、不可抗力天災事件</div></div>
-    <div class="irow"><div class="irow-key">退費方式</div><div>扣除已支出的必要費用（最高不超過總費用 10%）後退還餘款</div></div>
-    <div class="irow"><div class="irow-key">提醒</div><div>遇到這類情況，請第一時間通知放洋顧問並準備相關文件，由放洋處理後續退費事宜</div></div>
-  </div>
-</div>
-
-<!-- EP GUIDE -->
 <div class="panel" id="p-ep">
   <div class="panel-ey">顧問專屬</div>
   <div class="panel-title">EP English Path 產品介紹</div>
@@ -909,8 +872,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="irow"><div class="irow-key">🇦🇺 布里斯本</div><div>CRICOS 認可，學生簽可讀 62 週，WHV 最多 17 週。</div></div>
   </div>
 </div>
-
-<!-- QUOTATION SYSTEM -->
 <div class="panel" id="p-quotesys">
   <div class="panel-ey">顧問專屬</div>
   <div class="panel-title">EP 報價系統教學</div>
@@ -940,8 +901,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="irow"><div class="irow-key" style="color:var(--pink)">⚠️ 注意</div><div>台幣換算僅供參考，實際匯款以當天匯率為準。向學員說明時務必補充「以實際匯款日匯率為準」。</div></div>
   </div>
 </div>
-
-<!-- FRONT/BACK SPLIT -->
 <div class="panel" id="p-split">
   <div class="panel-ey">顧問專屬</div>
   <div class="panel-title">前後端工作分配</div>
@@ -994,8 +953,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <strong>常見錯誤：</strong>不要在學員付款後才討論住宿或接送機——這些必須在付款前確認，因為 Homestay 媒合和接送機預約需要提前作業，事後更改可能需要額外費用甚至無法處理。
   </div>
 </div>
-
-<!-- CONTRACT -->
 <div class="panel" id="p-contract">
   <div class="panel-ey">顧問專屬</div>
   <div class="panel-title">合約重點條款導覽</div>
@@ -1102,6 +1059,56 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 </div>
 
+<div class="panel" id="p-refund-simple">
+  <div class="panel-ey">業務支援</div>
+  <div class="panel-title">退費簡易說明</div>
+  <div class="panel-desc">顧問遇到學員問退費問題時的標準說法。詳細退費條款由顧問負責，這裡整理大原則。</div>
+
+  <div style="display:flex;gap:10px;margin-bottom:16px;padding:12px 14px;background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.18);border-radius:8px;font-size:12.5px;line-height:1.7">
+    <span style="font-size:16px;flex-shrink:0">ℹ️</span>
+    <div><strong style="color:var(--blue)">遊學團 vs 個人遊學的退費規定不同</strong><br>
+    <span style="color:var(--ink2)">下方退費比例表僅適用於<strong>放洋自辦遊學團</strong>（合約第 18 條）。<br>
+    <strong>個人遊學</strong>的退費依各語言學校退費規定，每間學校不一樣，細節查詢各校後再說明。</span></div>
+  </div>
+
+  <div style="background:var(--pink-l);border:1px solid var(--pink-b);border-radius:8px;padding:12px 14px;font-size:12.5px;color:var(--pink-d);line-height:1.7;margin-bottom:16px">
+    <strong>核心原則（遊學團）：越早說、損失越小。</strong>出發前 41 天以前取消，損失只有 5%；出發當天才說，全額沒收。
+  </div>
+
+  <div class="icard">
+    <div style="font-size:11px;font-weight:700;color:var(--pink);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">🗺️ 遊學團退費比例（合約第 18 條）</div>
+    <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <thead><tr style="border-bottom:2px solid var(--border2)">
+        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">取消時間</th>
+        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">損失比例</th>
+        <th style="text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;background:var(--bg)">說法</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 41 天以前</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:#0D7C6A;font-size:15px">5%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">越早說損失越小</td></tr>
+        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 31–40 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">10%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">約 1 個月前</td></tr>
+        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 21–30 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">20%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">損失開始擴大</td></tr>
+        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 2–20 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--amber);font-size:15px">30%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">快出發才說，損失很大</td></tr>
+        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border)">出發前 1 天</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-weight:700;color:#DC2626;font-size:15px">50%</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)">隔天出發才說，損失一半</td></tr>
+        <tr><td style="padding:9px 12px">出發當天或未通知</td><td style="padding:9px 12px;font-weight:700;color:#DC2626;font-size:15px">100%</td><td style="padding:9px 12px;font-size:12px;color:var(--ink3)">全額沒收</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="icard" style="margin-top:4px;border-left:3px solid var(--teal)">
+    <div class="icard-title" style="color:var(--teal)">👤 個人遊學退費（依各語言學校規定）</div>
+    <div class="irow"><div class="irow-key">EP 通用原則</div><div>住宿費：入住後前 4 週通常不退。課程費：依取消時間按比例退</div></div>
+    <div class="irow"><div class="irow-key">繳費時間</div><div>僅課程：開課前 4 週；課程+住宿：開課前 6 週</div></div>
+    <div class="irow"><div class="irow-key">注意</div><div>各校細節不同，學員問具體金額時，查詢各校正式退費條款後再說明</div></div>
+  </div>
+
+  <div class="icard" style="margin-top:4px">
+    <div class="icard-title">特殊可免責取消（損失最小）</div>
+    <div class="irow"><div class="irow-key">適用情況</div><div>本人懷孕/分娩、三親等內親屬有<strong>重大傷病診斷書</strong>、三親等內親屬死亡、不可抗力天災</div></div>
+    <div class="irow"><div class="irow-key">退費方式</div><div>扣除已支出必要費用（最高不超過總費用 10%）後退還餘款</div></div>
+  </div>
+</div>
 </main>
 </div>
 
@@ -1109,6 +1116,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
 .clause-tab{font-size:12px;padding:5px 13px;border-radius:20px;cursor:pointer;border:1px solid var(--border2);background:var(--surface);color:var(--ink3);transition:all .13s;font-family:var(--sans)}
 .clause-tab:hover{color:var(--ink)}
 .clause-tab.active{background:var(--pink);border-color:var(--pink);color:#fff;font-weight:500}
+.clause-panel{display:none}
+.clause-panel.active{display:block}
 </style>
 <script>
 function showClause(id, el) {
