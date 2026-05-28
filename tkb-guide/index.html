@@ -1,3 +1,6 @@
+WARNING: sidebar not found!
+URLs replaced: 0
+Vendor column hidden
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -339,6 +342,12 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="sb-unit">總覽</div>
     <div class="nav-item active" onclick="go('home')"><div class="ni-dot"></div>首頁</div>
 
+    <div class="sb-unit">合作機制</div>
+    <div class="nav-item" onclick="go('bonus')"><div class="ni-dot"></div>獎金拆分說明<span class="ni-badge" style="background:var(--pink-l);color:var(--pink)">必讀</span></div>
+    <div class="nav-item" onclick="go('qualify')"><div class="ni-dot"></div>學員快速適合度判斷<span class="ni-badge" style="background:var(--pink-l);color:var(--pink)">必讀</span></div>
+    <div class="nav-item" onclick="go('referral')"><div class="ni-dot"></div>轉介資源表單說明</div>
+    <div class="nav-item" onclick="go('collab')"><div class="ni-dot"></div>後續合作形式</div>
+
     <div class="sb-unit">銷售工具</div>
     <div class="nav-item" onclick="go('ops')"><div class="ni-dot"></div>遊學一條龍手冊<span class="ni-badge b-external">線上</span></div>
     <div class="nav-item" onclick="go('tour-manual')"><div class="ni-dot"></div>遊學團手冊<span class="ni-badge b-pdf">實體</span></div>
@@ -353,12 +362,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="nav-item" onclick="go('tours')"><div class="ni-dot"></div>2026 遊學團場次</div>
     <div class="nav-item" onclick="go('individual')"><div class="ni-dot"></div>個人遊學國家線</div>
     <div class="nav-item" onclick="go('future')"><div class="ni-dot"></div>預計新增國家線</div>
-
-    <div class="sb-unit">合作機制</div>
-    <div class="nav-item" onclick="go('qualify')"><div class="ni-dot"></div>學員快速適合度判斷<span class="ni-badge" style="background:var(--pink-l);color:var(--pink)">必讀</span></div>
-    <div class="nav-item" onclick="go('bonus')"><div class="ni-dot"></div>獎金拆分說明<span class="ni-badge" style="background:var(--pink-l);color:var(--pink)">必讀</span></div>
-    <div class="nav-item" onclick="go('referral')"><div class="ni-dot"></div>轉介資源表單說明</div>
-    <div class="nav-item" onclick="go('collab')"><div class="ni-dot"></div>後續合作形式</div>
 
     <div class="sb-unit">業務支援</div>
     <div class="nav-item" onclick="go('faq-ext')"><div class="ni-dot"></div>外單位業務 FAQ</div>
@@ -517,7 +520,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
     <div class="irow"><div class="irow-key">適用對象</div><div>全集團業務、洋碩美語老師及業務、合作轉介單位</div></div>
     <div class="irow"><div class="irow-key">使用方式</div><div>開啟下方連結，瀏覽器直接使用，建議加入書籤</div></div>
     <div class="irow"><div class="irow-key">主要功能</div><div>8 步驟話術、客戶 FAQ、業務即時提問 Claude 自動回覆、管理員審核發布</div></div>
-    <div class="irow"><div class="irow-key">手冊連結</div><div><a href="https://jojo880714.github.io/fanyang-tools/ops-manual/" target="_blank" style="color:var(--pink);font-weight:600;text-decoration:none">https://jojo880714.github.io/fanyang-tools/ops-manual/ ↗</a></div></div>
+    <div class="irow"><div class="irow-key">手冊連結</div><div><a href="https://fanyang-tools.vercel.app/ops-manual/" target="_blank" style="color:var(--pink);font-weight:600;text-decoration:none">https://fanyang-tools.vercel.app/ops-manual/ ↗</a></div></div>
   </div>
 
   <div class="sl">手冊涵蓋內容</div>
@@ -764,7 +767,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
       </div>
     </div>
     <div class="flow-item">
-      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">8</div><div class="flow-line"></div></div>
+      <div class="flow-left"><div class="flow-num" style="background:var(--teal)">8</div></div>
       <div class="flow-content" style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:10px 14px;margin-bottom:0">
         <div class="flow-title">回台・成果規劃 <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--teal-l);color:var(--teal);margin-left:4px">放洋</span> <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:rgba(124,58,237,0.08);color:#7C3AED;margin-left:4px">洋碩切入點</span></div>
         <div class="flow-desc">回台第 1 週語感最好，是考多益/雅思的黃金期。話術：「你現在語感最好，現在去考分數會比以前好很多。」若學員有留學意願，連結放洋留學申請服務。</div>
@@ -869,15 +872,15 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   <div class="sl">合作廠商場次（無績效）</div>
   <div style="overflow-x:auto">
   <table class="tour-table">
-    <thead><tr><th>廠商</th><th>路線</th><th>日期</th><th>年齡</th><th>定價</th><th>4/30前優惠</th></tr></thead>
+    <thead><tr><th style="display:none">廠商</th><th>路線</th><th>日期</th><th>年齡</th><th>定價</th><th>4/30前優惠</th></tr></thead>
     <tbody>
-      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇬🇧 倫敦南岸大學 + 法比荷 22天</td><td>7/25–8/15</td><td>13–21歲</td><td>NT$237,000</td><td>NT$232,000</td></tr>
-      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇬🇧 倫敦 UCL + 法比荷 22天</td><td>7/4–7/25</td><td>12–17歲</td><td>NT$257,000</td><td>NT$252,000</td></tr>
-      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇺🇸 加州 UCLA + 美西名校 21天</td><td>7/12–8/1 / 7/26–8/15</td><td>10–19歲</td><td>NT$277,000</td><td>NT$272,000</td></tr>
-      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇨🇦 溫哥華 UBC 16天</td><td>7/5–7/20 / 7/19–8/3</td><td>9–18歲</td><td>NT$207,000</td><td>NT$202,000</td></tr>
-      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇦🇺 黃金海岸 + 雙樂園 23天</td><td>7/3–7/25 / 7/24–8/15</td><td>6歲以上</td><td>NT$197,000</td><td>NT$192,000</td></tr>
-      <tr><td><span class="badge-sm bs-partner">東南</span></td><td>🇵🇭 宿霧一對一密集 28天</td><td>7/5–8/1 / 7/26–8/22</td><td>15歲以上</td><td>NT$147,000</td><td>NT$142,000</td></tr>
-      <tr><td><span class="badge-sm bs-partner">ISEC</span></td><td>🇦🇺 墨爾本私立文法學校入班</td><td>7/16–7/30</td><td>13–18歲</td><td>NT$188,000</td><td>各折3,000</td></tr>
+      <tr><td style="display:none"><span class="badge-sm bs-partner">東南</span></td><td>🇬🇧 倫敦南岸大學 + 法比荷 22天</td><td>7/25–8/15</td><td>13–21歲</td><td>NT$237,000</td><td>NT$232,000</td></tr>
+      <tr><td style="display:none"><span class="badge-sm bs-partner">東南</span></td><td>🇬🇧 倫敦 UCL + 法比荷 22天</td><td>7/4–7/25</td><td>12–17歲</td><td>NT$257,000</td><td>NT$252,000</td></tr>
+      <tr><td style="display:none"><span class="badge-sm bs-partner">東南</span></td><td>🇺🇸 加州 UCLA + 美西名校 21天</td><td>7/12–8/1 / 7/26–8/15</td><td>10–19歲</td><td>NT$277,000</td><td>NT$272,000</td></tr>
+      <tr><td style="display:none"><span class="badge-sm bs-partner">東南</span></td><td>🇨🇦 溫哥華 UBC 16天</td><td>7/5–7/20 / 7/19–8/3</td><td>9–18歲</td><td>NT$207,000</td><td>NT$202,000</td></tr>
+      <tr><td style="display:none"><span class="badge-sm bs-partner">東南</span></td><td>🇦🇺 黃金海岸 + 雙樂園 23天</td><td>7/3–7/25 / 7/24–8/15</td><td>6歲以上</td><td>NT$197,000</td><td>NT$192,000</td></tr>
+      <tr><td style="display:none"><span class="badge-sm bs-partner">東南</span></td><td>🇵🇭 宿霧一對一密集 28天</td><td>7/5–8/1 / 7/26–8/22</td><td>15歲以上</td><td>NT$147,000</td><td>NT$142,000</td></tr>
+      <tr><td style="display:none"><span class="badge-sm bs-partner">ISEC</span></td><td>🇦🇺 墨爾本私立文法學校入班</td><td>7/16–7/30</td><td>13–18歲</td><td>NT$188,000</td><td>各折3,000</td></tr>
     </tbody>
   </table>
   </div>
