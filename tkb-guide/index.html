@@ -968,6 +968,14 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   <div class="panel-title">轉介資源表單說明</div>
   <div class="panel-desc">外單位轉介學員時，請先讓學員填寫轉介表單，讓放洋顧問掌握基本需求，第一通電話就能直接討論方案，不需要重新問一遍。</div>
 
+  <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScspZRqWNI1ySr1kjwxtxNVwLN8zHl45jmVBjkc-DzJFKpUbA/viewform" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:var(--pink);color:#fff;font-size:13px;font-weight:700;padding:11px 20px;border-radius:8px;text-decoration:none;box-shadow:var(--sh);transition:transform .15s" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='none'">
+      📋 開啟轉介表單 ↗
+    </a>
+    <button onclick="copyReferralLink(this)" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface);color:var(--ink);font-size:13px;font-weight:700;padding:11px 20px;border-radius:8px;border:1px solid var(--border2);cursor:pointer;font-family:inherit">
+      🔗 複製連結
+    </button>
+  </div>
   <div class="icard" style="border-left:3px solid var(--teal)">
     <div class="icard-title">表單收集的資訊</div>
     <div class="irow"><div class="irow-key">基本背景</div><div>姓名、身份（學生/在職）、英文程度、來源（洋碩美語介紹 / 社群 / 朋友推薦）</div></div>
@@ -985,7 +993,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
       <div class="flow-desc">在課程中或諮詢時發現學員有興趣，用「學員快速適合度判斷」那頁確認適合哪條線。</div></div></div>
     <div class="flow-item"><div class="flow-left"><div class="flow-num" style="background:var(--pink);box-shadow:0 0 0 4px var(--pink-l)">2</div><div class="flow-line"></div></div>
       <div class="flow-content"><div class="flow-title" style="color:var(--pink)">讓學員填寫轉介表單</div>
-      <div class="flow-desc">把表單連結傳給學員（LINE 或現場掃 QR Code），讓他自己填基本資料和需求。Google 表單即將上線，屆時更新連結。</div></div></div>
+      <div class="flow-desc">把表單連結傳給學員（LINE 直接傳或現場掃 QR Code），讓他自己填基本資料和需求。連結與 QR Code 統一從本頁上方按鈕取得。</div></div></div>
     <div class="flow-item"><div class="flow-left"><div class="flow-num" style="background:var(--pink);box-shadow:0 0 0 4px var(--pink-l)">3</div><div class="flow-line"></div></div>
       <div class="flow-content"><div class="flow-title" style="color:var(--pink)">放洋顧問 1–2 天內主動聯繫</div>
       <div class="flow-desc">收到表單後放洋顧問主動打電話，安排專屬遊學諮詢。洋碩學員優先排程。</div></div></div>
@@ -995,7 +1003,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);font-size:14px;col
   </div>
 
   <div style="background:var(--teal-l);border:1px solid var(--teal-b);border-radius:8px;padding:12px 14px;font-size:12.5px;color:var(--teal);line-height:1.7;margin-top:4px">
-    📋 <strong>表單連結</strong>：Google 表單即將上線，正式連結確認後請更新此處。目前可先口頭收集學員資料後，由外單位業務統一傳給放洋顧問對接。
+    📋 <strong>使用建議</strong>：現場諮詢時直接點「開啟轉介表單」協助學員當場填寫；LINE 對話則「複製連結」貼給學員自填。如需 QR Code 可用 Google 短網址或 <a href="https://qr.io/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:underline;font-weight:600">qr.io</a> 等工具產生實體文宣用 QR。
   </div>
 </div>
 
@@ -1594,6 +1602,37 @@ function extDelete(id) {
   renderExtQA();
 }
 
+
+function copyReferralLink(btn) {
+  var url = 'https://docs.google.com/forms/d/e/1FAIpQLScspZRqWNI1ySr1kjwxtxNVwLN8zHl45jmVBjkc-DzJFKpUbA/viewform';
+  var done = function() {
+    var original = btn.innerHTML;
+    btn.innerHTML = '✓ 已複製';
+    btn.style.background = 'var(--teal-l)';
+    btn.style.color = 'var(--teal)';
+    btn.style.borderColor = 'var(--teal-b)';
+    setTimeout(function(){
+      btn.innerHTML = original;
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 1800);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done).catch(function(){
+      // fallback
+      var ta = document.createElement('textarea');
+      ta.value = url; document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta); done();
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = url; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta); done();
+  }
+}
 
 function go(id) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
