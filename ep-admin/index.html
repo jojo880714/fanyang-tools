@@ -252,17 +252,50 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink)
   </div>
   <select class="filter-select" id="filterCampus" onchange="applyFilters()">
     <option value="">所有校區</option>
-    <option value="canary">倫敦 Canary Wharf</option>
-    <option value="greenford">倫敦 Greenford</option>
-    <option value="birmingham">伯明罕</option>
-    <option value="leeds">里茲</option>
-    <option value="dublin">都柏林</option>
-    <option value="berlin">柏林</option>
-    <option value="paris">巴黎</option>
-    <option value="malta">馬爾他</option>
-    <option value="dubai">杜拜</option>
-    <option value="toronto">多倫多</option>
-    <option value="brisbane">布里斯本</option>
+    <option value="canary">EP 倫敦 Canary Wharf</option>
+    <option value="greenford">EP 倫敦 Greenford</option>
+    <option value="birmingham">EP 伯明罕</option>
+    <option value="leeds">EP 里茲</option>
+    <option value="dublin">EP 都柏林</option>
+    <option value="berlin">EP 柏林</option>
+    <option value="paris">EP 巴黎</option>
+    <option value="malta">EP 馬爾他</option>
+    <option value="dubai">EP 杜拜</option>
+    <option value="toronto">EP 多倫多</option>
+    <option value="brisbane">EP 布里斯本</option>
+  <option value="sgic_toronto">SGIC 多倫多</option>
+  <option value="sgic_vancouver">SGIC 溫哥華</option>
+  <option value="kaplan_boston">Kaplan 波士頓</option>
+  <option value="kaplan_chicago">Kaplan 芝加哥</option>
+  <option value="kaplan_losangeles">Kaplan 洛杉磯</option>
+  <option value="kaplan_newyork">Kaplan 紐約</option>
+  <option value="kaplan_sfberkeley">Kaplan 舊金山-柏克萊</option>
+  <option value="kaplan_santabarbara">Kaplan 聖塔芭芭拉</option>
+  <option value="kaplan_toronto">Kaplan 多倫多</option>
+  <option value="kaplan_vancouver">Kaplan 溫哥華</option>
+  <option value="kaplan_bath">Kaplan 巴斯</option>
+  <option value="kaplan_bournemouth">Kaplan 伯恩茅斯</option>
+  <option value="kaplan_cambridge">Kaplan 劍橋</option>
+  <option value="kaplan_edinburgh">Kaplan 愛丁堡</option>
+  <option value="kaplan_liverpool">Kaplan 利物浦</option>
+  <option value="kaplan_london">Kaplan 倫敦</option>
+  <option value="kaplan_manchester">Kaplan 曼徹斯特</option>
+  <option value="kaplan_oxford">Kaplan 牛津</option>
+  <option value="kaplan_torquay">Kaplan 托基</option>
+  <option value="kaplan_dublin">Kaplan 都柏林</option>
+  <option value="ilsc_vancouver">ILSC 溫哥華</option>
+  <option value="ilsc_toronto">ILSC 多倫多</option>
+  <option value="ilsc_montreal">ILSC 蒙特婁</option>
+  <option value="ilsc_sydney">ILSC 雪梨</option>
+  <option value="ilsc_melbourne">ILSC 墨爾本</option>
+  <option value="ilsc_brisbane">ILSC 布里斯本</option>
+  <option value="ilsc_adelaide">ILSC 阿德雷德</option>
+  <option value="ilsc_perth">ILSC 伯斯</option>
+  <option value="ilsc_dublin">ILSC 都柏林</option>
+  <option value="ilsc_newdelhi">ILSC 新德里</option>
+  <option value="ec_malta">EC 馬爾他</option>
+  <option value="ec_dubai">EC 杜拜</option>
+  <option value="ec_capetown">EC 開普敦</option>
   </select>
   <select class="filter-select" id="filterAdvisor" onchange="applyFilters()">
     <option value="">所有業務</option>
@@ -358,10 +391,43 @@ const STATUS_CSS={
   closed_lose:'s-closed_lose',
 };
 const CAMPUS_NAMES={
-  canary:'倫敦 Canary Wharf',greenford:'倫敦 Greenford',
-  birmingham:'伯明罕',leeds:'里茲',dublin:'都柏林',
-  berlin:'柏林',paris:'巴黎',malta:'馬爾他',
-  dubai:'杜拜',toronto:'多倫多',brisbane:'布里斯本',
+  canary:'EP 倫敦 Canary Wharf',greenford:'EP 倫敦 Greenford',
+  birmingham:'EP 伯明罕',leeds:'EP 里茲',dublin:'EP 都柏林',
+  berlin:'EP 柏林',paris:'EP 巴黎',malta:'EP 馬爾他',
+  dubai:'EP 杜拜',toronto:'EP 多倫多',brisbane:'EP 布里斯本',
+  sgic_toronto:'SGIC 多倫多',
+  sgic_vancouver:'SGIC 溫哥華',
+  kaplan_boston:'Kaplan 波士頓',
+  kaplan_chicago:'Kaplan 芝加哥',
+  kaplan_losangeles:'Kaplan 洛杉磯',
+  kaplan_newyork:'Kaplan 紐約',
+  kaplan_sfberkeley:'Kaplan 舊金山-柏克萊',
+  kaplan_santabarbara:'Kaplan 聖塔芭芭拉',
+  kaplan_toronto:'Kaplan 多倫多',
+  kaplan_vancouver:'Kaplan 溫哥華',
+  kaplan_bath:'Kaplan 巴斯',
+  kaplan_bournemouth:'Kaplan 伯恩茅斯',
+  kaplan_cambridge:'Kaplan 劍橋',
+  kaplan_edinburgh:'Kaplan 愛丁堡',
+  kaplan_liverpool:'Kaplan 利物浦',
+  kaplan_london:'Kaplan 倫敦',
+  kaplan_manchester:'Kaplan 曼徹斯特',
+  kaplan_oxford:'Kaplan 牛津',
+  kaplan_torquay:'Kaplan 托基',
+  kaplan_dublin:'Kaplan 都柏林',
+  ilsc_vancouver:'ILSC 溫哥華',
+  ilsc_toronto:'ILSC 多倫多',
+  ilsc_montreal:'ILSC 蒙特婁',
+  ilsc_sydney:'ILSC 雪梨',
+  ilsc_melbourne:'ILSC 墨爾本',
+  ilsc_brisbane:'ILSC 布里斯本',
+  ilsc_adelaide:'ILSC 阿德雷德',
+  ilsc_perth:'ILSC 伯斯',
+  ilsc_dublin:'ILSC 都柏林',
+  ilsc_newdelhi:'ILSC 新德里',
+  ec_malta:'EC 馬爾他',
+  ec_dubai:'EC 杜拜',
+  ec_capetown:'EC 開普敦',
 };
 
 // ── LOAD ──
