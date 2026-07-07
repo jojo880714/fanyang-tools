@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>放洋留遊學｜EP English Path 語言學校介紹</title>
+<title>放洋留遊學｜語言學校資料庫</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -17,6 +17,8 @@
   --me-bg:#FEF3E2;--me-c:#6B3A00;
   --na-bg:#EEEDFE;--na-c:#3730A3;
   --au-bg:#FEF0EC;--au-c:#7C2D12;
+  --as-bg:#DEF7F1;--as-c:#0F766E;
+  --af-bg:#FBE9EC;--af-c:#9B2242;
   --shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.05);
   --shadow-md:0 4px 12px rgba(0,0,0,0.08),0 16px 40px rgba(0,0,0,0.07);
   --r:10px;--r-lg:14px;--r-sm:6px;
@@ -111,6 +113,49 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink)
 }
 .nav-cmp.checked{background:var(--pink);border-color:var(--pink);color:#fff}
 
+/* ── SEARCH + VIEW TOGGLE ── */
+.sb-search-wrap{padding:10px 16px 0}
+.sb-search{
+  width:100%;padding:7px 10px;font-size:12px;
+  border:1px solid var(--bdr2);border-radius:var(--r-sm);
+  background:var(--sur2);color:var(--ink);
+  font-family:'Noto Sans TC',sans-serif;
+}
+.sb-search::placeholder{color:var(--ink4)}
+.sb-search:focus{outline:none;border-color:var(--pink);background:var(--sur)}
+.view-toggle{display:flex;gap:3px;margin:8px 16px 0;background:var(--sur2);border-radius:var(--r-sm);padding:3px}
+.view-toggle-btn{
+  flex:1;padding:6px 0;font-size:11px;font-weight:700;
+  border:none;border-radius:5px;background:none;color:var(--ink3);
+  cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all .13s;
+}
+.view-toggle-btn:hover{color:var(--ink)}
+.view-toggle-btn.on{background:var(--sur);color:var(--pink-d);box-shadow:var(--shadow)}
+
+/* ── COLLAPSIBLE NAV GROUPS ── */
+.nav-group{border-bottom:1px solid var(--bdr)}
+.nav-group:last-child{border-bottom:none}
+.nav-group-hd{
+  display:flex;align-items:center;justify-content:space-between;width:100%;
+  padding:11px 16px;font-size:11px;font-weight:700;letter-spacing:0.03em;
+  color:var(--ink2);background:none;border:none;cursor:pointer;
+  font-family:'Noto Sans TC',sans-serif;transition:background .12s;
+}
+.nav-group-hd:hover{background:var(--sur2)}
+.nav-group-title{display:flex;align-items:center;gap:7px}
+.nav-group-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.nav-group-icon{font-size:13px;flex-shrink:0}
+.nav-group-count{
+  font-size:9px;font-weight:700;background:var(--sur3);color:var(--ink3);
+  padding:1px 6px;border-radius:10px;
+}
+.nav-group-chev{font-size:12px;color:var(--ink4);transition:transform .15s;flex-shrink:0}
+.nav-group.open .nav-group-chev{transform:rotate(90deg)}
+.nav-group-body{display:none;padding-bottom:4px}
+.nav-group.open .nav-group-body{display:block}
+.nav-empty{padding:24px 16px;font-size:12px;color:var(--ink4);text-align:center;line-height:1.6}
+
+
 /* ── MAIN ── */
 .main{flex:1;overflow-y:auto;background:var(--bg)}
 .main::-webkit-scrollbar{width:5px}
@@ -149,6 +194,8 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink)
 .tag-me{background:var(--me-bg);color:var(--me-c)}
 .tag-na{background:var(--na-bg);color:var(--na-c)}
 .tag-au{background:var(--au-bg);color:var(--au-c)}
+.tag-as{background:var(--as-bg);color:var(--as-c)}
+.tag-af{background:var(--af-bg);color:var(--af-c)}
 .campus-name{
   font-family:'DM Serif Display',serif;font-size:30px;font-weight:400;
   color:var(--ink);line-height:1.2;margin-bottom:5px;
@@ -623,7 +670,7 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink)
 <div class="topbar">
   <div class="topbar-logo">放洋留遊學</div>
   <div class="topbar-div"></div>
-  <div class="topbar-sub">EP English Path 語言學校介紹</div>
+  <div class="topbar-sub">放洋語校資料庫</div>
   <div class="topbar-right">
     <button class="compare-btn" id="compareBtnTop" onclick="openCompare()">
       <span>⚖️</span><span id="compareCount">比較校區</span>
@@ -644,57 +691,16 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink)
         <span>📋 出發前必知</span>
         <span style="font-size:10px">→</span>
       </button>
+      <div class="sb-search-wrap">
+        <input type="text" id="navSearch" class="sb-search" placeholder="🔍 搜尋校區、城市…" oninput="filterNav()" autocomplete="off">
+      </div>
+      <div class="view-toggle" id="viewToggle">
+        <button class="view-toggle-btn on" data-mode="region" onclick="setViewMode('region')">依地區瀏覽</button>
+        <button class="view-toggle-btn" data-mode="vendor" onclick="setViewMode('vendor')">依廠商瀏覽</button>
+      </div>
     </div>
-    <div class="sb-scroll">
-      <div class="sb-region">英國</div>
-      <button class="nav-btn" id="nb-canary" onclick="show('canary')">
-        <span class="nav-flag">🇬🇧</span>倫敦 Canary Wharf
-        <span class="nav-cmp" id="cmp-canary" onclick="toggleCmp(event,'canary')"></span>
-      </button>
-      <button class="nav-btn" id="nb-greenford" onclick="show('greenford')">
-        <span class="nav-flag">🇬🇧</span>倫敦 Greenford
-        <span class="nav-cmp" id="cmp-greenford" onclick="toggleCmp(event,'greenford')"></span>
-      </button>
-      <button class="nav-btn" id="nb-birmingham" onclick="show('birmingham')">
-        <span class="nav-flag">🇬🇧</span>伯明罕
-        <span class="nav-cmp" id="cmp-birmingham" onclick="toggleCmp(event,'birmingham')"></span>
-      </button>
-      <button class="nav-btn" id="nb-leeds" onclick="show('leeds')">
-        <span class="nav-flag">🇬🇧</span>里茲
-        <span class="nav-cmp" id="cmp-leeds" onclick="toggleCmp(event,'leeds')"></span>
-      </button>
-      <div class="sb-region">歐洲</div>
-      <button class="nav-btn" id="nb-dublin" onclick="show('dublin')">
-        <span class="nav-flag">🇮🇪</span>都柏林
-        <span class="nav-cmp" id="cmp-dublin" onclick="toggleCmp(event,'dublin')"></span>
-      </button>
-      <button class="nav-btn" id="nb-berlin" onclick="show('berlin')">
-        <span class="nav-flag">🇩🇪</span>柏林
-        <span class="nav-cmp" id="cmp-berlin" onclick="toggleCmp(event,'berlin')"></span>
-      </button>
-      <button class="nav-btn" id="nb-paris" onclick="show('paris')">
-        <span class="nav-flag">🇫🇷</span>巴黎
-        <span class="nav-cmp" id="cmp-paris" onclick="toggleCmp(event,'paris')"></span>
-      </button>
-      <button class="nav-btn" id="nb-malta" onclick="show('malta')">
-        <span class="nav-flag">🇲🇹</span>馬爾他
-        <span class="nav-cmp" id="cmp-malta" onclick="toggleCmp(event,'malta')"></span>
-      </button>
-      <div class="sb-region">中東</div>
-      <button class="nav-btn" id="nb-dubai" onclick="show('dubai')">
-        <span class="nav-flag">🇦🇪</span>杜拜
-        <span class="nav-cmp" id="cmp-dubai" onclick="toggleCmp(event,'dubai')"></span>
-      </button>
-      <div class="sb-region">北美</div>
-      <button class="nav-btn" id="nb-toronto" onclick="show('toronto')">
-        <span class="nav-flag">🇨🇦</span>多倫多
-        <span class="nav-cmp" id="cmp-toronto" onclick="toggleCmp(event,'toronto')"></span>
-      </button>
-      <div class="sb-region">大洋洲</div>
-      <button class="nav-btn" id="nb-brisbane" onclick="show('brisbane')">
-        <span class="nav-flag">🇦🇺</span>布里斯本
-        <span class="nav-cmp" id="cmp-brisbane" onclick="toggleCmp(event,'brisbane')"></span>
-      </button>
+    <div class="sb-scroll" id="navScroll">
+      <div id="navList"></div>
     </div>
   </nav>
 
@@ -743,7 +749,7 @@ async function sb(method, table, body, params) {
 
 const D={
 canary:{
-  name:'倫敦 Canary Wharf',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  name:'EP 倫敦 Canary Wharf',region:'英國',tag:'tag-uk',flag:'🇬🇧',
   addr:'Import Building, 2 Clove Crescent, East India, London E14 2BE',cur:'£',
   intro:'Canary Wharf 是倫敦東區的現代金融心臟，與倫敦金融城並列全球兩大金融中心。這裡高樓聳立、河景開闊，是全球金融、法律與媒體菁英的工作聚集地。EP 在此設立 30 歲以上的成熟學習者專屬校區，讓你在真實的職場氛圍中學習英語，課後沿 Jubilee 線前往南岸或西區購物區，生活機能極為便捷。',
   info:[{l:'最低年齡',v:'30 歲以上（獨立分班）'},{l:'校區容量',v:'100 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:45 報到）'},{l:'校區性質',v:'30+ 成熟學習者校區'}],
@@ -797,7 +803,7 @@ canary:{
   ],
 },
 greenford:{
-  name:'倫敦 Greenford',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  name:'EP 倫敦 Greenford',region:'英國',tag:'tag-uk',flag:'🇬🇧',
   addr:'891 Greenford Rd, Greenford, London UB6 0HE',cur:'£',
   intro:'Greenford 是 EP 的全球總部所在地，也是英國最大的 EP 校區，可容納多達 500 名學生。校園佔地 10 萬平方英尺，設施齊全，擁有 Starbucks 咖啡廳、圖書館、IT 實驗室與多個學生交流空間。校區鄰近溫布利大球場，學校提供免費接駁巴士至地鐵站，生活費用相對市中心更為親民，非常適合首次出國留學、預算有限或希望在友善社區安心學習的學員。',
   info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'500 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區性質',v:'EP 全球總部'}],
@@ -844,7 +850,7 @@ greenford:{
   ],
 },
 birmingham:{
-  name:'伯明罕',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  name:'EP 伯明罕',region:'英國',tag:'tag-uk',flag:'🇬🇧',
   addr:'Norfolk House, 84-86 Smallbrook Queensway, Birmingham B5 4EG',cur:'£',
   intro:'伯明罕是英國第二大城市，以多元文化、年輕化人口結構與蓬勃的商業發展著稱。EP 伯明罕校區就在市中心心臟地帶，距伯明罕新街火車站步行僅兩分鐘，Bullring 購物中心就在校門對面。這裡是英國珠寶之都，擁有全英國最大的圖書館，每年聖誕市集規模也是全英第一，城市生活豐富多彩，生活費用比倫敦平易近人許多。',
   info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'500 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:45 報到）'},{l:'校區亮點',v:'市中心最佳地點'}],
@@ -891,7 +897,7 @@ birmingham:{
   ],
 },
 leeds:{
-  name:'里茲',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  name:'EP 里茲',region:'英國',tag:'tag-uk',flag:'🇬🇧',
   addr:'St George House, 40 Great George St, Leeds LS1 3DL',cur:'£',
   intro:'里茲是約克郡最大城市，英國第八大城，以充滿活力的藝術場景、頂尖劇場文化與多元餐飲聞名全球。EP 里茲校區位於市中心精華地段，緊鄰市政廳與市議會，步行即可抵達主要購物與娛樂區。距倫敦僅兩小時火車、愛丁堡三小時，週末輕鬆探索約克古城、湖區國家公園或利物浦，是英語學習與深度旅遊最完美的結合。',
   info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'250 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:45 報到）'},{l:'程度範圍',v:'初學者→高級'}],
@@ -939,7 +945,7 @@ leeds:{
   ],
 },
 dublin:{
-  name:'都柏林',region:'歐洲',tag:'tag-eu',flag:'🇮🇪',
+  name:'EP 都柏林',region:'歐洲',tag:'tag-eu',flag:'🇮🇪',
   addr:'1 Clarinda Park North, Dún Laoghaire, Dublin A96 H5X6',cur:'€',
   intro:'都柏林是 UNESCO 認定的文學之城，孕育了喬伊斯、葉慈、王爾德等文學巨匠。EP 都柏林校區坐落於美麗的海濱小鎮 Dún Laoghaire，校舍為壯觀的一級列管歷史建築，面向愛爾蘭海，環境靜謐怡人。這裡同時也是歐洲科技重鎮，Google、LinkedIn、Udemy、TikTok 的歐洲總部均設於此。',
   info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'180 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:30 報到）'},{l:'校舍特色',v:'一級列管歷史建物'}],
@@ -993,7 +999,7 @@ dublin:{
   ],
 },
 berlin:{
-  name:'柏林',region:'歐洲',tag:'tag-eu',flag:'🇩🇪',
+  name:'EP 柏林',region:'歐洲',tag:'tag-eu',flag:'🇩🇪',
   addr:'ALT-Moabit 96C, 10559 Berlin, Germany',cur:'€',
   intro:'柏林是歐洲最具創意能量的城市之一，每個街區都有自己的故事與風格。這裡擁有 170 多座博物館、300 多個藝廊與 150 多家劇場，文化資源極為豐富。EP 柏林是全球少數同時提供德文與英文課程的 EP 校區，讓你在德國最重要的城市完全沉浸在德語環境之中，是學習德語的全球最佳選擇之一。',
   info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'250 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'英語：週一 11:30；德語：週一 12:30'},{l:'語言選擇',v:'德文 ＋ 英文'}],
@@ -1045,7 +1051,7 @@ berlin:{
   ],
 },
 paris:{
-  name:'巴黎',region:'歐洲',tag:'tag-eu',flag:'🇫🇷',
+  name:'EP 巴黎',region:'歐洲',tag:'tag-eu',flag:'🇫🇷',
   addr:'98 Rue Didot, 75014 Paris, France',cur:'€',
   intro:'巴黎，光之城，全球時尚、藝術與美食的永恆中心。EP 巴黎同時提供法文與英文課程，是 EP 全球獨一無二的雙語學習校區。校區位於巴黎 14 區的安靜住宅街道，交通便利、環境安全，距蒙帕納斯火車站與多條地鐵線僅數分鐘步行。在這裡學法語，你不只是在學一門語言，而是在學一種生活方式。',
   info:[{l:'最低年齡',v:'16 歲以上'},{l:'每語言容量',v:'60 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'法語：週一 09:00；英語：週一 13:00'},{l:'語言選擇',v:'法文 ＋ 英文'}],
@@ -1095,7 +1101,7 @@ paris:{
   ],
 },
 malta:{
-  name:'馬爾他',region:'歐洲',tag:'tag-eu',flag:'🇲🇹',
+  name:'EP 馬爾他',region:'歐洲',tag:'tag-eu',flag:'🇲🇹',
   addr:'West Block, Marguerite Mangion St, St. Julian\'s, STJ 3180',cur:'€',
   intro:'馬爾他是地中海中央的陽光島嶼，全年日照超過 300 天，擁有清澈碧藍的海水、豐富的古羅馬與騎士歷史，以及輕鬆愜意的生活步調。EP 馬爾他是全球最大的 EP 校區，可容納多達 500 名學生，坐落於熱鬧的海濱社區 St. Julian\'s，俯瞰 Spinola Bay 海灣，距離藍泉（Blue Lagoon）、Valletta 古城、Gozo 島皆可輕鬆前往。',
   info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'500 人（EP 全球最大）'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（上午 10:00 / 下午 13:00 / 晚間 17:00）'},{l:'校區特色',v:'EP 全球最大校區'}],
@@ -1149,7 +1155,7 @@ malta:{
   ],
 },
 dubai:{
-  name:'杜拜',region:'中東',tag:'tag-me',flag:'🇦🇪',
+  name:'EP 杜拜',region:'中東',tag:'tag-me',flag:'🇦🇪',
   addr:'Block 3, Dubai Knowledge Park, Al Sufouh 2, Dubai, UAE',cur:'USD',
   intro:'杜拜是 21 世紀最驚人的城市奇蹟，短短數十年間從沙漠崛起為全球頂尖的商業、觀光與教育中心。EP 杜拜校區位於 Dubai Knowledge Park，這是一個專為教育機構設計的學術園區，雲集全球知名大學分校與語言機構。豐富的課外活動包含沙漠越野、阿布達比城市遊覽、遊艇出海等，讓留學體驗無比精彩。',
   info:[{l:'最低年齡',v:'16 歲（持 1 年學生簽）或 18 歲（持 6 個月教育簽）'},{l:'校區容量',v:'480 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:30 報到）'},{l:'校區位置',v:'Dubai Knowledge Park'}],
@@ -1199,7 +1205,7 @@ dubai:{
   ],
 },
 toronto:{
-  name:'多倫多',region:'北美',tag:'tag-na',flag:'🇨🇦',
+  name:'EP 多倫多',region:'北美',tag:'tag-na',flag:'🇨🇦',
   addr:'36 Victoria Street, Toronto ON M5C 1H3, Canada',cur:'CA$',
   intro:'多倫多是加拿大最大城市、北美第四大都會區，以極度多元的文化背景聞名全球——超過 100 個族裔在此共居，是真正意義上的世界縮影。EP 多倫多校區位於市中心心臟地帶，步行可達 CN 塔、濱水區、Distillery District 與 PATH 地下城，是探索這座城市最理想的出發點。',
   info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'150 人'},{l:'最大班級',v:'15 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:30 報到）'},{l:'最長修讀',v:'24 週（ETA 持有者）'}],
@@ -1248,7 +1254,7 @@ toronto:{
   ],
 },
 brisbane:{
-  name:'布里斯本',region:'大洋洲',tag:'tag-au',flag:'🇦🇺',
+  name:'EP 布里斯本',region:'大洋洲',tag:'tag-au',flag:'🇦🇺',
   addr:'Level 3, 115 Queen Street, Brisbane QLD 4000, Australia',cur:'AU$',
   intro:'布里斯本是澳洲昆士蘭州首府，以陽光明媚的氣候、輕鬆友善的城市風格與豐富的戶外生活著稱。EP 布里斯本是全市地理位置最核心的英語學校，坐落於 Queen Street Mall 步行商圈，距中央火車站步行僅 5 分鐘，距中央巴士站僅 1 分鐘。布里斯本正在快速成長，將主辦 2032 年夏季奧運，是澳洲最具活力的新興城市之一。',
   info:[{l:'最低年齡',v:'18 歲以上'},{l:'校區容量',v:'216 人'},{l:'最大班級',v:'18 人'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（08:45 報到）'},{l:'CRICOS 代碼',v:'04187G'}],
@@ -1293,6 +1299,1632 @@ brisbane:{
     {q:'澳洲學生簽、觀光簽、打工度假簽有什麼不同？可以讀多久？',a:'三種簽證對語言課程的限制不同。學生簽（Student Visa）最長可讀 62 週，需要申請 CRICOS 認可課程（EP 布里斯本持有 04187G），費用較高但保障最完整。觀光簽（Tourist Visa）最多讀 12 週，適合短期進修。打工度假簽（WHV）最多讀 17 週，可以同時打工賺取生活費，適合 18–30 歲的學員，台灣人每年有一定名額。'},
     {q:'布里斯本和雪梨、墨爾本比起來生活費差很多嗎？',a:'布里斯本的整體生活費用比雪梨和墨爾本低約 10–20%，尤其是住宿費用。同樣等級的學生宿舍，布里斯本通常比雪梨便宜 $50–100/週。加上 EP 布里斯本的校區就在市中心 Queen Street Mall，交通便利性遠優於需要通勤的其他城市學校，是性價比相當高的選擇。'},
     {q:'布里斯本天氣適合全年入學嗎？',a:'布里斯本全年氣候溫暖，沒有真正的嚴冬，最低溫冬天（6–8月）約 10–15°C，夏天（12–2月）約 25–30°C 但較潮濕。全年都適合入學，但夏季（12–2月）偶有暴雨，冬季（6–8月）是最舒適的時段，也是台灣學員最多選擇的入學季節。'},
+  ],
+},
+sgic_toronto:{
+  name:'SGIC 多倫多',region:'北美',tag:'tag-na',flag:'🇨🇦',
+  addr:'2nd Floor, 543 Yonge St, Toronto, ON（2026/3 啟用新校區）',cur:'CA$',
+  intro:'多倫多是全球最多元文化的城市，加拿大商業、金融與電影中心，坐落安大略湖畔。SGIC 多倫多於 2026 年 3 月遷入 Yonge 街全新市中心校區，距 Wellesley 地鐵站步行僅 2 分鐘，CN 塔、水族館、釀酒廠等景點近在咫尺，樓下就有商店、周邊咖啡餐廳林立。從 ESL、證照 Diploma 到大專院校銜接一條龍，並提供打工渡假職涯銜接，是想在加拿大東岸學英語、考證照或升學的首選。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'中型校區'},{l:'最大班級',v:'平均 12–14 人（旺季 16）'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'2026 全新市中心校區'}],
+  feats:[
+    {i:'🏙️',t:'2026 全新市中心校區',d:'543 Yonge St，距 Wellesley 站步行 2 分鐘，近 CN 塔、水族館、釀酒廠，樓下一元商店、周邊咖啡餐廳林立。'},
+    {i:'🌍',t:'全球最多元文化城市',d:'加拿大商業、金融與電影中心，安大略湖畔，國際學生匯聚，英語環境真實多元。'},
+    {i:'🎯',t:'一條龍課程體系',d:'ESL → 證照 Diploma → 大專院校銜接（UCPP），銜接 80+ 加拿大大專院校。'},
+    {i:'💼',t:'打工渡假職涯銜接',d:'Working Holiday Connect：履歷指導、線上與雇主面試到拿 Offer，協助在多倫多找到第一份工作。'},
+    {i:'🏫',t:'完善校區設施',d:'IT Lab、電腦、Wi-Fi、廚房、學生交誼廳，課後活動與週末出遊豐富。'},
+  ],
+  who:[
+    {i:'📜',t:'想考英語證照 / Diploma',d:'SSP 口語、BEDP 商業、EFM 醫療、i-TESOL 教學等，4 週 Certificate / 8 週 Diploma。'},
+    {i:'🎓',t:'想銜接加拿大大專院校',d:'UCPP 與 80+ 合作院校配合，達語言門檻可免再考雅思直接申請升學。'},
+    {i:'💼',t:'打工渡假想找工作',d:'Working Holiday Connect 協助履歷、面試到拿 Offer，適合持工簽、就讀 12 週以上的學員。'},
+    {i:'🌆',t:'想體驗加拿大東岸都會生活',d:'多元文化、景點豐富、活動多，週末還能輕鬆前往尼加拉瀑布。'},
+  ],
+  courses:[
+    {name:'一般密集 Intensive English（30 堂/週）',special:false,tags:['30堂/週','9:00–13:25','Level 1–6'],price:'CA$ 305/週起',desc:'每週 30 堂（上到 Period 3）：Integrated Skills + Speaking Skills。每級 8 週、B 級（70%）升級。週數越長單價越低（24 週以上約 $265/週）。'},
+    {name:'全日密集 Full-Time Intensive（40 堂/週）',special:false,tags:['40堂/週','9:00–14:45','Level 1–6'],price:'CA$ 405/週起',desc:'每週 40 堂（上到 Period 4），加入 Listening & Speaking / Dynamic Speaking，口說輸出最密集。24 週以上約 $365/週。'},
+    {name:'X-Intensive（40 堂/週 + 一對一）',special:false,tags:['40堂/週 + 1:1','9:00–16:00（二/三/四）','Level 1–6'],price:'CA$ 510/週起',desc:'全日密集再加每週一對一輔導（Period 5，週二/三/四），個別化強化弱項。24 週以上約 $470/週。'},
+    {name:'證照 Diploma（SSP / BEDP / EFM / i-TESOL 等）',special:true,tags:['Level 7','4週Cert / 8週Diploma','需 ESL6+ / IELTS5.0+'],price:'CA$ 1,875 起（4週）',desc:'口語強化(SSP)、商業英文(BEDP)、醫療英文(EFM)、英語教學(i-TESOL)等。4 週 Certificate $1,875、8 週 Diploma $3,700。'},
+    {name:'IELTS / TOEFL 備考（多倫多）',special:true,tags:['Test Prep','4–8 週','需 ESL7 / IELTS5.5+'],price:'CA$ 1,875 起（4週）',desc:'雅思／托福官方考試備考，IELTS Test Prep 為多倫多校區特色。4 週 $1,875、8 週 $3,700。'},
+    {name:'Pathway 大專院校銜接（PPP / UCPP）',special:true,tags:['PPP 8週','UCPP 12週','銜接 80+ 院校'],price:'CA$ 1,875 起',desc:'PPP 預備銜接（8 週 $3,700）、UCPP 大專銜接（12 週 $5,450，促銷約 $4,633 起）。完成達標可免雅思直升合作院校。'},
+    {name:'打工渡假職涯銜接 Working Holiday Connect',special:true,tags:['12週語言+面試','需 Level 6+ / SSP-i','持工簽'],price:'CA$ 4,740（12週方案）',desc:'1:1 履歷與 Cover Letter 指導 → 多倫多招募公司線上面試 → 雇主最終面試 → 取得 Offer。需就讀 12 週以上、持有效工簽。非保證就業。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（純房間 Room Only）',meta:'成人・含家具房間・近大眾運輸',price:'CA$ 280/週起',desc:'與加拿大寄宿家庭同住、自理三餐，費用最低。淡季(9–5月)$280、旺季(6–8月)$295。'},
+    {name:'寄宿家庭（半膳 2 餐）',meta:'成人・含早晚餐',price:'CA$ 320/週起',desc:'含每日早晚餐，課後與寄宿家庭用英語互動，沉浸效果佳。旺季 $355。'},
+    {name:'寄宿家庭（全膳 3 餐）',meta:'成人・含三餐',price:'CA$ 335/週起',desc:'三餐全包最省心，適合初次出國的學員。旺季 $370；未成年另有方案。'},
+    {name:'學生宿舍（轉介媒合）',meta:'依需求媒合',price:'請洽詢',desc:'另可協助媒合大學宿舍、飯店、青年旅館等，依預算與偏好安排。'},
+  ],
+  fees:[{l:'註冊費',v:'CA$ 200（8週以上常促銷免收）'},{l:'ESL 教材費',v:'CA$ 60/4週'},{l:'住宿安排費',v:'CA$ 230（不可退）'},{l:'醫療保險',v:'CA$ 3.5/天'},{l:'接機',v:'CA$ 120/次'},{l:'電匯手續費',v:'收款 CA$ 25'}],
+  calcCourses:[{n:'一般密集 Intensive（30堂）',pw:305},{n:'全日密集 Full-Time（40堂）',pw:405},{n:'X-Intensive（40堂+1:1）',pw:510}],
+  calcAccomm:[{n:'寄宿家庭 全膳 3 餐',pw:335},{n:'寄宿家庭 半膳 2 餐',pw:320},{n:'寄宿家庭 純房間',pw:280}],
+  day:[
+    {time:'09:00 上課',title:'進入 Yonge 街校區',desc:'搭地鐵到 Wellesley 站，步行 2 分鐘到校，先到交誼廳和來自各國的同學聊幾句。'},
+    {time:'09:00–14:45',title:'英語課程',desc:'Integrated Skills、Speaking、Dynamic Speaking，每堂 70 分鐘，班上同學來自 70 個國家，全英語討論。'},
+    {time:'12:15 午餐',title:'校內或 Yonge 街覓食',desc:'校區廚房或周邊餐廳，Yonge 街美食林立，幾加幣就能解決一餐。'},
+    {time:'放學後',title:'活動與景點',desc:'每週三 Conversation Club、隔週五 Language Exchange，或去 CN 塔、Casa Loma、聖羅倫斯市場。'},
+    {time:'週末',title:'東岸出遊',desc:'尼加拉瀑布、Blue Mountain、Wonderland 遊樂園，或看 Blue Jays 棒球賽，東岸的週末選擇豐富。'},
+  ],
+  qa:[
+    {q:'台灣人去加拿大讀語言學校需要辦什麼簽證？',a:'需先申請 eTA（電子旅行授權，約 CAD $7、線上幾天核准）。6 個月內的語言課程可用觀光身分入境，超過 6 個月或要正式學生身分則需 Study Permit。若是打工渡假（IEC）簽證，可邊讀邊合法工作。實際以官方最新規定為準。'},
+    {q:'SGIC 多倫多和溫哥華怎麼選？',a:'多倫多是全球最多元文化城市、加拿大商業金融與電影中心、景點多、離尼加拉瀑布近；溫哥華被海洋與山脈環抱、氣候溫和、戶外活動豐富。兩岸課程相同，SGIC 還能東西岸校區互轉，一趟體驗加拿大兩岸。'},
+    {q:'證照 Diploma 或 UCPP 真的能銜接加拿大大學嗎？',a:'UCPP 與 80+ 所加拿大大專院校合作，完成課程並達到語言門檻後，多數合作院校可免再考雅思直接申請入學。不過仍須符合各校的學術成績與科系要求，建議依目標院校確認。'},
+  ],
+},
+
+sgic_vancouver:{
+  name:'SGIC 溫哥華',region:'北美',tag:'tag-na',flag:'🇨🇦',
+  addr:'605 Robson St, #200, Vancouver, BC V6B 5J3',cur:'CA$',
+  intro:'溫哥華被海洋與山脈環抱，氣候宜人、四季皆宜戶外活動，是加拿大西岸最受歡迎的留學城市之一。SGIC 溫哥華位於市中心 Robson 街，鄰近 Granville 與 Vancouver City 兩個地鐵站，銀行、餐廳與購物中心步行可達。課程涵蓋 ESL、證照 Diploma 與大專院校銜接，東西岸校區還能互轉，讓你在學英語的同時，飽覽洛磯山與太平洋的自然美景。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'中型校區'},{l:'最大班級',v:'平均 12–14 人（旺季 16）'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'海洋與山脈環抱'}],
+  feats:[
+    {i:'🏔️',t:'海洋與山脈環抱',d:'氣候宜人、全年戶外活動，滑雪、健行、海灘近在咫尺，自然與都會兼得。'},
+    {i:'🚉',t:'市中心 Robson 街',d:'鄰近 Granville 與 Vancouver City 兩個地鐵站，銀行、餐廳、購物中心步行可達。'},
+    {i:'🎯',t:'一條龍課程體系',d:'ESL → 證照 Diploma → 大專院校銜接（UCPP），銜接 80+ 加拿大大專院校。'},
+    {i:'🔁',t:'東西岸校區互轉',d:'可在溫哥華與多倫多之間轉校，一次體驗加拿大東西兩岸的城市與風景。'},
+    {i:'🏫',t:'完善校區設施',d:'IT Lab、電腦、Wi-Fi、廚房、學生交誼廳，課後活動與週末出遊豐富。'},
+  ],
+  who:[
+    {i:'☀️',t:'嚮往海洋山林生活',d:'氣候宜人、戶外活動豐富，邊學英語邊享受 Stanley Park、Whistler 的自然。'},
+    {i:'📜',t:'想考證照 / 銜接大專',d:'證照 Diploma（SSP/BEDP/EFM/i-TESOL）與 UCPP 大專院校銜接。'},
+    {i:'💰',t:'注重性價比的西岸選擇',d:'市中心地點、完整課程體系，西岸熱門留學城市的實惠選擇。'},
+    {i:'🔁',t:'想東西岸都體驗',d:'可與多倫多校區互轉，課程相同、無縫接軌。'},
+  ],
+  courses:[
+    {name:'一般密集 Intensive English（30 堂/週）',special:false,tags:['30堂/週','9:00–13:25','Level 1–6'],price:'CA$ 305/週起',desc:'每週 30 堂（上到 Period 3）：Integrated Skills + Speaking Skills。每級 8 週、B 級（70%）升級。週數越長單價越低（24 週以上約 $265/週）。'},
+    {name:'全日密集 Full-Time Intensive（40 堂/週）',special:false,tags:['40堂/週','9:00–14:45','Level 1–6'],price:'CA$ 405/週起',desc:'每週 40 堂（上到 Period 4），加入 Listening & Speaking / Dynamic Speaking，口說輸出最密集。24 週以上約 $365/週。'},
+    {name:'X-Intensive（40 堂/週 + 一對一）',special:false,tags:['40堂/週 + 1:1','9:00–16:00（二/三/四）','Level 1–6'],price:'CA$ 510/週起',desc:'全日密集再加每週一對一輔導（Period 5，週二/三/四），個別化強化弱項。24 週以上約 $470/週。'},
+    {name:'證照 Diploma（SSP / BEDP / EFM / i-TESOL / EFP）',special:true,tags:['Level 7','4週Cert / 8週Diploma','需 ESL6+ / IELTS5.0+'],price:'CA$ 1,875 起（4週）',desc:'口語強化(SSP)、商業英文(BEDP)、醫療英文(EFM)、英語教學(i-TESOL)、職場英文(EFP)等。4 週 Certificate $1,875、8 週 Diploma $3,700。'},
+    {name:'Pathway 大專院校銜接（PPP / UCPP）',special:true,tags:['PPP 8週','UCPP 12週','銜接 80+ 院校'],price:'CA$ 1,875 起',desc:'PPP 預備銜接（8 週 $3,700）、UCPP 大專銜接（12 週 $5,450，促銷約 $4,633 起）。完成達標可免雅思直升合作院校。'},
+    {name:'TOEFL / Duolingo 備考',special:true,tags:['Test Prep','4–8 週','需 ESL7'],price:'CA$ 1,875 起（4週）',desc:'官方考試備考課程，協助衝刺升學或證照所需分數。4 週 $1,875、8 週 $3,700。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（純房間 Room Only）',meta:'成人・含家具房間・近大眾運輸',price:'CA$ 285/週起',desc:'與加拿大寄宿家庭同住、自理三餐，費用最低。淡季(9–5月)$285、旺季(6–8月)$300。'},
+    {name:'寄宿家庭（半膳 2 餐）',meta:'成人・含早晚餐',price:'CA$ 345/週起',desc:'含每日早晚餐，課後與寄宿家庭用英語互動，沉浸效果佳。旺季 $360。'},
+    {name:'寄宿家庭（全膳 3 餐）',meta:'成人・含三餐',price:'CA$ 370/週起',desc:'三餐全包最省心，適合初次出國的學員。旺季 $385；未成年另有方案。'},
+    {name:'學生宿舍（轉介媒合）',meta:'依需求媒合',price:'請洽詢',desc:'另可協助媒合大學宿舍、飯店、青年旅館等，依預算與偏好安排。'},
+  ],
+  fees:[{l:'註冊費',v:'CA$ 200（8週以上常促銷免收）'},{l:'ESL 教材費',v:'CA$ 60/4週'},{l:'住宿安排費',v:'CA$ 230（不可退）'},{l:'醫療保險',v:'CA$ 3.5/天'},{l:'接機',v:'CA$ 120/次'},{l:'電匯手續費',v:'收款 CA$ 25'}],
+  calcCourses:[{n:'一般密集 Intensive（30堂）',pw:305},{n:'全日密集 Full-Time（40堂）',pw:405},{n:'X-Intensive（40堂+1:1）',pw:510}],
+  calcAccomm:[{n:'寄宿家庭 全膳 3 餐',pw:370},{n:'寄宿家庭 半膳 2 餐',pw:345},{n:'寄宿家庭 純房間',pw:285}],
+  day:[
+    {time:'09:00 上課',title:'進入 Robson 街校區',desc:'搭地鐵到 Granville 或 Vancouver City 站，步行到校，先到交誼廳和各國同學暖身聊天。'},
+    {time:'09:00–14:45',title:'英語課程',desc:'Integrated Skills、Speaking、Dynamic Speaking，每堂 70 分鐘，全英語環境密集練習。'},
+    {time:'12:15 午餐',title:'Robson 街覓食',desc:'校區廚房或周邊餐廳，Robson 街是溫哥華最熱鬧的購物與美食街。'},
+    {time:'放學後',title:'活動與景點',desc:'每週三 Conversation Club、隔週五 Language Exchange，或去 Stanley Park、Granville Island、English Bay。'},
+    {time:'週末',title:'西岸出遊',desc:'Whistler 滑雪、Capilano 吊橋、Grouse Mountain，或搭渡輪到 Victoria，西岸的山海任你探索。'},
+  ],
+  qa:[
+    {q:'台灣人去加拿大讀語言學校需要辦什麼簽證？',a:'需先申請 eTA（電子旅行授權，約 CAD $7、線上幾天核准）。6 個月內的語言課程可用觀光身分入境，超過 6 個月或要正式學生身分則需 Study Permit。若是打工渡假（IEC）簽證，可邊讀邊合法工作。實際以官方最新規定為準。'},
+    {q:'溫哥華是不是很常下雨？',a:'溫哥華冬季（11–2 月）多雨但氣候溫和、少有嚴寒與大雪；春夏秋三季相當宜人、日照充足，全年都適合戶外活動，是加拿大氣候最溫和的大城市之一。'},
+    {q:'證照 Diploma 或 UCPP 真的能銜接加拿大大學嗎？',a:'UCPP 與 80+ 所加拿大大專院校合作，完成課程並達到語言門檻後，多數合作院校可免再考雅思直接申請入學。不過仍須符合各校的學術成績與科系要求，建議依目標院校確認。'},
+  ],
+},
+
+kaplan_boston:{
+  name:'Kaplan 波士頓',region:'北美',tag:'tag-na',flag:'🇺🇸',
+  addr:'Suite 200, 11 Beacon Street, Boston, MA 02108',cur:'USD',
+  intro:'波士頓融合歷史底蘊與創新活力，是哈佛大學與麻省理工學院所在的頂尖學術之城。Kaplan 校區座落市中心比肯街、歷史「自由之路」沿線，緊鄰麻州政府大廈，步行即達昆西市場與波士頓公園。四季分明、美食多元，塞爾提克與紅襪的主場為城市增添熱情，是沉浸英語同時感受美式學術氛圍的理想基地。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'中型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'市中心比肯街，自由之路沿線'}],
+  feats:[
+    {i:'📍',t:'市中心比肯街',d:'位於歷史「自由之路」沿線、麻州政府大廈旁，波士頓最核心地段。'},
+    {i:'🎓',t:'頂尖學府環繞',d:'哈佛、MIT 所在城市，可參加哈佛校園遊覽，學術氛圍濃厚。'},
+    {i:'🏀',t:'運動之城',d:'塞爾提克（NBA）與紅襪（MLB）主場，賽季看球超有氣氛。'},
+    {i:'🌃',t:'後灣夜生活',d:'後灣、南角一帶餐廳與俱樂部林立，課後生活精彩。'},
+    {i:'🍂',t:'四季分明文化城',d:'歷史與創新兼具、美食多元，適合長住沉浸英語與生活。'},
+  ],
+  who:[
+    {i:'🎓',t:'想銜接美國大學的學員',d:'TOEFL＋學術英語課程搭配大學申請服務，為升學鋪路。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程強化簡報與職場溝通。'},
+    {i:'✈️',t:'首次赴美長住的學員',d:'市中心校區、生活機能佳，適合第一次到美國沉浸。'},
+    {i:'🏛️',t:'嚮往學術城市氛圍者',d:'哈佛、MIT 環繞，學風濃厚、書店與博物館林立。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'USD $420/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（USD）：1–4週 520／5–11週 500／12–19週 470／20+週 420。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'USD $470/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（USD）：1–4週 590／5–11週 560／12–19週 530／20+週 470。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'USD $520/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇。　各長度每週價（USD）：1–4週 650／5–11週 620／12–19週 590／20+週 520。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['最多10週','職場情境'],price:'USD $620/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（最多 10 週）。　各長度每週價（USD）：1–4週 650／5–11週 620／12–19週 —／20+週 —。'},
+    {name:'TOEFL＋強化學術英語 TOEFL & Intensive Academic',special:true,tags:['最多16週','考試導向'],price:'USD $590/週起',desc:'TOEFL iBT 應試技巧結合學術英語，銜接美國大學（最多 16 週）。　各長度每週價（USD）：1–4週 650／5–11週 620／12–19週 590／20+週 —。'},
+    {name:'TOEFL＋學術英語（非全日） TOEFL & Academic (Part-time)',special:true,tags:['非全日','考試導向'],price:'USD $530/週起',desc:'非全日的 TOEFL 與學術英語，彈性選讀（最多 12–16 週）。　各長度每週價（USD）：1–4週 590／5–11週 560／12–19週 530／20+週 —。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'USD $100/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含早晚餐）',meta:'18歲以上・通勤約 30–60 分',price:'USD $320/週起',desc:'入住波士頓在地家庭並含早晚餐，語言沉浸效果最佳。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'USD $380/週起',desc:'為未成年學生安排的寄宿家庭，含餐與生活照顧。'},
+    {name:'The Bon 學生公寓（Boston Apartments）',meta:'18歲以上・市區',price:'USD $730/週起',desc:'市區服務式學生公寓，獨立生活空間，另有豪華單人房（760）。'},
+  ],
+  fees:[{l:'報名費',v:'USD $200'},{l:'住宿安置費',v:'USD $100'},{l:'醫療與旅行保險',v:'USD $50/週'},{l:'大學申請服務',v:'USD $250（升學適用）'},{l:'電匯手續費（台灣）',v:'USD $50'}],
+  calcCourses:[{n:'通用英語',pw:500},{n:'半強化英語',pw:560},{n:'強化英語',pw:620}],
+  calcAccomm:[{n:'The Bon 學生公寓',pw:730},{n:'寄宿家庭',pw:320}],
+  day:[
+    {time:'07:30 起床',title:'比肯街的早晨',desc:'從住處出發，先在市中心咖啡店買杯咖啡再進教室。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班沉浸，老師用新聞與時事帶你開口練口說。'},
+    {time:'12:15 午餐',title:'昆西市場覓食',desc:'步行到 Quincy Market，各國小吃任你挑。'},
+    {time:'下午自由',title:'自由之路散步',desc:'沿歷史步道走訪古蹟，或到後灣逛街喝咖啡。'},
+    {time:'週末',title:'看球或近郊小旅行',desc:'到芬威球場看紅襪，或走過查爾斯河逛哈佛校園。'},
+  ],
+  qa:[
+    {q:'台灣人去美國短期遊學需要簽證嗎？',a:'台灣是美國免簽（VWP）國家，短期、每週上課時數較低的課程通常可持 ESTA 入境就讀；但全日制或較長期的英語課程需申請 F-1 學生簽證，Kaplan 可協助核發 I-20。實際依課程時數與長度而定，請以美國在台協會（AIT）最新規定與顧問確認。'},
+    {q:'波士頓和紐約怎麼選？',a:'波士頓學術氣息濃、城市較精緻、步調稍慢、生活費略低於紐約；紐約更大更熱鬧、機會多但花費高。想要濃厚校園學風、又想離紐約近，波士頓很合適。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 500 美元起、住宿約 320 美元起，實際依課程長度與房型而定，可用頁面計算機換算台幣。'},
+  ],
+},
+
+kaplan_chicago:{
+  name:'Kaplan 芝加哥',region:'北美',tag:'tag-na',flag:'🇺🇸',
+  addr:'444 North Michigan Avenue, Chicago, IL 60611',cur:'USD',
+  intro:'芝加哥以爵士樂、深盤披薩與迷人天際線聞名，是熱門影集《熊家餐館》的取景地。Kaplan 校區就在著名的「華麗一英里」（Magnificent Mile）購物大道上，緊鄰美麗的密西根湖畔，可搭船欣賞城市天際線、到千禧公園野餐。這是一座兼具現代都會活力與文化底蘊的城市，適合在市中心一邊生活、一邊提升英語。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'中型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'華麗一英里購物大道、密西根湖畔'}],
+  feats:[
+    {i:'📍',t:'華麗一英里',d:'校區位於芝加哥最著名的旅遊購物大道，逛街用餐都方便。'},
+    {i:'🌊',t:'密西根湖畔',d:'緊鄰湖濱，可搭船遊城市天際線，夏日野餐超愜意。'},
+    {i:'🎬',t:'影劇取景地',d:'《熊家餐館》《無恥之徒》都在此拍攝，城市感十足。'},
+    {i:'🎷',t:'爵士與美食',d:'深盤披薩、爵士酒吧、音樂劇，夜生活與文化並重。'},
+    {i:'💰',t:'中西部性價比',d:'生活費較兩岸大城親民，是划算的美國學語言選擇。'},
+  ],
+  who:[
+    {i:'✈️',t:'想體驗地道美國都會的學員',d:'市中心校區、湖畔生活，第一次赴美也好上手。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程聚焦職場溝通。'},
+    {i:'🗣️',t:'想沉浸練口說的學員',d:'通用與強化課程程度分班，開口機會多。'},
+    {i:'🎨',t:'喜歡藝術與音樂的學員',d:'芝加哥藝術博物館與爵士文化資源豐富。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'USD $370/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（USD）：1–4週 470／5–11週 440／12–19週 420／20+週 370。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'USD $420/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（USD）：1–4週 520／5–11週 500／12–19週 480／20+週 420。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'USD $470/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇。　各長度每週價（USD）：1–4週 580／5–11週 550／12–19週 520／20+週 470。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['最多10週','職場情境'],price:'USD $550/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（最多 10 週）。　各長度每週價（USD）：1–4週 580／5–11週 550／12–19週 —／20+週 —。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'USD $100/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含早晚餐）',meta:'18歲以上・通勤約 30–60 分',price:'USD $250/週起',desc:'密西根湖畔城市的在地家庭，含餐、生活體驗道地。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'USD $350/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'The Flats 學生公寓',meta:'18歲以上・市區',price:'USD $420/週起',desc:'市區學生公寓，另有獨立套間房型（690）。'},
+  ],
+  fees:[{l:'報名費',v:'USD $200'},{l:'住宿安置費',v:'USD $100'},{l:'醫療與旅行保險',v:'USD $50/週'},{l:'大學申請服務',v:'USD $250（升學適用）'},{l:'電匯手續費（台灣）',v:'USD $50'}],
+  calcCourses:[{n:'通用英語',pw:440},{n:'半強化英語',pw:500},{n:'強化英語',pw:550}],
+  calcAccomm:[{n:'The Flats 學生公寓',pw:420},{n:'寄宿家庭',pw:250}],
+  day:[
+    {time:'07:30 起床',title:'湖畔早晨',desc:'住處出發，沿密西根大道走向校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'互動式小班，主題常圍繞新聞與流行文化。'},
+    {time:'12:15 午餐',title:'華麗一英里覓食',desc:'大道周邊餐廳林立，來份深盤披薩補充能量。'},
+    {time:'下午自由',title:'湖濱或博物館',desc:'到千禧公園拍「豆子」，或逛芝加哥藝術博物館。'},
+    {time:'週末',title:'城市探索',desc:'搭船遊天際線，或到 Navy Pier 看夜景。'},
+  ],
+  qa:[
+    {q:'台灣人去美國短期遊學需要簽證嗎？',a:'台灣是美國免簽（VWP）國家，短期、每週上課時數較低的課程通常可持 ESTA 入境就讀；但全日制或較長期的英語課程需申請 F-1 學生簽證，Kaplan 可協助核發 I-20。實際依課程時數與長度而定，請以美國在台協會（AIT）最新規定與顧問確認。'},
+    {q:'芝加哥的天氣會很冷嗎？',a:'冬季確實較冷、有風，記得帶保暖衣物；春夏秋則舒適宜人，湖畔活動豐富。校區在市中心、室內動線完善，通勤影響不大。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 440 美元起、住宿約 250 美元起，是美加校區中較親民的選擇，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_losangeles:{
+  name:'Kaplan 洛杉磯',region:'北美',tag:'tag-na',flag:'🇺🇸',
+  addr:'1100 Glendon Avenue, Los Angeles, CA 90024',cur:'USD',
+  intro:'洛杉磯是陽光普照、精彩不斷的「天使之城」，好萊塢、海灘與主題樂園近在咫尺。Kaplan 校區位於 Westwood，距離加州大學洛杉磯分校（UCLA）僅數分鐘，搭短程公車即可抵達聖莫尼卡海灘。校區安排海灘單車、衝浪與各式體育活動，週末還能前往迪士尼、環球影城與拉斯維加斯，是熱愛戶外與流行文化學員的理想之地。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'Westwood，UCLA 步行可達'}],
+  feats:[
+    {i:'📍',t:'Westwood．UCLA 旁',d:'校區位於學區 Westwood，加州大學洛杉磯分校步行可達。'},
+    {i:'🏖️',t:'海灘生活',d:'短程公車即到聖莫尼卡海灘，衝浪、單車活動不斷。'},
+    {i:'🎬',t:'好萊塢近在咫尺',d:'環球影城、好萊塢星光大道與各大片場都能一探。'},
+    {i:'🏀',t:'運動之城',d:'湖人（NBA）、道奇（MLB）主場，賽季看球超嗨。'},
+    {i:'☀️',t:'終年陽光',d:'加州陽光與戶外生活，適合喜歡活力步調的學員。'},
+  ],
+  who:[
+    {i:'🏖️',t:'嚮往加州生活的學員',d:'陽光、海灘與戶外活動，學語言同時享受生活。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程強化職場溝通。'},
+    {i:'🎬',t:'對影視娛樂有興趣者',d:'好萊塢與流行文化資源豐富，話題不斷。'},
+    {i:'🗣️',t:'想大量練口說的學員',d:'課程程度分班，社交活動多、開口機會足。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'USD $410/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（USD）：1–4週 510／5–11週 480／12–19週 460／20+週 410。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'USD $460/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（USD）：1–4週 570／5–11週 550／12–19週 520／20+週 460。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'USD $510/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇。　各長度每週價（USD）：1–4週 630／5–11週 600／12–19週 570／20+週 510。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['最多10週','職場情境'],price:'USD $600/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（最多 10 週）。　各長度每週價（USD）：1–4週 630／5–11週 600／12–19週 —／20+週 —。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'USD $100/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含早晚餐）',meta:'18歲以上・通勤約 30–60 分',price:'USD $360/週起',desc:'洛杉磯在地家庭含餐，體驗加州生活步調。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'USD $400/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'Westwood 學生宿舍 Residence',meta:'18歲以上・近校區',price:'USD $490/週起',desc:'鄰近 UCLA 的學生宿舍，另有豪華單人（800）與經濟單人（580）。'},
+  ],
+  fees:[{l:'報名費',v:'USD $200'},{l:'住宿安置費',v:'USD $100'},{l:'醫療與旅行保險',v:'USD $50/週'},{l:'大學申請服務',v:'USD $250（升學適用）'},{l:'電匯手續費（台灣）',v:'USD $50'}],
+  calcCourses:[{n:'通用英語',pw:480},{n:'半強化英語',pw:550},{n:'強化英語',pw:600}],
+  calcAccomm:[{n:'Westwood 學生宿舍 Residence',pw:490},{n:'寄宿家庭',pw:360}],
+  day:[
+    {time:'07:30 起床',title:'加州早晨',desc:'從住處出發，陽光下走向 Westwood 校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'互動小班，主題常結合流行文化與生活情境。'},
+    {time:'12:15 午餐',title:'Westwood 覓食',desc:'學區周邊餐廳與咖啡店多，選擇豐富。'},
+    {time:'下午自由',title:'海灘或校園',desc:'公車到聖莫尼卡海灘騎車，或逛 UCLA 校園。'},
+    {time:'週末',title:'主題樂園或近郊',desc:'到迪士尼、環球影城，或前往聖地牙哥小旅行。'},
+  ],
+  qa:[
+    {q:'台灣人去美國短期遊學需要簽證嗎？',a:'台灣是美國免簽（VWP）國家，短期、每週上課時數較低的課程通常可持 ESTA 入境就讀；但全日制或較長期的英語課程需申請 F-1 學生簽證，Kaplan 可協助核發 I-20。實際依課程時數與長度而定，請以美國在台協會（AIT）最新規定與顧問確認。'},
+    {q:'洛杉磯需要開車嗎？沒有車會不方便嗎？',a:'校區在 Westwood、生活機能佳，日常上課與採買步行或公車可解決；想去較遠景點可搭大眾運輸或共乘，不一定要開車。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 480 美元起、住宿約 360 美元起，實際依課程長度與房型而定，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_newyork:{
+  name:'Kaplan 紐約',region:'北美',tag:'tag-na',flag:'🇺🇸',
+  addr:'5 Columbus Circle, 1790 Broadway, New York, NY 10019',cur:'USD',
+  intro:'紐約是孕育夢想的「不夜城」，從帝國大廈、時代廣場到百老匯，精彩永不落幕。Kaplan 紐約是規模最大的語言校區之一，位於哥倫布圓環、緊鄰中央公園，鄰近現代藝術博物館（MoMA）、時代廣場與洛克菲勒中心。英語等級劃分細緻、課程安排彈性，週末還能搭船遊自由女神像，是想在世界舞台中心沉浸英語與都會生活的首選。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'中央公園旁，鄰 MoMA 與時代廣場'}],
+  feats:[
+    {i:'📍',t:'哥倫布圓環．中央公園旁',d:'校區緊鄰中央公園，鄰近 MoMA、時代廣場與洛克菲勒中心。'},
+    {i:'🏙️',t:'規模最大校區之一',d:'等級劃分細緻、設施完善，適合各程度學員。'},
+    {i:'🎭',t:'百老匯與藝文',d:'學校常辦活動，包括觀賞百老匯演出。'},
+    {i:'🗽',t:'週末看自由女神',d:'搭船遊覽自由女神像，都會與海景兼得。'},
+    {i:'👔',t:'30+／50+ 專屬校區',d:'30 歲以上可選 30+ 校區、50 歲以上可選 50+ 校區，與同齡職場人士一同學習。'},
+  ],
+  who:[
+    {i:'💼',t:'職場人士',d:'商務英語（補充／強化／非全日）多種選擇，30+ 校區同儕多為上班族。'},
+    {i:'🎓',t:'想銜接美國大學的學員',d:'TOEFL＋學術英語課程搭配大學申請服務。'},
+    {i:'🗣️',t:'想在大城市沉浸英語者',d:'規模大、國際學生多，開口與交友機會豐富。'},
+    {i:'🎭',t:'熱愛都會與藝文的學員',d:'百老匯、美術館與時代廣場，生活即教材。'},
+    {i:'👔',t:'30 歲以上的成人學員',d:'30+／50+ 專屬空間與課程，學習環境更成熟。'},
+  ],
+  courses:[
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'USD $500/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（USD）：1–4週 630／5–11週 600／12–19週 570／20+週 500。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'USD $560/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇。　各長度每週價（USD）：1–4週 690／5–11週 660／12–19週 630／20+週 560。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['最多10週','職場情境'],price:'USD $660/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（最多 10 週）。　各長度每週價（USD）：1–4週 690／5–11週 660／12–19週 —／20+週 —。'},
+    {name:'商務英語強化 Business Intensive',special:false,tags:['全日制','職場英語'],price:'USD $560/週起',desc:'全日制商務英語，涵蓋簡報、會議、email 等職場情境。　各長度每週價（USD）：1–4週 690／5–11週 660／12–19週 630／20+週 560。'},
+    {name:'商務英語（非全日） Business (Part-time)',special:false,tags:['非全日','最多10週'],price:'USD $500/週起',desc:'非全日商務英語，彈性搭配其他課程（最多 10 週）。　各長度每週價（USD）：1–4週 630／5–11週 600／12–19週 570／20+週 500。'},
+    {name:'TOEFL＋強化學術英語 TOEFL & Intensive Academic',special:true,tags:['最多16週','考試導向'],price:'USD $630/週起',desc:'TOEFL iBT 應試技巧結合學術英語，銜接美國大學（最多 16 週）。　各長度每週價（USD）：1–4週 690／5–11週 660／12–19週 630／20+週 —。'},
+    {name:'TOEFL＋學術英語（非全日） TOEFL & Academic (Part-time)',special:true,tags:['非全日','考試導向'],price:'USD $570/週起',desc:'非全日的 TOEFL 與學術英語，彈性選讀（最多 12–16 週）。　各長度每週價（USD）：1–4週 630／5–11週 600／12–19週 570／20+週 —。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'USD $100/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含早晚餐）',meta:'18歲以上・通勤進市區',price:'USD $340/週起',desc:'紐約近郊在地家庭含餐，通勤進市區上課。'},
+    {name:'Homestay in Manhattan',meta:'18歲以上・通勤短',price:'USD $540/週起',desc:'曼哈頓區寄宿家庭，通勤時間短（雙人 540／單人 660 起）。'},
+    {name:'Midtown East: Turtle Bay 學生宿舍',meta:'17歲以上・中城東',price:'USD $460/週起',desc:'中城東學生宿舍，多房型（三人 460／雙人 610／單人套房 920）。'},
+    {name:'Hudson Yards 學生宿舍',meta:'18歲以上・市區',price:'USD $700/週起',desc:'Hudson Yards 現代學生宿舍，單人房、生活機能佳。'},
+  ],
+  fees:[{l:'報名費',v:'USD $200'},{l:'住宿安置費',v:'USD $100'},{l:'醫療與旅行保險',v:'USD $50/週'},{l:'大學申請服務',v:'USD $250（升學適用）'},{l:'電匯手續費（台灣）',v:'USD $50'}],
+  calcCourses:[{n:'半強化英語',pw:600},{n:'強化英語',pw:660}],
+  calcAccomm:[{n:'Hudson Yards 學生宿舍',pw:700},{n:'Homestay in Manhattan',pw:540},{n:'Midtown East: Turtle Bay 學生宿舍',pw:460},{n:'寄宿家庭',pw:340}],
+  day:[
+    {time:'07:30 起床',title:'都會早晨',desc:'住處出發，搭地鐵前往哥倫布圓環校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'細緻分班的小班課，主題結合都會生活與時事。'},
+    {time:'12:15 午餐',title:'中城覓食',desc:'地獄廚房與中城餐廳林立，各國美食任選。'},
+    {time:'下午自由',title:'中央公園或美術館',desc:'散步中央公園，或到 MoMA 看展。'},
+    {time:'傍晚',title:'百老匯或時代廣場',desc:'看一場百老匯演出，或感受時代廣場的霓虹。'},
+    {time:'週末',title:'自由女神與近郊',desc:'搭船遊自由女神像，或到布魯克林走走。'},
+  ],
+  qa:[
+    {q:'台灣人去美國短期遊學需要簽證嗎？',a:'台灣是美國免簽（VWP）國家，短期、每週上課時數較低的課程通常可持 ESTA 入境就讀；但全日制或較長期的英語課程需申請 F-1 學生簽證，Kaplan 可協助核發 I-20。實際依課程時數與長度而定，請以美國在台協會（AIT）最新規定與顧問確認。'},
+    {q:'紐約主中心有開「通用英語」嗎？',a:'主中心以半強化與強化英語為主；標準「通用英語」目前主要在 30+ 校區提供（每週約 450–560 美元起）。想上通用英語建議先向顧問確認開課校區與梯次。'},
+    {q:'紐約生活費是不是很高？',a:'紐約物價偏高，住宿是主要開銷；可選近郊寄宿家庭（340 美元起）或學生宿舍分攤成本，用頁面計算機估整體台幣預算會更清楚。'},
+  ],
+},
+
+kaplan_sfberkeley:{
+  name:'Kaplan 舊金山-柏克萊',region:'北美',tag:'tag-na',flag:'🇺🇸',
+  addr:'2144 Kala Bagai Way, Berkeley, CA 94704',cur:'USD',
+  intro:'舊金山灣區是創新與浪漫並存的科技之都，藝術家與理想主義者的聚集地。Kaplan 校區位於柏克萊、緊鄰加州大學柏克萊分校與蒂爾登地區公園，開車約 20 分鐘即達舊金山市中心，一小時可到矽谷與酒鄉。校區小而精緻、師資親切，可參加惡魔島海灣遊覽與唐人街之旅，是想在灣區沉浸英語、感受學術與科技氛圍的好選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'小型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'UC Berkeley 旁，車程 20 分到舊金山'}],
+  feats:[
+    {i:'📍',t:'UC Berkeley 旁',d:'校區緊鄰加州大學柏克萊分校與蒂爾登地區公園。'},
+    {i:'🌉',t:'近舊金山與矽谷',d:'開車 20 分到舊金山市中心，1 小時到矽谷與酒鄉。'},
+    {i:'🎨',t:'創新文化之都',d:'灣區藝術與科技氛圍濃厚，充滿創意能量。'},
+    {i:'⛵',t:'海灣探索',d:'惡魔島遊覽、唐人街團體旅行等豐富校外活動。'},
+    {i:'👩‍🏫',t:'小而精緻校區',d:'師生互動緊密、師資親切，學習氛圍溫暖。'},
+  ],
+  who:[
+    {i:'🎓',t:'嚮往名校城市氛圍者',d:'柏克萊學區環繞，學風濃厚、書店咖啡館林立。'},
+    {i:'💻',t:'對科技產業有興趣者',d:'鄰近矽谷，感受灣區創新脈動。'},
+    {i:'🗣️',t:'想小班沉浸練口說者',d:'校區規模小、師生比佳，開口機會多。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程強化職場溝通。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'USD $390/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（USD）：1–4週 490／5–11週 470／12–19週 450／20+週 390。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'USD $450/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（USD）：1–4週 550／5–11週 530／12–19週 500／20+週 450。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'USD $490/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇。　各長度每週價（USD）：1–4週 610／5–11週 580／12–19週 550／20+週 490。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['最多10週','職場情境'],price:'USD $580/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（最多 10 週）。　各長度每週價（USD）：1–4週 610／5–11週 580／12–19週 —／20+週 —。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'USD $100/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含早晚餐）',meta:'18歲以上・通勤約 30–60 分',price:'USD $340/週起',desc:'灣區在地家庭含餐，體驗加州生活。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'USD $380/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'Berkeley City Dorms 學生宿舍',meta:'18歲以上・市區',price:'USD $380/週起',desc:'柏克萊市區學生宿舍（單人 410／雙人 380）。'},
+  ],
+  fees:[{l:'報名費',v:'USD $200'},{l:'住宿安置費',v:'USD $100'},{l:'醫療與旅行保險',v:'USD $50/週'},{l:'大學申請服務',v:'USD $250（升學適用）'},{l:'電匯手續費（台灣）',v:'USD $50'}],
+  calcCourses:[{n:'通用英語',pw:470},{n:'半強化英語',pw:530},{n:'強化英語',pw:580}],
+  calcAccomm:[{n:'Berkeley City Dorms 學生宿舍',pw:380},{n:'寄宿家庭',pw:340}],
+  day:[
+    {time:'07:30 起床',title:'柏克萊早晨',desc:'從住處出發，走過大學城街區到校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班互動，老師耐心把知識點講清楚。'},
+    {time:'12:15 午餐',title:'大學城覓食',desc:'柏克萊學區餐廳與咖啡店多、平價又多元。'},
+    {time:'下午自由',title:'公園或進城',desc:'到蒂爾登公園健行，或搭 BART 進舊金山。'},
+    {time:'週末',title:'海灣一日遊',desc:'惡魔島遊覽、金門大橋拍照，或到酒鄉走走。'},
+  ],
+  qa:[
+    {q:'台灣人去美國短期遊學需要簽證嗎？',a:'台灣是美國免簽（VWP）國家，短期、每週上課時數較低的課程通常可持 ESTA 入境就讀；但全日制或較長期的英語課程需申請 F-1 學生簽證，Kaplan 可協助核發 I-20。實際依課程時數與長度而定，請以美國在台協會（AIT）最新規定與顧問確認。'},
+    {q:'柏克萊和舊金山市區差在哪？',a:'校區在柏克萊、環境較學術與安靜、生活費相對舊金山市中心低；搭 BART 約 20–30 分鐘即可進舊金山市區，兼顧學習環境與都會便利。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 470 美元起、住宿約 340 美元起，實際依課程長度與房型而定，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_santabarbara:{
+  name:'Kaplan 聖塔芭芭拉',region:'北美',tag:'tag-na',flag:'🇺🇸',
+  addr:'721 Cliff Drive, ECC 16, Santa Barbara, CA 93109',cur:'USD',
+  intro:'聖塔芭芭拉是加州海岸的度假名城，陽光、衝浪與悠閒氛圍應有盡有。Kaplan 校區設於聖塔芭芭拉城市學院（SBCC）校園內，可眺望太平洋美景，附近交通便利、公車與火車通往市區與周邊。上一秒在課堂練文法，下一秒就能帶著衝浪板去乘風破浪；週末的海邊與城市節慶讓生活更豐富，是想在海濱環境輕鬆沉浸英語的理想選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'小型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'聖塔芭芭拉城市學院內，可眺太平洋'}],
+  feats:[
+    {i:'📍',t:'SBCC 校園內',d:'校區設於聖塔芭芭拉城市學院內，可眺望太平洋。'},
+    {i:'🏄',t:'衝浪與海灘',d:'衝浪課程、沙灘排球等海濱活動，生活愜意。'},
+    {i:'🚆',t:'交通便利',d:'公車與火車通往市區及周邊，行動方便。'},
+    {i:'☀️',t:'度假氛圍',d:'陽光、慢步調與城市節慶，適合放鬆學習。'},
+    {i:'🌊',t:'週末小旅行',d:'可參加前往舊金山等地的週末旅行。'},
+  ],
+  who:[
+    {i:'🏄',t:'喜歡海濱與戶外的學員',d:'衝浪、海灘與陽光，把生活變成語言教室。'},
+    {i:'😌',t:'想輕鬆步調學習者',d:'小城度假氛圍，適合放鬆又專注地進步。'},
+    {i:'🗣️',t:'想小班沉浸練口說者',d:'校區規模小、師生互動緊密。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程強化職場溝通。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'USD $400/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（USD）：1–4週 490／5–11週 470／12–19週 450／20+週 400。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'USD $450/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（USD）：1–4週 550／5–11週 530／12–19週 500／20+週 450。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'USD $490/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇。　各長度每週價（USD）：1–4週 610／5–11週 590／12–19週 550／20+週 490。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['最多10週','職場情境'],price:'USD $590/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（最多 10 週）。　各長度每週價（USD）：1–4週 610／5–11週 590／12–19週 —／20+週 —。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'USD $100/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含早晚餐）',meta:'18歲以上・通勤約 30–60 分',price:'USD $370/週起',desc:'海濱城市在地家庭含餐，體驗加州悠閒生活。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'USD $410/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'LA Brezza 學生公寓 Apartments',meta:'18歲以上・近校區',price:'USD $430/週起',desc:'海濱學生公寓（單人 760／雙人 430／豪華房 550–820）。'},
+  ],
+  fees:[{l:'報名費',v:'USD $200'},{l:'住宿安置費',v:'USD $100'},{l:'醫療與旅行保險',v:'USD $50/週'},{l:'大學申請服務',v:'USD $250（升學適用）'},{l:'電匯手續費（台灣）',v:'USD $50'}],
+  calcCourses:[{n:'通用英語',pw:470},{n:'半強化英語',pw:530},{n:'強化英語',pw:590}],
+  calcAccomm:[{n:'LA Brezza 學生公寓 Apartments',pw:430},{n:'寄宿家庭',pw:370}],
+  day:[
+    {time:'07:30 起床',title:'海濱早晨',desc:'住處出發，迎著海風走進 SBCC 校園。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班互動，眺望太平洋的教室學習超放鬆。'},
+    {time:'12:15 午餐',title:'校園或海邊覓食',desc:'校園周邊與海濱餐廳，來份加州輕食。'},
+    {time:'下午自由',title:'衝浪或沙灘',desc:'上一堂衝浪課，或在 Leadbetter Beach 曬太陽。'},
+    {time:'週末',title:'城市節慶或近郊',desc:'逛市區節慶，或參加前往舊金山的旅行。'},
+  ],
+  qa:[
+    {q:'台灣人去美國短期遊學需要簽證嗎？',a:'台灣是美國免簽（VWP）國家，短期、每週上課時數較低的課程通常可持 ESTA 入境就讀；但全日制或較長期的英語課程需申請 F-1 學生簽證，Kaplan 可協助核發 I-20。實際依課程時數與長度而定，請以美國在台協會（AIT）最新規定與顧問確認。'},
+    {q:'聖塔芭芭拉會不會太小、太無聊？',a:'它是度假型小城、步調悠閒，適合想專注學習又愛海濱生活的人；想要大城市熱鬧可安排週末到洛杉磯（車程約 2 小時）或舊金山旅行。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 470 美元起、住宿約 370 美元起，實際依課程長度與房型而定，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_toronto:{
+  name:'Kaplan 多倫多',region:'北美',tag:'tag-na',flag:'🇨🇦',
+  addr:'35 The Esplanade, Suite 250, Toronto ON, M5E 1Z4',cur:'CA$',
+  intro:'多倫多是全球最多元文化的城市之一，擁有世界知名大學與充滿活力的社區。Kaplan 校區位於市中心黃金地段，鄰近聯合車站（Union Station）、聖羅倫斯市場與加拿大國家電視塔（CN Tower），生活與交通都極為便利。可到皇家安大略博物館參觀、搭渡輪前往多倫多群島，週末還能到尼加拉瀑布小旅行，是想在友善又國際化的環境沉浸英語、甚至規劃升學的理想基地。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'市中心，鄰 Union Station 與 CN Tower'}],
+  feats:[
+    {i:'📍',t:'市中心黃金地段',d:'鄰近 Union Station、聖羅倫斯市場與 CN Tower。'},
+    {i:'🌍',t:'最多元文化城市',d:'國際社群龐大、友善包容，適合國際學生。'},
+    {i:'🎓',t:'升學資源豐富',d:'學術英語橋樑與 TOEFL／IELTS 課程齊全。'},
+    {i:'🚆',t:'交通便利',d:'地鐵與火車四通八達，往返機場與各區方便。'},
+    {i:'🌊',t:'週末尼加拉瀑布',d:'可與同學到尼加拉瀑布，或搭渡輪遊多倫多群島。'},
+  ],
+  who:[
+    {i:'🎓',t:'想升讀加拿大大學／學院者',d:'學術英語橋樑與考試課程完整，銜接升學。'},
+    {i:'📝',t:'要考 IELTS／TOEFL 的學員',d:'雅思、托福備考課程齊全，含應試技巧。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程強化職場溝通。'},
+    {i:'✈️',t:'想到友善國際城市長住者',d:'多元文化、治安佳，第一次出國也安心。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'CA$ 380/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（CA$）：1–4週 470／5–11週 450／12–19週 430／20+週 380。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'CA$ 430/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（CA$）：1–4週 530／5–11週 510／12–19週 480／20+週 430。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'CA$ 470/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇。　各長度每週價（CA$）：1–4週 590／5–11週 560／12–19週 530／20+週 470。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['最多10週','職場情境'],price:'CA$ 560/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（最多 10 週）。　各長度每週價（CA$）：1–4週 590／5–11週 560／12–19週 —／20+週 —。'},
+    {name:'學術英語橋樑 Academic Bridge',special:true,tags:['升學銜接','學術英語'],price:'CA$ 470/週起',desc:'為升讀大學／學院設計的學術英語銜接課程。　各長度每週價（CA$）：1–4週 590／5–11週 560／12–19週 530／20+週 470。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['非全日','四項技能'],price:'CA$ 480/週起',desc:'針對 IELTS 四項技能的備考課程（非全日，最多 16 週）。　各長度每週價（CA$）：1–4週 530／5–11週 510／12–19週 480／20+週 —。'},
+    {name:'雅思強化 IELTS Intensive',special:true,tags:['全日制','最多16週'],price:'CA$ 530/週起',desc:'全日制 IELTS 密集備考（最多 16 週）。　各長度每週價（CA$）：1–4週 590／5–11週 560／12–19週 530／20+週 —。'},
+    {name:'TOEFL＋強化學術英語 TOEFL & Intensive Academic',special:true,tags:['最多16週','考試導向'],price:'CA$ 530/週起',desc:'TOEFL iBT 應試技巧結合學術英語，銜接美國大學（最多 16 週）。　各長度每週價（CA$）：1–4週 590／5–11週 560／12–19週 530／20+週 —。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'CA$ 120/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・通勤進市區',price:'CA$ 340/週起',desc:'多倫多在地家庭含餐（單人 370／雙人 340）。'},
+    {name:'Parkside 學生宿舍 Student Residence',meta:'16歲以上・市區',price:'CA$ 825/週起',desc:'市區學生宿舍，含餐方案、生活機能佳。'},
+    {name:'Cherry House 學生宿舍',meta:'18歲以上・市區',price:'CA$ 470/週起',desc:'多房型學生宿舍（雙人 470／單人 590–790／一居室 970）。'},
+  ],
+  fees:[{l:'報名費',v:'CA$ 200'},{l:'材料費',v:'CA$ 10/週'},{l:'醫療保險',v:'CA$ 30/週'},{l:'住宿安置費',v:'CA$ 270'},{l:'大學申請服務',v:'CA$ 200（讀滿 16 週免）'},{l:'電匯手續費（台灣）',v:'CA$ 50'}],
+  calcCourses:[{n:'通用英語',pw:450},{n:'半強化英語',pw:510},{n:'強化英語',pw:560}],
+  calcAccomm:[{n:'Parkside 學生宿舍 Student Residence',pw:825},{n:'Cherry House 學生宿舍',pw:470},{n:'寄宿家庭',pw:340}],
+  day:[
+    {time:'07:30 起床',title:'市中心早晨',desc:'住處出發，走過 The Esplanade 到校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班互動，班上同學來自世界各地。'},
+    {time:'12:15 午餐',title:'聖羅倫斯市場覓食',desc:'到百年市場品嚐各國美食。'},
+    {time:'下午自由',title:'湖濱或博物館',desc:'散步 Harbourfront，或逛皇家安大略博物館。'},
+    {time:'週末',title:'尼加拉瀑布小旅行',desc:'與朋友到尼加拉瀑布，或搭渡輪遊群島。'},
+  ],
+  qa:[
+    {q:'台灣人去加拿大讀語言課要辦什麼？',a:'台灣護照赴加拿大需先申請 eTA（電子旅行證）。6 個月以內的語言課程通常可持 eTA 以訪客身分就讀；超過 6 個月則需申請 Study Permit（學習許可）。實際以加拿大移民局（IRCC）最新規定與顧問確認。'},
+    {q:'多倫多校區有升學／考試課程嗎？',a:'有。除了通用與強化英語，還有學術英語橋樑、雅思與托福備考課程（每週約 480–590 加幣起），適合要升學或考檢定的學員。'},
+    {q:'加拿大讀書可以打工嗎？',a:'持 Study Permit 且就讀符合資格的課程時，通常有校內外打工規定；但語言課程與訪客身分（eTA）不一定享有打工權利。實際以 IRCC 規定與顧問確認為準。'},
+  ],
+},
+
+kaplan_vancouver:{
+  name:'Kaplan 溫哥華',region:'北美',tag:'tag-na',flag:'🇨🇦',
+  addr:'755 Burrard Street, Suite 300, Vancouver BC, V6Z 1X6',cur:'CA$',
+  intro:'溫哥華坐擁山海美景，同時擁有海灘、雪山與雨林，多次入選全球最宜居城市。Kaplan 校區位於市中心核心地帶，公共交通便捷、往返各區與其他城市都方便。可到 Deep Cove 揚帆、登上 Grouse Mountain，或在卡皮拉諾吊橋拍照，冬天還能為加人隊（NHL）加油。這裡也開設劍橋證書與升學課程，是想在戶外天堂沉浸英語、兼顧考試與升學的理想選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'市中心，近海濱與交通樞紐'}],
+  feats:[
+    {i:'📍',t:'市中心核心地段',d:'交通便捷，往返各區與周邊城市都方便。'},
+    {i:'🏔️',t:'山海一次擁有',d:'海灘、雪山與雨林近在咫尺，戶外活動豐富。'},
+    {i:'📜',t:'劍橋證書課程',d:'開設劍橋 B2／C1 證書備考（固定 12 週）。'},
+    {i:'🎓',t:'升學與考試齊全',d:'學術英語橋樑、雅思課程一應俱全。'},
+    {i:'🏒',t:'宜居城市',d:'多次入選全球最宜居城市，治安與生活品質佳。'},
+  ],
+  who:[
+    {i:'📜',t:'想考劍橋證書的學員',d:'劍橋 B2／C1 備考課程，取得國際認可證書。'},
+    {i:'🎓',t:'想升讀加拿大院校者',d:'學術英語橋樑與雅思課程銜接升學。'},
+    {i:'🏔️',t:'熱愛戶外的學員',d:'滑雪、健行、揚帆，把戶外變成生活的一部分。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程強化職場溝通。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'CA$ 380/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（CA$）：1–4週 470／5–11週 450／12–19週 430／20+週 380。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'CA$ 430/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（CA$）：1–4週 530／5–11週 510／12–19週 480／20+週 430。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'CA$ 470/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇。　各長度每週價（CA$）：1–4週 580／5–11週 560／12–19週 530／20+週 470。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['最多10週','職場情境'],price:'CA$ 560/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（最多 10 週）。　各長度每週價（CA$）：1–4週 580／5–11週 560／12–19週 —／20+週 —。'},
+    {name:'劍橋 B2/C1 Cambridge B2/C1',special:true,tags:['固定12週','B2/C1'],price:'CA$ 430/週起',desc:'劍橋 B2 First／C1 Advanced 證書備考，固定 12 週，2026 開課日 3/23、4/20、5/18。　各長度每週價（CA$）：1–4週 470／5–11週 450／12–19週 430／20+週 —。'},
+    {name:'劍橋強化 B2/C1 Cambridge Intensive B2/C1',special:true,tags:['固定12週','B2/C1'],price:'CA$ 530/週起',desc:'劍橋 B2/C1 密集備考課程，固定 12 週。　各長度每週價（CA$）：1–4週 580／5–11週 560／12–19週 530／20+週 —。'},
+    {name:'學術英語橋樑 Academic Bridge',special:true,tags:['升學銜接','學術英語'],price:'CA$ 470/週起',desc:'為升讀大學／學院設計的學術英語銜接課程。　各長度每週價（CA$）：1–4週 580／5–11週 560／12–19週 530／20+週 470。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['非全日','四項技能'],price:'CA$ 480/週起',desc:'針對 IELTS 四項技能的備考課程（非全日，最多 16 週）。　各長度每週價（CA$）：1–4週 530／5–11週 510／12–19週 480／20+週 —。'},
+    {name:'雅思強化 IELTS Intensive',special:true,tags:['全日制','最多16週'],price:'CA$ 530/週起',desc:'全日制 IELTS 密集備考（最多 16 週）。　各長度每週價（CA$）：1–4週 580／5–11週 560／12–19週 530／20+週 —。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'CA$ 120/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・通勤進市區',price:'CA$ 340/週起',desc:'溫哥華在地家庭含餐（單人 370／雙人 340）。'},
+    {name:'King Edward 學生宿舍 Townhouse',meta:'18歲以上・市區',price:'CA$ 550/週起',desc:'市區 townhouse 學生宿舍（雙人 550／單人 660）。'},
+    {name:'Viva Tower 學生公寓 Apartments',meta:'18歲以上・市中心',price:'CA$ 550/週起',desc:'市中心服務式學生公寓（雙人 550／單人 660）。'},
+  ],
+  fees:[{l:'報名費',v:'CA$ 200'},{l:'材料費',v:'CA$ 10/週'},{l:'醫療保險',v:'CA$ 30/週'},{l:'住宿安置費',v:'CA$ 270'},{l:'大學申請服務',v:'CA$ 200（讀滿 16 週免）'},{l:'電匯手續費（台灣）',v:'CA$ 50'}],
+  calcCourses:[{n:'通用英語',pw:450},{n:'半強化英語',pw:510},{n:'強化英語',pw:560}],
+  calcAccomm:[{n:'King Edward 學生宿舍 Townhouse',pw:550},{n:'Viva Tower 學生公寓 Apartments',pw:550},{n:'寄宿家庭',pw:340}],
+  day:[
+    {time:'07:30 起床',title:'山海之城的早晨',desc:'住處出發，走進市中心校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班互動，班上同學來自世界各地。'},
+    {time:'12:15 午餐',title:'市中心覓食',desc:'市區餐廳與亞洲美食選擇多元。'},
+    {time:'下午自由',title:'海濱或登山',desc:'到 English Bay 散步，或搭纜車上 Grouse Mountain。'},
+    {time:'週末',title:'戶外冒險',desc:'Deep Cove 揚帆、卡皮拉諾吊橋拍照，或近郊小旅行。'},
+  ],
+  qa:[
+    {q:'台灣人去加拿大讀語言課要辦什麼？',a:'台灣護照赴加拿大需先申請 eTA（電子旅行證）。6 個月以內的語言課程通常可持 eTA 以訪客身分就讀；超過 6 個月則需申請 Study Permit（學習許可）。實際以加拿大移民局（IRCC）最新規定與顧問確認。'},
+    {q:'溫哥華的劍橋課程怎麼上？',a:'劍橋 B2／C1 為固定 12 週課程，2026 開課日為 3/23、4/20、5/18，適合想取得國際認可英語證書的學員；報名前建議先確認程度是否達 B2 以上。'},
+    {q:'多倫多和溫哥華怎麼選？',a:'溫哥華山海景觀、氣候溫和、戶外活動多；多倫多都會感強、國際社群更大、升學與職場機會多。愛戶外與溫和氣候選溫哥華，愛大城市脈動選多倫多。'},
+  ],
+},
+
+kaplan_bath:{
+  name:'Kaplan 巴斯',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'5 Trim Street, Bath, BA1 1HB',cur:'£',
+  intro:'巴斯是一座極具英倫風情的世界遺產城市，以保存完好的羅馬浴場與喬治亞時期建築聞名，也是《布里奇頓》的取景地。Kaplan 校區座落於市中心的歷史建築內，距離修道院與購物街僅幾步之遙。你可以參觀羅馬浴場博物館、在 Thermae Bath Spa 溫泉放鬆，或走訪珍．奧斯汀中心；週末還能到巨石陣探索古老遺跡，是想在悠閒古城裡沉浸英語的理想選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'小型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'市中心，鄰中世紀修道院與羅馬浴場'}],
+  feats:[
+    {i:'📍',t:'市中心古城',d:'校區位於歷史建築內，鄰修道院與羅馬浴場，步行即達。'},
+    {i:'♨️',t:'羅馬浴場與溫泉',d:'可參觀羅馬浴場博物館，並在 Thermae Bath Spa 放鬆。'},
+    {i:'📖',t:'文學氣息濃厚',d:'珍．奧斯汀故居城市，《布里奇頓》取景地，英倫風情十足。'},
+    {i:'🗿',t:'近巨石陣',d:'週末可前往巨石陣，探索神秘古老遺跡。'},
+    {i:'😌',t:'悠閒學習步調',d:'小城安靜、治安佳，適合專注沉浸英語。'},
+  ],
+  who:[
+    {i:'😌',t:'想在悠閒古城學習者',d:'小而美的世界遺產城市，步調慢、環境安全。'},
+    {i:'📖',t:'喜歡歷史與文學的學員',d:'羅馬浴場、珍．奧斯汀與喬治亞建築，文化資源豐富。'},
+    {i:'📝',t:'要考 IELTS 的學員',d:'雅思補充／強化課程含應試技巧。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程強化職場溝通。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'£240/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（£）：1–4週 330／5–11週 320／12–19週 290／20+週 240。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'£270/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（£）：1–4週 350／5–11週 340／12–19週 310／20+週 270。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'£310/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇；另可升級超級強化。　各長度每週價（£）：1–4週 410／5–11週 400／12–19週 360／20+週 310。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['職場情境','視開課'],price:'£310/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（視開課情況）。　各長度每週價（£）：1–4週 410／5–11週 400／12–19週 360／20+週 310。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['四項技能','補充／強化'],price:'£310/週起',desc:'IELTS 補充／強化考試課程，針對四項技能與應試技巧。　各長度每週價（£）：1–4週 410／5–11週 400／12–19週 360／20+週 310。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'£120/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・交通約 30–45 分',price:'£210/週起',desc:'入住巴斯在地家庭並含餐，語言沉浸效果佳。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'£230/週起',desc:'為未成年學生安排的寄宿家庭，含餐與生活照顧。'},
+    {name:'Avon Studios 學生公寓',meta:'18歲以上・獨立套房',price:'£450/週起',desc:'市區獨立套房學生公寓，適合追求隱私的學員。'},
+  ],
+  fees:[{l:'報名及註冊費',v:'£140'},{l:'住宿安置費',v:'£40'},{l:'醫療與旅行保險',v:'£10/週'},{l:'變更費（抵達後）',v:'£70'},{l:'電匯手續費（台灣）',v:'£50'}],
+  calcCourses:[{n:'通用英語',pw:320},{n:'半強化英語',pw:340},{n:'強化英語',pw:400}],
+  calcAccomm:[{n:'Avon Studios 學生公寓',pw:450},{n:'寄宿家庭',pw:210}],
+  day:[
+    {time:'07:30 起床',title:'古城早晨',desc:'從住處出發，走過石造街道前往市中心校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班沉浸，老師用時事帶你開口練口說。'},
+    {time:'12:15 午餐',title:'市中心覓食',desc:'修道院旁咖啡館與餐廳林立，來份英式午餐。'},
+    {time:'下午自由',title:'浴場或散步',desc:'參觀羅馬浴場，或在普爾特尼橋畔散步。'},
+    {time:'週末',title:'巨石陣小旅行',desc:'與同學前往巨石陣，或到附近城市走走。'},
+  ],
+  qa:[
+    {q:'台灣人去英國短期遊學需要簽證嗎？',a:'台灣護照通常可以「訪客」身分（Standard Visitor）免簽入境英國、就讀 6 個月以內的短期英語課程；6–11 個月的英語課程可申請 Short-term study visa，更長期或要打工則需 Student visa。實際以英國政府 GOV.UK 與顧問確認為準。'},
+    {q:'巴斯會不會太小、太安靜？',a:'它是悠閒的世界遺產小城、生活機能足夠，適合想專注學習又愛歷史氛圍的人；想要大城市熱鬧，可安排週末到布里斯托或倫敦（火車約 1.5 小時）。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 £320 起、住宿約 £210 起，實際依課程長度與房型而定，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_bournemouth:{
+  name:'Kaplan 伯恩茅斯',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'130-136 Poole Road, Bournemouth, BH4 9EF',cur:'£',
+  intro:'伯恩茅斯是擁有獲獎沙灘的英國海濱小鎮，7 英里長的金色海灘毗鄰熱鬧市中心。Kaplan 伯恩茅斯是**英國最大的英語校區**，校舍寬敞、設施完善，搭公車 5 分鐘即達海灘與市區。你可以探索老哈里岩與壯觀的杜德爾門，週末和朋友到克賴斯特徹奇或倫敦走走，是想在陽光海濱以親民預算沉浸英語的絕佳選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'海濱小鎮，公車 5 分到海灘與市中心'}],
+  feats:[
+    {i:'🏖️',t:'獲獎海灘',d:'7 英里金色沙灘，公車 5 分鐘即達，海濱生活愜意。'},
+    {i:'🏫',t:'英國最大英語校區',d:'校舍寬敞、設施完善，課程與程度選擇多。'},
+    {i:'🌊',t:'自然美景',d:'可探索老哈里岩與壯觀的杜德爾門。'},
+    {i:'💰',t:'高性價比',d:'學費與住宿在英國校區中相對親民。'},
+    {i:'🚆',t:'近倫敦',d:'週末可到克賴斯特徹奇或倫敦（火車約 2 小時）。'},
+  ],
+  who:[
+    {i:'🏖️',t:'想在海濱輕鬆學習者',d:'陽光沙灘＋大型校區，生活與學習兼顧。'},
+    {i:'💰',t:'預算有限的學員',d:'學費住宿親民，適合長期沉浸。'},
+    {i:'📝',t:'要考 IELTS 的學員',d:'雅思補充／強化課程含應試技巧。'},
+    {i:'👔',t:'30 歲以上的成人學員',d:'另有 30+ 專屬班級與社交活動。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'£220/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（£）：1–4週 290／5–11週 280／12–19週 250／20+週 220。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'£240/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（£）：1–4週 320／5–11週 310／12–19週 280／20+週 240。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'£280/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇；另可升級超級強化。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 320／20+週 280。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['職場情境','視開課'],price:'£280/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（視開課情況）。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 320／20+週 280。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['四項技能','補充／強化'],price:'£280/週起',desc:'IELTS 補充／強化考試課程，針對四項技能與應試技巧。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 320／20+週 280。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'£120/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・交通約 30–45 分',price:'£185/週起',desc:'伯恩茅斯在地家庭含餐，海濱小鎮生活體驗。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'£210/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'Lansdowne Point 學生宿舍',meta:'18歲以上・近市區',price:'£310/週起',desc:'市區學生宿舍，旺季另有半食宿方案（500）。'},
+    {name:'Oxford Point 學生宿舍',meta:'18歲以上・近市區',price:'£320/週起',desc:'市區現代學生宿舍，獨立衛浴。'},
+  ],
+  fees:[{l:'報名及註冊費',v:'£140'},{l:'住宿安置費',v:'£40'},{l:'醫療與旅行保險',v:'£10/週'},{l:'變更費（抵達後）',v:'£70'},{l:'電匯手續費（台灣）',v:'£50'}],
+  calcCourses:[{n:'通用英語',pw:280},{n:'半強化英語',pw:310},{n:'強化英語',pw:360}],
+  calcAccomm:[{n:'Oxford Point 學生宿舍',pw:320},{n:'Lansdowne Point 學生宿舍',pw:310},{n:'寄宿家庭',pw:185}],
+  day:[
+    {time:'07:30 起床',title:'海濱早晨',desc:'從住處出發，搭公車前往寬敞的校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'大型校區、程度分班細緻，開口機會多。'},
+    {time:'12:15 午餐',title:'市中心覓食',desc:'市區商店與餐廳林立，選擇豐富。'},
+    {time:'下午自由',title:'海灘時光',desc:'到 7 英里沙灘散步、玩水或曬太陽。'},
+    {time:'週末',title:'海岸小旅行',desc:'前往杜德爾門、老哈里岩，或到倫敦走走。'},
+  ],
+  qa:[
+    {q:'台灣人去英國短期遊學需要簽證嗎？',a:'台灣護照通常可以「訪客」身分（Standard Visitor）免簽入境英國、就讀 6 個月以內的短期英語課程；6–11 個月的英語課程可申請 Short-term study visa，更長期或要打工則需 Student visa。實際以英國政府 GOV.UK 與顧問確認為準。'},
+    {q:'伯恩茅斯適合第一次出國的人嗎？',a:'很適合。它是治安良好的海濱小鎮、校區規模大、國際學生多、生活步調舒適，對第一次長住英國的學員相當友善。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 £280 起、住宿約 £185 起，是英愛校區中最親民的選擇之一，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_cambridge:{
+  name:'Kaplan 劍橋',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'75 Barton Road, Cambridge, CB3 9LG',cur:'£',
+  intro:'劍橋是世界最古老、最頂尖大學之一的所在地，孕育過無數偉大的作家、科學家與政治家。Kaplan 校區位於寧靜的 Newnham 街區，是一座美麗的愛德華時期建築，騎自行車到市中心僅 10 分鐘。你可以在康河上體驗撐篙傳統、到菲茨威廉博物館探索歷史，或在植物園享受寧靜時光，是想在濃厚學術氛圍中學習標準英語的理想之地。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'中型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'Newnham 區，騎車 10 分到市中心'}],
+  feats:[
+    {i:'🎓',t:'頂尖大學城',d:'劍橋大學所在地，學術氛圍與英倫魅力兼具。'},
+    {i:'📍',t:'寧靜 Newnham 區',d:'愛德華時期建築校區，騎車 10 分到市中心。'},
+    {i:'🛶',t:'康河撐篙',d:'體驗劍橋著名傳統，在康河上撐篙遊城。'},
+    {i:'🏛️',t:'博物館與植物園',d:'菲茨威廉博物館與植物園，文化與自然兼得。'},
+    {i:'🗣️',t:'標準英語環境',d:'在學術城市裡練就清晰、標準的英語口音。'},
+  ],
+  who:[
+    {i:'🎓',t:'嚮往名校學術氛圍者',d:'劍橋大學城環境，學風濃厚、書店林立。'},
+    {i:'📝',t:'要考 IELTS 的學員',d:'雅思補充／強化課程含應試技巧。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程強化職場溝通。'},
+    {i:'🗣️',t:'想練標準英語口音者',d:'純英語環境，開口機會多。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'£250/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（£）：1–4週 340／5–11週 330／12–19週 300／20+週 250。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'£280/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 320／20+週 280。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'£320/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇；另可升級超級強化。　各長度每週價（£）：1–4週 430／5–11週 420／12–19週 380／20+週 320。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['職場情境','視開課'],price:'£320/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（視開課情況）。　各長度每週價（£）：1–4週 430／5–11週 420／12–19週 380／20+週 320。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['四項技能','補充／強化'],price:'£320/週起',desc:'IELTS 補充／強化考試課程，針對四項技能與應試技巧。　各長度每週價（£）：1–4週 430／5–11週 420／12–19週 380／20+週 320。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'£120/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・交通約 30–45 分',price:'£230/週起',desc:'劍橋在地家庭含餐，體驗學術城市生活。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'£250/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'Student Castle 學生宿舍',meta:'18歲以上・近市區',price:'£390/週起',desc:'市區現代學生宿舍，獨立衛浴。'},
+    {name:'The Cam Foundry 學生公寓',meta:'18歲以上・獨立套房',price:'£420/週起',desc:'市區獨立套房學生公寓，適合追求隱私者。'},
+  ],
+  fees:[{l:'報名及註冊費',v:'£140'},{l:'住宿安置費',v:'£40'},{l:'醫療與旅行保險',v:'£10/週'},{l:'變更費（抵達後）',v:'£70'},{l:'電匯手續費（台灣）',v:'£50'}],
+  calcCourses:[{n:'通用英語',pw:330},{n:'半強化英語',pw:360},{n:'強化英語',pw:420}],
+  calcAccomm:[{n:'The Cam Foundry 學生公寓',pw:420},{n:'Student Castle 學生宿舍',pw:390},{n:'寄宿家庭',pw:230}],
+  day:[
+    {time:'07:30 起床',title:'學術城早晨',desc:'從住處騎車，穿過 Newnham 街區到校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班互動，程度分班、每週測驗。'},
+    {time:'12:15 午餐',title:'市中心覓食',desc:'騎車進城，學區餐廳與咖啡店選擇多。'},
+    {time:'下午自由',title:'康河或博物館',desc:'在康河撐篙，或逛菲茨威廉博物館。'},
+    {time:'週末',title:'倫敦或近郊',desc:'火車不到 1 小時到倫敦，或探索周邊小鎮。'},
+  ],
+  qa:[
+    {q:'台灣人去英國短期遊學需要簽證嗎？',a:'台灣護照通常可以「訪客」身分（Standard Visitor）免簽入境英國、就讀 6 個月以內的短期英語課程；6–11 個月的英語課程可申請 Short-term study visa，更長期或要打工則需 Student visa。實際以英國政府 GOV.UK 與顧問確認為準。'},
+    {q:'劍橋和牛津怎麼選？',a:'兩者都是頂尖大學城、英倫氛圍濃；劍橋有康河撐篙、城市更緊湊；牛津博物館與學院更密集。單看偏好，兩地學費相近。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 £330 起、住宿約 £230 起，實際依課程長度與房型而定，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_edinburgh:{
+  name:'Kaplan 愛丁堡',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'26 St. Andrew Square, Edinburgh, EH2 1AF',cur:'£',
+  intro:'愛丁堡是一座充滿魔力的中世紀城市，也是藝術家與歷史愛好者的天堂，從愛丁堡城堡到世界著名的藝術節（Fringe）都令人著迷。Kaplan 校區位於一座喬治亞時期建築內，鄰近聖安德魯廣場、皇家英里大道與亞瑟王座健行路線。你可以參加高地遊覽欣賞壯麗自然，若 8 月入學還能親身體驗愛丁堡藝術節，是想在文化底蘊深厚的城市沉浸英語的絕佳選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'市中心，鄰聖安德魯廣場與愛丁堡城堡'}],
+  feats:[
+    {i:'🏰',t:'中世紀魔力之城',d:'愛丁堡城堡與皇家英里大道，處處充滿歷史氛圍。'},
+    {i:'📍',t:'市中心喬治亞建築',d:'校區鄰聖安德魯廣場，步行可達主要景點。'},
+    {i:'🎭',t:'世界級藝術節',d:'8 月愛丁堡藝術節（Fringe），全球矚目。'},
+    {i:'⛰️',t:'高地與自然',d:'可參加高地遊覽，欣賞英國最壯麗的景觀。'},
+    {i:'🥾',t:'亞瑟王座健行',d:'市區旁即可登亞瑟王座，俯瞰全城。'},
+  ],
+  who:[
+    {i:'🎭',t:'熱愛藝術與文化的學員',d:'藝術節與博物館資源豐富，還有藝術節限定課程。'},
+    {i:'⛰️',t:'喜歡自然與健行者',d:'高地遊覽與亞瑟王座，戶外體驗豐富。'},
+    {i:'📝',t:'要考 IELTS 的學員',d:'雅思補充／強化課程含應試技巧。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程強化職場溝通。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'£240/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（£）：1–4週 330／5–11週 320／12–19週 280／20+週 240。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'£260/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（£）：1–4週 350／5–11週 340／12–19週 310／20+週 260。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'£310/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇；另可升級超級強化。　各長度每週價（£）：1–4週 410／5–11週 400／12–19週 360／20+週 310。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['職場情境','視開課'],price:'£310/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（視開課情況）。　各長度每週價（£）：1–4週 410／5–11週 400／12–19週 360／20+週 310。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['四項技能','補充／強化'],price:'£310/週起',desc:'IELTS 補充／強化考試課程，針對四項技能與應試技巧。　各長度每週價（£）：1–4週 410／5–11週 400／12–19週 360／20+週 310。'},
+    {name:'藝術節課程 Edinburgh Festival',special:true,tags:['1–3週','8月限定'],price:'£410/週起',desc:'配合 8 月愛丁堡國際藝術節的特別課程（1–3 週）。2026 開課：8/10、8/17、8/24。　各長度每週價（£）：1–4週 410／5–11週 —／12–19週 —／20+週 —。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'£120/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・交通約 30–45 分',price:'£190/週起',desc:'愛丁堡在地家庭含餐，體驗蘇格蘭生活。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'£230/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'Arran House 學生宿舍',meta:'18歲以上・近市區',price:'£360/週起',desc:'市區學生宿舍，獨立衛浴。'},
+    {name:'Vita Edinburgh 學生公寓',meta:'18歲以上・獨立套房',price:'£440/週起',desc:'市中心獨立套房學生公寓。'},
+  ],
+  fees:[{l:'報名及註冊費',v:'£140'},{l:'住宿安置費',v:'£40'},{l:'醫療與旅行保險',v:'£10/週'},{l:'變更費（抵達後）',v:'£70'},{l:'電匯手續費（台灣）',v:'£50'}],
+  calcCourses:[{n:'通用英語',pw:320},{n:'半強化英語',pw:340},{n:'強化英語',pw:400}],
+  calcAccomm:[{n:'Vita Edinburgh 學生公寓',pw:440},{n:'Arran House 學生宿舍',pw:360},{n:'寄宿家庭',pw:190}],
+  day:[
+    {time:'07:30 起床',title:'古城早晨',desc:'從住處出發，走進喬治亞建築校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班互動，程度分班、每週測驗。'},
+    {time:'12:15 午餐',title:'皇家英里覓食',desc:'市中心餐廳與咖啡店，來份蘇格蘭料理。'},
+    {time:'下午自由',title:'城堡或健行',desc:'參觀愛丁堡城堡，或登亞瑟王座俯瞰全城。'},
+    {time:'週末',title:'高地小旅行',desc:'參加高地遊覽，欣賞壯麗湖光山色。'},
+  ],
+  qa:[
+    {q:'台灣人去英國短期遊學需要簽證嗎？',a:'台灣護照通常可以「訪客」身分（Standard Visitor）免簽入境英國、就讀 6 個月以內的短期英語課程；6–11 個月的英語課程可申請 Short-term study visa，更長期或要打工則需 Student visa。實際以英國政府 GOV.UK 與顧問確認為準。'},
+    {q:'8 月去愛丁堡是不是特別熱鬧？',a:'是。8 月是愛丁堡藝術節（Fringe）期間，全城充滿表演與活動，還有藝術節限定課程；但住宿較搶手，建議提早預訂。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 £320 起、住宿約 £190 起，實際依課程長度與房型而定，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_liverpool:{
+  name:'Kaplan 利物浦',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'Cotton House, Old Hall Street, Liverpool, L3 9TX',cur:'£',
+  intro:'利物浦是披頭四樂團與利物浦足球俱樂部的故鄉，也是音樂、商業、文化與體育的活力中心。Kaplan 校區位於市中心，步行 2 分鐘即達 Moorfields 地鐵站。你可以到安菲爾德球場感受足球熱情、在時尚的洞穴俱樂部（Cavern Club）欣賞現場音樂，或走訪多座免費博物館，是想在友善又充滿音樂能量的城市以親民預算沉浸英語的好選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'中型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'市中心，步行 2 分到 Moorfields 地鐵站'}],
+  feats:[
+    {i:'🎸',t:'披頭四的故鄉',d:'音樂傳奇之城，Cavern Club 現場音樂不斷。'},
+    {i:'⚽',t:'足球之城',d:'可參觀安菲爾德球場，甚至現場看球。'},
+    {i:'📍',t:'市中心地鐵旁',d:'校區步行 2 分到 Moorfields 地鐵站。'},
+    {i:'🏛️',t:'免費博物館',d:'多座免費博物館與美術館，文化資源豐富。'},
+    {i:'💰',t:'高性價比',d:'學費與住宿在英國校區中相對親民。'},
+  ],
+  who:[
+    {i:'🎸',t:'熱愛音樂與流行文化者',d:'披頭四之城、現場音樂與藝文活動豐富。'},
+    {i:'⚽',t:'足球迷',d:'安菲爾德球場就在城裡，體育氛圍濃厚。'},
+    {i:'📜',t:'想考劍橋證書的學員',d:'開設劍橋 B2／C1 證書課程（固定梯次）。'},
+    {i:'💰',t:'預算有限的學員',d:'學費住宿親民，適合長期沉浸。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'£230/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（£）：1–4週 300／5–11週 290／12–19週 260／20+週 230。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'£250/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（£）：1–4週 330／5–11週 320／12–19週 290／20+週 250。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'£290/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇；另可升級超級強化。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 330／20+週 290。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['職場情境','視開課'],price:'£290/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（視開課情況）。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 330／20+週 290。'},
+    {name:'劍橋 B2/C1 Cambridge B2/C1',special:true,tags:['4/8/12週','B2/C1'],price:'£260/週起',desc:'劍橋 B2 First／C1 Advanced 證書備考，可選 4／8／12 週固定梯次。　各長度每週價（£）：1–4週 300／5–11週 290／12–19週 260／20+週 —。'},
+    {name:'劍橋強化 B2/C1 Cambridge Intensive B2/C1',special:true,tags:['4/8/12週','B2/C1'],price:'£330/週起',desc:'劍橋 B2／C1 密集備考課程，4／8／12 週固定梯次。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 330／20+週 —。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['四項技能','補充／強化'],price:'£290/週起',desc:'IELTS 補充／強化考試課程，針對四項技能與應試技巧。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 330／20+週 290。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'£120/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・交通約 30–45 分',price:'£180/週起',desc:'利物浦在地家庭含餐，體驗英國北部生活。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'£200/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'Glassworks 學生宿舍',meta:'18歲以上・近市區',price:'£270/週起',desc:'市區學生宿舍，獨立衛浴。'},
+    {name:'Vita Liverpool 學生公寓',meta:'18歲以上・獨立套房',price:'£270/週起',desc:'市中心獨立套房學生公寓，多房型可選。'},
+  ],
+  fees:[{l:'報名及註冊費',v:'£140'},{l:'住宿安置費',v:'£40'},{l:'醫療與旅行保險',v:'£10/週'},{l:'變更費（抵達後）',v:'£70'},{l:'電匯手續費（台灣）',v:'£50'}],
+  calcCourses:[{n:'通用英語',pw:290},{n:'半強化英語',pw:320},{n:'強化英語',pw:360}],
+  calcAccomm:[{n:'Glassworks 學生宿舍',pw:270},{n:'Vita Liverpool 學生公寓',pw:270},{n:'寄宿家庭',pw:180}],
+  day:[
+    {time:'07:30 起床',title:'北部城市早晨',desc:'從住處出發，步行到市中心校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班互動，程度分班、每週測驗。'},
+    {time:'12:15 午餐',title:'市中心覓食',desc:'市區餐廳林立，餐飲選擇多元。'},
+    {time:'下午自由',title:'博物館或港區',desc:'逛免費博物館，或到默西河畔散步。'},
+    {time:'週末',title:'看球或音樂',desc:'到安菲爾德看球，或在 Cavern Club 聽現場。'},
+  ],
+  qa:[
+    {q:'台灣人去英國短期遊學需要簽證嗎？',a:'台灣護照通常可以「訪客」身分（Standard Visitor）免簽入境英國、就讀 6 個月以內的短期英語課程；6–11 個月的英語課程可申請 Short-term study visa，更長期或要打工則需 Student visa。實際以英國政府 GOV.UK 與顧問確認為準。'},
+    {q:'利物浦有劍橋證書課程嗎？',a:'有。除了通用與強化英語，還有劍橋 B2／C1 證書課程（General 與 Intensive），採 4／8／12 週固定梯次，適合想取得國際認可證書的學員。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 £290 起、住宿約 £180 起，是英愛校區中較親民的選擇，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_london:{
+  name:'Kaplan 倫敦',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'3-4 Southampton Place, London, WC1A 2DA（Covent Garden）',cur:'£',
+  intro:'倫敦是世界最具標誌性的城市之一，英國首都的英語教育自然頂尖，更是多元文化交融、包容友善的國際都會。Kaplan 校區位於 Covent Garden，靠近大英博物館與熱鬧的市集。你可以參加各式旅行，走訪諾丁丘、卡姆登市集、大笨鐘、白金漢宮與牛津街等熱門景點。課程與證書選擇最完整（含劍橋 C2、雅思），是想在世界舞台中心沉浸英語與都會生活的首選。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'Covent Garden，鄰大英博物館'}],
+  feats:[
+    {i:'📍',t:'Covent Garden',d:'校區鄰大英博物館與 Covent Garden 市集，位置絕佳。'},
+    {i:'🌍',t:'國際都會',d:'多元文化、包容友善，來自世界各地的學生齊聚。'},
+    {i:'🎭',t:'景點與藝文',d:'諾丁丘、卡姆登、大笨鐘、白金漢宮盡在周邊。'},
+    {i:'📜',t:'課程證書最齊全',d:'含劍橋 B2／C1／C2 與雅思，選擇最完整。'},
+    {i:'👔',t:'30+／50+ 校區',d:'另設 30+／50+ 專屬校區（5 Bloomsbury Place），與同齡人一同學習。'},
+  ],
+  who:[
+    {i:'🌍',t:'想在頂級國際都會學習者',d:'倫敦資源最豐富、國際學生最多，開口機會足。'},
+    {i:'📜',t:'想考劍橋／雅思的學員',d:'劍橋 B2／C1／C2 與雅思課程一應俱全。'},
+    {i:'💼',t:'職場人士',d:'商務英語與 30+ 專屬校區，環境更成熟。'},
+    {i:'🎭',t:'熱愛都會與藝文者',d:'博物館、劇院與市集，生活即教材。'},
+    {i:'👔',t:'30 歲以上的成人學員',d:'30+／50+ 專屬空間與課程。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'£290/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 330／20+週 290。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'£310/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（£）：1–4週 410／5–11週 400／12–19週 360／20+週 310。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'£360/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇；另可升級超級強化。　各長度每週價（£）：1–4週 480／5–11週 470／12–19週 420／20+週 360。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['職場情境','視開課'],price:'£360/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（視開課情況）。　各長度每週價（£）：1–4週 480／5–11週 470／12–19週 420／20+週 360。'},
+    {name:'劍橋 B2/C1 Cambridge B2/C1',special:true,tags:['4/8/12週','B2/C1'],price:'£330/週起',desc:'劍橋 B2 First／C1 Advanced 證書備考，可選 4／8／12 週固定梯次。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 330／20+週 —。'},
+    {name:'劍橋強化 B2/C1 Cambridge Intensive B2/C1',special:true,tags:['4/8/12週','B2/C1'],price:'£420/週起',desc:'劍橋 B2／C1 密集備考課程，4／8／12 週固定梯次。　各長度每週價（£）：1–4週 480／5–11週 470／12–19週 420／20+週 —。'},
+    {name:'劍橋 C2 Cambridge C2',special:true,tags:['固定梯次','C2'],price:'£360/週起',desc:'劍橋 C2 Proficiency 最高階證書備考課程。　各長度每週價（£）：1–4週 480／5–11週 470／12–19週 420／20+週 360。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['四項技能','補充／強化'],price:'£360/週起',desc:'IELTS 補充／強化考試課程，針對四項技能與應試技巧。　各長度每週價（£）：1–4週 480／5–11週 470／12–19週 420／20+週 360。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'£120/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・通勤進市區',price:'£230/週起',desc:'倫敦寄宿家庭含餐，通勤上課、沉浸生活。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'£250/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'Scape Wembley 學生公寓',meta:'18歲以上・獨立套房',price:'£430/週起',desc:'獨立套房學生公寓，設施完善。'},
+    {name:'Battersea 學生宿舍',meta:'18歲以上・單人房',price:'£540/週起',desc:'市區學生宿舍，獨立衛浴。'},
+    {name:'IQ Shoreditch 學生公寓',meta:'18歲以上・獨立套房',price:'£610/週起',desc:'東倫敦時尚學生公寓（最少 2 週起訂）。'},
+  ],
+  fees:[{l:'報名及註冊費',v:'£140'},{l:'住宿安置費',v:'£40'},{l:'醫療與旅行保險',v:'£10/週'},{l:'變更費（抵達後）',v:'£70'},{l:'電匯手續費（台灣）',v:'£50'}],
+  calcCourses:[{n:'通用英語',pw:360},{n:'半強化英語',pw:400},{n:'強化英語',pw:470}],
+  calcAccomm:[{n:'IQ Shoreditch 學生公寓',pw:610},{n:'Battersea 學生宿舍',pw:540},{n:'Scape Wembley 學生公寓',pw:430},{n:'寄宿家庭',pw:230}],
+  day:[
+    {time:'07:30 起床',title:'都會早晨',desc:'從住處出發，搭地鐵前往 Covent Garden 校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'程度分班細緻的小班課，主題結合都會生活。'},
+    {time:'12:15 午餐',title:'Covent Garden 覓食',desc:'市集與周邊餐廳林立，各國美食任選。'},
+    {time:'下午自由',title:'博物館或市集',desc:'逛大英博物館，或到卡姆登、諾丁丘走走。'},
+    {time:'傍晚',title:'西區看戲',desc:'到 West End 看一場音樂劇。'},
+    {time:'週末',title:'景點與近郊',desc:'白金漢宮、大笨鐘，或到牛津、劍橋小旅行。'},
+  ],
+  qa:[
+    {q:'台灣人去英國短期遊學需要簽證嗎？',a:'台灣護照通常可以「訪客」身分（Standard Visitor）免簽入境英國、就讀 6 個月以內的短期英語課程；6–11 個月的英語課程可申請 Short-term study visa，更長期或要打工則需 Student visa。實際以英國政府 GOV.UK 與顧問確認為準。'},
+    {q:'倫敦生活費是不是很高？',a:'倫敦物價偏高、住宿是主要開銷；可選通勤的寄宿家庭（£230 起）或郊區學生公寓分攤成本，用頁面計算機估整體台幣預算會更清楚。'},
+    {q:'倫敦校區的課程最完整嗎？',a:'是。倫敦開設最完整的課程與證書，含劍橋 B2／C1／C2、雅思與商務英語，另有 30+／50+ 專屬校區，選擇最多。'},
+  ],
+},
+
+kaplan_manchester:{
+  name:'Kaplan 曼徹斯特',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'1 Portland Street, 6th Floor, Manchester, M1 3BE',cur:'£',
+  intro:'曼徹斯特是一座為學生而生的英國北部城市，充滿活力、創意與自豪感，擁有龐大的學生社群與蓬勃的餐飲文化。Kaplan 校區位於市中心充滿活力的北區（Northern Quarter）——藝術家、DJ 與獨立樂團的聚集地，鄰近公車站，且市中心公車可免費搭乘。體育迷可造訪媒體城與伊蒂哈德球場，是想在友善、有活力又不會太大的城市沉浸英語的理想選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'中型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'市中心北區（Northern Quarter）'}],
+  feats:[
+    {i:'📍',t:'市中心北區',d:'校區位於活力北區（Northern Quarter），藝文氛圍濃。'},
+    {i:'🚌',t:'市區公車免費',d:'校區近公車站，市中心公車可免費搭乘。'},
+    {i:'⚽',t:'體育之城',d:'可造訪媒體城與伊蒂哈德球場。'},
+    {i:'🍽️',t:'餐飲蓬勃',d:'餐飲行業成長快，美食與夜生活精彩。'},
+    {i:'🎓',t:'龐大學生社群',d:'學生友善城市，交友與活動機會多。'},
+  ],
+  who:[
+    {i:'🎓',t:'喜歡學生城市氛圍者',d:'龐大學生社群、活力北區，交友容易。'},
+    {i:'⚽',t:'體育與音樂愛好者',d:'足球、媒體城與獨立音樂文化豐富。'},
+    {i:'📝',t:'要考 IELTS 的學員',d:'雅思補充／強化課程含應試技巧。'},
+    {i:'💰',t:'重視性價比的學員',d:'學費住宿相對親民，市區公車免費。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'£260/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（£）：1–4週 340／5–11週 330／12–19週 300／20+週 260。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'£280/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 320／20+週 280。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'£320/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇；另可升級超級強化。　各長度每週價（£）：1–4週 430／5–11週 420／12–19週 380／20+週 320。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['職場情境','視開課'],price:'£320/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（視開課情況）。　各長度每週價（£）：1–4週 430／5–11週 420／12–19週 380／20+週 320。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['四項技能','補充／強化'],price:'£320/週起',desc:'IELTS 補充／強化考試課程，針對四項技能與應試技巧。　各長度每週價（£）：1–4週 430／5–11週 420／12–19週 380／20+週 320。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'£120/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・交通約 30–45 分',price:'£180/週起',desc:'曼徹斯特在地家庭含餐，體驗北部生活。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'£230/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'Lambert & Fairfield 學生宿舍',meta:'18歲以上・近市區',price:'£310/週起',desc:'市區學生宿舍，獨立衛浴（最少 2 週起訂）。'},
+    {name:'Vita Manchester 學生公寓',meta:'18歲以上・獨立套房',price:'£400/週起',desc:'市中心獨立套房學生公寓。'},
+  ],
+  fees:[{l:'報名及註冊費',v:'£140'},{l:'住宿安置費',v:'£40'},{l:'醫療與旅行保險',v:'£10/週'},{l:'變更費（抵達後）',v:'£70'},{l:'電匯手續費（台灣）',v:'£50'}],
+  calcCourses:[{n:'通用英語',pw:330},{n:'半強化英語',pw:360},{n:'強化英語',pw:420}],
+  calcAccomm:[{n:'Vita Manchester 學生公寓',pw:400},{n:'Lambert & Fairfield 學生宿舍',pw:310},{n:'寄宿家庭',pw:180}],
+  day:[
+    {time:'07:30 起床',title:'北部城市早晨',desc:'從住處出發，前往北區的市中心校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班互動，程度分班、每週測驗。'},
+    {time:'12:15 午餐',title:'北區覓食',desc:'Northern Quarter 咖啡館與餐廳選擇多。'},
+    {time:'下午自由',title:'藝廊或球場',desc:'逛曼徹斯特美術館，或造訪伊蒂哈德球場。'},
+    {time:'週末',title:'近郊或音樂',desc:'到湖區小旅行，或享受城市夜生活。'},
+  ],
+  qa:[
+    {q:'台灣人去英國短期遊學需要簽證嗎？',a:'台灣護照通常可以「訪客」身分（Standard Visitor）免簽入境英國、就讀 6 個月以內的短期英語課程；6–11 個月的英語課程可申請 Short-term study visa，更長期或要打工則需 Student visa。實際以英國政府 GOV.UK 與顧問確認為準。'},
+    {q:'曼徹斯特適合喜歡熱鬧的人嗎？',a:'很適合。它是充滿活力的學生城市、夜生活與音樂文化精彩，規模又不會太大，生活機能與交通都便利。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 £330 起、住宿約 £180 起，實際依課程長度與房型而定，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_oxford:{
+  name:'Kaplan 牛津',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'108 Banbury Road, Oxford, OX2 6JU',cur:'£',
+  intro:'牛津是充滿魔法氛圍的頂尖大學城，古老的圖書館、哥德式走廊與中世紀學院數百年來孕育傑出人才，也是不少電影的取景地。Kaplan 校區位於一座寬敞的愛德華時期建築內，搭公車或騎單車到市中心僅 5 分鐘。你可以在阿什莫林與自然史博物館拓展知識、在基督堂學院汲取靈感，或在大學公園曬太陽放鬆，是想在學術與歷史氛圍中沉浸英語的理想之地。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'中型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'公車或單車 5 分到市中心'}],
+  feats:[
+    {i:'🎓',t:'頂尖大學城',d:'牛津大學所在地，學術與歷史氛圍濃厚。'},
+    {i:'📍',t:'愛德華時期建築',d:'寬敞校區，公車或單車 5 分到市中心。'},
+    {i:'🏛️',t:'博物館與學院',d:'阿什莫林、自然史博物館與基督堂學院。'},
+    {i:'🪄',t:'電影取景地',d:'古老學院與走廊，充滿魔法氛圍。'},
+    {i:'🌳',t:'綠意校園',d:'大學公園與南公園，課後放鬆好去處。'},
+  ],
+  who:[
+    {i:'🎓',t:'嚮往名校學術氛圍者',d:'牛津大學城環境，學風濃厚、博物館密集。'},
+    {i:'📜',t:'想加強劍橋備考者',d:'開設劍橋補充課程，搭配主課加強應試。'},
+    {i:'📝',t:'要考 IELTS 的學員',d:'雅思補充／強化課程含應試技巧。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程強化職場溝通。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'£260/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（£）：1–4週 340／5–11週 330／12–19週 300／20+週 260。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'£280/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 320／20+週 280。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'£320/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇；另可升級超級強化。　各長度每週價（£）：1–4週 430／5–11週 420／12–19週 380／20+週 320。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['職場情境','視開課'],price:'£320/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（視開課情況）。　各長度每週價（£）：1–4週 430／5–11週 420／12–19週 380／20+週 320。'},
+    {name:'劍橋補充 Cambridge Supplementary',special:true,tags:['搭配主課','劍橋備考'],price:'£320/週起',desc:'劍橋證書補充課程，搭配主課程加強應試。　各長度每週價（£）：1–4週 430／5–11週 420／12–19週 380／20+週 320。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['四項技能','補充／強化'],price:'£320/週起',desc:'IELTS 補充／強化考試課程，針對四項技能與應試技巧。　各長度每週價（£）：1–4週 430／5–11週 420／12–19週 380／20+週 320。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'£120/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・交通約 30–45 分',price:'£210/週起',desc:'牛津在地家庭含餐，體驗大學城生活。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'£240/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'Student Castle 學生宿舍',meta:'18歲以上・近市區',price:'£400/週起',desc:'市區現代學生宿舍，獨立衛浴。'},
+    {name:'The Mews 學生公寓',meta:'18歲以上・獨立套房',price:'£450/週起',desc:'市區獨立套房學生公寓。'},
+  ],
+  fees:[{l:'報名及註冊費',v:'£140'},{l:'住宿安置費',v:'£40'},{l:'醫療與旅行保險',v:'£10/週'},{l:'變更費（抵達後）',v:'£70'},{l:'電匯手續費（台灣）',v:'£50'}],
+  calcCourses:[{n:'通用英語',pw:330},{n:'半強化英語',pw:360},{n:'強化英語',pw:420}],
+  calcAccomm:[{n:'The Mews 學生公寓',pw:450},{n:'Student Castle 學生宿舍',pw:400},{n:'寄宿家庭',pw:210}],
+  day:[
+    {time:'07:30 起床',title:'大學城早晨',desc:'從住處出發，騎車或搭公車到校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班互動，程度分班、每週測驗。'},
+    {time:'12:15 午餐',title:'市中心覓食',desc:'進城覓食，學區餐廳與咖啡店選擇多。'},
+    {time:'下午自由',title:'博物館或學院',desc:'逛阿什莫林博物館，或走訪基督堂學院。'},
+    {time:'週末',title:'倫敦或近郊',desc:'火車到倫敦約 1 小時，或探索周邊小鎮。'},
+  ],
+  qa:[
+    {q:'台灣人去英國短期遊學需要簽證嗎？',a:'台灣護照通常可以「訪客」身分（Standard Visitor）免簽入境英國、就讀 6 個月以內的短期英語課程；6–11 個月的英語課程可申請 Short-term study visa，更長期或要打工則需 Student visa。實際以英國政府 GOV.UK 與顧問確認為準。'},
+    {q:'牛津和劍橋怎麼選？',a:'兩者都是頂尖大學城；牛津博物館與學院更密集、電影取景地多；劍橋有康河撐篙、城市更緊湊。兩地學費相近，看個人偏好。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 £330 起、住宿約 £210 起，實際依課程長度與房型而定，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_torquay:{
+  name:'Kaplan 托基',region:'英國',tag:'tag-uk',flag:'🇬🇧',
+  addr:'30 Ash Hill Road, Torquay, TQ1 3HZ',cur:'£',
+  intro:'托基是英國西南岸的海濱小鎮，融合英國海濱魅力與地中海般的熱情活力，擁有絕美沙灘。Kaplan 校區擁有開闊的校園，包括一座私人游泳池，步行到市中心僅 5 分鐘。你可以參加學校旅行到肯特洞穴、托雷修道院與 UNESCO 城市地質公園，或探索推理小說女王阿加莎．克里斯蒂的神秘世界，是想在悠閒海濱以親民預算沉浸英語的理想選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'小型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'步行 5 分到市中心，校內有私人泳池'}],
+  feats:[
+    {i:'🏖️',t:'英倫地中海海灘',d:'絕美沙灘＋地中海般氛圍，海濱生活愜意。'},
+    {i:'🏊',t:'校內私人泳池',d:'開闊校園設有私人游泳池，設施難得。'},
+    {i:'📍',t:'步行 5 分到市區',d:'校區近市中心，生活機能便利。'},
+    {i:'🕵️',t:'阿加莎．克里斯蒂之城',d:'可參加導覽，探索推理女王的神秘世界。'},
+    {i:'💰',t:'高性價比',d:'學費與住宿在英國校區中相對親民。'},
+  ],
+  who:[
+    {i:'🏖️',t:'想在海濱輕鬆學習者',d:'絕美沙灘與悠閒步調，適合放鬆沉浸。'},
+    {i:'💰',t:'預算有限的學員',d:'學費住宿親民，適合長期停留。'},
+    {i:'📝',t:'要考 IELTS 的學員',d:'雅思考試補充課程含應試技巧。'},
+    {i:'😌',t:'偏好小城安靜環境者',d:'小校區、師生互動緊密。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'£220/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（£）：1–4週 300／5–11週 290／12–19週 250／20+週 220。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'£240/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（£）：1–4週 320／5–11週 310／12–19週 280／20+週 240。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'£280/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇；另可升級超級強化。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 330／20+週 280。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['職場情境','視開課'],price:'£280/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（視開課情況）。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 330／20+週 280。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['四項技能','補充／強化'],price:'£280/週起',desc:'IELTS 補充／強化考試課程，針對四項技能與應試技巧。　各長度每週價（£）：1–4週 370／5–11週 360／12–19週 330／20+週 280。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'£120/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・交通約 30–45 分',price:'£170/週起',desc:'托基在地家庭含餐，體驗海濱小鎮生活。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'£190/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'St Michael\'s 學生宿舍',meta:'18歲以上・近市區',price:'£250/週起',desc:'市區學生宿舍，獨立衛浴。'},
+  ],
+  fees:[{l:'報名及註冊費',v:'£140'},{l:'住宿安置費',v:'£40'},{l:'醫療與旅行保險',v:'£10/週'},{l:'變更費（抵達後）',v:'£70'},{l:'電匯手續費（台灣）',v:'£50'}],
+  calcCourses:[{n:'通用英語',pw:290},{n:'半強化英語',pw:310},{n:'強化英語',pw:360}],
+  calcAccomm:[{n:'St Michael\'s 學生宿舍',pw:250},{n:'寄宿家庭',pw:170}],
+  day:[
+    {time:'07:30 起床',title:'海濱早晨',desc:'從住處出發，步行到近市區的校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班互動，程度分班、每週測驗。'},
+    {time:'12:15 午餐',title:'市中心覓食',desc:'市區餐廳與咖啡店，來份英式海濱午餐。'},
+    {time:'下午自由',title:'海灘或泳池',desc:'到托基海灘玩水，或使用校內私人泳池。'},
+    {time:'週末',title:'海岸小旅行',desc:'前往肯特洞穴、托雷修道院或地質公園。'},
+  ],
+  qa:[
+    {q:'台灣人去英國短期遊學需要簽證嗎？',a:'台灣護照通常可以「訪客」身分（Standard Visitor）免簽入境英國、就讀 6 個月以內的短期英語課程；6–11 個月的英語課程可申請 Short-term study visa，更長期或要打工則需 Student visa。實際以英國政府 GOV.UK 與顧問確認為準。'},
+    {q:'托基會不會太小、太安靜？',a:'它是悠閒海濱小鎮、步調慢、治安佳，適合想放鬆專注學習的人；想要熱鬧可安排週末到艾克希特或布里斯托走走。'},
+    {q:'一週大約多少錢？',a:'以通用英語＋寄宿家庭估算，課程週費約 £290 起、住宿約 £170 起，是英愛校區中最親民的選擇之一，可用計算機換算台幣。'},
+  ],
+},
+
+kaplan_dublin:{
+  name:'Kaplan 都柏林',region:'歐洲',tag:'tag-eu',flag:'🇮🇪',
+  addr:'The Presbytery Building, 7 Exchange Street Lower, Temple Bar, Dublin D08 PX27',cur:'€',
+  intro:'都柏林以熱情好客聞名，完美融合現代與傳統——早上參觀古堡，下午就能走進繁華的科技區。Kaplan 校區位於熱鬧的 Temple Bar 文化與夜生活中心，交通便利。你可以到三一學院欣賞古老的《凱爾經》、走進自然前往霍斯懸崖與莫赫懸崖，當然也別錯過在 Temple Bar 喝一杯健力士。這裡開設劍橋證書與 CELTA 師資培訓，是想在友善英語系國家沉浸學習的理想選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'中型校區'},{l:'最大班級',v:'最多 15 人（平均約 12 人）'},{l:'最短修讀',v:'1 週（彈性 1–52 週）'},{l:'開課日',v:'每週一（遇公共假期順延週二）'},{l:'校區位置',v:'Temple Bar 文化區，交通便利'}],
+  feats:[
+    {i:'📍',t:'Temple Bar 文化區',d:'校區位於文化與夜生活中心，交通便利。'},
+    {i:'📖',t:'三一學院與《凱爾經》',d:'可欣賞古老的《凱爾經》，感受學術底蘊。'},
+    {i:'🍺',t:'熱情好客之城',d:'以友善聞名，Temple Bar 酒館文化獨特。'},
+    {i:'📜',t:'劍橋與 CELTA',d:'開設劍橋證書與 CELTA 英語教學資格課程。'},
+    {i:'⛰️',t:'自然近在咫尺',d:'霍斯懸崖、莫赫懸崖與威克洛山脈可小旅行。'},
+  ],
+  who:[
+    {i:'📖',t:'想在英語系友善國家學習者',d:'都柏林熱情好客，英語環境純正。'},
+    {i:'👩‍🏫',t:'想考英語教學證照者',d:'開設 CELTA 師資培訓（固定 4 週梯次）。'},
+    {i:'📜',t:'想考劍橋證書的學員',d:'劍橋 B2／C1 證書課程，固定梯次。'},
+    {i:'💼',t:'有職場英語需求者',d:'商務英語補充課程強化職場溝通。'},
+  ],
+  courses:[
+    {name:'通用英語 General English',special:false,tags:['20堂/週','上午班','初級→高級'],price:'€300/週起',desc:'每週 20 堂英語課，聽說讀寫並重，程度分班、每週五單元測驗。　各長度每週價（€）：1–4週 370／5–11週 350／12–19週 330／20+週 300。'},
+    {name:'半強化英語 Semi-Intensive English',special:false,tags:['約24堂/週','含自習研討','初級→高級'],price:'€330/週起',desc:'20 堂核心課加自習研討與 K+ 線上資源，強化實際應用。　各長度每週價（€）：1–4週 410／5–11週 400／12–19週 380／20+週 330。'},
+    {name:'強化英語 Intensive English',special:false,tags:['28堂/週','20核心+8技能','初級→高級'],price:'€370/週起',desc:'每週 28 堂（20 核心＋8 專業技能），進步最快的密集選擇；另可升級超級強化。　各長度每週價（€）：1–4週 460／5–11週 440／12–19週 410／20+週 370。'},
+    {name:'商務英語補充 Business Supplementary',special:false,tags:['職場情境','視開課'],price:'€370/週起',desc:'在通用課程上加入商務英語模組，聚焦職場溝通（視開課情況）。　各長度每週價（€）：1–4週 460／5–11週 440／12–19週 410／20+週 370。'},
+    {name:'劍橋 B2/C1 Cambridge B2/C1',special:true,tags:['4/8/12週','B2/C1'],price:'€330/週起',desc:'劍橋 B2 First／C1 Advanced 證書備考，可選 4／8／12 週固定梯次。　各長度每週價（€）：1–4週 370／5–11週 350／12–19週 330／20+週 —。'},
+    {name:'劍橋強化 B2/C1 Cambridge Intensive B2/C1',special:true,tags:['4/8/12週','B2/C1'],price:'€410/週起',desc:'劍橋 B2／C1 密集備考課程，4／8／12 週固定梯次。　各長度每週價（€）：1–4週 460／5–11週 440／12–19週 410／20+週 —。'},
+    {name:'CELTA 師資培訓 CELTA',special:true,tags:['固定4週','教學證照'],price:'€410/週起',desc:'CELTA 英語教學資格證照課程，固定 4 週。2026 梯次：1/26、3/23、5/11、7/6、9/14、11/9。　各長度每週價（€）：1–4週 410／5–11週 —／12–19週 —／20+週 —。'},
+    {name:'雅思備考 IELTS Preparation',special:true,tags:['四項技能','補充／強化'],price:'€370/週起',desc:'IELTS 補充／強化考試課程，針對四項技能與應試技巧。　各長度每週價（€）：1–4週 460／5–11週 440／12–19週 410／20+週 370。'},
+    {name:'精品小班個人課 Private / Small-Group',special:false,tags:['每堂50分','1對1–4對1'],price:'€100/堂起',desc:'1 對 1 或 2–4 人小班個人課，完全客製，每堂 50 分鐘；堂數越多單價越低。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（含餐）',meta:'18歲以上・通勤進市區',price:'€230/週起',desc:'都柏林在地家庭含餐，沉浸英語生活。'},
+    {name:'寄宿家庭（未滿18）',meta:'16歲以上・含餐',price:'€260/週起',desc:'為未成年學生安排的寄宿家庭，含餐與照顧。'},
+    {name:'Arasain 學生宿舍',meta:'18歲以上・近市區',price:'€430/週起',desc:'市區學生宿舍，多房型可選。'},
+    {name:'LIV Student 學生宿舍',meta:'18歲以上・近市區',price:'€450/週起',desc:'市區現代學生宿舍，獨立衛浴。'},
+    {name:'Cork Street 學生公寓',meta:'18歲以上・獨立套房',price:'€580/週起',desc:'市區獨立套房學生公寓。'},
+  ],
+  fees:[{l:'報名及註冊費',v:'€160'},{l:'住宿安置費',v:'€40'},{l:'醫療與旅行保險',v:'€20/週'},{l:'變更費（抵達後）',v:'€70'},{l:'電匯手續費（台灣）',v:'€50'}],
+  calcCourses:[{n:'通用英語',pw:350},{n:'半強化英語',pw:400},{n:'強化英語',pw:440}],
+  calcAccomm:[{n:'Cork Street 學生公寓',pw:580},{n:'LIV Student 學生宿舍',pw:450},{n:'Arasain 學生宿舍',pw:430},{n:'寄宿家庭',pw:230}],
+  day:[
+    {time:'07:30 起床',title:'都柏林早晨',desc:'從住處出發，前往 Temple Bar 的校區。'},
+    {time:'09:00–12:15',title:'英語課程',desc:'小班互動，程度分班、每週測驗。'},
+    {time:'12:15 午餐',title:'Temple Bar 覓食',desc:'文化區餐廳與咖啡店，選擇多元。'},
+    {time:'下午自由',title:'學院或城堡',desc:'到三一學院看《凱爾經》，或逛都柏林城堡。'},
+    {time:'週末',title:'懸崖小旅行',desc:'前往霍斯懸崖、莫赫懸崖或威克洛山脈。'},
+  ],
+  qa:[
+    {q:'台灣人去愛爾蘭讀語言課要辦什麼？',a:'台灣護照赴愛爾蘭短期停留通常免簽（最多 90 天）；若就讀 25 週的政府 ILEP 認可英語課程，可在入境後申請學生居留（IRP／Stamp 2），並依規定享有打工權利。非歐盟學生 25 週以上課程另需醫療保險與相關費用。實際以愛爾蘭移民署（ISD）與顧問確認為準。'},
+    {q:'都柏林讀語言可以打工嗎？',a:'若就讀 25 週的政府 ILEP 認可英語課程並取得學生居留（Stamp 2），通常可依規定打工（學期每週 20 小時、假期 40 小時）；短期免簽停留則不含打工權利。實際以愛爾蘭移民署與顧問確認。'},
+    {q:'非歐盟學生有額外費用嗎？',a:'有。就讀 25 週以上課程的非歐盟學生，通常需另購 MEDIPEL 醫療保險（€160）與在籍學員保障（€50），並可能需繳雅思考試費（€240）；這些已列在費用備註，報名前會一併說明。'},
+  ],
+},
+
+  /* ── 地區：北美 ── */
+ilsc_vancouver:{
+  name:'ILSC 溫哥華',region:'北美',tag:'tag-na',flag:'🇨🇦',
+  addr:'Downtown Vancouver, BC（市中心，地址待確認）',cur:'CA$',
+  intro:'溫哥華被海洋與山脈環抱、氣候宜人，是加拿大西岸最受歡迎的留學城市。ILSC 溫哥華位於市中心，General English 採彈性選課，可自由組合英語溝通、商業、創意文化等課程，並有大學銜接、雅思與打工度假時段，國際學生比例高、課後與週末活動豐富。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'依課程而定'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'海洋與山脈環抱'}],
+  feats:[
+    {i:'🏔️',t:'海洋與山脈環抱',d:'氣候宜人、全年戶外活動，滑雪、健行、海灘近在咫尺。'},
+    {i:'🧩',t:'彈性選課 General English',d:'自由組合溝通、商業、創意文化等課程，依目標客製。'},
+    {i:'🎯',t:'大學／職涯銜接',d:'University Pathway 與姊妹校 Greystone College 職涯文憑。'},
+    {i:'💼',t:'打工度假友善',d:'兼職與下午時段，適合 IEC 打工度假邊讀邊工作。'},
+    {i:'🏫',t:'完善設施與國際學生',d:'市中心校區、來自全球的同學，沉浸式英語環境。'},
+  ],
+  who:[
+    {i:'🧩',t:'想彈性安排課程',d:'依目標自由組合課程與時段。'},
+    {i:'🎓',t:'想銜接大學/職涯',d:'Pathway 或 Greystone 文憑。'},
+    {i:'💼',t:'打工度假想學英語',d:'兼職時段彈性、可合法打工。'},
+    {i:'🏔️',t:'嚮往西岸山海生活',d:'邊學英語邊享受戶外。'},
+  ],
+  courses:[
+    {name:'全日密集 FTI（30 堂/週）',special:false,tags:['30堂/週·每堂50分','8:30–14:15','彈性選課'],price:'CA$ 480/週起',desc:'General English 彈性選課，可自由組合英語溝通、商業、創意文化等。每堂 50 分；讀越久越低（24 週以上約 CA$440/週）。'},
+    {name:'全日上午 FT AM（24 堂/週）',special:false,tags:['24堂/週','8:30–13:00'],price:'CA$ 430/週起',desc:'上午全日課程、下午自由運用，適合想兼顧打工或自學的人。24 週以上更優惠。'},
+    {name:'兼職 PT（17 堂/週起）',special:false,tags:['17堂/週','上午或下午'],price:'CA$ 325/週起',desc:'彈性兼職時段，適合打工度假或預算考量的學員。'},
+    {name:'大學／學院銜接 Pathway',special:true,tags:['University Pathway','Greystone Pathway'],price:'依課程',desc:'完成後可銜接合作大學，或直升姊妹校 Greystone College 職涯文憑。'},
+    {name:'考試準備 IELTS / Cambridge',special:true,tags:['IELTS','Cambridge B2/C1'],price:'依課程',desc:'雅思與劍橋官方考試衝刺班。'},
+    {name:'主題英語選修',special:true,tags:['商業','醫療','Café Work Skills','English Through AI'],price:'依課程',desc:'商業英語、醫療英語、咖啡職場技能、AI 英語等主題課程。'},
+    {name:'青少年營隊 Junior Camp（簡介）',special:true,tags:['9–17 歲','暑期/寒假','套裝'],price:'套裝另計',desc:'9–17 歲青少年暑期／寒假營，含食宿、活動與結業證書。梯次與價格另見青少年營隊資料。'},
+    {name:'Greystone College 職涯文憑（簡介）',special:true,tags:['職業文憑','帶薪 Co-op'],price:'另計',desc:'姊妹校 Greystone College 提供商業、數位行銷等職涯文憑與帶薪實習 Co-op，詳見 Greystone 專案。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭 全膳（3 餐）',meta:'13歲+・含三餐',price:'CA$ 350/週起',desc:'與加拿大寄宿家庭同住、三餐全包。淡季 $350、旺季(5/16–9/6) $390；未成年另計。'},
+    {name:'寄宿家庭 半膳（2 餐）',meta:'13歲+・早晚餐',price:'CA$ 325/週起',desc:'含早晚餐，午餐自理，沉浸式練英語。旺季 $365。'},
+    {name:'學生公寓 Residence',meta:'單人/雙人/套房',price:'CA$ 300/週起',desc:'市中心多處合作學生公寓與 co-living，依房型約 CA$300–635/週。'},
+  ],
+  fees:[{l:'註冊費',v:'CA$ 220（不可退）'},{l:'Study Permit 學生',v:'另繳 CA$ 750（含 $530 Allocation）'},{l:'教材費',v:'CA$ 60 起（1–4週，後 $15/週）'},{l:'住宿安排費',v:'CA$ 250（不可退）'},{l:'機場接送',v:'CA$ 135（單程）'},{l:'未成年監護信',v:'CA$ 150（<18 ON/QC、<19 BC）'}],
+  calcCourses:[{n:'全日密集 FTI（30堂）',pw:480},{n:'全日上午 FT AM（24堂）',pw:430},{n:'兼職 PT（17堂）',pw:325}],
+  calcAccomm:[{n:'寄宿家庭 全膳 3 餐',pw:350},{n:'寄宿家庭 半膳 2 餐',pw:325},{n:'學生公寓 Residence',pw:300}],
+  day:[
+    {time:'09:00 上課',title:'進入市中心校區',desc:'和來自各國的同學一起上彈性選課的 General English。'},
+    {time:'中午',title:'Robson / Granville 覓食',desc:'市中心餐廳與咖啡林立。'},
+    {time:'下午',title:'選修或自習',desc:'可選下午課，或到 Stanley Park 單車、海邊散步。'},
+    {time:'放學後',title:'活動與社團',desc:'學校活動、English Bay 看夕陽。'},
+    {time:'週末',title:'西岸出遊',desc:'Whistler 滑雪、Capilano 吊橋、Grouse Mountain。'},
+  ],
+  qa:[
+    {q:'去加拿大讀 ILSC 需要什麼簽證？',a:'6 個月內語言課程可用 eTA 觀光身分；超過 6 個月或要正式學生身分需 Study Permit（另須繳 $750 含 Allocation Fee）。打工度假（IEC）可邊讀邊工作。實際以官方規定為準。'},
+    {q:'溫哥華是不是很常下雨？',a:'冬季多雨但氣候溫和、少嚴寒；春夏秋宜人、適合戶外，是加拿大氣候最溫和的大城之一。'},
+    {q:'ILSC 的課程能銜接大學或職涯嗎？',a:'可以。University Pathway 可銜接多所合作大學；姊妹校 Greystone College 提供商業、數位行銷等職涯文憑與帶薪 Co-op；另有 IELTS/Cambridge 考試課程衝刺升學門檻。'},
+  ],
+},
+ilsc_toronto:{
+  name:'ILSC 多倫多',region:'北美',tag:'tag-na',flag:'🇨🇦',
+  addr:'Downtown Toronto, ON（市中心，地址待確認）',cur:'CA$',
+  intro:'多倫多是全球最多元文化的城市、加拿大商業金融與電影中心，坐落安大略湖畔。ILSC 多倫多市中心校區提供彈性選課的 General English，搭配大學銜接、雅思與主題英語，並有打工度假時段，是想在加拿大東岸學英語、升學或就業的熱門選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'依課程而定'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'最多元文化·商業金融中心'}],
+  feats:[
+    {i:'🌍',t:'全球最多元文化城市',d:'商業金融與電影中心、國際學生匯聚，英語環境真實。'},
+    {i:'🧩',t:'彈性選課 General English',d:'自由組合溝通、商業、創意文化等課程。'},
+    {i:'🎯',t:'大學／職涯銜接',d:'University Pathway 與姊妹校 Greystone College 職涯文憑。'},
+    {i:'💼',t:'打工度假友善',d:'兼職與下午/晚間時段，適合邊讀邊工作。'},
+    {i:'🏫',t:'完善設施與活動',d:'市中心校區、課後與週末活動豐富。'},
+  ],
+  who:[
+    {i:'🧩',t:'想彈性安排課程',d:'依目標自由組合課程。'},
+    {i:'🎓',t:'想銜接大學/職涯',d:'Pathway 或 Greystone 文憑。'},
+    {i:'💼',t:'打工度假想學英語',d:'時段彈性、可合法打工。'},
+    {i:'🌆',t:'想體驗東岸都會生活',d:'景點多、離尼加拉近。'},
+  ],
+  courses:[
+    {name:'全日密集 FTI（30 堂/週）',special:false,tags:['30堂/週·每堂50分','8:30–14:15','彈性選課'],price:'CA$ 480/週起',desc:'General English 彈性選課，可自由組合英語溝通、商業、創意文化等。每堂 50 分；讀越久越低（24 週以上約 CA$440/週）。'},
+    {name:'全日上午 FT AM（24 堂/週）',special:false,tags:['24堂/週','8:30–13:00'],price:'CA$ 430/週起',desc:'上午全日課程、下午自由運用，適合想兼顧打工或自學的人。24 週以上更優惠。'},
+    {name:'兼職 PT（17 堂/週起）',special:false,tags:['17堂/週','上午或下午'],price:'CA$ 325/週起',desc:'彈性兼職時段，適合打工度假或預算考量的學員。'},
+    {name:'大學／學院銜接 Pathway',special:true,tags:['University Pathway','Greystone Pathway'],price:'依課程',desc:'完成後可銜接合作大學，或直升姊妹校 Greystone College 職涯文憑。'},
+    {name:'考試準備 IELTS / Cambridge',special:true,tags:['IELTS','Cambridge B2/C1'],price:'依課程',desc:'雅思與劍橋官方考試衝刺班。'},
+    {name:'主題英語選修',special:true,tags:['商業','醫療','Café Work Skills','English Through AI'],price:'依課程',desc:'商業英語、醫療英語、咖啡職場技能、AI 英語等主題課程。'},
+    {name:'青少年營隊 Junior Camp（簡介）',special:true,tags:['9–17 歲','暑期/寒假','套裝'],price:'套裝另計',desc:'9–17 歲青少年暑期／寒假營，含食宿、活動與結業證書。梯次與價格另見青少年營隊資料。'},
+    {name:'Greystone College 職涯文憑（簡介）',special:true,tags:['職業文憑','帶薪 Co-op'],price:'另計',desc:'姊妹校 Greystone College 提供商業、數位行銷等職涯文憑與帶薪實習 Co-op，詳見 Greystone 專案。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭 全膳（3 餐）',meta:'13歲+・含三餐',price:'CA$ 350/週起',desc:'與加拿大寄宿家庭同住、三餐全包。淡季 $350、旺季(5/16–9/6) $390；未成年另計。'},
+    {name:'寄宿家庭 半膳（2 餐）',meta:'13歲+・早晚餐',price:'CA$ 325/週起',desc:'含早晚餐，午餐自理，沉浸式練英語。旺季 $365。'},
+    {name:'學生公寓 Residence',meta:'單人/雙人/套房',price:'CA$ 300/週起',desc:'市中心多處合作學生公寓與 co-living，依房型約 CA$300–635/週。'},
+  ],
+  fees:[{l:'註冊費',v:'CA$ 220（不可退）'},{l:'Study Permit 學生',v:'另繳 CA$ 750（含 $530 Allocation）'},{l:'教材費',v:'CA$ 60 起（1–4週，後 $15/週）'},{l:'住宿安排費',v:'CA$ 250（不可退）'},{l:'機場接送',v:'CA$ 135（單程）'},{l:'未成年監護信',v:'CA$ 150（<18 ON/QC、<19 BC）'}],
+  calcCourses:[{n:'全日密集 FTI（30堂）',pw:480},{n:'全日上午 FT AM（24堂）',pw:430},{n:'兼職 PT（17堂）',pw:325}],
+  calcAccomm:[{n:'寄宿家庭 全膳 3 餐',pw:350},{n:'寄宿家庭 半膳 2 餐',pw:325},{n:'學生公寓 Residence',pw:300}],
+  day:[
+    {time:'09:00 上課',title:'進入市中心校區',desc:'彈性選課的 General English，同學來自全球。'},
+    {time:'中午',title:'Downtown 覓食',desc:'Yonge 街周邊美食林立。'},
+    {time:'下午',title:'選修或自習',desc:'或去 CN 塔、聖羅倫斯市場。'},
+    {time:'放學後',title:'活動與社團',desc:'Distillery District、學校活動。'},
+    {time:'週末',title:'東岸出遊',desc:'尼加拉瀑布、看 Blue Jays 球賽。'},
+  ],
+  qa:[
+    {q:'去加拿大讀 ILSC 需要什麼簽證？',a:'6 個月內語言課程可用 eTA 觀光身分；超過 6 個月或要正式學生身分需 Study Permit（另須繳 $750 含 Allocation Fee）。打工度假（IEC）可邊讀邊工作。實際以官方規定為準。'},
+    {q:'多倫多和溫哥華怎麼選？',a:'多倫多多元文化、商業金融、景點多、離尼加拉近；溫哥華山海環抱、氣候溫和。兩地課程相同，可依城市偏好與打工機會選擇。'},
+    {q:'ILSC 的課程能銜接大學或職涯嗎？',a:'可以。University Pathway 可銜接多所合作大學；姊妹校 Greystone College 提供商業、數位行銷等職涯文憑與帶薪 Co-op；另有 IELTS/Cambridge 考試課程衝刺升學門檻。'},
+  ],
+},
+ilsc_montreal:{
+  name:'ILSC 蒙特婁',region:'北美',tag:'tag-na',flag:'🇨🇦',
+  addr:'Downtown Montréal, QC（市中心，地址待確認）',cur:'CA$',
+  intro:'蒙特婁是北美的法語之都，融合歐洲風情與北美活力。ILSC 蒙特婁可同時學英語與法語，General English/Français 採彈性選課，並有大學銜接與考試課程，是想沉浸雙語環境、體驗歐式氛圍又享北美學費的好選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'依課程而定'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'北美法語之都·英法雙語'}],
+  feats:[
+    {i:'🇫🇷',t:'北美法語之都',d:'可同時學英語與法語，沉浸雙語環境。'},
+    {i:'🧩',t:'彈性選課 英語/法語',d:'依目標自由組合課程與時段。'},
+    {i:'🎯',t:'大學／職涯銜接',d:'University Pathway 與姊妹校 Greystone College。'},
+    {i:'🎭',t:'歐式藝文氛圍',d:'藝術節、老城區、咖啡文化。'},
+    {i:'💰',t:'北美學費較親民',d:'蒙特婁學費略低於多倫多/溫哥華。'},
+  ],
+  who:[
+    {i:'🇫🇷',t:'想同時學英法雙語',d:'英語、法語都能上。'},
+    {i:'🧩',t:'想彈性安排課程',d:'依目標組合課程。'},
+    {i:'🎓',t:'想銜接大學/職涯',d:'Pathway 或 Greystone。'},
+    {i:'🎭',t:'嚮往歐式氛圍',d:'老城、藝文與美食。'},
+  ],
+  courses:[
+    {name:'全日密集 FTI（30 堂/週）',special:false,tags:['30堂/週·每堂50分','8:30–14:15','彈性選課'],price:'CA$ 470/週起',desc:'General English 彈性選課，可自由組合英語溝通、商業、創意文化等。每堂 50 分；讀越久越低（24 週以上約 CA$440/週）。'},
+    {name:'全日上午 FT AM（24 堂/週）',special:false,tags:['24堂/週','8:30–13:00'],price:'CA$ 420/週起',desc:'上午全日課程、下午自由運用，適合想兼顧打工或自學的人。24 週以上更優惠。'},
+    {name:'兼職 PT（17 堂/週起）',special:false,tags:['17堂/週','上午或下午'],price:'CA$ 325/週起',desc:'彈性兼職時段，適合打工度假或預算考量的學員。'},
+    {name:'大學／學院銜接 Pathway',special:true,tags:['University Pathway','Greystone Pathway'],price:'依課程',desc:'完成後可銜接合作大學，或直升姊妹校 Greystone College 職涯文憑。'},
+    {name:'考試準備 IELTS / Cambridge',special:true,tags:['IELTS','Cambridge B2/C1'],price:'依課程',desc:'雅思與劍橋官方考試衝刺班。'},
+    {name:'主題英語選修',special:true,tags:['商業','醫療','Café Work Skills','English Through AI'],price:'依課程',desc:'商業英語、醫療英語、咖啡職場技能、AI 英語等主題課程。'},
+    {name:'青少年營隊 Junior Camp（簡介）',special:true,tags:['9–17 歲','暑期/寒假','套裝'],price:'套裝另計',desc:'9–17 歲青少年暑期／寒假營，含食宿、活動與結業證書。梯次與價格另見青少年營隊資料。'},
+    {name:'Greystone College 職涯文憑（簡介）',special:true,tags:['職業文憑','帶薪 Co-op'],price:'另計',desc:'姊妹校 Greystone College 提供商業、數位行銷等職涯文憑與帶薪實習 Co-op，詳見 Greystone 專案。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭 全膳（3 餐）',meta:'13歲+・含三餐',price:'CA$ 350/週起',desc:'與加拿大寄宿家庭同住、三餐全包。淡季 $350、旺季(5/16–9/6) $390；未成年另計。'},
+    {name:'寄宿家庭 半膳（2 餐）',meta:'13歲+・早晚餐',price:'CA$ 325/週起',desc:'含早晚餐，午餐自理，沉浸式練英語。旺季 $365。'},
+    {name:'學生公寓 Residence',meta:'單人/雙人/套房',price:'CA$ 300/週起',desc:'市中心多處合作學生公寓與 co-living，依房型約 CA$300–635/週。'},
+  ],
+  fees:[{l:'註冊費',v:'CA$ 220（不可退）'},{l:'Study Permit 學生',v:'另繳 CA$ 750（含 $530 Allocation）'},{l:'教材費',v:'CA$ 60 起（1–4週，後 $15/週）'},{l:'住宿安排費',v:'CA$ 250（不可退）'},{l:'機場接送',v:'CA$ 135（單程）'},{l:'未成年監護信',v:'CA$ 150（<18 ON/QC、<19 BC）'}],
+  calcCourses:[{n:'全日密集 FTI（30堂）',pw:470},{n:'全日上午 FT AM（24堂）',pw:420},{n:'兼職 PT（17堂）',pw:325}],
+  calcAccomm:[{n:'寄宿家庭 全膳 3 餐',pw:350},{n:'寄宿家庭 半膳 2 餐',pw:325},{n:'學生公寓 Residence',pw:300}],
+  day:[
+    {time:'09:00 上課',title:'進入市中心校區',desc:'可選英語或法語的彈性課程。'},
+    {time:'中午',title:'Vieux-Montréal 覓食',desc:'老城區法式咖啡與餐廳。'},
+    {time:'下午',title:'選修或自習',desc:'或登 Mont-Royal 俯瞰市區。'},
+    {time:'放學後',title:'活動與社團',desc:'藝術節、河岸散步。'},
+    {time:'週末',title:'近郊出遊',desc:'魁北克市、近郊自然與滑雪。'},
+  ],
+  qa:[
+    {q:'去加拿大讀 ILSC 需要什麼簽證？',a:'6 個月內語言課程可用 eTA 觀光身分；超過 6 個月或要正式學生身分需 Study Permit（另須繳 $750 含 Allocation Fee）。打工度假（IEC）可邊讀邊工作。實際以官方規定為準。'},
+    {q:'在蒙特婁只能學法語嗎？',a:'不會，ILSC 蒙特婁英語與法語課程都有，可擇一或先後學習；日常生活以法語為主，是練法語的好環境。'},
+    {q:'ILSC 的課程能銜接大學或職涯嗎？',a:'可以。University Pathway 可銜接多所合作大學；姊妹校 Greystone College 提供商業、數位行銷等職涯文憑與帶薪 Co-op；另有 IELTS/Cambridge 考試課程衝刺升學門檻。'},
+  ],
+},
+
+  /* ── 地區：大洋洲 ── */
+ilsc_sydney:{
+  name:'ILSC 雪梨',region:'大洋洲',tag:'tag-au',flag:'🇦🇺',
+  addr:'Downtown（市中心，地址待確認）',cur:'AU$',
+  intro:'雪梨是澳洲最大城市，擁有歌劇院、港灣與綿延海灘。ILSC 雪梨市中心校區提供彈性選課的 General English，搭配大學銜接、雅思與打工度假時段，生活機能與打工機會豐富。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'依課程而定'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'港灣與海灘·澳洲最大城'}],
+  feats:[
+    {i:'🌊',t:'港灣與海灘',d:'歌劇院、海港大橋、Bondi 海灘近在咫尺。'},
+    {i:'🧩',t:'彈性選課 General English',d:'自由組合課程與時段。'},
+    {i:'🎯',t:'大學/職涯銜接',d:'Pathway 與 Greystone College。'},
+    {i:'💼',t:'打工度假友善',d:'下午/晚間與兼職時段，適合邊讀邊工作。'},
+    {i:'🏫',t:'國際大城資源',d:'就業與生活機能完善。'},
+  ],
+  who:[
+    {i:'🧩',t:'想彈性安排課程',d:'依目標自由組合課程與時段。'},
+    {i:'🎓',t:'想銜接大學/職涯',d:'Pathway 或 Greystone 文憑。'},
+    {i:'💼',t:'打工度假想學英語',d:'下午/晚間與兼職時段、可合法打工。'},
+    {i:'🏖️',t:'嚮往澳洲生活',d:'海灘、陽光與戶外。'},
+  ],
+  courses:[
+    {name:'全日上午 FT AM（24 堂/週）',special:false,tags:['24堂/週·每堂50分','8:30–13:00','彈性選課'],price:'AU$ 460/週起',desc:'General English 彈性選課（溝通／商業／創意文化）。每堂 50 分；24 週以上約 AU$420/週。'},
+    {name:'下午或晚間班（24 堂/週）',special:false,tags:['下午 1:15–5:15','晚間 5:30–9:30'],price:'AU$ 380/週起',desc:'下午（限雪梨/墨爾本/布里斯本）或晚間時段，適合打工度假邊工作邊上課。'},
+    {name:'兼職 PT（14.5 堂/週）',special:false,tags:['上午或晚間','Mon–Wed'],price:'AU$ 370/週起',desc:'每週三天的兼職時段，彈性安排。'},
+    {name:'大學／學院銜接 Pathway',special:true,tags:['University Pathway','Greystone Pathway'],price:'依課程',desc:'銜接合作大學或姊妹校 Greystone College 職涯文憑。'},
+    {name:'考試準備 IELTS / Cambridge',special:true,tags:['IELTS','Cambridge B2/C1'],price:'依課程',desc:'雅思與劍橋官方考試課程。'},
+    {name:'主題英語選修',special:true,tags:['商業','Café Work Skills','English Through AI'],price:'依課程',desc:'商業英語、咖啡職場技能、AI 英語等主題課程。'},
+    {name:'Greystone College 職涯文憑（簡介）',special:true,tags:['職業文憑','帶薪 Co-op'],price:'另計',desc:'姊妹校 Greystone College 商業/行銷/管理文憑與帶薪實習，詳見 Greystone 專案。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭 半膳（2 餐）',meta:'含早晚餐',price:'AU$ 415/週起',desc:'與澳洲寄宿家庭同住、含早晚餐（週末含午餐）。全膳可加 AU$70/週。'},
+    {name:'寄宿家庭 全膳（加價）',meta:'三餐',price:'洽詢',desc:'全膳方案需事先申請，於半膳價加 AU$70/週。'},
+    {name:'學生公寓 Residence',meta:'單人/雙人套房',price:'AU$ 330/週起',desc:'市中心合作學生公寓，依城市與房型約 AU$330–690/週。'},
+  ],
+  fees:[{l:'註冊費',v:'AU$ 250（不可退）'},{l:'教材費',v:'AU$ 60 起（1–4週，後 $15/週）'},{l:'住宿安排費',v:'AU$ 370（不可退）'},{l:'機場接送',v:'AU$ 200（單程；黃金海岸 $225）'},{l:'未滿 18 服務費',v:'AU$ 175'},{l:'電匯手續費',v:'AU$ 18'}],
+  calcCourses:[{n:'全日上午 FT AM（24堂）',pw:460},{n:'下午/晚間（24堂）',pw:380},{n:'兼職 PT（14.5堂）',pw:370}],
+  calcAccomm:[{n:'寄宿家庭 半膳 2 餐',pw:415},{n:'學生公寓 Residence',pw:330}],
+  day:[
+    {time:'09:00 上課',title:'市中心校區',desc:'彈性選課 General English。'},
+    {time:'中午',title:'CBD 覓食',desc:'市中心美食。'},
+    {time:'下午',title:'選修或海邊',desc:'Bondi/Manly 渡輪。'},
+    {time:'放學後',title:'活動',desc:'Darling Harbour、學校活動。'},
+    {time:'週末',title:'出遊',desc:'藍山國家公園、海灘衝浪。'},
+  ],
+  qa:[
+    {q:'去澳洲讀 ILSC 需要什麼簽證？',a:'短期可用觀光（ETA/eVisitor）就讀 3 個月內；正式就讀需學生簽證（Student visa 500）。打工度假簽（WHV/462）可邊讀邊工作（通常限前 4 個月就讀同一課程）。以官方規定為準。'},
+    {q:'打工度假可以邊讀 ILSC 邊工作嗎？',a:'可以。持打工度假簽（WHV/462）可合法打工，通常前 4 個月可就讀同一語言課程；ILSC 的下午/晚間與兼職時段方便安排上課與工作。以官方規定為準。'},
+    {q:'ILSC 的課程能銜接大學或職涯嗎？',a:'可以。University Pathway 可銜接多所合作大學；姊妹校 Greystone College 提供商業、數位行銷等職涯文憑與帶薪 Co-op；另有 IELTS/Cambridge 考試課程衝刺升學門檻。'},
+  ],
+},
+ilsc_melbourne:{
+  name:'ILSC 墨爾本',region:'大洋洲',tag:'tag-au',flag:'🇦🇺',
+  addr:'Downtown（市中心，地址待確認）',cur:'AU$',
+  intro:'墨爾本連年被評為最宜居城市，以咖啡、藝文與小巷文化聞名。ILSC 墨爾本市中心校區提供彈性選課的 General English 與大學銜接、考試課程，打工度假與藝文生活兼得。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'依課程而定'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'咖啡與藝文之都'}],
+  feats:[
+    {i:'☕',t:'咖啡與藝文之都',d:'小巷咖啡、街頭藝術、藝文活動。'},
+    {i:'🧩',t:'彈性選課 General English',d:'自由組合課程。'},
+    {i:'🎯',t:'大學/職涯銜接',d:'Pathway 與 Greystone College。'},
+    {i:'💼',t:'打工度假友善',d:'下午/晚間與兼職時段。'},
+    {i:'🏫',t:'最宜居城市',d:'生活機能與文化活動豐富。'},
+  ],
+  who:[
+    {i:'🧩',t:'想彈性安排課程',d:'依目標自由組合課程與時段。'},
+    {i:'🎓',t:'想銜接大學/職涯',d:'Pathway 或 Greystone 文憑。'},
+    {i:'💼',t:'打工度假想學英語',d:'下午/晚間與兼職時段、可合法打工。'},
+    {i:'🏖️',t:'嚮往澳洲生活',d:'海灘、陽光與戶外。'},
+  ],
+  courses:[
+    {name:'全日上午 FT AM（24 堂/週）',special:false,tags:['24堂/週·每堂50分','8:30–13:00','彈性選課'],price:'AU$ 460/週起',desc:'General English 彈性選課（溝通／商業／創意文化）。每堂 50 分；24 週以上約 AU$420/週。'},
+    {name:'下午或晚間班（24 堂/週）',special:false,tags:['下午 1:15–5:15','晚間 5:30–9:30'],price:'AU$ 380/週起',desc:'下午（限雪梨/墨爾本/布里斯本）或晚間時段，適合打工度假邊工作邊上課。'},
+    {name:'兼職 PT（14.5 堂/週）',special:false,tags:['上午或晚間','Mon–Wed'],price:'AU$ 370/週起',desc:'每週三天的兼職時段，彈性安排。'},
+    {name:'大學／學院銜接 Pathway',special:true,tags:['University Pathway','Greystone Pathway'],price:'依課程',desc:'銜接合作大學或姊妹校 Greystone College 職涯文憑。'},
+    {name:'考試準備 IELTS / Cambridge',special:true,tags:['IELTS','Cambridge B2/C1'],price:'依課程',desc:'雅思與劍橋官方考試課程。'},
+    {name:'主題英語選修',special:true,tags:['商業','Café Work Skills','English Through AI'],price:'依課程',desc:'商業英語、咖啡職場技能、AI 英語等主題課程。'},
+    {name:'Greystone College 職涯文憑（簡介）',special:true,tags:['職業文憑','帶薪 Co-op'],price:'另計',desc:'姊妹校 Greystone College 商業/行銷/管理文憑與帶薪實習，詳見 Greystone 專案。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭 半膳（2 餐）',meta:'含早晚餐',price:'AU$ 415/週起',desc:'與澳洲寄宿家庭同住、含早晚餐（週末含午餐）。全膳可加 AU$70/週。'},
+    {name:'寄宿家庭 全膳（加價）',meta:'三餐',price:'洽詢',desc:'全膳方案需事先申請，於半膳價加 AU$70/週。'},
+    {name:'學生公寓 Residence',meta:'單人/雙人套房',price:'AU$ 330/週起',desc:'市中心合作學生公寓，依城市與房型約 AU$330–690/週。'},
+  ],
+  fees:[{l:'註冊費',v:'AU$ 250（不可退）'},{l:'教材費',v:'AU$ 60 起（1–4週，後 $15/週）'},{l:'住宿安排費',v:'AU$ 370（不可退）'},{l:'機場接送',v:'AU$ 200（單程；黃金海岸 $225）'},{l:'未滿 18 服務費',v:'AU$ 175'},{l:'電匯手續費',v:'AU$ 18'}],
+  calcCourses:[{n:'全日上午 FT AM（24堂）',pw:460},{n:'下午/晚間（24堂）',pw:380},{n:'兼職 PT（14.5堂）',pw:370}],
+  calcAccomm:[{n:'寄宿家庭 半膳 2 餐',pw:415},{n:'學生公寓 Residence',pw:330}],
+  day:[
+    {time:'09:00 上課',title:'市中心校區',desc:'彈性選課 General English。'},
+    {time:'中午',title:'小巷咖啡',desc:'Laneway café。'},
+    {time:'下午',title:'選修或市場',desc:'Queen Victoria Market。'},
+    {time:'放學後',title:'活動',desc:'St Kilda 海邊、藝文活動。'},
+    {time:'週末',title:'出遊',desc:'大洋路、企鵝島。'},
+  ],
+  qa:[
+    {q:'去澳洲讀 ILSC 需要什麼簽證？',a:'短期可用觀光（ETA/eVisitor）就讀 3 個月內；正式就讀需學生簽證（Student visa 500）。打工度假簽（WHV/462）可邊讀邊工作（通常限前 4 個月就讀同一課程）。以官方規定為準。'},
+    {q:'打工度假可以邊讀 ILSC 邊工作嗎？',a:'可以。持打工度假簽（WHV/462）可合法打工，通常前 4 個月可就讀同一語言課程；ILSC 的下午/晚間與兼職時段方便安排上課與工作。以官方規定為準。'},
+    {q:'ILSC 的課程能銜接大學或職涯嗎？',a:'可以。University Pathway 可銜接多所合作大學；姊妹校 Greystone College 提供商業、數位行銷等職涯文憑與帶薪 Co-op；另有 IELTS/Cambridge 考試課程衝刺升學門檻。'},
+  ],
+},
+ilsc_brisbane:{
+  name:'ILSC 布里斯本',region:'大洋洲',tag:'tag-au',flag:'🇦🇺',
+  addr:'Downtown（市中心，地址待確認）',cur:'AU$',
+  intro:'布里斯本是澳洲陽光之城，氣候溫暖、步調悠閒、生活成本較雪梨墨爾本低。ILSC 布里斯本提供彈性選課的 General English 與大學/職涯銜接，並有青少年營隊，性價比高、靠近黃金海岸。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'依課程而定'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'陽光之城·性價比高'}],
+  feats:[
+    {i:'☀️',t:'陽光之城',d:'氣候溫暖、戶外活動全年無休。'},
+    {i:'🧩',t:'彈性選課 General English',d:'自由組合課程。'},
+    {i:'🎯',t:'大學/職涯銜接',d:'Pathway 與 Greystone College。'},
+    {i:'💰',t:'性價比高',d:'生活成本較雪梨/墨爾本低。'},
+    {i:'🏖️',t:'近黃金海岸',d:'週末衝浪、主題樂園。'},
+  ],
+  who:[
+    {i:'🧩',t:'想彈性安排課程',d:'依目標自由組合課程與時段。'},
+    {i:'🎓',t:'想銜接大學/職涯',d:'Pathway 或 Greystone 文憑。'},
+    {i:'💼',t:'打工度假想學英語',d:'下午/晚間與兼職時段、可合法打工。'},
+    {i:'🏖️',t:'嚮往澳洲生活',d:'海灘、陽光與戶外。'},
+  ],
+  courses:[
+    {name:'全日上午 FT AM（24 堂/週）',special:false,tags:['24堂/週·每堂50分','8:30–13:00','彈性選課'],price:'AU$ 460/週起',desc:'General English 彈性選課（溝通／商業／創意文化）。每堂 50 分；24 週以上約 AU$420/週。'},
+    {name:'下午或晚間班（24 堂/週）',special:false,tags:['下午 1:15–5:15','晚間 5:30–9:30'],price:'AU$ 380/週起',desc:'下午（限雪梨/墨爾本/布里斯本）或晚間時段，適合打工度假邊工作邊上課。'},
+    {name:'兼職 PT（14.5 堂/週）',special:false,tags:['上午或晚間','Mon–Wed'],price:'AU$ 370/週起',desc:'每週三天的兼職時段，彈性安排。'},
+    {name:'大學／學院銜接 Pathway',special:true,tags:['University Pathway','Greystone Pathway'],price:'依課程',desc:'銜接合作大學或姊妹校 Greystone College 職涯文憑。'},
+    {name:'考試準備 IELTS / Cambridge',special:true,tags:['IELTS','Cambridge B2/C1'],price:'依課程',desc:'雅思與劍橋官方考試課程。'},
+    {name:'主題英語選修',special:true,tags:['商業','Café Work Skills','English Through AI'],price:'依課程',desc:'商業英語、咖啡職場技能、AI 英語等主題課程。'},
+    {name:'青少年營隊 Junior Camp（簡介）',special:true,tags:['12–17 歲','暑期','套裝'],price:'套裝另計',desc:'12–17 歲青少年暑期營（布里斯本），含食宿、活動與證書。詳見青少年營隊資料。'},
+    {name:'Greystone College 職涯文憑（簡介）',special:true,tags:['職業文憑','帶薪 Co-op'],price:'另計',desc:'姊妹校 Greystone College 商業/行銷/管理文憑與帶薪實習，詳見 Greystone 專案。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭 半膳（2 餐）',meta:'含早晚餐',price:'AU$ 415/週起',desc:'與澳洲寄宿家庭同住、含早晚餐（週末含午餐）。全膳可加 AU$70/週。'},
+    {name:'寄宿家庭 全膳（加價）',meta:'三餐',price:'洽詢',desc:'全膳方案需事先申請，於半膳價加 AU$70/週。'},
+    {name:'學生公寓 Residence',meta:'單人/雙人套房',price:'AU$ 330/週起',desc:'市中心合作學生公寓，依城市與房型約 AU$330–690/週。'},
+  ],
+  fees:[{l:'註冊費',v:'AU$ 250（不可退）'},{l:'教材費',v:'AU$ 60 起（1–4週，後 $15/週）'},{l:'住宿安排費',v:'AU$ 370（不可退）'},{l:'機場接送',v:'AU$ 200（單程；黃金海岸 $225）'},{l:'未滿 18 服務費',v:'AU$ 175'},{l:'電匯手續費',v:'AU$ 18'}],
+  calcCourses:[{n:'全日上午 FT AM（24堂）',pw:460},{n:'下午/晚間（24堂）',pw:380},{n:'兼職 PT（14.5堂）',pw:370}],
+  calcAccomm:[{n:'寄宿家庭 半膳 2 餐',pw:415},{n:'學生公寓 Residence',pw:330}],
+  day:[
+    {time:'09:00 上課',title:'市中心校區',desc:'彈性選課 General English。'},
+    {time:'中午',title:'South Bank 覓食',desc:'河岸餐廳。'},
+    {time:'下午',title:'選修或河岸',desc:'South Bank 人工沙灘。'},
+    {time:'放學後',title:'活動',desc:'Story Bridge、學校活動。'},
+    {time:'週末',title:'出遊',desc:'黃金海岸、Moreton Island。'},
+  ],
+  qa:[
+    {q:'去澳洲讀 ILSC 需要什麼簽證？',a:'短期可用觀光（ETA/eVisitor）就讀 3 個月內；正式就讀需學生簽證（Student visa 500）。打工度假簽（WHV/462）可邊讀邊工作（通常限前 4 個月就讀同一課程）。以官方規定為準。'},
+    {q:'打工度假可以邊讀 ILSC 邊工作嗎？',a:'可以。持打工度假簽（WHV/462）可合法打工，通常前 4 個月可就讀同一語言課程；ILSC 的下午/晚間與兼職時段方便安排上課與工作。以官方規定為準。'},
+    {q:'ILSC 的課程能銜接大學或職涯嗎？',a:'可以。University Pathway 可銜接多所合作大學；姊妹校 Greystone College 提供商業、數位行銷等職涯文憑與帶薪 Co-op；另有 IELTS/Cambridge 考試課程衝刺升學門檻。'},
+  ],
+},
+ilsc_adelaide:{
+  name:'ILSC 阿德雷德',region:'大洋洲',tag:'tag-au',flag:'🇦🇺',
+  addr:'Downtown（市中心，地址待確認）',cur:'AU$',
+  intro:'阿德雷德是南澳首府，以葡萄酒產區、節慶與悠閒步調聞名，生活成本親民。ILSC 阿德雷德提供彈性選課的 General English 與大學/職涯銜接，適合想要安靜環境專心學習的人。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'依課程而定'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'悠閒葡萄酒之城'}],
+  feats:[
+    {i:'🍷',t:'葡萄酒與節慶之城',d:'Barossa 酒莊、藝術節。'},
+    {i:'🧩',t:'彈性選課 General English',d:'自由組合課程。'},
+    {i:'🎯',t:'大學/職涯銜接',d:'Pathway 與 Greystone College。'},
+    {i:'💰',t:'生活成本親民',d:'住宿與物價較低。'},
+    {i:'🌿',t:'悠閒安靜',d:'適合專心學習。'},
+  ],
+  who:[
+    {i:'🧩',t:'想彈性安排課程',d:'依目標自由組合課程與時段。'},
+    {i:'🎓',t:'想銜接大學/職涯',d:'Pathway 或 Greystone 文憑。'},
+    {i:'💼',t:'打工度假想學英語',d:'下午/晚間與兼職時段、可合法打工。'},
+    {i:'🏖️',t:'嚮往澳洲生活',d:'海灘、陽光與戶外。'},
+  ],
+  courses:[
+    {name:'全日上午 FT AM（24 堂/週）',special:false,tags:['24堂/週·每堂50分','8:30–13:00','彈性選課'],price:'AU$ 460/週起',desc:'General English 彈性選課（溝通／商業／創意文化）。每堂 50 分；24 週以上約 AU$420/週。'},
+    {name:'下午或晚間班（24 堂/週）',special:false,tags:['下午 1:15–5:15','晚間 5:30–9:30'],price:'AU$ 380/週起',desc:'下午（限雪梨/墨爾本/布里斯本）或晚間時段，適合打工度假邊工作邊上課。'},
+    {name:'兼職 PT（14.5 堂/週）',special:false,tags:['上午或晚間','Mon–Wed'],price:'AU$ 370/週起',desc:'每週三天的兼職時段，彈性安排。'},
+    {name:'大學／學院銜接 Pathway',special:true,tags:['University Pathway','Greystone Pathway'],price:'依課程',desc:'銜接合作大學或姊妹校 Greystone College 職涯文憑。'},
+    {name:'考試準備 IELTS / Cambridge',special:true,tags:['IELTS','Cambridge B2/C1'],price:'依課程',desc:'雅思與劍橋官方考試課程。'},
+    {name:'主題英語選修',special:true,tags:['商業','Café Work Skills','English Through AI'],price:'依課程',desc:'商業英語、咖啡職場技能、AI 英語等主題課程。'},
+    {name:'Greystone College 職涯文憑（簡介）',special:true,tags:['職業文憑','帶薪 Co-op'],price:'另計',desc:'姊妹校 Greystone College 商業/行銷/管理文憑與帶薪實習，詳見 Greystone 專案。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭 半膳（2 餐）',meta:'含早晚餐',price:'AU$ 385/週起',desc:'與澳洲寄宿家庭同住、含早晚餐（週末含午餐）。全膳可加 AU$70/週。'},
+    {name:'寄宿家庭 全膳（加價）',meta:'三餐',price:'洽詢',desc:'全膳方案需事先申請，於半膳價加 AU$70/週。'},
+    {name:'學生公寓 Residence',meta:'單人/雙人套房',price:'AU$ 330/週起',desc:'市中心合作學生公寓，依城市與房型約 AU$330–690/週。'},
+  ],
+  fees:[{l:'註冊費',v:'AU$ 250（不可退）'},{l:'教材費',v:'AU$ 60 起（1–4週，後 $15/週）'},{l:'住宿安排費',v:'AU$ 370（不可退）'},{l:'機場接送',v:'AU$ 200（單程；黃金海岸 $225）'},{l:'未滿 18 服務費',v:'AU$ 175'},{l:'電匯手續費',v:'AU$ 18'}],
+  calcCourses:[{n:'全日上午 FT AM（24堂）',pw:460},{n:'下午/晚間（24堂）',pw:380},{n:'兼職 PT（14.5堂）',pw:370}],
+  calcAccomm:[{n:'寄宿家庭 半膳 2 餐',pw:385},{n:'學生公寓 Residence',pw:330}],
+  day:[
+    {time:'09:00 上課',title:'市中心校區',desc:'彈性選課 General English。'},
+    {time:'中午',title:'Central Market 覓食',desc:'中央市場美食。'},
+    {time:'下午',title:'選修或海邊',desc:'Glenelg 海灘。'},
+    {time:'放學後',title:'活動',desc:'Adelaide Hills、學校活動。'},
+    {time:'週末',title:'出遊',desc:'Barossa 酒莊、袋鼠島。'},
+  ],
+  qa:[
+    {q:'去澳洲讀 ILSC 需要什麼簽證？',a:'短期可用觀光（ETA/eVisitor）就讀 3 個月內；正式就讀需學生簽證（Student visa 500）。打工度假簽（WHV/462）可邊讀邊工作（通常限前 4 個月就讀同一課程）。以官方規定為準。'},
+    {q:'打工度假可以邊讀 ILSC 邊工作嗎？',a:'可以。持打工度假簽（WHV/462）可合法打工，通常前 4 個月可就讀同一語言課程；ILSC 的下午/晚間與兼職時段方便安排上課與工作。以官方規定為準。'},
+    {q:'ILSC 的課程能銜接大學或職涯嗎？',a:'可以。University Pathway 可銜接多所合作大學；姊妹校 Greystone College 提供商業、數位行銷等職涯文憑與帶薪 Co-op；另有 IELTS/Cambridge 考試課程衝刺升學門檻。'},
+  ],
+},
+ilsc_perth:{
+  name:'ILSC 伯斯',region:'大洋洲',tag:'tag-au',flag:'🇦🇺',
+  addr:'Downtown（市中心，地址待確認）',cur:'AU$',
+  intro:'伯斯是西澳首府，陽光充足、海岸線美麗、生活步調悠閒。ILSC 伯斯提供彈性選課的 General English 與大學/職涯銜接，適合想遠離人潮、享受陽光與海灘的學員。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'依課程而定'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'西澳陽光海岸'}],
+  feats:[
+    {i:'🏖️',t:'陽光海岸',d:'美麗海灘與日照充足。'},
+    {i:'🧩',t:'彈性選課 General English',d:'自由組合課程。'},
+    {i:'🎯',t:'大學/職涯銜接',d:'Pathway 與 Greystone College。'},
+    {i:'🦘',t:'獨特自然',d:'Rottnest Island 與短尾矮袋鼠。'},
+    {i:'🌅',t:'悠閒生活',d:'步調慢、適合專心學習。'},
+  ],
+  who:[
+    {i:'🧩',t:'想彈性安排課程',d:'依目標自由組合課程與時段。'},
+    {i:'🎓',t:'想銜接大學/職涯',d:'Pathway 或 Greystone 文憑。'},
+    {i:'💼',t:'打工度假想學英語',d:'下午/晚間與兼職時段、可合法打工。'},
+    {i:'🏖️',t:'嚮往澳洲生活',d:'海灘、陽光與戶外。'},
+  ],
+  courses:[
+    {name:'全日上午 FT AM（24 堂/週）',special:false,tags:['24堂/週·每堂50分','8:30–13:00','彈性選課'],price:'AU$ 460/週起',desc:'General English 彈性選課（溝通／商業／創意文化）。每堂 50 分；24 週以上約 AU$420/週。'},
+    {name:'下午或晚間班（24 堂/週）',special:false,tags:['下午 1:15–5:15','晚間 5:30–9:30'],price:'AU$ 380/週起',desc:'下午（限雪梨/墨爾本/布里斯本）或晚間時段，適合打工度假邊工作邊上課。'},
+    {name:'兼職 PT（14.5 堂/週）',special:false,tags:['上午或晚間','Mon–Wed'],price:'AU$ 370/週起',desc:'每週三天的兼職時段，彈性安排。'},
+    {name:'大學／學院銜接 Pathway',special:true,tags:['University Pathway','Greystone Pathway'],price:'依課程',desc:'銜接合作大學或姊妹校 Greystone College 職涯文憑。'},
+    {name:'考試準備 IELTS / Cambridge',special:true,tags:['IELTS','Cambridge B2/C1'],price:'依課程',desc:'雅思與劍橋官方考試課程。'},
+    {name:'主題英語選修',special:true,tags:['商業','Café Work Skills','English Through AI'],price:'依課程',desc:'商業英語、咖啡職場技能、AI 英語等主題課程。'},
+    {name:'Greystone College 職涯文憑（簡介）',special:true,tags:['職業文憑','帶薪 Co-op'],price:'另計',desc:'姊妹校 Greystone College 商業/行銷/管理文憑與帶薪實習，詳見 Greystone 專案。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭 半膳（2 餐）',meta:'含早晚餐',price:'AU$ 395/週起',desc:'與澳洲寄宿家庭同住、含早晚餐（週末含午餐）。全膳可加 AU$70/週。'},
+    {name:'寄宿家庭 全膳（加價）',meta:'三餐',price:'洽詢',desc:'全膳方案需事先申請，於半膳價加 AU$70/週。'},
+    {name:'學生公寓 Residence',meta:'單人/雙人套房',price:'AU$ 330/週起',desc:'市中心合作學生公寓，依城市與房型約 AU$330–690/週。'},
+  ],
+  fees:[{l:'註冊費',v:'AU$ 250（不可退）'},{l:'教材費',v:'AU$ 60 起（1–4週，後 $15/週）'},{l:'住宿安排費',v:'AU$ 370（不可退）'},{l:'機場接送',v:'AU$ 200（單程；黃金海岸 $225）'},{l:'未滿 18 服務費',v:'AU$ 175'},{l:'電匯手續費',v:'AU$ 18'}],
+  calcCourses:[{n:'全日上午 FT AM（24堂）',pw:460},{n:'下午/晚間（24堂）',pw:380},{n:'兼職 PT（14.5堂）',pw:370}],
+  calcAccomm:[{n:'寄宿家庭 半膳 2 餐',pw:395},{n:'學生公寓 Residence',pw:330}],
+  day:[
+    {time:'09:00 上課',title:'市中心校區',desc:'彈性選課 General English。'},
+    {time:'中午',title:'市中心覓食',desc:'CBD 餐廳。'},
+    {time:'下午',title:'選修或公園',desc:'Kings Park 俯瞰市區。'},
+    {time:'放學後',title:'活動',desc:'Cottesloe 海灘看夕陽。'},
+    {time:'週末',title:'出遊',desc:'Rottnest Island、Fremantle。'},
+  ],
+  qa:[
+    {q:'去澳洲讀 ILSC 需要什麼簽證？',a:'短期可用觀光（ETA/eVisitor）就讀 3 個月內；正式就讀需學生簽證（Student visa 500）。打工度假簽（WHV/462）可邊讀邊工作（通常限前 4 個月就讀同一課程）。以官方規定為準。'},
+    {q:'打工度假可以邊讀 ILSC 邊工作嗎？',a:'可以。持打工度假簽（WHV/462）可合法打工，通常前 4 個月可就讀同一語言課程；ILSC 的下午/晚間與兼職時段方便安排上課與工作。以官方規定為準。'},
+    {q:'ILSC 的課程能銜接大學或職涯嗎？',a:'可以。University Pathway 可銜接多所合作大學；姊妹校 Greystone College 提供商業、數位行銷等職涯文憑與帶薪 Co-op；另有 IELTS/Cambridge 考試課程衝刺升學門檻。'},
+  ],
+},
+
+  /* ── 地區：歐洲 ── */
+ilsc_dublin:{
+  name:'ILSC 都柏林',region:'歐洲',tag:'tag-eu',flag:'🇮🇪',
+  addr:'Dublin City Centre（市中心，地址待確認）',cur:'€',
+  intro:'都柏林是歐洲的英語圈、科技與文學之城，生活友善、前往歐洲各國方便。ILSC 都柏林最大特色是 Study & Work 方案，讓非歐盟學生可邊讀邊合法打工（學期 20 小時/週、假期 40 小時），是想存旅費、累積海外經驗的熱門選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'依課程而定'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'歐洲英語圈·可邊讀邊工作'}],
+  feats:[
+    {i:'🇪🇺',t:'歐洲英語圈',d:'以英語生活、往歐洲各國旅行方便。'},
+    {i:'💼',t:'Study & Work 可打工',d:'非歐盟學生學期 20hr/週、假期 40hr 合法打工。'},
+    {i:'🧩',t:'彈性選課 General English',d:'自由組合課程與時段。'},
+    {i:'🎯',t:'大學銜接 / 考試',d:'University Pathway 與 IELTS/Cambridge。'},
+    {i:'📚',t:'文學與科技之城',d:'Trinity College、眾多科技公司歐洲總部。'},
+  ],
+  who:[
+    {i:'💼',t:'想邊讀邊工作存旅費',d:'Study & Work 可合法打工。'},
+    {i:'🧩',t:'想彈性安排課程',d:'依目標組合課程。'},
+    {i:'🇪🇺',t:'想以歐洲為基地',d:'往歐洲各國方便。'},
+    {i:'🎓',t:'想銜接大學/考試',d:'Pathway 與 IELTS/Cambridge。'},
+  ],
+  courses:[
+    {name:'全日上午 FT AM（22.5 堂/週）',special:false,tags:['22.5堂/週·每堂50分','9:00–12:50','彈性選課'],price:'€ 360/週起',desc:'General English 彈性選課。每堂 50 分；24 週以上約 €300/週。'},
+    {name:'標準班 ST（18 堂/週）',special:false,tags:['上午或下午','Mon–Thu'],price:'€ 230/週起',desc:'每週四天的標準時段，價格更親民。'},
+    {name:'Study & Work 邊讀邊工作',special:true,tags:['25週課+8週假','可合法打工'],price:'€ 6,000 起',desc:'非歐盟學生專屬：學期間每週可工作 20 小時、假期 40 小時，含 TIE 結業考試。'},
+    {name:'大學銜接 Pathway',special:true,tags:['University Pathway'],price:'依課程',desc:'銜接愛爾蘭與海外合作大學。'},
+    {name:'考試準備 IELTS / Cambridge',special:true,tags:['IELTS','Cambridge B2/C1'],price:'依課程',desc:'雅思與劍橋官方考試課程。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭 標準（半膳）',meta:'16歲+・單人房',price:'€ 300/週起',desc:'單人房、含早晚餐（週末三餐）。旺季(6/15–8/31) €355。'},
+    {name:'寄宿家庭 行政套房（ensuite）',meta:'獨立衛浴',price:'€ 395/週起',desc:'單人房含獨立衛浴，較舒適。旺季 €430。'},
+    {name:'學生公寓 Point Campus',meta:'獨立套房',price:'€ 350/週',desc:'市區學生公寓，獨立衛浴。'},
+  ],
+  fees:[{l:'註冊費',v:'€ 75（不可退）'},{l:'教材費',v:'€ 20 起（1–4週，後 €5/週）'},{l:'住宿安排費',v:'€ 75（不可退）'},{l:'機場接送',v:'€ 100（單程）'},{l:'TIE 結業考試',v:'€ 120'},{l:'學習者保護費',v:'€ 30'}],
+  calcCourses:[{n:'全日上午 FT AM（22.5堂）',pw:360},{n:'標準 ST（18堂）',pw:230}],
+  calcAccomm:[{n:'寄宿家庭 行政套房',pw:395},{n:'學生公寓 Point Campus',pw:350},{n:'寄宿家庭 標準半膳',pw:300}],
+  day:[
+    {time:'09:00 上課',title:'市中心校區',desc:'彈性選課 General English。'},
+    {time:'中午',title:'市區覓食',desc:'Temple Bar 周邊。'},
+    {time:'下午',title:'打工或選修',desc:'Study & Work 學生可安排打工。'},
+    {time:'放學後',title:'活動',desc:'Trinity College、酒吧文化體驗。'},
+    {time:'週末',title:'出遊',desc:'Cliffs of Moher、Galway 一日遊。'},
+  ],
+  qa:[
+    {q:'去愛爾蘭讀 ILSC 需要什麼簽證？',a:'台灣護照短期可免簽觀光就讀 90 天內；25 週以上的 Study & Work 課程可申請學習簽證並合法打工（學期 20 小時/週、假期 40 小時）。以官方規定為準。'},
+    {q:'Study & Work 真的能合法打工嗎？',a:'可以。報讀 25 週以上的 Study & Work 課程並取得學習簽證後，學期間每週可工作 20 小時、假期（6–8 月與 12/15–1/15）可達 40 小時，適合想存旅費、累積海外工作經驗的人。以官方規定為準。'},
+    {q:'ILSC 都柏林的課程能銜接什麼？',a:'可銜接 University Pathway 合作大學，並以 IELTS/Cambridge 課程衝刺升學門檻；Study & Work 則適合想一邊進修一邊累積海外工作經驗的人。'},
+  ],
+},
+
+  /* ── 地區：亞洲（新地區） ── */
+ilsc_newdelhi:{
+  name:'ILSC 新德里',region:'亞洲',tag:'tag-as',flag:'🇮🇳',
+  addr:'New Delhi, India（地址待確認）',cur:'USD',
+  intro:'ILSC 新德里位於印度首都，是 ILSC 體系中價格最親民的校區。除英語外，還提供法語與印地語課程，以及雅思/劍橋備考與瑜伽等特色課程，適合想用低成本學英語、深度體驗印度文化的學員。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'大型校區'},{l:'最大班級',v:'依課程而定'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一'},{l:'校區亮點',v:'價格最親民·英法印地語'}],
+  feats:[
+    {i:'💰',t:'價格最親民',d:'ILSC 體系中學費最低。'},
+    {i:'🗣️',t:'英 / 法 / 印地語',d:'多語選擇，可同時學第二外語。'},
+    {i:'🧩',t:'彈性選課 General English',d:'自由組合課程與時段。'},
+    {i:'🧘',t:'瑜伽與文化特色',d:'瑜伽包、導覽行程等在地體驗。'},
+    {i:'🎯',t:'考試準備',d:'IELTS / Cambridge 備考。'},
+  ],
+  who:[
+    {i:'💰',t:'預算有限想學英語',d:'學費親民。'},
+    {i:'🗣️',t:'想同時學法語/印地語',d:'多語課程。'},
+    {i:'🧘',t:'想深度體驗印度',d:'瑜伽與文化行程。'},
+    {i:'🎓',t:'想考雅思/劍橋',d:'考試備考課程。'},
+  ],
+  courses:[
+    {name:'全日密集 FTI（30 堂/週）',special:false,tags:['30堂/週·每堂50分','Mon–Thu 10–17','彈性選課'],price:'US$ 235/週起',desc:'General English 彈性選課，密集時數。每堂 50 分。'},
+    {name:'全日 FT（24 堂/週）',special:false,tags:['24堂/週','Mon–Thu 10–15:30'],price:'US$ 205/週起',desc:'標準全日課程。'},
+    {name:'兼職 PT（17 堂/週起）',special:false,tags:['上午或下午'],price:'US$ 170/週起',desc:'彈性兼職時段。'},
+    {name:'法語 / 印地語 / 考試 / 瑜伽',special:true,tags:['French','Hindi','IELTS','Yoga'],price:'依課程',desc:'另開法語、印地語溝通課、雅思/劍橋備考，以及瑜伽包等特色課程。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭 半膳（2 餐）',meta:'含早晚餐',price:'US$ 350/週',desc:'與當地家庭同住、含早晚餐，體驗印度生活。'},
+    {name:'學生公寓 單人',meta:'單人房',price:'US$ 280/週',desc:'ILSC 學生公寓單人房（雙人 $205/週）。'},
+    {name:'民宿 B&B',meta:'含早餐',price:'US$ 300/週',desc:'民宿含早餐，地點彈性。'},
+  ],
+  fees:[{l:'註冊與測驗費',v:'US$ 75（不可退）'},{l:'教材費',v:'US$ 35'},{l:'住宿安排費',v:'US$ 100（不可退）'},{l:'機場接送',v:'US$ 40（單程）'},{l:'快遞 Speed Post',v:'US$ 65'}],
+  calcCourses:[{n:'全日密集 FTI（30堂）',pw:235},{n:'全日 FT（24堂）',pw:205},{n:'兼職 PT（17堂）',pw:170}],
+  calcAccomm:[{n:'寄宿家庭 半膳',pw:350},{n:'民宿 B&B',pw:300},{n:'學生公寓 單人',pw:280}],
+  day:[
+    {time:'10:00 上課',title:'市區校區',desc:'彈性選課 General English。'},
+    {time:'中午',title:'當地覓食',desc:'印度美食。'},
+    {time:'下午',title:'選修或自習',desc:'法語/印地語或瑜伽。'},
+    {time:'放學後',title:'活動',desc:'Old Delhi、市集探索。'},
+    {time:'週末',title:'出遊',desc:'泰姬瑪哈陵、Qutub Minar 一日遊。'},
+  ],
+  qa:[
+    {q:'去印度讀 ILSC 需要什麼簽證？',a:'台灣護照需事先申請印度簽證（多為 e-Visa 電子簽，依停留與目的選擇學生/觀光類別）。建議出發前向印度簽證中心確認最新類別與效期。'},
+    {q:'在新德里也能學法語或印地語嗎？',a:'可以。ILSC 新德里除英語外提供法語與印地語溝通課程，可單獨報名或與英語搭配，並有瑜伽包等特色課程。'},
+    {q:'ILSC 新德里適合誰？',a:'適合想用親民價格學英語、體驗印度文化，或同時想學法語/印地語的人；亦有 IELTS/劍橋備考與瑜伽等特色課程。'},
+  ],
+},
+
+ec_malta:{
+  name:'EC 馬爾他',region:'歐洲',tag:'tag-eu',flag:'🇲🇹',
+  addr:'Malta（校區地址待補）',cur:'€',
+  intro:'馬爾他是地中海上的英語系島國，全年陽光、湛藍海水與騎士團時代的古城交織，英語是官方語言之一、消費相對親民，又屬歐盟申根區。EC 馬爾他校區鄰近海濱，課後就能跳進地中海或探索首都瓦萊塔的巴洛克街景；還有最多 7 人的迷你小班與師資培訓課程，是想在陽光海島輕鬆又扎實學英語的理想選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'待 EC 官方確認'},{l:'最大班級',v:'平均 11 人（最多 14 人；迷你小班最多 7 人）'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（遇公共假期順延）'},{l:'校區特色',v:'迷你小班最多 7 人可選'}],
+  feats:[
+    {i:'🏖️',t:'地中海陽光海島',d:'全年陽光、湛藍海水，海濱生活愜意。'},
+    {i:'🇬🇧',t:'英語為官方語言',d:'英語通行，日常沉浸環境純正。'},
+    {i:'👥',t:'迷你小班最多 7 人',d:'一般班最多 14 人，另有最多 7 人的迷你小班。'},
+    {i:'🏛️',t:'歷史古城瓦萊塔',d:'騎士團時代巴洛克古城，世界遺產環繞。'},
+    {i:'💶',t:'歐盟申根＋性價比',d:'屬申根區、消費相對西歐親民。'},
+  ],
+  who:[
+    {i:'🏖️',t:'想在陽光海島學習者',d:'地中海海島步調，學語言同時度假。'},
+    {i:'👥',t:'想要小班密集互動者',d:'迷你小班最多 7 人，開口機會最多。'},
+    {i:'📝',t:'要考劍橋／雅思者',d:'證書備考課程含應試技巧。'},
+    {i:'💶',t:'想省預算的歐洲選擇',d:'相對西歐親民，適合長期沉浸。'},
+  ],
+  courses:[
+    {name:'假期英語 GE20',special:false,tags:['20堂/週','15hr','上午班'],price:'€240/週起',desc:'每週 20 堂（15 小時）通用英語，上午為主、下午自由，適合邊遊學邊生活。　各長度每週價（€）：1–11週 300／12–23週 255／24週+ 240。'},
+    {name:'密集英語 GE30',special:false,tags:['30堂/週','22.5hr','最密集'],price:'€300/週起',desc:'每週 30 堂（22.5 小時）密集通用英語，進步最快。　各長度每週價（€）：1–11週 410／12–23週 320／24週+ 300。'},
+    {name:'職場英語 English for Work',special:false,tags:['職場英語','含通用'],price:'€320/週起',desc:'通用英語加入職場英語模組（10 堂），聚焦商務溝通與職場情境。　各長度每週價（€）：1–11週 410／12–23週 320。'},
+    {name:'迷你小班 Mini Group',special:true,tags:['最多7人','密集互動'],price:'€495/週起',desc:'最多 7 人的小班課程，開口與練習密度高（每月第一個週一開課、最長 2 週；另有 25 歲以上商務迷你小班）。　各長度每週價（€）：1–11週 495。'},
+    {name:'劍橋／雅思準備 Exam Prep',special:true,tags:['考試應試','劍橋/雅思'],price:'€320/週起',desc:'劍橋（FCE／CAE）或 IELTS 證書備考課程。　各長度每週價（€）：1–11週 410／12–23週 320。'},
+    {name:'一對一 One-to-One',special:false,tags:['每堂60分','客製'],price:'€95/堂起',desc:'完全客製的一對一個人課，每堂 60 分鐘，可單獨報名或搭配主課程加強。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（雙人・半膳）',meta:'通勤 15–45 分',price:'€250/週起',desc:'馬爾他在地家庭，雙人房含早晚餐（單人、B&B 另計）。'},
+    {name:'寄宿家庭（單人・B&B）',meta:'通勤 15–45 分',price:'€340/週起',desc:'單人房含早餐，隱私與沉浸兼顧。'},
+    {name:'學生公寓 Student Apartment（雙人）',meta:'通勤 5–30 分',price:'€220/週起',desc:'可自炊的學生公寓，雙人房（單人 345、studio 495）。'},
+    {name:'Campus Hub 學生宿舍（雙人）',meta:'通勤 30 分',price:'€210/週起',desc:'校園型學生宿舍，雙人房可自炊（單人私衛 390）。'},
+  ],
+  fees:[{l:'報名費',v:'€55'},{l:'住宿安置費',v:'€40'},{l:'材料費',v:'€7/週（12–23週共 €84）'},{l:'學生保險（選配）',v:'€14/週'},{l:'簽證文件快遞',v:'€55'},{l:'電匯手續費（台灣）',v:'€20'}],
+  calcCourses:[{n:'假期英語',pw:255},{n:'密集英語',pw:320}],
+  calcAccomm:[{n:'寄宿家庭',pw:250},{n:'學生公寓 Student Apartment',pw:220},{n:'Campus Hub 學生宿舍',pw:210}],
+  day:[
+    {time:'07:30 起床',title:'海島早晨',desc:'從住處出發，走向鄰海的校區。'},
+    {time:'上午／下午課',title:'通用英語',desc:'小班互動，主題結合生活情境。'},
+    {time:'午餐',title:'海濱覓食',desc:'地中海料理與各國美食選擇多。'},
+    {time:'課後',title:'海灘或古城',desc:'跳進地中海玩水，或逛瓦萊塔古城。'},
+    {time:'週末',title:'離島或潛水',desc:'到藍窗、藍洞或戈佐島小旅行。'},
+  ],
+  qa:[
+    {q:'台灣人去馬爾他讀語言要辦簽證嗎？',a:'馬爾他屬歐盟申根區，台灣護照可免簽入申根停留最多 90 天、就讀短期英語課程；超過 90 天需申請馬爾他學生簽證／居留（另有 VFS 簽證預約費）。實際以馬爾他官方與顧問確認。'},
+    {q:'馬爾他的迷你小班是什麼？',a:'Mini Group 是最多 7 人的小班課程（一般班最多 14 人），互動與開口機會更多；另有 25 歲以上的商務迷你小班。每月第一個週一開課、最長可報 2 週。'},
+    {q:'一週大約多少錢？',a:'以假期英語（20 堂）＋學生宿舍估算，課程週費約 €255 起、住宿約 €210 起，是 EC 校區中相當親民的選擇，可用計算機換算台幣。'},
+  ],
+},
+
+ec_dubai:{
+  name:'EC 杜拜',region:'中東',tag:'tag-me',flag:'🇦🇪',
+  addr:'Dubai, UAE（校區地址待補）',cur:'USD',
+  intro:'杜拜是沙漠中崛起的現代化國際都會，免稅、安全、乾淨，融合超現代天際線與阿拉伯文化，全年陽光、購物與美食精彩。EC 杜拜校區位於便利地段，課後能登上哈里發塔、逛世界級商場或到海灘放鬆；課程有上午與較優惠的下午班可選，是想在安全新穎、國際化環境沉浸英語的獨特選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'待 EC 官方確認'},{l:'最大班級',v:'平均 12 人（最多 15 人）'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（遇公共假期順延）'},{l:'上課時段',v:'上午或下午班（下午較優惠）'}],
+  feats:[
+    {i:'🏙️',t:'現代國際都會',d:'超現代天際線與國際化生活，安全乾淨。'},
+    {i:'💸',t:'免稅之都',d:'免稅購物、治安良好，生活便利。'},
+    {i:'🕐',t:'上午／下午班',d:'下午班費用較優惠、作息更彈性。'},
+    {i:'🏖️',t:'陽光與地標',d:'哈里發塔、世界級商場與海灘近在咫尺。'},
+    {i:'🕌',t:'阿拉伯文化體驗',d:'現代與傳統交融的獨特中東城市。'},
+  ],
+  who:[
+    {i:'🌍',t:'想體驗中東國際都會者',d:'安全、國際化又新穎的獨特遊學地。'},
+    {i:'💸',t:'想省學費的學員',d:'下午班費用較優惠，作息彈性。'},
+    {i:'📝',t:'要考雅思的學員',d:'雅思準備課程含應試技巧。'},
+    {i:'🏖️',t:'喜歡都會與陽光者',d:'購物、美食與海灘，生活精彩。'},
+  ],
+  courses:[
+    {name:'假期英語（下午・優惠） GE20 Afternoon',special:false,tags:['20堂/週','15hr','下午班','較優惠'],price:'USD $245/週起',desc:'每週 20 堂（15 小時）通用英語，下午時段費用較優惠、作息更彈性。　各長度每週價（USD）：1–11週 310／12–23週 270／24週+ 245。'},
+    {name:'假期英語（上午） GE20 Morning',special:false,tags:['20堂/週','15hr','上午班'],price:'USD $310/週起',desc:'課程內容同下午班，上午時段開課。　各長度每週價（USD）：1–11週 380／12–23週 335／24週+ 310。'},
+    {name:'密集英語 GE30',special:false,tags:['30堂/週','22.5hr','最密集'],price:'USD $440/週起',desc:'每週 30 堂（22.5 小時）密集通用英語，進步最快。　各長度每週價（USD）：1–11週 520／12–23週 480／24週+ 440。'},
+    {name:'職場英語 English for Work',special:false,tags:['職場英語','含通用'],price:'USD $480/週起',desc:'通用英語加入職場英語模組（10 堂），聚焦商務溝通與職場情境。　各長度每週價（USD）：1–11週 520／12–23週 480。'},
+    {name:'雅思準備 IELTS',special:true,tags:['雅思應試','四項技能'],price:'USD $480/週起',desc:'通用英語結合 IELTS 應試技巧，適合要考雅思的學員。　各長度每週價（USD）：1–11週 520／12–23週 480。'},
+    {name:'一對一 One-to-One',special:false,tags:['每堂60分','客製'],price:'USD $75/堂起',desc:'完全客製的一對一個人課，每堂 60 分鐘，可單獨報名或搭配主課程加強。'},
+  ],
+  accomm:[
+    {name:'學生宿舍 Student Residence（雙人）',meta:'通勤 50 分',price:'USD $250/週起',desc:'可自炊的學生宿舍，雙人房（單人套房 425）。'},
+    {name:'學生公寓 Student Apartment（雙人）',meta:'通勤 25 分',price:'USD $275/週起',desc:'可自炊的學生公寓，雙人房（單人私衛 450、豪華套房 750）。'},
+    {name:'學生宿舍 Student Residence（單人・獨立衛浴）',meta:'通勤 50 分',price:'USD $425/週起',desc:'單人房含獨立衛浴、可自炊。'},
+  ],
+  fees:[{l:'報名費',v:'USD $100'},{l:'住宿安置費',v:'USD $100'},{l:'材料費',v:'USD $7/週（12–23週共 $84）'},{l:'學生保險（選配）',v:'USD $25/週'},{l:'180 天學生簽證申請費',v:'USD $700'},{l:'電匯手續費（台灣）',v:'USD $50'}],
+  calcCourses:[{n:'假期英語（下午・優惠）',pw:270},{n:'假期英語（上午）',pw:335},{n:'密集英語',pw:480}],
+  calcAccomm:[{n:'學生公寓 Student Apartment',pw:275},{n:'學生宿舍 Student Residence',pw:250}],
+  day:[
+    {time:'08:00 起床',title:'沙漠都會早晨',desc:'從住處出發，前往便利地段的校區。'},
+    {time:'上午或下午課',title:'通用英語',desc:'小班互動，可選上午或較優惠的下午班。'},
+    {time:'午餐',title:'商場覓食',desc:'世界級商場與各國美食選擇多。'},
+    {time:'課後',title:'地標或海灘',desc:'登哈里發塔、逛商場或到海灘放鬆。'},
+    {time:'週末',title:'沙漠探險',desc:'沙漠衝沙、市集或近郊景點小旅行。'},
+  ],
+  qa:[
+    {q:'台灣人去杜拜讀語言要辦什麼？',a:'EC 杜拜可協助辦理 180 天學生簽證（申請費 USD $700）；短期觀光另有落地簽選項。實際簽證方式依課程長度與最新規定而定，請以阿聯官方與顧問確認。'},
+    {q:'杜拜的上午班和下午班差在哪？',a:'課程內容相同，但下午班費用較優惠（假期英語下午班每週約 $270 起 vs 上午約 $335 起）。想省學費、作息彈性的學員可選下午班。'},
+    {q:'杜拜安全嗎？',a:'杜拜治安良好、環境乾淨，是中東最國際化、對旅客與學生友善的城市之一；仍建議尊重當地文化與服裝禮儀。實際狀況可再與顧問確認。'},
+  ],
+},
+
+ec_capetown:{
+  name:'EC 開普敦',region:'非洲',tag:'tag-af',flag:'🇿🇦',
+  addr:'Cape Town, South Africa（校區地址待補）',cur:'€',
+  intro:'開普敦是南非壯麗的海濱城市，桌山、海灘、酒鄉與近郊的野生動物 Safari 令人難忘，英語通行、消費相對親民，且位於南半球（旺季為 1–3 月夏季）。EC 開普敦校區課後能登桌山、衝浪，或參加週末 Safari 與志工、實習方案，是想在壯闊自然與多元文化中沉浸英語、體驗獨特非洲行程的絕佳選擇。',
+  info:[{l:'最低年齡',v:'16 歲以上'},{l:'校區容量',v:'待 EC 官方確認'},{l:'最大班級',v:'平均 12 人（最多 15 人）'},{l:'最短修讀',v:'1 週'},{l:'開課日',v:'每週一（遇公共假期順延）'},{l:'校區特色',v:'含週末 Safari 與志工／實習方案'}],
+  feats:[
+    {i:'⛰️',t:'桌山與海灘',d:'地標桌山、海灘與海岸線，戶外景觀壯麗。'},
+    {i:'🦁',t:'近郊 Safari',d:'週末可參加野生動物 Safari 與花園大道行程。'},
+    {i:'🍷',t:'酒鄉與美食',d:'鄰近世界知名酒鄉，美食與美景兼具。'},
+    {i:'💶',t:'英語通行＋性價比',d:'英語通行、消費相對歐美親民。'},
+    {i:'🤝',t:'志工／實習方案',d:'提供志工與實習方案，累積海外經驗。'},
+  ],
+  who:[
+    {i:'⛰️',t:'想壯闊自然與 Safari 者',d:'桌山、海灘與野生動物，體驗獨特非洲。'},
+    {i:'🏄',t:'喜歡戶外與冒險者',d:'衝浪、健行與週末探險，戶外活動豐富。'},
+    {i:'📝',t:'要考雅思的學員',d:'雅思準備課程含應試技巧。'},
+    {i:'🤝',t:'想志工／實習體驗者',d:'結合語言學習與志工、實習方案。'},
+  ],
+  courses:[
+    {name:'假期英語 GE20',special:false,tags:['20堂/週','15hr','上午班'],price:'€240/週起',desc:'每週 20 堂（15 小時）通用英語，上午為主、下午自由。　各長度每週價（€）：1–11週 345／12–23週 270／24週+ 240。'},
+    {name:'密集英語 GE30',special:false,tags:['30堂/週','22.5hr','最密集'],price:'€325/週起',desc:'每週 30 堂（22.5 小時）密集通用英語，進步最快。　各長度每週價（€）：1–11週 450／12–23週 380／24週+ 325。'},
+    {name:'職場英語 English for Work',special:false,tags:['職場英語','含通用'],price:'€380/週起',desc:'通用英語加入職場英語模組（10 堂），聚焦商務溝通與職場情境。　各長度每週價（€）：1–11週 450／12–23週 380。'},
+    {name:'城市英語 English in the City',special:false,tags:['城市主題','限定'],price:'€450/週起',desc:'通用英語結合城市探索主題課程，把整座城市當教室（限定）。　各長度每週價（€）：1–11週 450。'},
+    {name:'雅思準備 IELTS',special:true,tags:['雅思應試','四項技能'],price:'€270/週起',desc:'通用英語結合 IELTS 應試技巧，適合要考雅思的學員。　各長度每週價（€）：1–11週 345／12–23週 270。'},
+    {name:'一對一 One-to-One',special:false,tags:['每堂60分','客製'],price:'€75/堂起',desc:'完全客製的一對一個人課，每堂 60 分鐘，可單獨報名或搭配主課程加強。'},
+  ],
+  accomm:[
+    {name:'寄宿家庭（單人・半膳）',meta:'通勤 15–30 分',price:'€270/週起',desc:'開普敦在地家庭，單人房含早晚餐（私衛另計）。'},
+    {name:'Green Point 學生宿舍（8 人房）',meta:'通勤 25–30 分',price:'€145/週起',desc:'綠點區學生宿舍多人房，最經濟的選擇、社交氛圍佳。'},
+    {name:'Green Point 學生公寓（雙人）',meta:'通勤 25–30 分',price:'€270/週起',desc:'綠點區學生公寓，雙人房可自炊（單人套房 495）。'},
+    {name:'BlackBrick 學生公寓（Studio）',meta:'通勤 10 分',price:'€435/週起',desc:'市區 studio 學生公寓，獨立衛浴、可自炊。'},
+  ],
+  fees:[{l:'報名費',v:'€55'},{l:'住宿安置費',v:'€40'},{l:'材料費',v:'€7/週（12–23週共 €84）'},{l:'學生保險（選配）',v:'€25/週'},{l:'簽證文件快遞',v:'€85'},{l:'電匯手續費（台灣）',v:'€20'}],
+  calcCourses:[{n:'假期英語',pw:270},{n:'密集英語',pw:380}],
+  calcAccomm:[{n:'BlackBrick 學生公寓',pw:435},{n:'寄宿家庭',pw:270},{n:'Green Point 學生公寓',pw:270},{n:'Green Point 學生宿舍',pw:145}],
+  day:[
+    {time:'07:30 起床',title:'海濱早晨',desc:'從住處出發，迎著桌山景色到校區。'},
+    {time:'上午／下午課',title:'通用英語',desc:'小班互動，主題結合生活情境。'},
+    {time:'午餐',title:'市區覓食',desc:'開普敦多元美食，選擇豐富。'},
+    {time:'課後',title:'桌山或海灘',desc:'登桌山纜車，或到海灘衝浪散步。'},
+    {time:'週末',title:'Safari 或酒鄉',desc:'參加野生動物 Safari，或到酒鄉品酒。'},
+  ],
+  qa:[
+    {q:'台灣人去南非開普敦讀語言的簽證怎麼辦？',a:'赴南非就讀的簽證規定請務必以南非內政部（DHA）與顧問最新確認；EC 可協助提供入學與住宿文件。就讀較長課程通常需申請研讀簽證，建議提早準備。'},
+    {q:'開普敦可以參加 Safari 嗎？',a:'可以。EC 開普敦提供週末 Safari 行程（1 日約 €220、3 日花園大道約 €395、4 日克魯格國家公園約 €1,100），也有志工與實習方案，適合把遊學和非洲冒險結合的人。'},
+    {q:'開普敦的旺季是什麼時候？',a:'開普敦位於南半球，旺季為 1–3 月（當地夏季），與北半球相反；此時陽光充足、活動最多，住宿較搶手，建議提早預訂。'},
   ],
 },
 };
@@ -2004,17 +3636,126 @@ function initAnchorObserver(){
 function show(key){
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
   if(key==='preknow'){
+    currentNavKey=null;
     document.getElementById('panel-preknow').innerHTML=renderPreknow();
     document.getElementById('panel-preknow').style.display='block';
     document.getElementById('campus-panel').style.display='none';
     document.getElementById('main').scrollTop=0;
     return;
   }
+  currentNavKey=key;
   const nb=document.getElementById('nb-'+key);
   if(nb) nb.classList.add('on');
   render(key);
 }
 
+// ── DYNAMIC SIDEBAR NAV (built from D, grouped by region or vendor) ──
+const REGION_ORDER=['英國','歐洲','中東','北美','大洋洲','亞洲','非洲'];
+const REGION_COLORVAR={'英國':'--uk-c','歐洲':'--eu-c','中東':'--me-c','北美':'--na-c','大洋洲':'--au-c','亞洲':'--as-c','非洲':'--af-c'};
+const VENDOR_ORDER=['EP','SGIC','Kaplan','ILSC','EC'];
+const VENDOR_ICON={'EP':'🏫','SGIC':'🍁','Kaplan':'🎓','ILSC':'🌏','EC':'✈️'};
+
+function vendorOf(key){
+  if(key.startsWith('sgic_'))return 'SGIC';
+  if(key.startsWith('kaplan_'))return 'Kaplan';
+  if(key.startsWith('ilsc_'))return 'ILSC';
+  if(key.startsWith('ec_'))return 'EC';
+  return 'EP';
+}
+
+let navMode='region';
+let currentNavKey=null;
+const navOpenGroups=new Set();
+
+function buildNav(mode){
+  navMode=mode;
+  document.querySelectorAll('.view-toggle-btn').forEach(b=>b.classList.toggle('on', b.dataset.mode===mode));
+  const order = mode==='region' ? REGION_ORDER : VENDOR_ORDER;
+  const groups={};
+  order.forEach(g=>groups[g]=[]);
+  Object.keys(D).forEach(key=>{
+    const c=D[key], vendor=vendorOf(key);
+    const g = mode==='region' ? c.region : vendor;
+    if(!groups[g]) groups[g]=[];
+    groups[g].push({key,vendor,...c});
+  });
+  if(mode==='region'){
+    Object.values(groups).forEach(arr=>arr.sort((a,b)=>VENDOR_ORDER.indexOf(a.vendor)-VENDOR_ORDER.indexOf(b.vendor)));
+  } else {
+    Object.values(groups).forEach(arr=>arr.sort((a,b)=>REGION_ORDER.indexOf(a.region)-REGION_ORDER.indexOf(b.region)));
+  }
+  let html='';
+  order.forEach(g=>{
+    const arr=groups[g];
+    if(!arr || arr.length===0) return;
+    const gid=mode+':'+g;
+    const isOpen=navOpenGroups.has(gid);
+    const icon = mode==='region'
+      ? `<span class="nav-group-dot" style="background:var(${REGION_COLORVAR[g]||'--ink4'})"></span>`
+      : `<span class="nav-group-icon">${VENDOR_ICON[g]||'🏫'}</span>`;
+    html += `<div class="nav-group${isOpen?' open':''}" data-group="${gid}">
+      <button class="nav-group-hd" onclick="toggleGroup('${gid}')">
+        <span class="nav-group-title">${icon}${g}<span class="nav-group-count">${arr.length}</span></span>
+        <span class="nav-group-chev">›</span>
+      </button>
+      <div class="nav-group-body">${arr.map(c=>`
+        <button class="nav-btn" id="nb-${c.key}" onclick="show('${c.key}')">
+          <span class="nav-flag">${c.flag}</span>${c.name}
+          <span class="nav-cmp" id="cmp-${c.key}" onclick="toggleCmp(event,'${c.key}')"></span>
+        </button>`).join('')}
+      </div>
+    </div>`;
+  });
+  document.getElementById('navList').innerHTML = html || '<div class="nav-empty">找不到符合的校區</div>';
+  compareSet.forEach(k=>{
+    const el=document.getElementById('cmp-'+k);
+    if(el){el.classList.add('checked');el.textContent='✓';}
+  });
+  if(currentNavKey){
+    const nb=document.getElementById('nb-'+currentNavKey);
+    if(nb) nb.classList.add('on');
+  }
+  const q=document.getElementById('navSearch').value;
+  if(q) filterNav();
+}
+
+function toggleGroup(gid){
+  if(navOpenGroups.has(gid)) navOpenGroups.delete(gid); else navOpenGroups.add(gid);
+  const el=document.querySelector(`.nav-group[data-group="${gid}"]`);
+  if(el) el.classList.toggle('open');
+}
+
+function setViewMode(mode){
+  if(mode===navMode) return;
+  navOpenGroups.clear();
+  document.getElementById('navSearch').value='';
+  buildNav(mode);
+}
+
+function filterNav(){
+  const q=document.getElementById('navSearch').value.trim().toLowerCase();
+  const groupsEls=document.querySelectorAll('.nav-group');
+  if(!q){
+    groupsEls.forEach(g=>{
+      g.style.display='';
+      g.classList.toggle('open', navOpenGroups.has(g.dataset.group));
+      g.querySelectorAll('.nav-btn').forEach(b=>b.style.display='');
+    });
+    return;
+  }
+  groupsEls.forEach(g=>{
+    let anyMatch=false;
+    g.querySelectorAll('.nav-btn').forEach(b=>{
+      const match=b.textContent.toLowerCase().includes(q);
+      b.style.display = match?'':'none';
+      if(match) anyMatch=true;
+    });
+    g.style.display = anyMatch?'':'none';
+    g.classList.toggle('open', anyMatch);
+  });
+}
+
+buildNav('region');
 show('preknow');
 </script>
 </body>
